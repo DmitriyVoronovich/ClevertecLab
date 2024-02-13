@@ -1,0 +1,45 @@
+.main_section_container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+}
+
+.section_block1 {
+    width: 704px;
+    padding: 24px;
+    font-family: Inter, serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: #061178;
+    margin: 0;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+}
+
+.section_block2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.section_block2_text {
+    width: 704px;
+    padding: 24px;
+    font-family: Inter, serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #262626;
+    margin: 0;
+    background-color: #FFFFFF;
+}
+
+.section_block2_fragment {
+    display: flex;
+    gap: 16px;
+}

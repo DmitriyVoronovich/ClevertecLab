@@ -1,0 +1,48 @@
+.fragment_container {
+    border-radius: 2px;
+    width: 240px;
+    height: 101px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+}
+
+.fragment_title {
+    padding: 12px 24px;
+    width: 192px;
+    height: 45px;
+    font-family: Inter, serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+    color: #262626;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.fragment_button {
+    padding: 19px 0;
+    width: 240px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border: 0;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.fragment_icon {
+    width: 14px;
+    height: 14px;
+}
+
+.fragment_button_name {
+    font-family: Inter, serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: #2F54EB;
+}
