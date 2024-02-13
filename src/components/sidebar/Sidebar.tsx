@@ -33,8 +33,8 @@ export const Sidebar:React.FC<SidebarProps> = (props) => {
                 <img src={exit} alt={'exit button'} className={'sidebar_footer_img'}/>
                 <span className={`${open ? 'sidebar_footer_text' : 'sidebar_footer_text close'}`}>Выход</span>
             </div>
-            <div className={'sidebar_menu_button'} onClick={handleOpen}>
-                <img src={menuicon} alt={'menu button'} className={'sidebar_menu_icon'}/>
+            <div className={'sidebar_menu_button'} onClick={handleOpen} data-test-id='sider-switch' >
+                <img src={menuicon} alt={'menu button'} className={'sidebar_menu_icon'} data-test-id='sider-switch-mobile'/>
             </div>
         </div>
     );
