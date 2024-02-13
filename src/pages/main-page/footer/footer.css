@@ -102,3 +102,58 @@
         padding: 9.5px 15px 9.5px 15px;
     }
 }
+
+@media screen and (max-width: 361px) {
+    .footer_container {
+        display: flex;
+        justify-content: normal;
+        align-items: center;
+        flex-direction: column-reverse;
+        gap: 24px;
+        padding: 0 15px 42px 15px;
+        margin-top: 0;
+    }
+
+    .footer_reviews_container {
+        width: 171px;
+        height: 21px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer_app_container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 2px;
+        height: 127px;
+        background-color: #FFFFFF;
+    }
+
+    .footer_app_link_wrapper {
+        width: 100%;
+        border-bottom: 1px solid #E0E0E0;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding: 12px 0;
+    }
+
+    .app_container {
+        padding: 12px 0;
+
+    }
+
+    .app_button{
+        width: 164px;
+        border: 0;
+        padding: 7px 0;
+        background-color: #FFFFFF;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        gap: 8px;
+    }
+}

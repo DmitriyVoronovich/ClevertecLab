@@ -1,5 +1,4 @@
 .sidebar_content_container {
-    min-width: 208px;
     max-height: 100%;
     background-color: #FFFFFF;
     display: flex;
@@ -93,4 +92,78 @@
 .sidebar_menu_icon {
     width: 14px;
     height: 14px;
+}
+@media screen and (min-width: 362px) {
+    .sidebar_content_container {
+        width: 208px;
+    }
+}
+
+@media screen and (max-width: 361px) {
+    .sidebar_content_container {
+        width: 106px;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .close_menu {
+        left: -106px;
+    }
+
+    .sidebar_menu_wrapper {
+        max-width: 106px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-top: 0;
+    }
+
+    .sidebar_menu_list {
+
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .sidebar_menu_item {
+        padding: 12px 8px;
+        display: flex;
+        gap: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar_item_icon {
+        display: none;
+    }
+
+    .sidebar_footer {
+       justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar_footer_img {
+        display: none;
+    }
+
+    .sidebar_footer_text {
+        padding-left: 0;
+    }
+
+    .sidebar_menu_button {
+        top: 24px;
+        width: 32px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar_menu_icon {
+        width: 14px;
+        height: 14px;
+
+    }
 }

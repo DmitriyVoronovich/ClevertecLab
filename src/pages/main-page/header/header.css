@@ -76,3 +76,39 @@
         display: none;
     }
 }
+
+@media screen and (max-width: 361px) {
+    .header_title {
+        width: 275px;
+        font-weight: 500;
+        font-size: 20px;
+        padding: 0;
+    }
+
+    .header_content_wrapper{
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        gap:0;
+        margin-top: 0;
+        border-bottom: 1px solid #E0E0E0;
+        border-radius: 50%;
+        background-color: #FFFFFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header_content_svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .header_content_item {
+        display: none;
+    }
+
+    .header_content_svg {
+        display: block;
+    }
+}
