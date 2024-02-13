@@ -5,11 +5,7 @@
     justify-content: space-between;
     flex-direction: column;
     position: relative;
-    z-index: 2;
-}
-
-.close_menu {
-    min-width: 64px;
+    z-index: 3;
 }
 
 .sidebar_menu_wrapper {
@@ -96,6 +92,10 @@
 @media screen and (min-width: 362px) {
     .sidebar_content_container {
         width: 208px;
+    }
+
+    .close_menu {
+        width: 64px;
     }
 }
 

@@ -56,7 +56,6 @@
     .fragment_title {
         padding: 12px 24px;
         height: 50%;
-        text-align: start;
         display: flex;
         justify-content: center;
     }
@@ -80,5 +79,12 @@
 
     .fragment_title {
        width: 192px;
+    }
+}
+
+@media screen and (max-width: 361px) {
+
+    .fragment_title {
+        align-items: center;
     }
 }
