@@ -4,15 +4,23 @@ import {Header} from "@pages/main-page/header/Header.tsx";
 import {MainSection} from "@pages/main-page/main-section/MainSection.tsx";
 import fon from "../../accets/main_page_light.png";
 import {Footer} from "@pages/main-page/footer/Footer.tsx";
+import {Sidebar} from "@components/sidebar/Sidebar.tsx";
 
 export const MainPage: React.FC = () => {
+    const [open, setOpen] = React.useState(true);
+
+    const handleOpen = () => {
+        setOpen(!open);
+    };
 
     return (
-        <div className={'main_page_container'} style={{ backgroundImage: `url(${fon})`,
-            backgroundRepeat: 'no-repeat', backgroundSize: '100%'}}>
-            <Header/>
-            <MainSection/>
-            <Footer/>
+        <div className={'main_page_container'} style={{ backgroundImage: `url(${fon})`}}>
+            <Sidebar handleOpen={handleOpen} open={open}/>
+            <div className={'a'}>
+                <Header/>
+                <MainSection/>
+                <Footer />
+            </div>
         </div>
     );
 };

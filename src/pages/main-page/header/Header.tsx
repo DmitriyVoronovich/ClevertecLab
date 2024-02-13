@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
                 <span className={'header_menu_item'}>Главная</span>
             </div>
             <div className={'header_wrapper'}>
-                <h1 className={'header_title'}>Приветствуем тебя вCleverFit— приложении, которое
+                <h1 className={'header_title'}>Приветствуем тебя в CleverFit — приложении,<br/> которое
                     поможет тебе добиться своей мечты!
                 </h1>
                 <div className={'header_content_wrapper'}>

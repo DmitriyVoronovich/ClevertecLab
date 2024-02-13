@@ -1,6 +1,5 @@
 .main_section_container {
     max-width: 1440px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -8,9 +7,8 @@
 }
 
 .section_block1 {
-    width: 704px;
     padding: 24px;
-    font-family: Inter, serif;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
@@ -21,16 +19,14 @@
 }
 
 .section_block2 {
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
 .section_block2_text {
-    width: 704px;
-    padding: 24px;
-    font-family: Inter, serif;
+    padding: 24px 84px 24px 24px;
+    font-family: Inter, sans-serif;
     font-weight: 500;
     font-size: 20px;
     line-height: 130%;
@@ -42,4 +38,21 @@
 .section_block2_fragment {
     display: flex;
     gap: 16px;
+}
+
+@media screen and (max-width: 865px) {
+
+    .section_block2_text {
+        padding: 24px;
+    }
+}
+
+@media screen and (min-width: 866px) {
+    .section_block1 {
+        width: 704px;
+    }
+
+    .section_block2_text {
+        max-width: 644px;
+    }
 }

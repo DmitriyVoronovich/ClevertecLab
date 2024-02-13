@@ -1,4 +1,3 @@
-import React from 'react';
 import '../footer/footer.css';
 import andr from '../../../accets/image/andr.svg'
 import apple from '../../../accets/image/apple.svg'

@@ -1,0 +1,13 @@
+.logo_container {
+    display: flex;
+    margin: 14px 0 17px 29px;
+    align-items: end;
+}
+
+.close {
+    display: none;
+}
+
+.close_logo {
+    margin: 0;
+}

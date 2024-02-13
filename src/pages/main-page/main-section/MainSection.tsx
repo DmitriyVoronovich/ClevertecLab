@@ -1,4 +1,3 @@
-import React from 'react';
 import './main-section.css';
 import {data} from "../../../data/data.ts";
 import {Fragment} from "@components/fragment/Fragment.tsx";

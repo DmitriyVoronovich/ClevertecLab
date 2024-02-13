@@ -1,7 +1,7 @@
 .fragment_container {
     border-radius: 2px;
-    width: 240px;
-    height: 101px;
+
+
     display: flex;
     flex-direction: column;
     background-color: #FFFFFF;
@@ -9,9 +9,9 @@
 
 .fragment_title {
     padding: 12px 24px;
-    width: 192px;
+
     height: 45px;
-    font-family: Inter, serif;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
@@ -39,10 +39,45 @@
 }
 
 .fragment_button_name {
-    font-family: Inter, serif;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
     text-align: center;
     color: #2F54EB;
+}
+
+@media screen and (max-width: 865px) {
+    .fragment_container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .fragment_title {
+        padding: 12px 24px;
+        height: 50%;
+        text-align: start;
+        margin: 0 auto;
+    }
+
+    .fragment_button {
+        padding: 12px 0;
+        width: 182px;
+        height: 56px;
+    }
+    .fragment_button {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 866px) {
+
+    .fragment_container {
+        width: 240px;
+        height: 101px;
+    }
+
+    .fragment_title {
+       width: 192px;
+    }
 }

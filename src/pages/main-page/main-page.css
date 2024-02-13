@@ -1,3 +1,30 @@
 .main_page_container {
-    max-width: 1440px;
+
+    display: flex;
+    background-size: cover;
+    background-position: center center;
+    background-clip: content-box;
+    position: relative;
+}
+
+.a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media screen and (max-width: 835px) {
+    .main_page_container {
+        width: 835px;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    .main_page_container {
+        max-width: 365px;
+    }
+
+    .a {
+        position: relative;
+    }
 }

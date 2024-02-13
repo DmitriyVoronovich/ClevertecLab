@@ -1,6 +1,6 @@
 .header_container {
     max-width: 1398px;
-    height: 136px;
+    height: 100%;
     padding: 16px 24px;
     background: #F0F5FF;
     display: flex;
@@ -14,7 +14,7 @@
 }
 
 .header_menu_item {
-    font-family: Inter, serif;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
@@ -23,7 +23,7 @@
 
 .header_wrapper {
     width: 100%;
-    height: 118px;
+    height: 100%;
     display: flex;
     justify-content: space-between;
 }
@@ -31,7 +31,7 @@
 .header_title {
     padding: 14px 0 6px;
     max-width: 900px;
-    font-family: Inter, serif;
+    font-family: Inter, sans-serif;
     font-weight: 700;
     font-size: 38px;
     line-height: 130%;
@@ -40,13 +40,39 @@
 }
 
 .header_content_wrapper{
-    width: 129px;
+    width: 99px;
     display: flex;
-    padding: 4px 15px 4px 15px;
+    padding: 7px 15px;
     gap:10px;
+    margin-top: 8px;
 }
 
 .header_content_svg {
     width: 14px;
     height: 14px;
+}
+
+@media screen and (max-width: 865px) {
+    .header_container {
+        max-height: 100%;
+    }
+
+    .header_wrapper {
+        max-height: 100%;
+    }
+
+    .header_title {
+        max-width: 100%;
+        font-weight: 500;
+        font-size: 24px;
+    }
+
+    .header_content_wrapper{
+        width: 105px;
+        padding: 0;
+    }
+
+    .header_content_svg {
+        display: none;
+    }
 }
