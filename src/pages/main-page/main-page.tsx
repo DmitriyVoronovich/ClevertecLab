@@ -3,6 +3,7 @@ import './main-page.css';
 import {Header} from "@pages/main-page/header/Header.tsx";
 import {MainSection} from "@pages/main-page/main-section/MainSection.tsx";
 import fon from "../../accets/main_page_light.png";
+import {Footer} from "@pages/main-page/footer/Footer.tsx";
 
 export const MainPage: React.FC = () => {
 
@@ -11,6 +12,7 @@ export const MainPage: React.FC = () => {
             backgroundRepeat: 'no-repeat', backgroundSize: '100%'}}>
             <Header/>
             <MainSection/>
+            <Footer/>
         </div>
     );
 };

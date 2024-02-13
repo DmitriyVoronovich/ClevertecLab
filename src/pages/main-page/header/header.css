@@ -1,5 +1,5 @@
 .header_container {
-    width: 100%;
+    max-width: 1398px;
     height: 136px;
     padding: 16px 24px;
     background: #F0F5FF;
