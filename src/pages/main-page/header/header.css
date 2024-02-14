@@ -1,0 +1,114 @@
+.header_container {
+    max-width: 1398px;
+    height: 100%;
+    padding: 16px 24px;
+    background: #F0F5FF;
+    display: flex;
+    flex-direction: column;
+}
+
+.header_menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_menu_item {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: #262626;
+}
+
+.header_wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_title {
+    padding: 14px 0 6px;
+    max-width: 900px;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 130%;
+    color: #262626;
+    margin: 0;
+}
+
+.header_content_wrapper{
+    width: 99px;
+    display: flex;
+    padding: 7px 15px;
+    gap:10px;
+    margin-top: 8px;
+}
+
+.header_content_svg {
+    width: 14px;
+    height: 14px;
+}
+
+@media screen and (max-width: 865px) {
+    .header_container {
+        max-height: 100%;
+    }
+
+    .header_wrapper {
+        max-height: 100%;
+    }
+
+    .header_title {
+        max-width: 100%;
+        font-weight: 500;
+        font-size: 24px;
+    }
+
+    .header_content_wrapper{
+        width: 105px;
+        padding: 0;
+    }
+
+    .header_content_svg {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 361px) {
+    .header_title {
+        width: 275px;
+        font-weight: 500;
+        font-size: 20px;
+        padding: 0;
+    }
+
+    .header_content_wrapper{
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        gap:0;
+        margin-top: 0;
+        border-bottom: 1px solid #E0E0E0;
+        border-radius: 50%;
+        background-color: #FFFFFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header_content_svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .header_content_item {
+        display: none;
+    }
+
+    .header_content_svg {
+        display: block;
+    }
+}

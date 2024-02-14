@@ -1,0 +1,159 @@
+.footer_container {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 0 24px 42px 24px;
+    margin-top: 156px;
+}
+
+.footer_reviews_container {
+    width: 171px;
+    height: 21px;
+    padding: 9.5px 15px 9.5px 15px;
+}
+
+.footer_reviews {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+    color: #2F54EB;
+    cursor: pointer;
+}
+
+.footer_app_container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 2px;
+    width: 240px;
+    height: 127px;
+    background-color: #FFFFFF;
+}
+
+.footer_app_link_wrapper {
+    width: 192px;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 12px 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer_app_link {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: start;
+    color: #2F54EB;
+    cursor: pointer;
+}
+
+.footer_app_text {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: start;
+    color: #8C8C8C;
+    margin-top: 8px;
+}
+
+.app_container {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+}
+
+.app_button{
+    border: 0;
+    padding: 7px 0;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 8px;
+}
+
+.app_icon {
+    width: 14px;
+    height: 14px;
+}
+
+.app_button_name {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: #262626;
+}
+
+@media screen and (max-width: 865px) {
+    .footer_container {
+        padding: 0 24px 42px 24px;
+        margin-top: 237px;
+    }
+
+    .footer_reviews_container {
+        width: 171px;
+        height: 21px;
+        padding: 9.5px 15px 9.5px 15px;
+    }
+}
+
+@media screen and (max-width: 361px) {
+    .footer_container {
+        display: flex;
+        justify-content: normal;
+        align-items: center;
+        flex-direction: column-reverse;
+        gap: 24px;
+        padding: 0 15px 42px 15px;
+        margin-top: 0;
+    }
+
+    .footer_reviews_container {
+        width: 171px;
+        height: 21px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer_app_container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 2px;
+        height: 127px;
+        background-color: #FFFFFF;
+    }
+
+    .footer_app_link_wrapper {
+        width: 100%;
+        border-bottom: 1px solid #E0E0E0;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding: 12px 0;
+    }
+
+    .app_container {
+        padding: 12px 0;
+
+    }
+
+    .app_button{
+        width: 164px;
+        border: 0;
+        padding: 7px 0;
+        background-color: #FFFFFF;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        gap: 8px;
+    }
+}
