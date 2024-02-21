@@ -6,6 +6,7 @@ import VerificationInput from "react-verification-input";
 export const CodeForm = () => {
     return (
         <div className={'code_form_container'} style={{backgroundImage: `url(${fon})`}}>
+            <div className={'form_fon'}></div>
             <div className={'code_container'}>
                 <div className={'code_wrapper'}>
                     <img className={'error_img'} alt={'error'} src={attention}/>

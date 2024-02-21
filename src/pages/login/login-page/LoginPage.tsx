@@ -15,6 +15,7 @@ export const LoginPage = () => {
 
     return (
         <div className={'login_form_container'} style={{backgroundImage: `url(${fon})`}}>
+            <div className={'form_fon'}></div>
             <div className={'login_form_wrapper'}>
                 <div className={'logo_wrapper'}>
                     <Logo open={true}/>
@@ -25,7 +26,6 @@ export const LoginPage = () => {
                         <button className={`${active ? 'login_button' : 'login_button active'}`} onClick={toggleActiveButton}>Регистрация</button>
                     </div>
                     {active ? <LoginForm/> : <RegistrationForm/>}
-
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ import error from "../../../accets/login-page/svg-icon/error-icon.svg";
 export const ErrorLogin = () => {
     return (
         <div className={'log_error_container'} style={{backgroundImage: `url(${fon})`}}>
+            <div className={'form_fon'}></div>
             <div className={'error_container'}>
                 <div className={'error_wrapper'}>
                     <img className={'error_img'} alt={'error'} src={error}/>

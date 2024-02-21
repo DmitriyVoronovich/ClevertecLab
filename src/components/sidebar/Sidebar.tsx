@@ -24,7 +24,9 @@ export const Sidebar:React.FC<SidebarProps> = (props) => {
     return (
         <div className={`${open ? 'sidebar_content_container' : 'sidebar_content_container close_menu'}`} >
             <div className={`${open ? 'sidebar_menu_wrapper' : 'sidebar_menu_wrapper close_menu_item'}`}>
-                <Logo open={open}/>
+                <div className={`${open ? 'sidebar_logo_container' : 'sidebar_logo_container close_logo_item'}`}>
+                    <Logo open={open}/>
+                </div>
                 <div className={'sidebar_menu_list'}>
                     {menu}
                 </div>

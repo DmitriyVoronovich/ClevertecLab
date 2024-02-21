@@ -15,6 +15,17 @@
     padding-top: 30px;
 }
 
+.sidebar_logo_container {
+    width: 133px;
+    height: 33px;
+    padding-top: 14px;
+    margin: 0 auto;
+}
+
+.close_logo_item {
+    width: 64px;
+}
+
 .close_menu_item {
     align-items: center;
 }

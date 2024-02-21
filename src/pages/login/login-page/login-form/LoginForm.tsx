@@ -1,12 +1,22 @@
 import { EyeInvisibleOutlined, EyeTwoTone, GooglePlusOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
-import './login-form.css'
+import './login-form.css';
+import {authApi} from "../../../../api/auth.api.ts";
+
+type FormType = {
+    email: string,
+    password: string
+}
 
 export const LoginForm = () => {
     const [form] = Form.useForm();
 
-    const onFinish = (values: string) => {
+    const onFinish = async (values: FormType) => {
         console.log('Received values of form: ', values);
+        console.log(values.email)
+        console.log(values.password)
+        const res = await authApi.login({email: values.email, password: values.password})
+        console.log(res)
     };
 
     const validateEmail = (email: string) => {
@@ -34,14 +44,14 @@ export const LoginForm = () => {
             onFieldsChange={onFieldsChange}
         >
             <div className={'login_form_section_one'}>
-                <Form.Item
+                <Form.Item<FormType>
                     className={'ant-fom-item'}
                     name="email"
                     rules={[{ required: true, message: 'Please input your e-mail!' }]}
                 >
                     <Input className={'ant-fom-item-email'} addonBefore="e-mail:" />
                 </Form.Item>
-                <Form.Item
+                <Form.Item<FormType>
                     className={'ant-fom-item'}
                     name="password"
                     rules={[{ required: true, message: 'Please input your Password!' }]}
