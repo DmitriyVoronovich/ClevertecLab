@@ -1,6 +1,6 @@
 import './code-form.css'
 import fon from "../../../../accets/login-page/image/fon.png";
-import attention from '../../../../accets/login-page/svg-icon/attention.svg';
+import attention from '../../../../accets/login-page/svg-icon/info.svg';
 import VerificationInput from "react-verification-input";
 
 export const CodeForm = () => {

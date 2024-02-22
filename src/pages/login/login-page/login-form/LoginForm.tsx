@@ -1,28 +1,40 @@
 import { EyeInvisibleOutlined, EyeTwoTone, GooglePlusOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import './login-form.css';
-import {authApi} from "../../../../api/auth.api.ts";
+import {authThunks} from "../../../../features/auth/auth.reducer.ts";
+import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
-type FormType = {
+export type FormType = {
     email: string,
     password: string
+    remember: boolean
 }
 
 export const LoginForm = () => {
     const [form] = Form.useForm();
+    const dispatch = useAppDispatch();
+    const [isRepeatButtonDisabled, setIsRepeatButtonDisabled] = useState(true);
+    const navigation = useNavigate();
 
-    const onFinish = async (values: FormType) => {
+
+    const onFinish = (values: FormType) => {
         console.log('Received values of form: ', values);
-        console.log(values.email)
-        console.log(values.password)
-        const res = await authApi.login({email: values.email, password: values.password})
-        console.log(res)
+        dispatch(authThunks.login(values));
     };
 
     const validateEmail = (email: string) => {
         const re = /\S+@\S+\.\S+/;
+        if (re.test(email)) {
+            setIsRepeatButtonDisabled(false)
+        }
         return re.test(email);
     };
+
+    const confirmEmail = () => {
+        navigation('confirm-email')
+    }
 
     const onFieldsChange = (_: any, allFields: any) => {
         const emailField = allFields.find((field: { name: string[]; }) => field.name[0] === 'email');
@@ -65,13 +77,15 @@ export const LoginForm = () => {
             </div>
 
             <Form.Item className={'login-form-cont'}>
-                <Form.Item name="remember" valuePropName="checked" noStyle>
-                    <Checkbox>Запомнить меня</Checkbox>
-                </Form.Item>
+                <div className={'login-form-container'}>
+                    <Form.Item name="remember" valuePropName="checked" noStyle>
+                        <Checkbox>Запомнить меня</Checkbox>
+                    </Form.Item>
 
-                <a className="login-form-forgot" href="">
-                    Забыли пороль?
-                </a>
+                    <button className="login-form-forgot" disabled={isRepeatButtonDisabled} onClick={confirmEmail}>
+                        Забыли пороль?
+                    </button>
+                </div>
             </Form.Item>
 
             <Form.Item className={'ant-fom-item-button'}>

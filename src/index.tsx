@@ -1,16 +1,19 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
-
-import { store } from '@redux/configure-store';
-import { MainPage } from './pages';
+import { Route, Routes} from 'react-router-dom';
+import { HistoryRouter as Router } from "redux-first-history/rr6";
+import { store, history } from '@redux/configure-store';
 
 import 'normalize.css';
 import './index.css';
 import {LoginPage} from "@pages/login/login-page/LoginPage.tsx";
-import {ErrorLogin} from "@pages/result/error-login/ErrorLogin.tsx";
+import { ErrorRegistration} from "@pages/result/error-registration/ErrorRegistration.tsx";
 import {CodeForm} from "@pages/login/login-page/code-form/CodeForm.tsx";
+import {Success} from "@pages/result/result-success/Success.tsx";
+import {MainPage} from "@pages/main-page";
+import {ErrorLogin} from "@pages/result/error-login/ErrorLogin.tsx";
+import {Error} from "@pages/result/error/Error.tsx";
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -18,14 +21,19 @@ const root = createRoot(domNode);
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <BrowserRouter>
+            <Router history={history}>
                 <Routes>
-                    <Route path='/main' element={<MainPage />} />
-                    <Route path='/auth' element={<LoginPage />} />
+                    <Route index={true} path='/main' element={<MainPage />} />
+                    <Route path='/auth' element={<LoginPage />} >
+                        <Route path='registration' element={<LoginPage />} />
+                    </Route>
+                    <Route path='/result/error-user-exist' element={<ErrorRegistration />} />
                     <Route path='/result/error-login' element={<ErrorLogin />} />
+                    <Route path='/result/success' element={<Success />} />
+                    <Route path='/result/error' element={<Error/>} />
                     <Route path='/auth/confirm-email' element={<CodeForm />} />
                 </Routes>
-            </BrowserRouter>
+            </Router>
         </Provider>
     </React.StrictMode>,
 );

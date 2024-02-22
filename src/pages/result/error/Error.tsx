@@ -1,14 +1,15 @@
 import { Button } from 'antd';
-import './error-login.css'
+import './error.css'
 import fon from "../../../accets/login-page/image/fon.png";
-import attention from "../../../accets/login-page/svg-icon/attention.svg";
+import error from "../../../accets/login-page/svg-icon/error.svg";
 import {useNavigate} from "react-router-dom";
 
-export const ErrorLogin = () => {
+export const Error = () => {
     const navigation = useNavigate();
 
+
     const redirectToRegistration = () => {
-        navigation('/auth');
+        navigation('/auth/registration');
     }
 
     return (
@@ -16,9 +17,9 @@ export const ErrorLogin = () => {
             <div className={'form_fon'}></div>
             <div className={'error_container'}>
                 <div className={'error_wrapper'}>
-                    <img className={'error_img'} alt={'error'} src={attention}/>
-                    <h5 className={'error_title'}>Вход не выполнен</h5>
-                    <p className={'error_description'}>Что-то пошло не так. Попробуйте еще раз</p>
+                    <img className={'error_img'} alt={'error'} src={error}/>
+                    <h5 className={'error_title'}>Данные не сохранились</h5>
+                    <p className={'error_description'}>Что-то пошло не так и ваша регистрация не завершилась. Попробуйте ещё раз.</p>
                     <Button type="primary" className={'error_button'} onClick={redirectToRegistration}>Повторить</Button>
                 </div>
             </div>

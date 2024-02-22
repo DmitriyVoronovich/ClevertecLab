@@ -68,6 +68,7 @@
     align-items: center;
     padding: 7px 16px;
     gap: 10px;
+    cursor: pointer;
 }
 
 .sidebar_footer_img {

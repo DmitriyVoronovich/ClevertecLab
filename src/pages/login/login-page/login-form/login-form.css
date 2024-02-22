@@ -38,17 +38,25 @@
 }
 
 .login-form-cont {
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
     margin: 54px 0 0 0;
 }
 
+.login-form-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .login-form-forgot {
-    margin-left: 101px;
+    border: none;
+    color: #2F54EB;
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
     text-align: center;
+    background-color: #FFFFFF;
+    cursor: pointer;
 }
 
 .ant-fom-item-button {

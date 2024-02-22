@@ -48,6 +48,7 @@
 
 .form_button_container {
     display: flex;
+    width: 100%;
 }
 
 .login_button {

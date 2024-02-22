@@ -75,3 +75,11 @@
 input[type="text"], input[type="email"] {
     height: 40px;
 }
+
+.ant-form-item-explain-error {
+    text-align: start;
+}
+
+.error {
+    color: red;
+}
