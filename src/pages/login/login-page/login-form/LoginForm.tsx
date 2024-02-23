@@ -4,10 +4,9 @@ import './login-form.css';
 import {authThunks} from "../../../../features/auth/auth.reducer.ts";
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
 
 export type FormType = {
-    email: string,
+    email: string
     password: string
     remember: boolean
 }
@@ -16,11 +15,9 @@ export const LoginForm = () => {
     const [form] = Form.useForm();
     const dispatch = useAppDispatch();
     const [isRepeatButtonDisabled, setIsRepeatButtonDisabled] = useState(true);
-    const navigation = useNavigate();
-
+    const [isEmailLogin, setIsEmailLogin] = useState('');
 
     const onFinish = (values: FormType) => {
-        console.log('Received values of form: ', values);
         dispatch(authThunks.login(values));
     };
 
@@ -33,15 +30,20 @@ export const LoginForm = () => {
     };
 
     const confirmEmail = () => {
-        navigation('confirm-email')
-    }
+        sessionStorage.setItem('email', JSON.stringify(isEmailLogin));
+        dispatch(authThunks.checkEmail(isEmailLogin));
+    };
 
     const onFieldsChange = (_: any, allFields: any) => {
         const emailField = allFields.find((field: { name: string[]; }) => field.name[0] === 'email');
+
         if (emailField) {
+            console.log(emailField.value)
+            setIsEmailLogin(emailField.value)
+            setIsRepeatButtonDisabled(true)
             form.setFields([{
                 name: 'email',
-                errors: validateEmail(emailField.value) ? [] : ['Please input a valid e-mail!'],
+                errors: validateEmail(emailField.value) ? [] : [''],
             }]);
         }
     };
@@ -61,7 +63,7 @@ export const LoginForm = () => {
                     name="email"
                     rules={[{ required: true, message: 'Please input your e-mail!' }]}
                 >
-                    <Input className={'ant-fom-item-email'} addonBefore="e-mail:" />
+                    <Input className={'ant-fom-item-email'} addonBefore="e-mail:" onChange={console.log}/>
                 </Form.Item>
                 <Form.Item<FormType>
                     className={'ant-fom-item'}
@@ -82,7 +84,9 @@ export const LoginForm = () => {
                         <Checkbox>Запомнить меня</Checkbox>
                     </Form.Item>
 
-                    <button className="login-form-forgot" disabled={isRepeatButtonDisabled} onClick={confirmEmail}>
+                    <button className={`login-form-forgot ${isRepeatButtonDisabled ? 'disabled' : ''}`}
+                            disabled={isRepeatButtonDisabled}
+                            onClick={confirmEmail}>
                         Забыли пороль?
                     </button>
                 </div>

@@ -59,6 +59,10 @@
     cursor: pointer;
 }
 
+.disabled {
+    color: #BDBDBD;
+}
+
 .ant-fom-item-button {
     margin: 24px 0 0 0;
 }

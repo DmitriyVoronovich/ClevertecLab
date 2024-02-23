@@ -6,8 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {RootState} from "@redux/configure-store.ts";
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
-import {authThunks} from "../../../../features/auth/auth.reducer.ts";
-import {LoginParamsType} from "../../../../features/auth/auth.api.ts";
+import { onFinish} from "@pages/login/login-page/registration-form/utils.ts";
 
 export const RegistrationForm = () => {
     const [form] = Form.useForm();
@@ -37,11 +36,7 @@ export const RegistrationForm = () => {
         }
     };
 
-    const onFinish = (values: LoginParamsType) => {
-        console.log('Received values of form: ', values);
-        const data = {email: values.email, password: values.password};
-        dispatch(authThunks.registration(data))
-    };
+   const onFormFinish = onFinish(dispatch);
 
     const onFieldsChange = (_: any, allFields: any) => {
         const emailField = allFields.find((field: { name: string[]; }) => field.name[0] === 'email');
@@ -76,7 +71,7 @@ export const RegistrationForm = () => {
             form={form}
             name="normal_login"
             className="registration-form"
-            onFinish={onFinish}
+            onFinish={(values: any) => onFormFinish(values)}
             onFieldsChange={onFieldsChange}
         >
             <div className={'registration_form_section'}>

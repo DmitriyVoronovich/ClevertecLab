@@ -3,13 +3,23 @@ import './error.css'
 import fon from "../../../accets/login-page/image/fon.png";
 import error from "../../../accets/login-page/svg-icon/error.svg";
 import {useNavigate} from "react-router-dom";
+import {authThunks} from "../../../features/auth/auth.reducer.ts";
+import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
 
 export const Error = () => {
     const navigation = useNavigate();
+    const dispatch = useAppDispatch();
 
 
     const redirectToRegistration = () => {
         navigation('/auth/registration');
+        const data  = sessionStorage.getItem('data-registration');
+
+        if (data !== null) {
+            dispatch(authThunks.registration(JSON.parse(data)));
+        } else {
+            console.log('error');
+        }
     }
 
     return (

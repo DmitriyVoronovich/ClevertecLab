@@ -1,0 +1,72 @@
+.log_error_container {
+    max-width: 1440px;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    background-clip: content-box;
+    z-index: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form_fon {
+    background-color: rgba(121, 156, 212, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.error_check_container {
+    margin: 0 auto;
+    width: 539px;
+    height: 486px;
+    padding: 64px 0 0;
+    background-color: #FFFFFF;
+}
+
+.error_check_wrapper {
+    width: 475px;
+    height: 430px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error_check_img {
+    width: 255px;
+    height: 294px;
+}
+
+.error_title {
+    width: 100%;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 130%;
+    text-align: center;
+    color: #262626;
+    margin: 24px 0 0 0;
+}
+
+.error_check_description {
+    width: 100%;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: #8C8C8C;
+    margin: 0;
+}
+
+.error_check_button {
+    width: 74px;
+    margin-top: 24px;
+    border-radius: 0;
+}

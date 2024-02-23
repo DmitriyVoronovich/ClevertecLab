@@ -2,8 +2,11 @@ import './code-form.css'
 import fon from "../../../../accets/login-page/image/fon.png";
 import attention from '../../../../accets/login-page/svg-icon/info.svg';
 import VerificationInput from "react-verification-input";
+import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
 
 export const CodeForm = () => {
+    const email = useAppSelector(state => state.auth.email);
+
     return (
         <div className={'code_form_container'} style={{backgroundImage: `url(${fon})`}}>
             <div className={'form_fon'}></div>
@@ -12,7 +15,7 @@ export const CodeForm = () => {
                     <img className={'error_img'} alt={'error'} src={attention}/>
                     <h5 className={'code_title'}>Введите код<br/> для восстановления аккауанта</h5>
                     <p className={'code_description'}>Мы отправили вам на e-mail
-                        victorbyden@gmail.com <br/> шестизначный код. Введите его в поле ниже.</p>
+                        {email} <br/> шестизначный код. Введите его в поле ниже.</p>
                     <VerificationInput
                         classNames={{
                             container: "container",

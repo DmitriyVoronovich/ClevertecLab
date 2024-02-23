@@ -12,6 +12,11 @@ export type SidebarProps = {
 export const Sidebar:React.FC<SidebarProps> = (props) => {
     const {handleOpen, open} = props;
 
+    const logOut = () => {
+        localStorage.removeItem('jwtToken');
+        window.location.href = '/auth';
+    }
+
     const menu = menuItem.map((item) => {
         return (
             <div className={'sidebar_menu_item'}>
@@ -31,7 +36,7 @@ export const Sidebar:React.FC<SidebarProps> = (props) => {
                     {menu}
                 </div>
             </div>
-            <div className={`${open ? 'sidebar_footer' : 'sidebar_footer close_menu_item'}`}>
+            <div className={`${open ? 'sidebar_footer' : 'sidebar_footer close_menu_item'}`} onClick={logOut}>
                 <img src={exit} alt={'exit button'} className={'sidebar_footer_img'}/>
                 <span className={`${open ? 'sidebar_footer_text' : 'sidebar_footer_text close'}`}>Выход</span>
             </div>

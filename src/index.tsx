@@ -14,6 +14,8 @@ import {Success} from "@pages/result/result-success/Success.tsx";
 import {MainPage} from "@pages/main-page";
 import {ErrorLogin} from "@pages/result/error-login/ErrorLogin.tsx";
 import {Error} from "@pages/result/error/Error.tsx";
+import {ErrorCheckEmail} from "@pages/result/error-check-email/ErrorCheckEmail.tsx";
+import {ErrorCheck} from "@pages/result/error-check/ErrorCheck.tsx";
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -32,6 +34,8 @@ root.render(
                     <Route path='/result/success' element={<Success />} />
                     <Route path='/result/error' element={<Error/>} />
                     <Route path='/auth/confirm-email' element={<CodeForm />} />
+                    <Route path='/result/error-check-email-no-exist' element={<ErrorCheckEmail />} />
+                    <Route path='/result/error-check-email' element={<ErrorCheck />} />
                 </Routes>
             </Router>
         </Provider>
