@@ -14,6 +14,7 @@ export const Sidebar:React.FC<SidebarProps> = (props) => {
 
     const logOut = () => {
         localStorage.removeItem('jwtToken');
+        sessionStorage.removeItem('isLoggedIn');
         window.location.href = '/auth';
     }
 

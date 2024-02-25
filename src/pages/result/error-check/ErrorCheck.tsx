@@ -15,7 +15,7 @@ export const ErrorCheck = () => {
         navigation('/auth');
         const email  = sessionStorage.getItem('email');
         if (email !== null) {
-            dispatch(authThunks.checkEmail(email.split('"')[1]));
+            dispatch(authThunks.checkEmail(JSON.parse(email)));
         } else {
             console.log('error');
         }

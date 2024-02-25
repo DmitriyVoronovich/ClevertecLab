@@ -16,6 +16,11 @@ import {ErrorLogin} from "@pages/result/error-login/ErrorLogin.tsx";
 import {Error} from "@pages/result/error/Error.tsx";
 import {ErrorCheckEmail} from "@pages/result/error-check-email/ErrorCheckEmail.tsx";
 import {ErrorCheck} from "@pages/result/error-check/ErrorCheck.tsx";
+import {ChangePassword} from "@pages/login/login-page/change-password/ChangePassword.tsx";
+import {ErrorChangePassword} from "@pages/result/error-change-password/ErrorChangePassword.tsx";
+import {
+    SuccessChangePassword
+} from "@pages/result/success-change-password/SuccessChangePassword.tsx";
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -36,6 +41,9 @@ root.render(
                     <Route path='/auth/confirm-email' element={<CodeForm />} />
                     <Route path='/result/error-check-email-no-exist' element={<ErrorCheckEmail />} />
                     <Route path='/result/error-check-email' element={<ErrorCheck />} />
+                    <Route path='/auth/change-password' element={<ChangePassword />} />
+                    <Route path='/result/error-change-password' element={<ErrorChangePassword />} />
+                    <Route path='/result/success-change-password' element={<SuccessChangePassword />} />
                 </Routes>
             </Router>
         </Provider>

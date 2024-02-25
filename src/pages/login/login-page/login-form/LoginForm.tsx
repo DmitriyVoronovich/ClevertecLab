@@ -38,7 +38,6 @@ export const LoginForm = () => {
         const emailField = allFields.find((field: { name: string[]; }) => field.name[0] === 'email');
 
         if (emailField) {
-            console.log(emailField.value)
             setIsEmailLogin(emailField.value)
             setIsRepeatButtonDisabled(true)
             form.setFields([{
