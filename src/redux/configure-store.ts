@@ -9,7 +9,8 @@ const {
     createReduxHistory,
     routerMiddleware,
     routerReducer
-} = createReduxHistoryContext({ history: createBrowserHistory() });
+} = createReduxHistoryContext(
+    { history: createBrowserHistory(), showHistoryAction: true, reduxTravelling: true});
 
 export const store = configureStore({
     reducer: combineReducers({

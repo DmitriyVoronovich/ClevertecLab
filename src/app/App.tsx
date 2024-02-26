@@ -22,23 +22,12 @@ import {pushWithFlow} from "../features/auth/auth.reducer.ts";
 function App() {
     const dispatch = useAppDispatch();
     const status = useAppSelector(state => state.app.status)
-    let token = localStorage.getItem('jwtToken')
-    let tog
-    if (token!==null) {
-         tog = JSON.parse(token)
-    }
-
-    if (!tog ) {
-        dispatch(pushWithFlow('/auth'));
-    } else {
-        dispatch(pushWithFlow('/main'));
-    }
     return (
         <>
 
             <Routes>
                 <Route index={true} path='/main' element={<MainPage/>}/>
-                <Route path='/auth' element={<LoginPage/>}>
+                <Route path='/auth/*' element={<LoginPage/>}>
                     <Route path='registration' element={<LoginPage/>}/>
                 </Route>
                 {history.location.state?.flowRedirect ? (

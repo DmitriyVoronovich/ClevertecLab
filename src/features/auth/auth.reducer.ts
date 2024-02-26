@@ -36,7 +36,8 @@ const registration = createAppAsyncThunk<{ isRegistered: boolean }, LoginParamsT
         const {dispatch, rejectWithValue} = thunkAPI;
         dispatch(appActions.setAppStatus({ status: "loading" }));
         try {
-            const res = await authApi.registration(arg);
+            // const res = await authApi.registration(arg);
+            const res = {status: 201}
             if (res.status === 201) {
                 sessionStorage.removeItem('data-registration');
                 dispatch(pushWithFlow('/result/success'));
@@ -119,7 +120,7 @@ const confirmEmail = createAppAsyncThunk<undefined, CodeParamsType>(
         try {
             const res = await authApi.confirmEmail(arg);
             if (res.status === 200) {
-                dispatch(pushWithFlow('/auth/change-password'), {flowRedirect: true});
+                dispatch(pushWithFlow('/auth/change-password'));
             } else {
                 return rejectWithValue(null);
             }

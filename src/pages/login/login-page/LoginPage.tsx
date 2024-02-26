@@ -4,10 +4,12 @@ import {Logo} from "@components/logo/Logo.tsx";
 import {LoginForm} from "@pages/login/login-page/login-form/LoginForm.tsx";
 import {RegistrationForm} from "@pages/login/login-page/registration-form/RegistrationForm.tsx";
 import {Link, Route, Routes, useLocation} from "react-router-dom";
+import {history} from '@redux/configure-store';
 
 export const LoginPage = () => {
 
     const location = useLocation()
+    console.log(history)
 
     const locationPath= location.pathname.split('/')
 

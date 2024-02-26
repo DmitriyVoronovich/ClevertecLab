@@ -8,8 +8,11 @@ import {Sidebar} from "@components/sidebar/Sidebar.tsx";
 
 export const MainPage: React.FC = () => {
     const [open, setOpen] = React.useState(true);
-
-    const token = localStorage.getItem('jwtToken');
+    let token = localStorage.getItem('jwtToken')
+    let tog
+    if (token!==null) {
+         tog = JSON.parse(token)
+    }
 
     let isLoggedIn
 
@@ -20,9 +23,7 @@ export const MainPage: React.FC = () => {
         console.log('error');
     }
 
-    console.log(isLoggedIn)
-
-    if (!token && !isLoggedIn) {
+    if (!tog && !isLoggedIn) {
         window.location.href = '/auth';
     }
 

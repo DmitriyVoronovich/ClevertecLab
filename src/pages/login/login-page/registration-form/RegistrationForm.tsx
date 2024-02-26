@@ -62,10 +62,6 @@ export const RegistrationForm = () => {
         }
     };
 
-    if (isRegistered) {
-        return navigate('/auth');
-    }
-
     return (
         <Form
             form={form}
