@@ -19,8 +19,11 @@ export const ErrorCheckEmail = () => {
                 <div className={'error_check_em_wrapper'}>
                     <img className={'error_check_em_img'} alt={'error'} src={error}/>
                     <h5 className={'error_check_em_title'}>Такой e-mail не зарегистрирован</h5>
-                    <p className={'error_check_em_description'}>Мы не нашли в базе вашего e-mail. Попробуйте войти с другим e-mail.</p>
-                    <Button type="primary" className={'error_check_em_button'} onClick={redirectToLogin}>Попробовать снова</Button>
+                    <p className={'error_check_em_description'}>Мы не нашли в базе вашего e-mail.
+                        Попробуйте войти с другим e-mail.</p>
+                    <Button data-test-id='check-retry-button' type="primary"
+                            className={'error_check_em_button'} onClick={redirectToLogin}>Попробовать
+                        снова</Button>
                 </div>
             </div>
         </div>

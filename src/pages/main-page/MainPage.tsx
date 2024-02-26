@@ -25,14 +25,6 @@ export const MainPage: React.FC = () => {
         window.location.href = '/auth';
     }
 
-    if (!token && !isLoggedIn) {
-        return (
-            <div style={{position: "fixed", top: "30%", textAlign: "center", width: "100%"}}>
-                <h1>Загрузка...</h1>
-            </div>
-        );
-    }
-
     const handleOpen = () => {
         setOpen(!open);
     };

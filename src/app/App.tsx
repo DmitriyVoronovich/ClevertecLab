@@ -1,4 +1,4 @@
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import {MainPage} from "@pages/main-page";
 import {LoginPage} from "@pages/login/login-page/LoginPage.tsx";
 import {ErrorRegistration} from "@pages/result/error-registration/ErrorRegistration.tsx";
@@ -13,33 +13,49 @@ import {ErrorChangePassword} from "@pages/result/error-change-password/ErrorChan
 import {
     SuccessChangePassword
 } from "@pages/result/success-change-password/SuccessChangePassword.tsx";
-// import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
-function App() {
+import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
+import {history} from '@redux/configure-store';
+import Loader from "@components/loader/Loader.tsx";
 
-    // const status = useAppSelector(state => state.app.status)
+
+function App() {
+    const status = useAppSelector(state => state.app.status)
 
     return (
-        <Routes>
+        <>
 
-            <Route index={true} path='/main' element={<MainPage/>}/>
-            {/*{status === "loading" &&*/}
-            {/*    <div style={{position: "fixed", top: "30%", textAlign: "center", width: "100%"}}>*/}
-            {/*        <h1>Загрузка...</h1>*/}
-            {/*    </div>}*/}
-            <Route path='/auth' element={<LoginPage/>}>
-            <Route path='registration' element={<LoginPage/>}/>
-            </Route>
-            <Route path='/result/error-user-exist' element={<ErrorRegistration/>}/>
-            <Route path='/result/error-login' element={<ErrorLogin/>}/>
-            <Route path='/result/success' element={<Success/>}/>
-            <Route path='/result/error' element={<Error/>}/>
-            <Route path='/auth/confirm-email' element={<CodeForm/>}/>
-            <Route path='/result/error-check-email-no-exist' element={<ErrorCheckEmail/>}/>
-            <Route path='/result/error-check-email' element={<ErrorCheck/>}/>
-            <Route path='/auth/change-password' element={<ChangePassword/>}/>
-            <Route path='/result/error-change-password' element={<ErrorChangePassword/>}/>
-            <Route path='/result/success-change-password' element={<SuccessChangePassword/>}/>
-        </Routes>
+            <Routes>
+                <Route index={true} path='/main' element={<MainPage/>}/>
+                <Route path='/auth' element={<LoginPage/>}>
+                    <Route path='registration' element={<LoginPage/>}/>
+                </Route>
+                {history.location.state?.flowRedirect ? (
+                    <>
+                        <Route path={'/result'}>
+                            <Route path='error-user-exist' element={<ErrorRegistration/>}/>
+                            <Route path='error-login' element={<ErrorLogin/>}/>
+                            <Route path='success' element={<Success/>}/>
+                            <Route path='error' element={<Error/>}/>
+                            <Route path='error-check-email-no-exist' element={<ErrorCheckEmail/>}/>
+                            <Route path='error-check-email' element={<ErrorCheck/>}/>
+                            <Route path='error-change-password' element={<ErrorChangePassword/>}/>
+                            <Route path='success-change-password'
+                                   element={<SuccessChangePassword/>}/>
+                        </Route>
+                        <Route path='/auth/confirm-email'
+                               element={<CodeForm/>}/>
+                        <Route path='/auth/change-password' element={<ChangePassword/>}/>
+                    </>
+                ) : <Route path={'/*'} element={<Navigate to={'/auth'}/>}/>}
+
+            </Routes>
+            {status === "loading" &&
+                <div style={{position: "fixed", top: "0", textAlign: "center", width: "100%", height: '100vh'}}>
+                    <Loader/>
+                </div>
+            }
+        </>
+
     )
 }
 

@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import {Button} from 'antd';
 import './success-change-password.css'
 import fon from "../../../accets/login-page/image/fon.png";
 import suc from "../../../accets/login-page/svg-icon/success.svg";
@@ -18,8 +18,11 @@ export const SuccessChangePassword = () => {
                 <div className={'error_wrapper'}>
                     <img className={'success_change_img'} alt={'error'} src={suc}/>
                     <h5 className={'success_change_title'}>Пароль успешно изменен</h5>
-                    <p className={'success_change_description'}>Теперь можно войти в аккаунт, используя <br/>свой логин и новый пароль</p>
-                    <Button type="primary" className={'success_change_button'} onClick={redirectToLogin}>Вход</Button>
+                    <p className={'success_change_description'}>Теперь можно войти в аккаунт,
+                        используя <br/>свой логин и новый пароль</p>
+                    <Button data-test-id='change-entry-button' type="primary"
+                            className={'success_change_button'}
+                            onClick={redirectToLogin}>Вход</Button>
                 </div>
             </div>
         </div>

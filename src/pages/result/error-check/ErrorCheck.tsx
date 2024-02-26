@@ -28,7 +28,7 @@ export const ErrorCheck = () => {
                     <img className={'error_check_img'} alt={'error'} src={error}/>
                     <h5 className={'error_title'}>Что-то пошло не так</h5>
                     <p className={'error_check_description'}>Произошла ошибка, попробуйте отправить форму ещё раз.</p>
-                    <Button type="primary" className={'error_check_button'} onClick={redirectToLogin}>Назад</Button>
+                    <Button data-test-id='check-back-button' type="primary" className={'error_check_button'} onClick={redirectToLogin}>Назад</Button>
                 </div>
             </div>
         </div>

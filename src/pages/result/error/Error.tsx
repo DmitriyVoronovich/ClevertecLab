@@ -1,19 +1,18 @@
-import { Button } from 'antd';
-import './error.css'
+import {Button} from 'antd';
+import './error.css';
 import fon from "../../../accets/login-page/image/fon.png";
 import error from "../../../accets/login-page/svg-icon/error.svg";
-import {useNavigate} from "react-router-dom";
 import {authThunks} from "../../../features/auth/auth.reducer.ts";
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
+import {push} from "redux-first-history";
 
 export const Error = () => {
-    const navigation = useNavigate();
     const dispatch = useAppDispatch();
 
 
     const redirectToRegistration = () => {
-        navigation('/auth/registration');
-        const data  = sessionStorage.getItem('data-registration');
+        dispatch(push('/auth/registration'));
+        const data = sessionStorage.getItem('data-registration');
 
         if (data !== null) {
             dispatch(authThunks.registration(JSON.parse(data)));
@@ -29,8 +28,11 @@ export const Error = () => {
                 <div className={'error_wrapper'}>
                     <img className={'error_img'} alt={'error'} src={error}/>
                     <h5 className={'error_title'}>Данные не сохранились</h5>
-                    <p className={'error_description'}>Что-то пошло не так и ваша регистрация не завершилась. Попробуйте ещё раз.</p>
-                    <Button type="primary" className={'error_button'} onClick={redirectToRegistration}>Повторить</Button>
+                    <p className={'error_description'}>Что-то пошло не так и ваша регистрация не
+                        завершилась. Попробуйте ещё раз.</p>
+                    <Button data-test-id='registration-retry-button' type="primary"
+                            className={'error_button'}
+                            onClick={redirectToRegistration}>Повторить</Button>
                 </div>
             </div>
         </div>

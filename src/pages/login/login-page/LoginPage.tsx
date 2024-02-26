@@ -6,6 +6,7 @@ import {RegistrationForm} from "@pages/login/login-page/registration-form/Regist
 import {Link, Route, Routes, useLocation} from "react-router-dom";
 
 export const LoginPage = () => {
+
     const location = useLocation()
 
     const locationPath= location.pathname.split('/')

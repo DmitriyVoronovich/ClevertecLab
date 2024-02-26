@@ -80,7 +80,7 @@ export const RegistrationForm = () => {
                     name="email"
                     rules={[{ required: true }]}
                 >
-                    <Input className={'ant-fom-item-email'} addonBefore="e-mail:" />
+                    <Input className={'ant-fom-item-email'} addonBefore="e-mail:" data-test-id='registration-email'/>
                 </Form.Item>
                 <Form.Item
                     className={'ant-fom-item'}
@@ -90,6 +90,7 @@ export const RegistrationForm = () => {
                     <Input.Password
                         className={'ant-fom-item-password'}
                         placeholder="Пароль"
+                        data-test-id='registration-password'
                         iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                     />
                 </Form.Item>
@@ -104,6 +105,7 @@ export const RegistrationForm = () => {
                 <Input.Password
                     className={'ant-fom-item-password'}
                     placeholder="Повторите пароль"
+                    data-test-id='registration-confirm-password'
                     iconRender={visible => (visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>)}
                 />
             </Form.Item>
@@ -113,7 +115,8 @@ export const RegistrationForm = () => {
                 <Button
                     type="primary"
                     htmlType="submit"
-                    className="registration-form-button">
+                    className="registration-form-button"
+                    data-test-id='registration-submit-button'>
                 Войти
                 </Button>
             </Form.Item>

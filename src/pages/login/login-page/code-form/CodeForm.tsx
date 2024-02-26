@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts"
 import {authThunks} from "../../../../features/auth/auth.reducer.ts";
 import { useState} from "react";
 
+
 export const CodeForm = () => {
     const dispatch = useAppDispatch();
     const email = useAppSelector(state => state.auth.email);
@@ -32,6 +33,7 @@ export const CodeForm = () => {
                     <p className={'code_description'}>Мы отправили вам на e-mail
                         {email} <br/> шестизначный код. Введите его в поле ниже.</p>
                     <VerificationInput
+                        data-test-id='verification-input'
                         value={isFormValue}
                         onChange={onChangeValue}
                         onComplete={onFormComplete}

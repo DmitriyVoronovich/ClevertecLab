@@ -77,6 +77,7 @@ export const ChangePassword = () => {
                                 <Input.Password
                                     className={'ant-fom-item-password'}
                                     placeholder="Пароль"
+                                    data-test-id='change-password'
                                     iconRender={visible => (visible ? <EyeTwoTone/> :
                                         <EyeInvisibleOutlined/>)}
                                 />
@@ -91,6 +92,7 @@ export const ChangePassword = () => {
                                 rules={[{required: true, message: 'Please repeat your Password!'}]}
                             >
                                 <Input.Password
+                                    data-test-id='change-confirm-password'
                                     className={'ant-fom-item-password'}
                                     placeholder="Повторите пароль"
                                     iconRender={visible => (visible ? <EyeTwoTone/> :
@@ -101,6 +103,7 @@ export const ChangePassword = () => {
 
                         <Form.Item className={'change_password_button'}>
                             <Button
+                                data-test-id='change-submit-button'
                                 type="primary"
                                 htmlType="submit"
                                 className="change_password_form_button">

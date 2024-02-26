@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import {Button} from 'antd';
 import './success.css'
 import fon from "../../../accets/login-page/image/fon.png";
 import suc from "../../../accets/login-page/svg-icon/success.svg";
@@ -18,8 +18,10 @@ export const Success = () => {
                 <div className={'success_wrapper'}>
                     <img className={'success_img'} alt={'error'} src={suc}/>
                     <h5 className={'success_title'}>Регистрация успешна</h5>
-                    <p className={'success_description'}>Регистрация прошла успешно. Зайдите <br/>в приложение, используя свои e-mail и пароль.</p>
-                    <Button type="primary" className={'success_button'} onClick={redirectToLogin}>Войти</Button>
+                    <p className={'success_description'}>Регистрация прошла успешно. Зайдите <br/>в
+                        приложение, используя свои e-mail и пароль.</p>
+                    <Button data-test-id='registration-enter-button' type="primary"
+                            className={'success_button'} onClick={redirectToLogin}>Войти</Button>
                 </div>
             </div>
         </div>

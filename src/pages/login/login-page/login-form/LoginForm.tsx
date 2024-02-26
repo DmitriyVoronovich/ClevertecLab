@@ -1,5 +1,5 @@
-import { EyeInvisibleOutlined, EyeTwoTone, GooglePlusOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
+import {EyeInvisibleOutlined, EyeTwoTone, GooglePlusOutlined} from '@ant-design/icons';
+import {Button, Checkbox, Form, Input} from 'antd';
 import './login-form.css';
 import {authThunks} from "../../../../features/auth/auth.reducer.ts";
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
@@ -35,7 +35,9 @@ export const LoginForm = () => {
     };
 
     const onFieldsChange = (_: any, allFields: any) => {
-        const emailField = allFields.find((field: { name: string[]; }) => field.name[0] === 'email');
+        const emailField = allFields.find((field: {
+            name: string[];
+        }) => field.name[0] === 'email');
 
         if (emailField) {
             setIsEmailLogin(emailField.value)
@@ -52,7 +54,7 @@ export const LoginForm = () => {
             form={form}
             name="normal_login"
             className="login-form"
-            initialValues={{ remember: false }}
+            initialValues={{remember: false}}
             onFinish={onFinish}
             onFieldsChange={onFieldsChange}
         >
@@ -60,19 +62,21 @@ export const LoginForm = () => {
                 <Form.Item<FormType>
                     className={'ant-fom-item'}
                     name="email"
-                    rules={[{ required: true, message: 'Please input your e-mail!' }]}
+                    rules={[{required: true, message: 'Please input your e-mail!'}]}
                 >
-                    <Input className={'ant-fom-item-email'} addonBefore="e-mail:" onChange={console.log}/>
+                    <Input className={'ant-fom-item-email'} addonBefore="e-mail:"
+                           data-test-id='login-email'/>
                 </Form.Item>
                 <Form.Item<FormType>
                     className={'ant-fom-item'}
                     name="password"
-                    rules={[{ required: true, message: 'Please input your Password!' }]}
+                    rules={[{required: true, message: 'Please input your Password!'}]}
                 >
                     <Input.Password
                         className={'ant-fom-item-password'}
                         placeholder="Пароль"
-                        iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                        data-test-id='login-password'
+                        iconRender={visible => (visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>)}
                     />
                 </Form.Item>
             </div>
@@ -80,10 +84,11 @@ export const LoginForm = () => {
             <Form.Item className={'login-form-cont'}>
                 <div className={'login-form-container'}>
                     <Form.Item name="remember" valuePropName="checked" noStyle>
-                        <Checkbox>Запомнить меня</Checkbox>
+                        <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>
                     </Form.Item>
 
-                    <button className={`login-form-forgot ${isRepeatButtonDisabled ? 'disabled' : ''}`}
+                    <button data-test-id='login-forgot-button'
+                            className={`login-form-forgot ${isRepeatButtonDisabled ? 'disabled' : ''}`}
                             disabled={isRepeatButtonDisabled}
                             onClick={confirmEmail}>
                         Забыли пороль?
@@ -92,7 +97,7 @@ export const LoginForm = () => {
             </Form.Item>
 
             <Form.Item className={'ant-fom-item-button'}>
-                <Button type="primary" htmlType="submit" className="login-form-button">
+                <Button data-test-id='login-submit-button' type="primary" htmlType="submit" className="login-form-button">
                     Войти
                 </Button>
             </Form.Item>
@@ -100,7 +105,7 @@ export const LoginForm = () => {
                 <Button
                     type="default"
                     className="google-login-button"
-                    icon={<GooglePlusOutlined />}
+                    icon={<GooglePlusOutlined/>}
                 >
                     Войти через Google
                 </Button>

@@ -4,6 +4,7 @@ import {authApi, CodeParamsType, LoginParamsType, PasswordParamsType} from "./au
 import {push} from "redux-first-history";
 import {FormType} from "@pages/login/login-page/login-form/LoginForm.tsx";
 import {appActions} from "../../app/app.reducer.ts";
+export const pushWithFlow = (to: string) => push(to, {flowRedirect: true})
 
 const slice = createSlice({
     name: "auth",
@@ -38,17 +39,17 @@ const registration = createAppAsyncThunk<{ isRegistered: boolean }, LoginParamsT
             const res = await authApi.registration(arg);
             if (res.status === 201) {
                 sessionStorage.removeItem('data-registration');
-                dispatch(push('/result/success'));
+                dispatch(pushWithFlow('/result/success'));
                 return {isRegistered: true};
             } else {
                 return rejectWithValue(null);
             }
         } catch (e: any) {
             if (e.response.status === 409) {
-                dispatch(push('/result/error-user-exist'));
+                dispatch(pushWithFlow('/result/error-user-exist'));
                 return rejectWithValue(null);
             } else {
-                dispatch(push('/result/error'));
+                dispatch(pushWithFlow('/result/error'));
                 return rejectWithValue(null);
             }
         } finally {
@@ -69,13 +70,13 @@ const login = createAppAsyncThunk<{ isLoggedIn: boolean }, FormType>(
                 if (arg.remember) {
                     localStorage.setItem('jwtToken', JSON.stringify(res.data.accessToken));
                 }
-                dispatch(push('/main'));
+                dispatch(pushWithFlow('/main'));
                 return {isLoggedIn: true};
             } else {
                 return rejectWithValue(null);
             }
         } catch (e) {
-            dispatch(push('/result/error-login'));
+            dispatch(pushWithFlow('/result/error-login'));
             return rejectWithValue(null);
         } finally {
             dispatch(appActions.setAppStatus({ status: "idle" }));
@@ -90,7 +91,7 @@ const checkEmail = createAppAsyncThunk<{ email: string }, string>(
         try {
             const res = await authApi.checkEmail({email: arg});
             if (res.status === 200) {
-                dispatch(push('/auth/confirm-email'));
+                dispatch(pushWithFlow('/auth/confirm-email'));
                 sessionStorage.removeItem('email');
                 return {email: res.data.email};
             } else {
@@ -98,10 +99,10 @@ const checkEmail = createAppAsyncThunk<{ email: string }, string>(
             }
         } catch (e: any) {
             if (e.response.data.statusCode === 404 && e.response.data.message === 'Email не найден') {
-                dispatch(push('/result/error-check-email-no-exist'));
+                dispatch(pushWithFlow('/result/error-check-email-no-exist'));
                 return rejectWithValue(null);
             } else {
-                dispatch(push('/result/error-check-email'));
+                dispatch(pushWithFlow('/result/error-check-email'));
                 return rejectWithValue(null);
             }
         } finally {
@@ -117,12 +118,12 @@ const confirmEmail = createAppAsyncThunk<undefined, CodeParamsType>(
         try {
             const res = await authApi.confirmEmail(arg);
             if (res.status === 200) {
-                dispatch(push('/auth/change-password'));
+                dispatch(pushWithFlow('/auth/change-password'), {flowRedirect: true});
             } else {
                 return rejectWithValue(null);
             }
         } catch (e: any) {
-            dispatch(push('/auth/confirm-email'));
+            dispatch(pushWithFlow('/auth/confirm-email'));
             return rejectWithValue(null);
         } finally {
             dispatch(appActions.setAppStatus({ status: "idle" }));
@@ -138,12 +139,12 @@ const changePassword = createAppAsyncThunk<undefined, PasswordParamsType>(
             const res = await authApi.changePassword(arg);
             if (res.status === 201) {
                 sessionStorage.removeItem('changePassword');
-                dispatch(push('/result/success-change-password'));
+                dispatch(pushWithFlow('/result/success-change-password'));
             } else {
                 return rejectWithValue(null);
             }
         } catch (e: any) {
-            dispatch(push('/result/error-change-password'));
+            dispatch(pushWithFlow('/result/error-change-password'));
             return rejectWithValue(null);
         } finally {
             dispatch(appActions.setAppStatus({ status: "idle" }));
