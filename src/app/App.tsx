@@ -13,14 +13,26 @@ import {ErrorChangePassword} from "@pages/result/error-change-password/ErrorChan
 import {
     SuccessChangePassword
 } from "@pages/result/success-change-password/SuccessChangePassword.tsx";
-import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
+import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
 import {history} from '@redux/configure-store';
 import Loader from "@components/loader/Loader.tsx";
+import {pushWithFlow} from "../features/auth/auth.reducer.ts";
 
 
 function App() {
+    const dispatch = useAppDispatch();
     const status = useAppSelector(state => state.app.status)
+    let token = localStorage.getItem('jwtToken')
+    let tog
+    if (token!==null) {
+         tog = JSON.parse(token)
+    }
 
+    if (!tog ) {
+        dispatch(pushWithFlow('/auth'));
+    } else {
+        dispatch(pushWithFlow('/main'));
+    }
     return (
         <>
 

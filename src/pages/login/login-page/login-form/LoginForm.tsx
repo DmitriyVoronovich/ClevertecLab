@@ -76,6 +76,7 @@ export const LoginForm = () => {
                         className={'ant-fom-item-password'}
                         placeholder="Пароль"
                         data-test-id='login-password'
+                        disabled={false}
                         iconRender={visible => (visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>)}
                     />
                 </Form.Item>

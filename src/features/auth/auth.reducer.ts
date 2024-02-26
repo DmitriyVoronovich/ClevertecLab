@@ -100,6 +100,7 @@ const checkEmail = createAppAsyncThunk<{ email: string }, string>(
         } catch (e: any) {
             if (e.response.data.statusCode === 404 && e.response.data.message === 'Email не найден') {
                 dispatch(pushWithFlow('/result/error-check-email-no-exist'));
+                console.log('de')
                 return rejectWithValue(null);
             } else {
                 dispatch(pushWithFlow('/result/error-check-email'));
@@ -151,5 +152,4 @@ const changePassword = createAppAsyncThunk<undefined, PasswordParamsType>(
         }
     })
 export const authReducer = slice.reducer;
-export const authActions = slice.actions;
 export const authThunks = {registration, login, checkEmail, confirmEmail, changePassword};

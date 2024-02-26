@@ -10,6 +10,7 @@ export const MainPage: React.FC = () => {
     const [open, setOpen] = React.useState(true);
 
     const token = localStorage.getItem('jwtToken');
+
     let isLoggedIn
 
     const data = sessionStorage.getItem('isLoggedIn');
