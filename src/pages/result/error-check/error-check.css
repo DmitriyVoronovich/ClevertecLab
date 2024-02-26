@@ -70,3 +70,20 @@
     margin-top: 24px;
     border-radius: 0;
 }
+
+@media screen and (max-width: 366px) {
+    .error_check_container {
+        width: 264px;
+        height: 504px;
+        padding: 64px 32px 0;
+    }
+
+    .error_check_wrapper {
+        width: 264px;
+        height: 448px;
+    }
+    .error_check_img {
+        width: 254px;
+        height: 294px;
+    }
+}

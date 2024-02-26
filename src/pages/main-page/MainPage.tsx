@@ -10,22 +10,22 @@ export const MainPage: React.FC = () => {
     const [open, setOpen] = React.useState(true);
 
     const token = localStorage.getItem('jwtToken');
-    // let isLoggedIn
-    //
-    // const data = sessionStorage.getItem('isLoggedIn');
-    // if (data !== null) {
-    //     isLoggedIn = JSON.parse(data)
-    // } else {
-    //     console.log('error');
-    // }
-    //
-    // console.log(isLoggedIn)
+    let isLoggedIn
 
-    if (!token ) {
+    const data = sessionStorage.getItem('isLoggedIn');
+    if (data !== null) {
+        isLoggedIn = JSON.parse(data)
+    } else {
+        console.log('error');
+    }
+
+    console.log(isLoggedIn)
+
+    if (!token && !isLoggedIn) {
         window.location.href = '/auth';
     }
 
-    if (!token) {
+    if (!token && !isLoggedIn) {
         return (
             <div style={{position: "fixed", top: "30%", textAlign: "center", width: "100%"}}>
                 <h1>Загрузка...</h1>

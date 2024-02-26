@@ -70,3 +70,18 @@
     margin-top: 24px;
     border-radius: 0;
 }
+
+@media screen and (max-width: 366px) {
+    .error_container {
+        margin: 0 auto;
+        width: 296px;
+        height: 267px;
+        padding: 32px 16px 0;
+        background-color: #FFFFFF;
+    }
+
+    .error_wrapper {
+        width: 296px;
+        height: 235px;
+    }
+}

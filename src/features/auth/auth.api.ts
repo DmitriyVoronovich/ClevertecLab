@@ -5,7 +5,7 @@ export const authApi = {
         return instance.post('auth/login', data)
     },
     registration(data: LoginParamsType) {
-        return instance.post('auth/registration1', data)
+        return instance.post('auth/registration', data)
     },
     checkEmail(email: CheckEmailParams) {
         return instance.post('auth/check-email', email)

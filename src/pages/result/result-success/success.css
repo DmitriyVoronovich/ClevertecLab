@@ -70,3 +70,18 @@
     margin-top: 24px;
     border-radius: 0;
 }
+
+@media screen and (max-width: 366px) {
+    .success_container {
+        width: 296px;
+        height: 285px;
+        padding: 32px 16px 0;
+        background-color: #FFFFFF;
+    }
+
+    .success_wrapper {
+        width: 296px;
+        height: 253px;
+    }
+
+}

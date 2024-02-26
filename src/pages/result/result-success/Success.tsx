@@ -15,7 +15,7 @@ export const Success = () => {
         <div className={'success_fon_container'} style={{backgroundImage: `url(${fon})`}}>
             <div className={'form_fon'}></div>
             <div className={'success_container'}>
-                <div className={'error_wrapper'}>
+                <div className={'success_wrapper'}>
                     <img className={'success_img'} alt={'error'} src={suc}/>
                     <h5 className={'success_title'}>Регистрация успешна</h5>
                     <p className={'success_description'}>Регистрация прошла успешно. Зайдите <br/>в приложение, используя свои e-mail и пароль.</p>

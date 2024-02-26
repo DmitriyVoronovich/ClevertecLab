@@ -91,3 +91,7 @@
 input[type="text"], input[type="email"] {
     height: 40px;
 }
+
+@media screen and (max-width: 365px) {
+
+}

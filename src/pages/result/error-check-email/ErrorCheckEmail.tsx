@@ -13,14 +13,14 @@ export const ErrorCheckEmail = () => {
 
     }
     return (
-        <div className={'log_error_container'} style={{backgroundImage: `url(${fon})`}}>
+        <div className={'log_error_check_em_container'} style={{backgroundImage: `url(${fon})`}}>
             <div className={'form_fon'}></div>
-            <div className={'error_container'}>
-                <div className={'error_wrapper'}>
-                    <img className={'error_img'} alt={'error'} src={error}/>
-                    <h5 className={'error_title'}>Такой e-mail не зарегистрирован</h5>
-                    <p className={'error_description'}>Мы не нашли в базе вашего e-mail. Попробуйте <br/>войти с другим e-mail.</p>
-                    <Button type="primary" className={'error_button'} onClick={redirectToLogin}>Попробовать снова</Button>
+            <div className={'error_check_em_container'}>
+                <div className={'error_check_em_wrapper'}>
+                    <img className={'error_check_em_img'} alt={'error'} src={error}/>
+                    <h5 className={'error_check_em_title'}>Такой e-mail не зарегистрирован</h5>
+                    <p className={'error_check_em_description'}>Мы не нашли в базе вашего e-mail. Попробуйте войти с другим e-mail.</p>
+                    <Button type="primary" className={'error_check_em_button'} onClick={redirectToLogin}>Попробовать снова</Button>
                 </div>
             </div>
         </div>

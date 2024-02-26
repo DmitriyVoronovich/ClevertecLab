@@ -3,6 +3,7 @@ import {createAppAsyncThunk} from "../../common/utils/create-app-async-thunk.ts"
 import {authApi, CodeParamsType, LoginParamsType, PasswordParamsType} from "./auth.api.ts";
 import {push} from "redux-first-history";
 import {FormType} from "@pages/login/login-page/login-form/LoginForm.tsx";
+import {appActions} from "../../app/app.reducer.ts";
 
 const slice = createSlice({
     name: "auth",
@@ -32,6 +33,7 @@ const registration = createAppAsyncThunk<{ isRegistered: boolean }, LoginParamsT
     `${slice.name}/registration`,
     async (arg, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
+        dispatch(appActions.setAppStatus({ status: "loading" }));
         try {
             const res = await authApi.registration(arg);
             if (res.status === 201) {
@@ -49,6 +51,8 @@ const registration = createAppAsyncThunk<{ isRegistered: boolean }, LoginParamsT
                 dispatch(push('/result/error'));
                 return rejectWithValue(null);
             }
+        } finally {
+            dispatch(appActions.setAppStatus({ status: "idle" }));
         }
     })
 
@@ -56,6 +60,7 @@ const login = createAppAsyncThunk<{ isLoggedIn: boolean }, FormType>(
     `${slice.name}/login`,
     async (arg, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
+        dispatch(appActions.setAppStatus({ status: "loading" }));
         try {
             const data = {email: arg.email, password: arg.password};
             const res = await authApi.login(data);
@@ -72,6 +77,8 @@ const login = createAppAsyncThunk<{ isLoggedIn: boolean }, FormType>(
         } catch (e) {
             dispatch(push('/result/error-login'));
             return rejectWithValue(null);
+        } finally {
+            dispatch(appActions.setAppStatus({ status: "idle" }));
         }
     })
 
@@ -79,6 +86,7 @@ const checkEmail = createAppAsyncThunk<{ email: string }, string>(
     `${slice.name}/checkEmail`,
     async (arg, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
+        dispatch(appActions.setAppStatus({ status: "loading" }));
         try {
             const res = await authApi.checkEmail({email: arg});
             if (res.status === 200) {
@@ -96,6 +104,8 @@ const checkEmail = createAppAsyncThunk<{ email: string }, string>(
                 dispatch(push('/result/error-check-email'));
                 return rejectWithValue(null);
             }
+        } finally {
+            dispatch(appActions.setAppStatus({ status: "idle" }));
         }
     })
 
@@ -103,6 +113,7 @@ const confirmEmail = createAppAsyncThunk<undefined, CodeParamsType>(
     `${slice.name}/confirmEmail`,
     async (arg, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
+        dispatch(appActions.setAppStatus({ status: "loading" }));
         try {
             const res = await authApi.confirmEmail(arg);
             if (res.status === 200) {
@@ -113,6 +124,8 @@ const confirmEmail = createAppAsyncThunk<undefined, CodeParamsType>(
         } catch (e: any) {
             dispatch(push('/auth/confirm-email'));
             return rejectWithValue(null);
+        } finally {
+            dispatch(appActions.setAppStatus({ status: "idle" }));
         }
     })
 
@@ -120,6 +133,7 @@ const changePassword = createAppAsyncThunk<undefined, PasswordParamsType>(
     `${slice.name}/changePassword`,
     async (arg, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
+        dispatch(appActions.setAppStatus({ status: "loading" }));
         try {
             const res = await authApi.changePassword(arg);
             if (res.status === 201) {
@@ -131,6 +145,8 @@ const changePassword = createAppAsyncThunk<undefined, PasswordParamsType>(
         } catch (e: any) {
             dispatch(push('/result/error-change-password'));
             return rejectWithValue(null);
+        } finally {
+            dispatch(appActions.setAppStatus({ status: "idle" }));
         }
     })
 export const authReducer = slice.reducer;

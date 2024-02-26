@@ -1,4 +1,4 @@
-.log_error_container {
+.log_error_check_em_container {
     max-width: 1440px;
     width: 100%;
     height: 100vh;
@@ -21,7 +21,7 @@
     z-index: -1;
 }
 
-.error_container {
+.error_check_em_container {
     margin: 0 auto;
     width: 539px;
     height: 280px;
@@ -29,7 +29,7 @@
     background-color: #FFFFFF;
 }
 
-.error_wrapper {
+.error_check_em_wrapper {
     width: 368px;
     height: 217px;
     margin: 0 auto;
@@ -38,12 +38,12 @@
     align-items: center;
 }
 
-.error_img {
+.error_check_em_img {
     width: 100%;
     height: 81px;
 }
 
-.error_title {
+.error_check_em_title {
     width: 100%;
     font-family: Inter, sans-serif;
     font-weight: 500;
@@ -54,7 +54,7 @@
     margin: 24px 0 0 0;
 }
 
-.error_description {
+.error_check_em_description {
     width: 100%;
     font-family: Inter, sans-serif;
     font-weight: 400;
@@ -65,8 +65,21 @@
     margin: 0;
 }
 
-.error_button {
+.error_check_em_button {
     width: 100%;
     margin-top: 24px;
     border-radius: 0;
+}
+
+@media screen and (max-width: 366px) {
+    .error_check_em_container {
+        width: 284px;
+        height: 322px;
+        padding: 64px 32px 0;
+    }
+
+    .error_check_em_wrapper {
+        width: 264px;
+        height: 266px;
+    }
 }
