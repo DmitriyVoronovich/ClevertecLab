@@ -42,7 +42,7 @@ export const LoginForm = () => {
 
     const confirmEmail = () => {
         if (!isRepeatButtonDisabled) {
-            sessionStorage.setItem('email', JSON.stringify(isEmailLogin));
+            localStorage.setItem('email', JSON.stringify(isEmailLogin));
             dispatch(authThunks.checkEmail(isEmailLogin));
         }
     };

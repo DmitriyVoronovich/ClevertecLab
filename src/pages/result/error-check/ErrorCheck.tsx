@@ -13,7 +13,7 @@ export const ErrorCheck = () => {
 
     const redirectToLogin = () => {
         navigation('/auth');
-        const email  = sessionStorage.getItem('email');
+        const email  = localStorage.getItem('email');
         if (email !== null) {
             dispatch(authThunks.checkEmail(JSON.parse(email)));
         } else {

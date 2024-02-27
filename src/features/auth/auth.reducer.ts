@@ -99,20 +99,16 @@ const checkEmail = createAppAsyncThunk<{ email: string }, string>(
             const res = await authApi.checkEmail({email: arg});
             if (res.status === 200) {
                 dispatch(pushWithFlow('/auth/confirm-email'));
-                sessionStorage.removeItem('email');
                 return {email: res.data.email};
             } else {
                 return rejectWithValue(null);
             }
         } catch (e: any) {
-            console.log(e.response.data.statusCode)
-            console.log(e.response.data.message)
             if (e.response.status === 404 && e.response.data.message === 'Email не найден') {
                 dispatch(pushWithFlow('/result/error-check-email-no-exist'));
                 return rejectWithValue(null);
             }
             if (e.response.status === 409) {
-                console.log('409')
                 dispatch(pushWithFlow('/result/error-check-email'));
                 return rejectWithValue(null);
             } else {
@@ -152,6 +148,7 @@ const changePassword = createAppAsyncThunk<undefined, PasswordParamsType>(
         try {
             const res = await authApi.changePassword(arg);
             if (res.status === 201) {
+                localStorage.removeItem('email');
                 sessionStorage.removeItem('changePassword');
                 dispatch(pushWithFlow('/result/success-change-password'));
             } else {

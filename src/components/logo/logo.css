@@ -24,20 +24,4 @@
     margin: 0;
 }
 
-@media screen and (max-width: 361px) {
-    .logo_container {
-        /*margin: 16px 17px 16px 17px;*/
-        justify-content: center;
-        width: 72px;
-    }
 
-    .logo_clever {
-        width: 52px;
-        height: 13px;
-    }
-
-    .logo_fit {
-        width: 19px;
-        height: 17px;
-    }
-}

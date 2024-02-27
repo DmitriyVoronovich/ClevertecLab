@@ -82,6 +82,11 @@
         gap: 32px;
     }
 
+    .sidebar_logo_container{
+        width: 72px;
+        height: 18px;
+    }
+
     .logo_wrapper {
         width: 203px;
         height: 50px;
