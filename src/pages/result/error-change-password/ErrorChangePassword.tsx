@@ -16,7 +16,7 @@ export const ErrorChangePassword = () => {
             console.log(JSON.parse(data))
             dispatch(authThunks.changePassword(JSON.parse(data)));
         } else {
-            console.log('error');
+            console.log(error)
         }
     }
 

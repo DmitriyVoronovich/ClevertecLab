@@ -4,7 +4,7 @@ import attention from '../../../../accets/login-page/svg-icon/info.svg';
 import VerificationInput from "react-verification-input";
 import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
 import {authThunks} from "../../../../features/auth/auth.reducer.ts";
-import { useState} from "react";
+import {useState} from "react";
 
 
 export const CodeForm = () => {
@@ -33,7 +33,10 @@ export const CodeForm = () => {
                     <p className={'code_description'}>Мы отправили вам на e-mail
                         {email} <br/> шестизначный код. Введите его в поле ниже.</p>
                     <VerificationInput
-                        data-test-id='verification-input'
+                        inputProps={{
+                            'data-test-id': 'verification-input'
+                        }}
+
                         value={isFormValue}
                         onChange={onChangeValue}
                         onComplete={onFormComplete}

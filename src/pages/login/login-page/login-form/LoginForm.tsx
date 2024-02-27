@@ -16,9 +16,12 @@ export const LoginForm = () => {
     const dispatch = useAppDispatch();
     const [isRepeatButtonDisabled, setIsRepeatButtonDisabled] = useState(true);
     const [isEmailLogin, setIsEmailLogin] = useState('');
+    const [isPasswordValid, setIsPasswordValid] = useState(false);
 
     const onFinish = (values: FormType) => {
-        dispatch(authThunks.login(values));
+        if (isPasswordValid) {
+            dispatch(authThunks.login(values));
+        }
     };
 
     const validateEmail = (email: string) => {
@@ -29,15 +32,26 @@ export const LoginForm = () => {
         return re.test(email);
     };
 
+    const validatePassword = (password: string) => {
+        const re = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        const isValid = re.test(password);
+
+        setIsPasswordValid(isValid);
+        return isValid;
+    };
+
     const confirmEmail = () => {
-        sessionStorage.setItem('email', JSON.stringify(isEmailLogin));
-        dispatch(authThunks.checkEmail(isEmailLogin));
+        if (!isRepeatButtonDisabled) {
+            sessionStorage.setItem('email', JSON.stringify(isEmailLogin));
+            dispatch(authThunks.checkEmail(isEmailLogin));
+        }
     };
 
     const onFieldsChange = (_: any, allFields: any) => {
         const emailField = allFields.find((field: {
             name: string[];
         }) => field.name[0] === 'email');
+        const passwordField = allFields.find((field: { name: string[]; }) => field.name[0] === 'password');
 
         if (emailField) {
             setIsEmailLogin(emailField.value)
@@ -45,6 +59,12 @@ export const LoginForm = () => {
             form.setFields([{
                 name: 'email',
                 errors: validateEmail(emailField.value) ? [] : [''],
+            }]);
+        }
+        if (passwordField) {
+            form.setFields([{
+                name: 'password',
+                errors: validatePassword(passwordField.value) ? [] : [''],
             }]);
         }
     };
@@ -76,7 +96,6 @@ export const LoginForm = () => {
                         className={'ant-fom-item-password'}
                         placeholder="Пароль"
                         data-test-id='login-password'
-                        disabled={false}
                         iconRender={visible => (visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>)}
                     />
                 </Form.Item>
@@ -90,7 +109,6 @@ export const LoginForm = () => {
 
                     <button data-test-id='login-forgot-button'
                             className={`login-form-forgot ${isRepeatButtonDisabled ? 'disabled' : ''}`}
-                            disabled={isRepeatButtonDisabled}
                             onClick={confirmEmail}>
                         Забыли пороль?
                     </button>

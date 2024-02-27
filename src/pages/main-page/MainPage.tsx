@@ -8,7 +8,7 @@ import {Sidebar} from "@components/sidebar/Sidebar.tsx";
 
 export const MainPage: React.FC = () => {
     const [open, setOpen] = React.useState(true);
-    let token = localStorage.getItem('jwtToken')
+    const token = localStorage.getItem('jwtToken')
     let tog
     if (token!==null) {
          tog = JSON.parse(token)

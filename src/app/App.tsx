@@ -14,23 +14,38 @@ import {
     SuccessChangePassword
 } from "@pages/result/success-change-password/SuccessChangePassword.tsx";
 import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
-import {history} from '@redux/configure-store';
 import Loader from "@components/loader/Loader.tsx";
-import {pushWithFlow} from "../features/auth/auth.reducer.ts";
+import {authActions} from "../features/auth/auth.reducer.ts";
+import {useEffect} from "react";
 
 
 function App() {
-    const dispatch = useAppDispatch();
-    const status = useAppSelector(state => state.app.status)
+    const dispatch = useAppDispatch()
+    const status = useAppSelector(state => state.app.status);
+    const locationState = useAppSelector(state => state.router.location.state);
+    const authState = useAppSelector(state => state.auth)
+
+    useEffect(() => {
+        if (!authState.isLoggedIn) {
+            const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('isLoggedIn');
+            if (token) {
+                dispatch(authActions.setAuthStatus({isLoggedIn: true}));
+
+            }
+        }
+    })
+
+
     return (
         <>
-
             <Routes>
+                <Route path={'/'}
+                       element={<Navigate to={authState.isLoggedIn ? '/main' : '/auth'}/>}/>
                 <Route index={true} path='/main' element={<MainPage/>}/>
                 <Route path='/auth/*' element={<LoginPage/>}>
                     <Route path='registration' element={<LoginPage/>}/>
                 </Route>
-                {history.location.state?.flowRedirect ? (
+                {locationState?.flowRedirect ? (
                     <>
                         <Route path={'/result'}>
                             <Route path='error-user-exist' element={<ErrorRegistration/>}/>
@@ -51,7 +66,13 @@ function App() {
 
             </Routes>
             {status === "loading" &&
-                <div style={{position: "fixed", top: "0", textAlign: "center", width: "100%", height: '100vh'}}>
+                <div style={{
+                    position: "fixed",
+                    top: "0",
+                    textAlign: "center",
+                    width: "100%",
+                    height: '100vh'
+                }}>
                     <Loader/>
                 </div>
             }

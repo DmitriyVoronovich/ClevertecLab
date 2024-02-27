@@ -2,17 +2,12 @@ import './registration-form.css'
 import {Button, Form, Input} from "antd";
 import {EyeInvisibleOutlined, EyeTwoTone, GooglePlusOutlined} from "@ant-design/icons";
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {RootState} from "@redux/configure-store.ts";
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
-import { onFinish} from "@pages/login/login-page/registration-form/utils.ts";
+import {onFinish} from "@pages/login/login-page/registration-form/utils.ts";
 
 export const RegistrationForm = () => {
     const [form] = Form.useForm();
     const [isPasswordValid, setIsPasswordValid] = useState(true);
-    const navigate = useNavigate();
-    const isRegistered = useSelector((state: RootState) => state.auth.isRegistered);
     const dispatch = useAppDispatch();
 
     const validateEmail = (email: string) => {

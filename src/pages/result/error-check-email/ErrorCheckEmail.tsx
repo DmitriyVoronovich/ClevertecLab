@@ -10,7 +10,6 @@ export const ErrorCheckEmail = () => {
     const redirectToLogin = () => {
         navigation('/auth');
 
-
     }
     return (
         <div className={'log_error_check_em_container'} style={{backgroundImage: `url(${fon})`}}>

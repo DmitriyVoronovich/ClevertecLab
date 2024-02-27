@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {createAppAsyncThunk} from "../../common/utils/create-app-async-thunk.ts";
 import {authApi, CodeParamsType, LoginParamsType, PasswordParamsType} from "./auth.api.ts";
 import {push} from "redux-first-history";
@@ -13,7 +13,11 @@ const slice = createSlice({
         isRegistered: false,
         email: ''
     },
-    reducers: {},
+    reducers: {
+        setAuthStatus: (state, action: PayloadAction<{ isLoggedIn: boolean }>) => {
+            state.isLoggedIn = action.payload.isLoggedIn;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(registration.fulfilled, (state, action) => {
@@ -36,8 +40,7 @@ const registration = createAppAsyncThunk<{ isRegistered: boolean }, LoginParamsT
         const {dispatch, rejectWithValue} = thunkAPI;
         dispatch(appActions.setAppStatus({ status: "loading" }));
         try {
-            // const res = await authApi.registration(arg);
-            const res = {status: 201}
+            const res = await authApi.registration(arg);
             if (res.status === 201) {
                 sessionStorage.removeItem('data-registration');
                 dispatch(pushWithFlow('/result/success'));
@@ -99,11 +102,12 @@ const checkEmail = createAppAsyncThunk<{ email: string }, string>(
                 return rejectWithValue(null);
             }
         } catch (e: any) {
+            console.log(e.response.data.statusCode)
+            console.log(e.response.data.message)
             if (e.response.data.statusCode === 404 && e.response.data.message === 'Email не найден') {
                 dispatch(pushWithFlow('/result/error-check-email-no-exist'));
-                console.log('de')
                 return rejectWithValue(null);
-            } else {
+            } else  {
                 dispatch(pushWithFlow('/result/error-check-email'));
                 return rejectWithValue(null);
             }
@@ -119,7 +123,7 @@ const confirmEmail = createAppAsyncThunk<undefined, CodeParamsType>(
         dispatch(appActions.setAppStatus({ status: "loading" }));
         try {
             const res = await authApi.confirmEmail(arg);
-            if (res.status === 200) {
+            if (res.status === 201) {
                 dispatch(pushWithFlow('/auth/change-password'));
             } else {
                 return rejectWithValue(null);
@@ -153,4 +157,5 @@ const changePassword = createAppAsyncThunk<undefined, PasswordParamsType>(
         }
     })
 export const authReducer = slice.reducer;
+export const authActions = slice.actions;
 export const authThunks = {registration, login, checkEmail, confirmEmail, changePassword};
