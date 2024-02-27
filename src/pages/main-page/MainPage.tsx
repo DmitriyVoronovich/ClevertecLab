@@ -8,18 +8,36 @@ import {Sidebar} from "@components/sidebar/Sidebar.tsx";
 
 export const MainPage: React.FC = () => {
     const [open, setOpen] = React.useState(true);
+    const token = localStorage.getItem('jwtToken')
+    let tog
+    if (token!==null) {
+         tog = JSON.parse(token)
+    }
+
+    let isLoggedIn
+
+    const data = sessionStorage.getItem('isLoggedIn');
+    if (data !== null) {
+        isLoggedIn = JSON.parse(data)
+    } else {
+        console.log('error');
+    }
+
+    if (!tog && !isLoggedIn) {
+        window.location.href = '/auth';
+    }
 
     const handleOpen = () => {
         setOpen(!open);
     };
 
     return (
-        <div className={'main_page_container'} style={{ backgroundImage: `url(${fon})`}}>
+        <div className={'main_page_container'} style={{backgroundImage: `url(${fon})`}}>
             <Sidebar handleOpen={handleOpen} open={open}/>
             <div className={'a'}>
                 <Header/>
                 <MainSection/>
-                <Footer />
+                <Footer/>
             </div>
         </div>
     );

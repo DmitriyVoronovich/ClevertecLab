@@ -1,0 +1,87 @@
+.log_error_container {
+    max-width: 1440px;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    background-clip: content-box;
+    z-index: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form_fon {
+    background-color: rgba(121, 156, 212, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.error_container {
+    margin: 0 auto;
+    width: 539px;
+    height: 280px;
+    padding: 64px 0 0;
+    background-color: #FFFFFF;
+}
+
+.error_wrapper {
+    width: 368px;
+    height: 217px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error_img {
+    width: 100%;
+    height: 81px;
+}
+
+.error_title {
+    width: 100%;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 130%;
+    text-align: center;
+    color: #262626;
+    margin: 24px 0 0 0;
+}
+
+.error_description {
+    width: 100%;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: #8C8C8C;
+    margin: 0;
+}
+
+.error_button {
+    width: 100%;
+    margin-top: 24px;
+    border-radius: 0;
+}
+
+@media screen and (max-width: 366px) {
+    .error_container {
+        margin: 0 auto;
+        width: 296px;
+        height: 267px;
+        padding: 32px 16px 0;
+        background-color: #FFFFFF;
+    }
+
+    .error_wrapper {
+        width: 296px;
+        height: 235px;
+    }
+}
