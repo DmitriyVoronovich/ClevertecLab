@@ -4,6 +4,7 @@ import {authApi, CodeParamsType, LoginParamsType, PasswordParamsType} from "./au
 import {push} from "redux-first-history";
 import {FormType} from "@pages/login/login-page/login-form/LoginForm.tsx";
 import {appActions} from "../../app/app.reducer.ts";
+
 export const pushWithFlow = (to: string) => push(to, {flowRedirect: true})
 
 const slice = createSlice({
@@ -38,7 +39,7 @@ const registration = createAppAsyncThunk<{ isRegistered: boolean }, LoginParamsT
     `${slice.name}/registration`,
     async (arg, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
-        dispatch(appActions.setAppStatus({ status: "loading" }));
+        dispatch(appActions.setAppStatus({status: "loading"}));
         try {
             const res = await authApi.registration(arg);
             if (res.status === 201) {
@@ -57,7 +58,7 @@ const registration = createAppAsyncThunk<{ isRegistered: boolean }, LoginParamsT
                 return rejectWithValue(null);
             }
         } finally {
-            dispatch(appActions.setAppStatus({ status: "idle" }));
+            dispatch(appActions.setAppStatus({status: "idle"}));
         }
     })
 
@@ -65,7 +66,7 @@ const login = createAppAsyncThunk<{ isLoggedIn: boolean }, FormType>(
     `${slice.name}/login`,
     async (arg, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
-        dispatch(appActions.setAppStatus({ status: "loading" }));
+        dispatch(appActions.setAppStatus({status: "loading"}));
         try {
             const data = {email: arg.email, password: arg.password};
             const res = await authApi.login(data);
@@ -83,7 +84,9 @@ const login = createAppAsyncThunk<{ isLoggedIn: boolean }, FormType>(
             dispatch(pushWithFlow('/result/error-login'));
             return rejectWithValue(null);
         } finally {
-            dispatch(appActions.setAppStatus({ status: "idle" }));
+            setTimeout(() => {
+                dispatch(appActions.setAppStatus({status: "idle"}));
+            }, 200)
         }
     })
 
@@ -91,12 +94,9 @@ const checkEmail = createAppAsyncThunk<{ email: string }, string>(
     `${slice.name}/checkEmail`,
     async (arg, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
-        dispatch(appActions.setAppStatus({ status: "loading" }));
+        dispatch(appActions.setAppStatus({status: "loading"}));
         try {
             const res = await authApi.checkEmail({email: arg});
-            // const res = await Promise.reject({response: {
-            //     data: {statusCode: 409}
-            //     }})
             if (res.status === 200) {
                 dispatch(pushWithFlow('/auth/confirm-email'));
                 sessionStorage.removeItem('email');
@@ -105,15 +105,22 @@ const checkEmail = createAppAsyncThunk<{ email: string }, string>(
                 return rejectWithValue(null);
             }
         } catch (e: any) {
-            if (e.response.status === 404 && e.response.message === 'Email не найден') {
-                dispatch(pushWithFlow('/result/error-check-email'));
-                return rejectWithValue(null);
-            } else{
+            console.log(e.response.data.statusCode)
+            console.log(e.response.data.message)
+            if (e.response.status === 404 && e.response.data.message === 'Email не найден') {
                 dispatch(pushWithFlow('/result/error-check-email-no-exist'));
                 return rejectWithValue(null);
             }
+            if (e.response.status === 409) {
+                console.log('409')
+                dispatch(pushWithFlow('/result/error-check-email'));
+                return rejectWithValue(null);
+            } else {
+                dispatch(pushWithFlow('/result/error-check-email'));
+                return rejectWithValue(null);
+            }
         } finally {
-            dispatch(appActions.setAppStatus({ status: "idle" }));
+            dispatch(appActions.setAppStatus({status: "idle"}));
         }
     })
 
@@ -121,7 +128,7 @@ const confirmEmail = createAppAsyncThunk<undefined, CodeParamsType>(
     `${slice.name}/confirmEmail`,
     async (arg, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
-        dispatch(appActions.setAppStatus({ status: "loading" }));
+        dispatch(appActions.setAppStatus({status: "loading"}));
         try {
             const res = await authApi.confirmEmail(arg);
             if (res.status === 201) {
@@ -133,7 +140,7 @@ const confirmEmail = createAppAsyncThunk<undefined, CodeParamsType>(
             dispatch(pushWithFlow('/auth/confirm-email'));
             return rejectWithValue(null);
         } finally {
-            dispatch(appActions.setAppStatus({ status: "idle" }));
+            dispatch(appActions.setAppStatus({status: "idle"}));
         }
     })
 
@@ -141,7 +148,7 @@ const changePassword = createAppAsyncThunk<undefined, PasswordParamsType>(
     `${slice.name}/changePassword`,
     async (arg, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
-        dispatch(appActions.setAppStatus({ status: "loading" }));
+        dispatch(appActions.setAppStatus({status: "loading"}));
         try {
             const res = await authApi.changePassword(arg);
             if (res.status === 201) {
@@ -154,7 +161,7 @@ const changePassword = createAppAsyncThunk<undefined, PasswordParamsType>(
             dispatch(pushWithFlow('/result/error-change-password'));
             return rejectWithValue(null);
         } finally {
-            dispatch(appActions.setAppStatus({ status: "idle" }));
+            dispatch(appActions.setAppStatus({status: "idle"}));
         }
     })
 export const authReducer = slice.reducer;

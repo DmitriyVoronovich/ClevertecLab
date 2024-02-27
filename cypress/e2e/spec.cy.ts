@@ -28,7 +28,7 @@ describe('sprint 2', () => {
     //     });
     //     cy.url().should('include', '/main');
     // });
-
+    //
     // it('login-error', () => {
     //     cy.intercept('POST', 'auth/login', {
     //         statusCode: 404,
@@ -50,7 +50,7 @@ describe('sprint 2', () => {
     //     cy.wait('@login');
     //     cy.url().should('include', '/main');
     // });
-
+    //
     // it('login-remember', () => {
     //     cy.intercept('POST', 'auth/login', { accessToken: 'SUPERUSER' }).as('login');
     //     cy.viewport(360, 900);
@@ -64,7 +64,7 @@ describe('sprint 2', () => {
     //     cy.visit('/');
     //     cy.url().should('include', '/main');
     // });
-
+    //
     // it('reg-success', () => {
     //     cy.intercept('POST', '/auth/registration', { statusCode: 201 }).as('registration');
     //     cy.intercept('POST', 'auth/login', { accessToken: 'SUPERUSER' }).as('login');
@@ -116,7 +116,7 @@ describe('sprint 2', () => {
     //     cy.get('[data-test-id=registration-retry-button]').click();
     //     cy.wait('@registration');
     // });
-
+    //
     // it('change-pass-success', () => {
     //     cy.intercept('POST', '/auth/check-email', {
     //         email: 'valadzkoaliaksei@tut.by',
@@ -168,12 +168,12 @@ describe('sprint 2', () => {
             statusCode: 409,
         }).as('checkEmail');
         cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
-        cy.get('[data-test-id=login-forgot-button]').click().debug();
+        cy.get('[data-test-id=login-forgot-button]').click();
         cy.wait('@checkEmail');
         cy.url().should('include', '/result/error-check-email');
         cy.screenshot('change-pass-error-2');
         cy.intercept('POST', '/auth/check-email', { statusCode: 200 }).as('checkEmail');
-        cy.get('[data-test-id=check-back-button]').click().debug();
+        cy.get('[data-test-id=check-back-button]').click();
         cy.wait('@checkEmail');
         cy.url().should('include', '/auth/confirm-email');
         cy.screenshot('change-pass-error-3');
