@@ -5,7 +5,9 @@ import {push} from "redux-first-history";
 import {FormType} from "@pages/login/login-page/login-form/LoginForm.tsx";
 import {appActions} from "../../app/app.reducer.ts";
 
-export const pushWithFlow = (to: string) => push(to, {flowRedirect: true})
+export const pushWithFlow = (to: string) => push(to, {flowRedirect: true});
+
+
 
 const slice = createSlice({
     name: "auth",
@@ -74,6 +76,8 @@ const login = createAppAsyncThunk<{ isLoggedIn: boolean }, FormType>(
                 sessionStorage.setItem('isLoggedIn', JSON.stringify(true));
                 if (arg.remember) {
                     localStorage.setItem('jwtToken', JSON.stringify(res.data.accessToken));
+                } else {
+                    sessionStorage.setItem('jwtToken', JSON.stringify(res.data.accessToken));
                 }
                 dispatch(pushWithFlow('/main'));
                 return {isLoggedIn: true};

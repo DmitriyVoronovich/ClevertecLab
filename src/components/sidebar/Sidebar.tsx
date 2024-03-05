@@ -14,13 +14,14 @@ export const Sidebar:React.FC<SidebarProps> = (props) => {
 
     const logOut = () => {
         localStorage.removeItem('jwtToken');
+        sessionStorage.removeItem('jwtToken');
         sessionStorage.removeItem('isLoggedIn');
         window.location.href = '/auth';
     }
 
     const menu = menuItem.map((item) => {
         return (
-            <div className={'sidebar_menu_item'}>
+            <div className={'sidebar_menu_item'} key={item.id}>
                 <img src={item.icon} alt={'menu icon'} className={'sidebar_item_icon'}/>
                 <span className={`${open ? 'sidebar_item_title' : 'sidebar_item_title close'}`}>{item.title}</span>
             </div>

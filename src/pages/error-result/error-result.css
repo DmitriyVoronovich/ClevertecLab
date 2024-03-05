@@ -1,0 +1,81 @@
+
+
+.error_result_container .ant-modal-content{
+    margin: 0 auto;
+    max-width: 539px;
+    width: 100%;
+    height: 345px;
+    padding: 64px 0 0;
+    background-color: #FFFFFF;
+    z-index: 5;
+}
+
+.error_result_wrapper {
+    height: 217px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error_result_img {
+    width: 81px;
+    height: 80px;
+}
+
+.error_title {
+    width: 100%;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 130%;
+    text-align: center;
+    color: #262626;
+    margin: 24px 0 0 0;
+}
+
+.error_result_description {
+    width: 100%;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: #8C8C8C;
+    margin: 0;
+}
+
+.error_result_button_cont {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.error_result_button {
+    width: 100%;
+    max-width: 180px;
+    border-radius: 0;
+    height: 40px;
+}
+
+.error_result_button_def {
+    background-color: #FFFFFF;
+    width: 100%;
+    max-width: 180px;
+    color: #262626;
+    border-radius: 2px;
+    height: 40px;
+    border: 1px solid #E0E0E0;
+    padding: 0;
+}
+
+@media screen and (max-width: 366px) {
+    .error_result_container .ant-modal-content {
+        width: 328px;
+        height: 281px;
+        padding: 32px 16px 0;
+    }
+}

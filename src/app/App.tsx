@@ -17,20 +17,38 @@ import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts"
 import Loader from "@components/loader/Loader.tsx";
 import {authActions} from "../features/auth/auth.reducer.ts";
 import {useEffect} from "react";
+import {FeedbacksPage} from "@pages/feedbacks-page/FeedbacksPage.tsx";
+import {HomePage} from "@pages/home-page/HomePage.tsx";
 
+const authGoogle = () => {
+    const currentUrl = window.location.search;
+
+    const urlSearchParams = new URLSearchParams(currentUrl);
+    if (urlSearchParams.has('accessToken')) {
+
+        const paramValue = urlSearchParams.get('accessToken');
+        localStorage.setItem('jwtToken', JSON.stringify(paramValue));
+    }
+}
 
 function App() {
     const dispatch = useAppDispatch()
     const status = useAppSelector(state => state.app.status);
     const locationState = useAppSelector(state => state.router.location.state);
-    const authState = useAppSelector(state => state.auth)
+    const authState = useAppSelector(state => state.auth);
 
     useEffect(() => {
+        window.onbeforeunload = function () {
+            sessionStorage.clear();
+    }}, []);
+    authGoogle()
+
+    useEffect(() => {
+
         if (!authState.isLoggedIn) {
-            const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('isLoggedIn');
+            const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken');
             if (token) {
                 dispatch(authActions.setAuthStatus({isLoggedIn: true}));
-
             }
         }
     })
@@ -41,7 +59,10 @@ function App() {
             <Routes>
                 <Route path={'/'}
                        element={<Navigate to={authState.isLoggedIn ? '/main' : '/auth'}/>}/>
-                <Route index={true} path='/main' element={<MainPage/>}/>
+                <Route path={'/'} element={<MainPage/>}>
+                    <Route path='main' element={<HomePage/>}/>
+                    <Route path='feedbacks' element={<FeedbacksPage/>}/>
+                </Route>
                 <Route path='/auth/*' element={<LoginPage/>}>
                     <Route path='registration' element={<LoginPage/>}/>
                 </Route>
