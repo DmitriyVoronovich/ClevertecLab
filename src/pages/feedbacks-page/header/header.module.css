@@ -1,0 +1,33 @@
+.header_container {
+    max-width: 1357px;
+    background: #F0F5FF;
+    height: 50px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: #8C8C8C;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+}
+
+.header_menu {
+
+}
+
+.header_menu_item {
+    color: #262626;
+}
+
+@media screen and (max-width: 361px) {
+    .header_container {
+        max-width: 336px;
+        padding-left: 24px;
+    }
+
+
+    .header_menu_item {
+        color: #262626;
+    }
+}
