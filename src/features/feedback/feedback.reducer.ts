@@ -3,15 +3,9 @@ import {createAppAsyncThunk} from "../../common/utils/create-app-async-thunk.ts"
 import {appActions} from "../../app/app.reducer.ts";
 import {AllReview, feedbackApi, Review} from "./feeedback.api.ts";
 import {pushWithFlow} from "../auth/auth.reducer.ts";
+import {compareCreatedAt} from "../../common/utils/compareCreatedAt.ts";
 
 export type RequestFeedbackStatus = "idle" | "succeeded" | "failed" | "error";
-
-const compareCreatedAt = (a: { createdAt: string }, b: { createdAt: string }) => {
-    const dateA = new Date(a.createdAt).getTime();
-    const dateB = new Date(b.createdAt).getTime();
-
-    return dateB - dateA;
-};
 
 const feedbackActions = createSlice({
     name: "feedback",
