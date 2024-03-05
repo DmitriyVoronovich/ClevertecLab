@@ -17,10 +17,6 @@ export const ReviewGroup = (props: ReviewGropProps) => {
         return
     }, [reviewList]);
 
-
-
-
-
     const onReviewToggle = () => {
         setSeeAllReview(!seeAllReview)
     }

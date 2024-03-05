@@ -1,12 +1,20 @@
-import '../footer/footer.css';
+import './footer.css';
 import andr from '../../../accets/image/andr.svg'
 import apple from '../../../accets/image/apple.svg'
+import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
+import {feedbackThunks} from "../../../features/feedback/feedback.reducer.ts";
 
-export const Footer = () => {
+export const Footer:React.FC = () => {
+    const dispatch = useAppDispatch();
+
+    const onSubmittingReviewRequest = () => {
+        dispatch(feedbackThunks.getReviews());
+    }
+
     return (
         <div className={'footer_container'}>
-            <div className={'footer_reviews_container'}>
-                <a className={'footer_reviews'}>
+            <div className={'footer_reviews_container'} onClick={onSubmittingReviewRequest}>
+                <a className={'footer_reviews'} data-test-id='see-reviews'>
                     Смотреть отзывы
                 </a>
             </div>

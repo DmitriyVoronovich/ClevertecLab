@@ -13,10 +13,7 @@ export const ErrorChangePassword = () => {
         const data = sessionStorage.getItem('changePassword');
 
         if (data !== null) {
-            console.log(JSON.parse(data))
             dispatch(authThunks.changePassword(JSON.parse(data)));
-        } else {
-            console.log(error)
         }
     }
 

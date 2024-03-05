@@ -23,7 +23,7 @@ export const SuccessResult = () => {
     }
 
     return (
-            <Modal className={'success_result_container'} open={isModalOpen} closable={false} centered footer={null}>
+            <Modal className={'success_result_container'} open={isModalOpen} closable={false} centered okText={'Отлично'} footer={false}>
                 <div className={'success_result_wrapper'}>
                     <img className={'success_result_img'} alt={'success'} src={success}/>
                     <h5 className={'success_title'}>Отзыв успешно опубликован</h5>

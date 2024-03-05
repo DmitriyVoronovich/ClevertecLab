@@ -53,7 +53,6 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
     return (
         <Modal className={'feedback_container'}
                open={props.isModalOpen}
-               centered
                footer={null}
                title={'Ваш отзыв'}
                onCancel={props.onCancelModalForm}>
@@ -61,22 +60,19 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
                   onFieldsChange={onFieldsChange}>
                 <Form.Item name="rate" className={'rate_form'}>
                     <Rate
-                        className={'feedback_rate'}
-                        character={({value, index}) => {
-                            return value && index! < value ? <StarFilled/> :
-                                <StarOutlined/>;
-                        }}
+                        className='feedback_rate'
+                        character={({ value,index }) => (value && index! < value ? <StarFilled /> : <StarOutlined />)}
                         defaultValue={reviewData.rate}
                     />
                 </Form.Item>
 
                 <Form.Item name="review" className={'textarea_form'}>
                     <TextArea
-                        placeholder=""
+                        placeholder="Расскажите, почему Вам понравилось наше приложение"
                         className={'feedback_textarea'}
                         style={{height: "46px"}}
                         defaultValue={reviewData.review || ''}
-                        autoSize
+                        autoSize={{ minRows: 2}}
                     />
                 </Form.Item>
 

@@ -16,8 +16,6 @@ export const ErrorCheck = () => {
         const email  = localStorage.getItem('email');
         if (email !== null) {
             dispatch(authThunks.checkEmail(JSON.parse(email)));
-        } else {
-            console.log('error');
         }
     }
     return (

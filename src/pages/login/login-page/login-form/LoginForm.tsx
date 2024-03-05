@@ -47,6 +47,11 @@ export const LoginForm = () => {
         }
     };
 
+    const onGoogleLogIn = () => {
+        window.location.href = 'https://marathon-api.clevertec.ru/auth/google'
+
+    }
+
     const onFieldsChange = (_: any, allFields: any) => {
         const emailField = allFields.find((field: {
             name: string[];
@@ -125,6 +130,7 @@ export const LoginForm = () => {
                     type="default"
                     className="google-login-button"
                     icon={<GooglePlusOutlined/>}
+                    onClick={onGoogleLogIn}
                 >
                     Войти через Google
                 </Button>

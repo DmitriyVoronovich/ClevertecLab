@@ -9,7 +9,7 @@ import {useState} from "react";
 
 export const CodeForm = () => {
     const dispatch = useAppDispatch();
-    // const email = useAppSelector(state => state.auth.email);
+
     const [isFormCorrect, setIsFormCorrect] = useState(true);
     const [isFormValue, setIsFormValue] = useState('');
 

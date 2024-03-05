@@ -16,8 +16,6 @@ export const Error = () => {
 
         if (data !== null) {
             dispatch(authThunks.registration(JSON.parse(data)));
-        } else {
-            console.log('error');
         }
     }
 

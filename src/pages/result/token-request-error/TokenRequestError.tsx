@@ -14,18 +14,18 @@ export const TokenRequestError:React.FC = () => {
 
     useEffect(() => {
         if (feedbackStatus === 'failed') {
-            return setIsModalOpen(true)
+            return setIsModalOpen(true);
         }
     });
 
     const onCancelModalForm = () => {
         setIsModalOpen(false);
-        dispatch(setFeedbackStatus({feedbackStatus: 'idle'}))
+        dispatch(setFeedbackStatus({feedbackStatus: 'idle'}));
         navigation('/main');
     };
 
     return (
-            <Modal className={'error_request_container'} open={isModalOpen} closable={false} centered footer={null}>
+            <Modal className={'error_request_container'} open={isModalOpen} closable={false} footer={null}>
                 <div className={'error_request_wrapper'}>
                     <img className={'error_request_img'} alt={'error'} src={error}/>
                     <h5 className={'error_title'}>Что-то пошло не так</h5>

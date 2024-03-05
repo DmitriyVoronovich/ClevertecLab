@@ -1,8 +1,8 @@
-import './main-section.css';
+import './home-section.css';
 import {data} from "../../../data/data.ts";
 import {Fragment} from "@components/fragment/Fragment.tsx";
 
-export const MainSection = () => {
+export const HomeSection = () => {
     return (
         <section className={'main_section_container'} >
             <p className={'section_block1'}>
