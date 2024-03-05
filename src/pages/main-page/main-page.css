@@ -1,5 +1,6 @@
 .main_page_container {
-
+    max-width: 1440px;
+    width: 100%;
     display: flex;
     background-size: cover;
     background-position: center center;
@@ -15,13 +16,13 @@
 
 @media screen and (max-width: 835px) {
     .main_page_container {
-        width: 835px;
+        /*width: 835px;*/
     }
 }
 
 @media screen and (max-width: 365px) {
     .main_page_container {
-        max-width: 365px;
+        max-width: 360px;
     }
 
     .a {

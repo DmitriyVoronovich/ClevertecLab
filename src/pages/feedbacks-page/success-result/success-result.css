@@ -41,8 +41,10 @@
 }
 
 @media screen and (max-width: 366px) {
-    .success_result_container {
-        margin: 16px;
+    .success_result_container .ant-modal-content{
+        width: 328px;
+        height: 294px;
+        margin: 0 auto;
         padding:32px 16px 0;
     }
 }
