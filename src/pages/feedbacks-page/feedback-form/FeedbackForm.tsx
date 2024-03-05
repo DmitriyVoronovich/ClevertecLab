@@ -54,6 +54,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
         <Modal className={'feedback_container'}
                open={props.isModalOpen}
                footer={null}
+               centered
                title={'Ваш отзыв'}
                onCancel={props.onCancelModalForm}>
             <Form onFinish={onFinish} className={'feedback_form'}
