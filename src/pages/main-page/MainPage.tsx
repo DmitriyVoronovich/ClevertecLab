@@ -2,7 +2,7 @@ import React from 'react';
 import './main-page.css';
 import fon from "../../accets/main_page_light.png";
 import {Sidebar} from "@components/sidebar/Sidebar.tsx";
-import {FeedbacksPage} from "@pages/feedbacks-page/FeedbacksPage.tsx";
+import {FeedbacksPage} from "../../features/feedback/ui/feedbacksPage/FeedbacksPage.tsx";
 import {Route, Routes} from "react-router-dom";
 import {HomePage} from "@pages/home-page/HomePage.tsx";
 

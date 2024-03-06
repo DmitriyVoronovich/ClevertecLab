@@ -17,7 +17,3 @@ export const menuItem = [
     {id: 3, title: 'Достижения', icon: icdos},
     {id: 4, title: 'Профиль', icon: icprof}
 ]
-
-export const resultData = [
-    {}
-]

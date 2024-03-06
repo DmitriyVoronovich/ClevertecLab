@@ -1,8 +1,8 @@
-import '../sidebar/sidebar.css';
 import {Logo} from "@components/logo/Logo.tsx";
 import {menuItem} from "../../data/data.ts";
 import exit from '../../accets/image/exit.svg';
 import menuicon from '../../accets/image/svg-menu/menu.svg';
+import './sidebar.css';
 
 export type SidebarProps = {
     handleOpen: () => void;

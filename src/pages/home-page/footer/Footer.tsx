@@ -2,7 +2,7 @@ import './footer.css';
 import andr from '../../../accets/image/andr.svg'
 import apple from '../../../accets/image/apple.svg'
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
-import {feedbackThunks} from "../../../features/feedback/feedback.reducer.ts";
+import {feedbackThunks} from "../../../features/feedback/model/feedbackSlice.ts";
 
 export const Footer:React.FC = () => {
     const dispatch = useAppDispatch();
