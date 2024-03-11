@@ -1,0 +1,20 @@
+.ant-picker-calendar {
+    padding: 24px;
+    background: #F0F5FF;
+}
+
+.ant-picker-calendar .ant-picker-calendar-header {
+    padding: 0 0 12px 0;
+}
+
+.ant-picker-body {
+    background: #F0F5FF;
+}
+
+.ant-picker-cell-inner {
+    background: #FFFFFF;
+}
+
+.ant-select-selection-item {
+    text-transform: capitalize;
+}
