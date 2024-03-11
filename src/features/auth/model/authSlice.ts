@@ -1,13 +1,9 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {createAppAsyncThunk} from "../../../common/utils/createAppAsyncThunk.ts";
 import {authApi, CodeParamsType, LoginParamsType, PasswordParamsType} from "../api/authApi.ts";
-import {push} from "redux-first-history";
 import {FormType} from "../ui/loginForm/LoginForm.tsx";
 import {appActions} from "../../../app/model/appSlice.ts";
-
-export const pushWithFlow = (to: string) => push(to, {flowRedirect: true});
-
-
+import {pushWithFlow} from "./utils/pushWithFlow.ts";
 
 const slice = createSlice({
     name: "auth",

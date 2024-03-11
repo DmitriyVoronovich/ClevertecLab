@@ -5,15 +5,16 @@ import icprof from '../accets/image/svg-menu/icon-prof.svg';
 import icdos from '../accets/image/svg-menu/icon-dos.svg';
 import icrasp from '../accets/image/svg-menu/icon-rasp.svg';
 import icheard from '../accets/image/svg-menu/icon-heard.svg';
+import {calendarThunks} from "../features/calendar/model/calendarSlice.ts";
 export const data = [
-    {id: 1, title: 'Тренировки', icon: heard, description: 'Расписать тренировки'},
-    {id: 2, title: 'Календарь', icon: cal, description: 'Назначить календарь'},
-    {id: 3, title: 'Профиль', icon: prof, description: 'Заполнить профиль'},
-]
+    {id: 1, title: 'Тренировки', icon: heard, description: 'Расписать тренировки', callback: calendarThunks.training},
+    {id: 2, title: 'Календарь', icon: cal, description: 'Назначить календарь', callback: calendarThunks.training},
+    {id: 3, title: 'Профиль', icon: prof, description: 'Заполнить профиль', callback: calendarThunks.training},
+];
 
 export const menuItem = [
-    {id: 1, title: 'Календарь', icon: icrasp},
-    {id: 2, title: 'Тренировки', icon: icheard},
-    {id: 3, title: 'Достижения', icon: icdos},
-    {id: 4, title: 'Профиль', icon: icprof}
-]
+    {id: 1, title: 'Календарь', icon: icrasp, callback: calendarThunks.training},
+    {id: 2, title: 'Тренировки', icon: icheard, callback: calendarThunks.training},
+    {id: 3, title: 'Достижения', icon: icdos, callback: calendarThunks.training},
+    {id: 4, title: 'Профиль', icon: icprof, callback: calendarThunks.training}
+];

@@ -2,8 +2,9 @@ import {Button} from 'antd';
 import './errorChangePassword.css'
 import fon from "../../../../../accets/login-page/image/fon.png";
 import error from "../../../../../accets/login-page/svg-icon/error.svg";
-import {authThunks, pushWithFlow} from "../../../model/authSlice.ts";
+import {authThunks} from "../../../model/authSlice.ts";
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
+import {pushWithFlow} from "../../../model/utils/pushWithFlow.ts";
 
 export const ErrorChangePassword = () => {
     const dispatch = useAppDispatch();

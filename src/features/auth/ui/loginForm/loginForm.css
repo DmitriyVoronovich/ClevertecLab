@@ -85,7 +85,7 @@
     height: 100%;
 }
 
-input[type="text"], input[type="email"] {
+.login-form input[type="text"], input[type="email"] {
     height: 40px;
 }
 

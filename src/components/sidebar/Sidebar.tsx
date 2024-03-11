@@ -3,6 +3,7 @@ import {menuItem} from "../../data/data.ts";
 import exit from '../../accets/image/exit.svg';
 import menuicon from '../../accets/image/svg-menu/menu.svg';
 import './sidebar.css';
+import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
 
 export type SidebarProps = {
     handleOpen: () => void;
@@ -10,6 +11,7 @@ export type SidebarProps = {
 }
 
 export const Sidebar:React.FC<SidebarProps> = (props) => {
+    const dispatch = useAppDispatch();
     const {handleOpen, open} = props;
 
     const logOut = () => {
@@ -20,8 +22,13 @@ export const Sidebar:React.FC<SidebarProps> = (props) => {
     }
 
     const menu = menuItem.map((item) => {
+
+        const onClickHandler = () => {
+            dispatch(item.callback())
+        };
+
         return (
-            <div className={'sidebar_menu_item'} key={item.id}>
+            <div className={'sidebar_menu_item'} key={item.id} onClick={onClickHandler}>
                 <img src={item.icon} alt={'menu icon'} className={'sidebar_item_icon'}/>
                 <span className={`${open ? 'sidebar_item_title' : 'sidebar_item_title close'}`}>{item.title}</span>
             </div>

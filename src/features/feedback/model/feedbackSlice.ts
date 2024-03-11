@@ -2,8 +2,8 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {createAppAsyncThunk} from "../../../common/utils/createAppAsyncThunk.ts";
 import {appActions} from "../../../app/model/appSlice.ts";
 import {AllReview, feedbackApi, Review} from "../api/feeedbackApi.ts";
-import {pushWithFlow} from "../../auth/model/authSlice.ts";
 import {compareCreatedAt} from "./utils/compareCreatedAt.ts";
+import {pushWithFlow} from "../../auth/model/utils/pushWithFlow.ts";
 
 export type RequestFeedbackStatus = "idle" | "succeeded" | "failed" | "error";
 

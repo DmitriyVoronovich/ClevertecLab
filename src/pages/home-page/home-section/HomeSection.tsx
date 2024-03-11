@@ -23,7 +23,7 @@ export const HomeSection = () => {
                 </p>
                 <div className={'section_block2_fragment'}>
                     {data.map(item => (
-                        <Fragment key={item.id} description={item.description} title={item.title} icon={item.icon}/>
+                        <Fragment key={item.id} description={item.description} title={item.title} icon={item.icon} callback={item.callback}/>
                     ))}
                 </div>
             </div>
