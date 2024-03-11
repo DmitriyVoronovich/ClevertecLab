@@ -19,6 +19,8 @@ import {
 import {Loader} from "@components/loader/Loader.tsx";
 import {authGoogle} from "./utils/authGoogle.ts";
 import {MainPage} from "@pages/main-page/MainPage.tsx";
+import {getToken} from "../../common/utils/getToken.ts";
+import {CalendarPage} from "../../features/calendar/ui/calendarPage/CalendarPage.tsx";
 
 
 
@@ -37,7 +39,7 @@ function App() {
     useEffect(() => {
 
         if (!authState.isLoggedIn) {
-            const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken');
+            const token = getToken();
             if (token) {
                 dispatch(authActions.setAuthStatus({isLoggedIn: true}));
             }
@@ -53,6 +55,7 @@ function App() {
                 <Route path={'/'} element={<MainPage/>}>
                     <Route path='main' element={<HomePage/>}/>
                     <Route path='feedbacks' element={<FeedbacksPage/>}/>
+                    <Route path='calendar' element={<CalendarPage/>}/>
                 </Route>
                 <Route path='/auth/*' element={<LoginPage/>}>
                     <Route path='registration' element={<LoginPage/>}/>
