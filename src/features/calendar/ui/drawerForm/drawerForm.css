@@ -1,0 +1,94 @@
+.drawer_form_container {
+
+}
+
+.form_item {
+    margin-top: 24px;
+}
+
+.drawer_form_container .ant-form-item {
+    margin: 0;
+}
+
+.drawer_form_container input[type="text"] {
+    height: 24px;
+    margin: 0;
+}
+
+.exercise_train_container {
+    display: flex;
+    gap: 32px;
+    margin-top: 8px;
+}
+
+.exercise_approaches_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 120px;
+}
+
+.exercise_block_title {
+    text-align: start;
+    background-color: #F0F0F0;
+    padding: 8px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    color: #262626;
+}
+
+.exercise_weight_wrapper {
+    display: flex;
+    gap: 3px;
+}
+
+
+
+.drawer_form_container .ant-input-number{
+    height: 24px;
+    border-radius: 0;
+}
+
+.drawer_form_container .ant-input-number-group-addon{
+    height: 24px;
+    border-radius: 0;
+}
+
+.input_item {
+    min-height: 24px;
+}
+
+.input_item .ant-input-number-input{
+    height: 24px;
+}
+
+.exercise_weight {
+    width: 89px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.exercise_quantity {
+    width: 89px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.multiplication_sign {
+    color: #cacaca;
+    align-self: end;
+    padding-bottom: 7px;
+}
+
+.add_drawer_button {
+    margin-top: 24px;
+    border-radius: 0 0 6px 6px;
+    height: 40px;
+    background-color: #F0F0F0;
+    color: #2F54EB;
+    text-align: start;
+    border: none;
+}

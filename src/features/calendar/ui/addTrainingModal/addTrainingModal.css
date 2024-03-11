@@ -1,0 +1,67 @@
+.add_training_modal .ant-modal-content {
+    padding: 12.5px 0 0 0;
+}
+
+.add_training_header_wrapper {
+    padding: 0 12px 12.5px 12px;
+    display: flex;
+    gap: 5px;
+    border-bottom: 1px solid #E0E0E0;
+    align-items: center;
+}
+
+.add_training_header_wrapper .ant-select-selection-item {
+    text-transform: none;
+}
+
+.add_training_selector .ant-select-selector {
+    border-color: #FFFFFF;
+}
+
+.add_training_modal_list_wrapper {
+
+}
+
+.add_training_modal_none_list {
+    padding: 16px 12px;
+    height: 91px;
+}
+
+.add_training_modal .ant-modal-footer {
+    padding: 12px;
+    margin: 0;
+    border-top: 1px solid #E0E0E0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.add_training_modal_button {
+    margin: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    color: #262626;
+    border-radius: 2px;
+    height: 32px;
+}
+
+.add_training_modal .ant-modal-footer >.ant-btn+.ant-btn {
+    margin-inline-start: 0;
+}
+
+.add_training_modal .ant-btn-default:disabled {
+    background-color: #FFFFFF;
+    border: none;
+}
+
+.save_training_modal_button {
+    margin: 0;
+    width: 100%;
+    color: #2F54EB;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    height: 32px;
+    border: none;
+
+}
