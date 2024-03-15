@@ -17,7 +17,7 @@ type FeedbackFormProps = {
 export const FeedbackForm = (props: FeedbackFormProps) => {
     const dispatch = useAppDispatch();
     const review = useAppSelector((state) => state.feedback.review);
-    const [reviewData, setReviewData] = useState({review: review.message, rate: review.rating});
+    const [reviewData] = useState({review: review.message, rate: review.rating});
     const [disabled, setDisabled] = useState(review.rating === undefined || review.rating === 0);
 
     const onFinish = (values: any) => {

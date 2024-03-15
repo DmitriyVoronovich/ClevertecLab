@@ -2,6 +2,10 @@
     padding: 12.5px 0 0 0;
 }
 
+.add_training_modal {
+    margin: 0;
+}
+
 .add_training_header_wrapper {
     padding: 0 12px 12.5px 12px;
     display: flex;
@@ -18,8 +22,50 @@
     border-color: #FFFFFF;
 }
 
-.add_training_modal_list_wrapper {
+.add_training_modal .ant-modal-mask {
+    background: transparent;
+    pointer-events: none;
+}
+.add_training_modal .ant-modal-wrap {
+    pointer-events: none;
+}
+.add_training_modal .ant-modal {
+    pointer-events: all;
+}
 
+.edit_svg_disabled svg{
+    fill: #BFBFBF;
+}
+
+.edit_svg svg{
+    fill: #2F54EB;
+}
+
+.add_training_modal_list_wrapper {
+    min-height: 128px;
+    padding: 0 12px 0;
+
+}
+
+.add_training_modal_list {
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.add_training_modal_title {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: #8C8C8C;
+}
+
+.add_training_modal_list_item {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .add_training_modal_none_list {
@@ -46,7 +92,7 @@
     height: 32px;
 }
 
-.add_training_modal .ant-modal-footer >.ant-btn+.ant-btn {
+.add_training_modal .ant-modal-footer > .ant-btn + .ant-btn {
     margin-inline-start: 0;
 }
 

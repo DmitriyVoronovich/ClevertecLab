@@ -1,20 +1,128 @@
-.ant-picker-calendar {
+.full_calendar .ant-picker-calendar {
     padding: 24px;
     background: #F0F5FF;
 }
 
-.ant-picker-calendar .ant-picker-calendar-header {
+.full_calendar td{
+    min-height: 143px;
+    overflow-y: hidden;
+}
+
+.full_calendar .ant-picker-calendar-date-content {
+    min-height: 143px;
+    overflow-y: hidden;
+}
+
+
+.full_calendar .ant-picker-calendar .ant-picker-calendar-date-content {
+    padding: 0;
+    overflow-y: hidden;
+}
+
+.full_calendar .calendar_list {
+    padding: 0;
+    margin: 0;
+}
+
+.full_calendar .calendar_list_item {
+    list-style-type: none;
+}
+
+.full_calendar .ant-picker-calendar .ant-picker-calendar-header {
     padding: 0 0 12px 0;
 }
 
-.ant-picker-body {
+.full_calendar .ant-picker-body {
     background: #F0F5FF;
 }
 
-.ant-picker-cell-inner {
+.full_calendar .ant-picker-cell-inner {
     background: #FFFFFF;
 }
 
-.ant-select-selection-item {
+.full_calendar .ant-select-selection-item {
+    text-transform: capitalize;
+}
+
+
+.calendar {
+    padding: 0 24px 16px;
+    background: #F0F5FF;
+    min-height: 348px;
+}
+
+.calendar .calendar_list{
+    display: none;
+}
+
+.calendar .ant-picker-calendar {
+    padding: 12px 0 0 0;
+    width: 312px;
+    height: 266px;
+}
+
+.calendar .ant-picker-calendar .ant-picker-calendar-date-content {
+    padding: 0;
+    overflow-y: hidden;
+}
+
+
+.calendar .ant-picker-calendar-header {
+    padding: 12px 8px;
+    height: 44px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: end;
+}
+
+.calendar .ant-select-selector {
+    padding: 0;
+}
+
+.calendar .calendar_list {
+    padding: 0;
+    margin: 0;
+}
+
+.calendar .ant-picker-cell-in-view {
+    width: 37px;
+    height: 24px;
+}
+
+.calendar .ant-picker-cell {
+    width: 37px;
+    height: 24px;
+}
+
+.calendar .calendar_list_item {
+    list-style-type: none;
+}
+
+.calendar .ant-radio-button-wrapper {
+    margin: 0;
+    width: max-content;
+}
+
+.calendar .ant-picker-calendar .ant-picker-calendar-header .ant-picker-calendar-mode-switch  {
+    margin: 0;
+    width: auto;
+}
+
+.calendar .ant-picker-cell {
+    height: 24px;
+}
+
+.calendar .ant-picker-cell .ant-picker-calendar-date-value {
+    background: #FFFFFF;
+    width: 37px;
+    height: 24px;
+    color: #262626;
+}
+.calendar .ant-picker-cell .ant-picker-cell-in-view {
+    padding: 0;
+    margin: 0;
+}
+.calendar .ant-select-selection-item {
     text-transform: capitalize;
 }

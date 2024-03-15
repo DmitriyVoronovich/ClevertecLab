@@ -1,46 +1,18 @@
-
-import type { Dayjs } from 'dayjs';
-import {BadgeProps, CalendarProps} from 'antd';
-import {Badge, Calendar} from 'antd';
+import type {Dayjs} from 'dayjs';
+import dayjs from 'dayjs'
+import {Calendar, CalendarProps} from 'antd';
 import './calendarSection.css';
 import locale from "antd/es/date-picker/locale/ru_RU";
 import 'dayjs/locale/ru'
-import dayjs from 'dayjs'
-// import {TrainingModal} from "../trainingModal/TrainingModal.tsx";
-// import {AddTrainingModal} from "../addTrainingModal/AddTrainingModal.tsx";
-import {DrawerModal} from "../drawerModal/DrawerModal.tsx";
+import {TrainingModal} from "../trainingModal/TrainingModal.tsx";
+import  {useRef, useState} from "react";
+import {SelectInfo} from "antd/es/calendar/generateCalendar";
+import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
+import Badge from "antd/lib/badge";
+import {formateDate} from "../drawerModal/utils/formateDate.ts";
+import {setSearchExercises, TrainingParams} from "../../model/calendarSlice.ts";
 
 dayjs.locale('ru')
-const getListData = (value: Dayjs) => {
-    let listData;
-    switch (value.date()) {
-        case 8:
-            listData = [
-                { type: 'warning', content: 'This is warning event.' },
-                { type: 'success', content: 'This is usual event.' },
-            ];
-            break;
-        case 10:
-            listData = [
-                { type: 'warning', content: 'This is warning event.' },
-                { type: 'success', content: 'This is usual event.' },
-                { type: 'error', content: 'This is error event.' },
-            ];
-            break;
-        case 15:
-            listData = [
-                { type: 'warning', content: 'This is warning event' },
-                { type: 'success', content: 'This is very long usual event......' },
-                { type: 'error', content: 'This is error event 1.' },
-                { type: 'error', content: 'This is error event 2.' },
-                { type: 'error', content: 'This is error event 3.' },
-                { type: 'error', content: 'This is error event 4.' },
-            ];
-            break;
-        default:
-    }
-    return listData || [];
-};
 
 const getMonthData = (value: Dayjs) => {
     if (value.month() === 8) {
@@ -49,25 +21,79 @@ const getMonthData = (value: Dayjs) => {
 };
 
 export const CalendarSection = () => {
+    const dispatch = useAppDispatch();
+    const training = useAppSelector(state => state.calendar.training)
+    const trainingList = useAppSelector(state => state.calendar.trainingList)
+    const [visible, setVisible] = useState(false);
+    const [modalStyle, setModalStyle] = useState({left: 0, top: 0});
+    const [date, setDate] = useState('');
+
+    const ref = useRef<HTMLDivElement>(document.createElement("div"));
+
+    const onClose = () => {
+        setVisible(false)
+    }
+
     const monthCellRender = (value: Dayjs) => {
         const num = getMonthData(value);
         return num ? (
             <div className="notes-month">
-                <section>{num}</section>
-                <span>Backlog number</span>
+
             </div>
         ) : null;
     };
 
+    const selectedRect = (selectedDate: Dayjs) => {
+        const selectedValue = selectedDate.format('YYYY-MM-DD');
+        return ref.current.querySelector(`td[title="${selectedValue}"]`)?.getBoundingClientRect();
+    };
+
+    const onSearchForExercises = (array: any, searchDate: string) => {
+       const searchExercises = array.filter((item: any) => formateDate(item.date) === searchDate);
+       dispatch(setSearchExercises({searchExercises}))
+    };
+
+    const screenWidth = window.innerWidth;
+    const onSelected = (selectedDate: Dayjs, selectInfo: SelectInfo) => {
+        const rect = selectedRect(selectedDate);
+        onSearchForExercises(training, selectedDate.format('DD.MM.YYYY'))
+
+        if (selectInfo.source === "date" && rect) {
+            setDate(selectedDate.format('YYYY-MM-DDTHH:mm:ss.SSS[Z]'))
+
+            if (screenWidth < rect.x + 264) {
+                setModalStyle({left: rect.right - 264, top: rect.top});
+            } else {
+                setModalStyle({left: rect.left, top: rect.top});
+            }
+            setVisible(true);
+        }
+    }
+    const getListData = (value: Dayjs) => {
+        const listData: TrainingParams[] = [];
+        training.forEach((item) => {
+            if (value.format('DD.MM.YYYY') === formateDate(item.date)) {
+                listData.push(item);
+            }
+        });
+        return listData;
+    };
+
     const dateCellRender = (value: Dayjs) => {
         const listData = getListData(value);
+
         return (
-            <ul className="events">
-                {listData.map((item) => (
-                    <li key={item.content}>
-                        <Badge status={item.type as BadgeProps['status']} text={item.content} />
-                    </li>
-                ))}
+            <ul className="calendar_list">
+                {listData.map((item) => {
+                    const color = trainingList.find(element => element.name === item.name)
+                    return (<li key={item._id} className={'calendar_list_item'}>
+                        <Badge color={color?.color} text={item.name} style={{
+                            fontWeight: '400',
+                            fontSize: '12px',
+                            lineHeight: '130%'
+                        }}/>
+                    </li>)
+                })}
             </ul>
         );
     };
@@ -79,12 +105,14 @@ export const CalendarSection = () => {
     };
 
     return (
-        <>
-            <Calendar cellRender={cellRender} locale={locale}/>
-            {/*<TrainingModal/>*/}
-            {/*<AddTrainingModal/>*/}
-            <DrawerModal/>
-        </>
+        <div ref={ref} className={screenWidth < 361 ? "calendar" : 'full_calendar'}>
+            {screenWidth < 361
+                ? <Calendar cellRender={cellRender} locale={locale} onSelect={onSelected}
+                       fullscreen={false}/>
+                :  <Calendar cellRender={cellRender} locale={locale} onSelect={onSelected} />}
+            {visible && <TrainingModal modalStyle={modalStyle} onClose={onClose}
+                            date={date}/>}
+        </div>
 
     );
 };

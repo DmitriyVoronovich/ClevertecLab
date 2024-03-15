@@ -28,7 +28,7 @@ export const TokenRequestError:React.FC<TokenRequestErrorProps> = (props) => {
 
 
     return (
-            <Modal className={'error_request_container'} open={isModalOpen} closable={false} footer={null} >
+            <Modal className={'error_request_container'} open={isModalOpen} closable={false} footer={null} data-test-id='modal-no-review'>
                 <div className={'error_request_wrapper'}>
                     <img className={'error_request_img'} alt={'error'} src={error}/>
                     <h5 className={'error_title'}>Что-то пошло не так</h5>

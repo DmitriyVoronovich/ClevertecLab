@@ -1,4 +1,5 @@
 import {instance} from "../../../common/api";
+import {PostTrainingParams, TrainingParams} from "../model/calendarSlice.ts";
 
 export const calendarApi = {
     getTraining() {
@@ -7,5 +8,11 @@ export const calendarApi = {
     getTrainingList() {
         return instance.get('catalogs/training-list')
     },
+    setTraining(training: PostTrainingParams) {
+        return instance.post('training', training)
+    },
+    editTraining(training:TrainingParams, trainingId: string) {
+        return instance.put(`training/${trainingId}`, training)
+    }
 
 };

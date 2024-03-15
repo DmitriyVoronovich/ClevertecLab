@@ -4,6 +4,7 @@ import './errorModal.css'
 import React, {useEffect, useState} from "react";
 import {calendarThunks, setTrainingStatus} from "../../model/calendarSlice.ts";
 import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
+import {CloseOutlined} from "@ant-design/icons";
 
 
 export const ErrorModal: React.FC = () => {
@@ -30,14 +31,14 @@ export const ErrorModal: React.FC = () => {
 
     return (
         <Modal open={isModalOpen} footer={null} className={'calendar_error_modal_container'}
-               onCancel={onCancel} centered style={{width: '384px'}}>
+               onCancel={onCancel} centered style={{width: '384px'}}  closeIcon={<CloseOutlined data-test-id='modal-error-user-training-button-close'/>}>
             <img src={error} alt={'error'} className={'calendar_error_img'}/>
             <div className={'calendar_error_wrapper_text'}>
-                <h4 className={'calendar_error_text_title'}>При открытии данных произошла
+                <h4 className={'calendar_error_text_title'} data-test-id='modal-error-user-training-title'>При открытии данных произошла
                     ошибка.</h4>
-                <p className={'calendar_error_text'}>Попробуйте еще раз.</p>
+                <p className={'calendar_error_text'} data-test-id='modal-error-user-training-subtitle'>Попробуйте ещё раз.</p>
             </div>
-            <Button className={'calendar_error_button'} onClick={onCancelModal}>Обновить</Button>
+            <Button className={'calendar_error_button'} onClick={onCancelModal} data-test-id='modal-error-user-training-button'>Обновить</Button>
         </Modal>
     );
 };

@@ -1,67 +1,162 @@
-import {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button, Modal, Select} from "antd";
-import {ArrowLeftOutlined} from "@ant-design/icons";
-import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
+import {ArrowLeftOutlined, EditOutlined, EditTwoTone} from "@ant-design/icons";
+import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
 import './addTrainingModal.css';
+import Badge from "antd/lib/badge";
+import {DrawerModal} from "../drawerModal/DrawerModal.tsx";
+import {calendarThunks, TrainExercises} from "../../model/calendarSlice.ts";
+import {AddErrorModal} from "../addErrorModal/AddErrorModal.tsx";
 
-export const AddTrainingModal = () => {
-    const trainingList = useAppSelector(state => state.calendar.trainingList)
-    const [open, setOpen] = useState(true);
+type AddTrainingModal = {
 
-    const arr = []
+    onCloseAddModal: () => void
+    modalStyle: {
+        left: number
+        top: number
+    }
+    date: string
+    onClose: () => void
+    addButtonBlock: boolean
+}
+
+export const AddTrainingModal: React.FC<AddTrainingModal> = (props) => {
+    const { date, onCloseAddModal, modalStyle, onClose, addButtonBlock} = props;
+    const dispatch = useAppDispatch();
+    const searchExercises = useAppSelector(state => state.calendar.searchExercises);
+    const addTrainingStatus = useAppSelector(state => state.calendar.addTrainingStatus);
+    const trainingList = useAppSelector(state => state.calendar.trainingList);
+    const [openDrawerModal, setOpenDrawerModal] = useState(false);
+    const [selectTrain, setSelectTrain] = useState('Выбор типа тренировки');
+    const [trainExercise, setTrainExercise] = useState<TrainExercises[]>([{}]);
+
+
+    const screenWidth = window.innerWidth;
+    let list
+    if (searchExercises) {
+        const array = searchExercises.map(item => item.name)
+        list = trainingList.filter((item) => !array.includes(item.name))
+    }
+
+    useEffect(() => {
+        if (addTrainingStatus === 'success') {
+            setTrainExercise([])
+            setSelectTrain('Выбор типа тренировки')
+            onCloseAddModal();
+        }
+    }, [addTrainingStatus])
+
 
     const handleOk = () => {
-        setTimeout(() => {
-            setOpen(false);
-        }, 3000);
+        setOpenDrawerModal(true)
     };
 
-    // const handleCancel = () => {
-    //     setOpen(false);
-    // };
 
     const handleChange = (value: string) => {
-        console.log(`selected ${value}`);
+        setSelectTrain(value)
+        setTrainExercise([])
+    };
+
+    const handleSave = () => {
+        const trainName = trainingList.find((item) => item.key === selectTrain)
+
+        const trainArg = {
+            name: trainName?.name || '',
+            date: date,
+            isImplementation: false,
+            parameters: {
+                repeat: false,
+                period: 1,
+                jointTraining: false,
+                participants: []
+            },
+            exercises: trainExercise
+        }
+        dispatch(calendarThunks.addTraining(trainArg))
+    };
+
+    const handleCancel = () => {
+        onCloseAddModal();
+        setSelectTrain('Выбор типа тренировки')
+    };
+
+    const onDrawerModalClose = () => {
+        setOpenDrawerModal(false)
+    };
+
+    const onAddTrainExercise = (train: TrainExercises[]) => {
+        setTrainExercise(train)
     };
 
     return (
-        <Modal
-            className={'add_training_modal'}
-            open={open}
-            onOk={handleOk}
-            // onCancel={handleCancel}
-            width={264}
-            mask={false}
-            closable={false}
-            footer={[
-                <Button key="submit" type="default" onClick={handleOk}
-                        className={'add_training_modal_button'}>
-                    Добавить упражнение
-                </Button>,
-                <Button  type="default" onClick={handleOk} disabled={true}
-                        className={'save_training_modal_button'}>
-                    Сохранить
-                </Button>
-            ]}
-        >
-            <div className={'add_training_header_wrapper'}>
-                <ArrowLeftOutlined style={{width: '14px', height: '14px'}}/>
-                <Select
-                    className={'add_training_selector'}
-                    defaultValue={'Выбор типа тренировки'}
-                    onChange={handleChange}
-                    style={{width: '100%'}}
-                    options={trainingList.map((item) => ({
-                        value: item.key,
-                        label: item.name,
-                    }))}
-                />
+        <>
+            <Modal
+                data-test-id='modal-create-exercise'
+                className={'add_training_modal'}
+                open={true}
+                width={264}
+                mask={false}
+                maskClosable={false}
+                closable={false}
+                style={screenWidth>361 ?modalStyle : {}}
+                footer={[
+                    <Button key="save" type="default" onClick={handleOk}
+                            className={'add_training_modal_button'}
+                            disabled={selectTrain === 'Выбор типа тренировки'}>
+                        Добавить упражнения
+                    </Button>,
+                    <Button key="submit" type="default" onClick={handleSave}
+                            disabled={trainExercise.length === 0}
+                            className={'save_training_modal_button'}
+                            loading={addTrainingStatus === 'loading'}>
+                        Сохранить
+                    </Button>
+                ]}
+            >
+                <div className={'add_training_header_wrapper'}>
+                    <ArrowLeftOutlined style={{width: '14px', height: '14px'}}
+                                       onClick={handleCancel} data-test-id='modal-exercise-training-button-close'/>
+                    <Select
+                        data-test-id='modal-create-exercise-select'
+                        className={'add_training_selector'}
+                        value={selectTrain}
+                        onChange={handleChange}
+                        style={{width: '100%'}}
+                        options={list?.map((item) => ({
+                            value: item.key,
+                            label: <Badge color={item.color} text={item.name} style={{
+                                fontWeight: '500',
+                                fontSize: '14px',
+                                lineHeight: '130%'
+                            }}/>
+                        }))}
+                    />
 
-            </div>
-            <div className={'add_training_modal_list_wrapper'}>
-                {arr.length === 0 ?
-                    <div className={'add_training_modal_none_list'}></div> : <ul></ul>}
-            </div>
-        </Modal>
+                </div>
+                <div className={'add_training_modal_list_wrapper'}>
+                    {!trainExercise.length || !Object.keys(trainExercise[0]).length ?
+                        <div className={'add_training_modal_none_list'}></div>
+                        : <ul className={'add_training_modal_list'}>
+                            {trainExercise.map((item) => {
+                                return (
+                                    <li key={item._id} className={'add_training_modal_list_item'}>
+                                        <div
+                                            className={'add_training_modal_title'}>{item.name}</div>
+                                        <EditOutlined className={addButtonBlock ? 'edit_svg_disabled' : 'edit_svg'}/>
+                                    </li>
+                                )
+                            })
+                            }
+                        </ul>}
+                </div>
+            </Modal>
+            {openDrawerModal && <DrawerModal
+                          onDrawerModalClose={onDrawerModalClose}
+                          selectTrain={selectTrain}
+                          date={date}
+                          onAddTrainExercise={onAddTrainExercise}
+                          trainExercise={trainExercise}/>}
+        </>
+
     );
 };

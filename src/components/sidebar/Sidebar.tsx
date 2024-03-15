@@ -28,7 +28,7 @@ export const Sidebar:React.FC<SidebarProps> = (props) => {
         };
 
         return (
-            <div className={'sidebar_menu_item'} key={item.id} onClick={onClickHandler}>
+            <div className={'sidebar_menu_item'} key={item.id} onClick={onClickHandler} data-test-id={item.dataId}>
                 <img src={item.icon} alt={'menu icon'} className={'sidebar_item_icon'}/>
                 <span className={`${open ? 'sidebar_item_title' : 'sidebar_item_title close'}`}>{item.title}</span>
             </div>

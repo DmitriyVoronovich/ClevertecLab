@@ -25,7 +25,7 @@ export const ErrorChangePassword = () => {
                 <div className={'change_error_wrapper'}>
                     <img className={'change_error_img'} alt={'change_error'} src={error}/>
                     <h5 className={'change_error_title'}>Данные не сохранились</h5>
-                    <p className={'change_error_description'}>Что-то пошло не так. Попробуйте еще
+                    <p className={'change_error_description'}>Что-то пошло не так. Попробуйте ещё
                         раз</p>
                     <Button data-test-id='change-retry-button' type="primary"
                             className={'change_error_button'}
