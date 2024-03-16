@@ -147,7 +147,6 @@ const editTraining = createAppAsyncThunk<{
         try {
             const res = await calendarApi.editTraining(arg.training, arg.trainingId);
             if (res.status === 200) {
-                debugger
                 dispatch(editSearchExercises({searchExercise: arg.training}))
                 dispatch(setAddTrainingStatus({addTrainingStatus: 'success'}))
                 dispatch(calendarThunks.training());

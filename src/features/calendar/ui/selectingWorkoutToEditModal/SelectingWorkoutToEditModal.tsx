@@ -6,7 +6,6 @@ import '../addTrainingModal/addTrainingModal.css';
 import Badge from "antd/lib/badge";
 import {DrawerModal} from "../drawerModal/DrawerModal.tsx";
 import {calendarThunks, TrainExercises, TrainingParams} from "../../model/calendarSlice.ts";
-import {AddErrorModal} from "../addErrorModal/AddErrorModal.tsx";
 import {
     SelectingWorkoutToEditDrawerModal
 } from "../selectingWorkoutToEditDrawerModal/SelectingWorkoutToEditDrawerModal.tsx";
@@ -139,7 +138,7 @@ export const SelectingWorkoutToEditModal: React.FC<SelectingWorkoutToEditModalPr
                 mask={false}
                 maskClosable={false}
                 closable={false}
-                style={screenWidth>361 ? modalStyle : {top: '25%'}}
+                style={screenWidth > 361 ? modalStyle : {top: '25%'}}
                 footer={[
                     <Button key="save" type="default" onClick={handleOk}
                             className={'add_training_modal_button'}
