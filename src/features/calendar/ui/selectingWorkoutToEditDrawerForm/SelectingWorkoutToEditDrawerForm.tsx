@@ -22,6 +22,7 @@ type ExerciseItem = {
 export const SelectingWorkoutToEditDrawerForm = (props: SelectingWorkoutToEditDrawerFormProps) => {
     const [form] = Form.useForm();
     const [componentDisabled, setComponentDisabled] = useState<boolean>(true);
+    const [checkboxes, setCheckboxes] = useState([]);
 
     const initialValues = { exercise: props.trainExercise.length
             ? props.trainExercise.map(item => ({ ...item, checkbox: false }))  : [{}]}
@@ -46,6 +47,13 @@ export const SelectingWorkoutToEditDrawerForm = (props: SelectingWorkoutToEditDr
         form.setFieldsValue({exercise: editedExercises})
     }
 
+
+    const handleCheckboxChange = (e, name) => {
+        const checked = e.target.checked;
+        setCheckboxes({...checkboxes, [name]: checked});
+    };
+
+    const someCheckbox = Object.values(checkboxes).some(value => value);
     return (
         <Form
             form={form}
@@ -55,7 +63,7 @@ export const SelectingWorkoutToEditDrawerForm = (props: SelectingWorkoutToEditDr
             autoComplete="off"
             className={'drawer_form_container'}
             initialValues={initialValues}
-            onValuesChange={onChange}
+
         >
             <Form.List name="exercise">
                 {(fields, { add }) => (
@@ -69,6 +77,7 @@ export const SelectingWorkoutToEditDrawerForm = (props: SelectingWorkoutToEditDr
                                         className={'input_name_exercise'}
                                     >
                                         <Input placeholder="Упражнение"
+                                               autoFocus
                                                data-test-id={`modal-drawer-right-input-exercise${index}`}
                                                className={'input_name_exercise'} addonAfter={
                                             <Form.Item
@@ -78,7 +87,8 @@ export const SelectingWorkoutToEditDrawerForm = (props: SelectingWorkoutToEditDr
                                            valuePropName="checked"
                                         >
                                             <Checkbox className={'input_checkbox_exercise'}
-                                                      data-test-id={`modal-drawer-right-checkbox-exercise${index}`}/>
+                                                      data-test-id={`modal-drawer-right-checkbox-exercise${index}`}
+                                            onChange={handleCheckboxChange}/>
                                         </Form.Item>}/>
                                     </Form.Item>
                                 </div>
@@ -135,7 +145,7 @@ export const SelectingWorkoutToEditDrawerForm = (props: SelectingWorkoutToEditDr
                                 <Button type="dashed" onClick={() => add({checkbox: false})} block icon={<PlusOutlined />} className={'add_drawer_button'}>
                                     Добавить ещё
                                 </Button>
-                                <Button type="dashed"  block icon={<MinusOutlined />} onClick={removeValue} className={'delete_drawer_button'} disabled={componentDisabled}>
+                                <Button type="dashed"  block icon={<MinusOutlined />} onClick={removeValue} className={'delete_drawer_button'} disabled={!someCheckbox}>
                                     Удалить
                                 </Button>
                             </div>
