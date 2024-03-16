@@ -81,7 +81,7 @@ export const TrainingModal = (props: TrainingModalProps) => {
                 className={'training_modal'}
                 open={true}
                 onCancel={handleCancel}
-                width={screenWidth< 361 ? 312 : 264}
+                width={screenWidth < 361 ? 312 : 264}
                 mask={false}
                 maskClosable={false}
                 style={screenWidth > 361 ? props.modalStyle : {top: '25%'}}
@@ -113,11 +113,12 @@ export const TrainingModal = (props: TrainingModalProps) => {
                                     }}
                                            className={item.isImplementation ? 'title_disabled' : 'title'}/>
                                     <button className={'edit_button'}
-                                        data-test-id={`modal-update-training-edit-button${index}`}
-                                        disabled={item.isImplementation}
-                                        onClick={item.isImplementation ? (e) => e.preventDefault() : () => onChooseWorkout(item)}
+                                            data-test-id={`modal-update-training-edit-button${index}`}
+                                            disabled={item.isImplementation}
+                                            onClick={item.isImplementation ? (e) => e.preventDefault() : () => onChooseWorkout(item)}
                                     >
-                                        <EditOutlined className={item.isImplementation ? 'edit_svg_disabled' : 'edit_svg'}/>
+                                        <EditOutlined
+                                            className={item.isImplementation ? 'edit_svg_disabled' : 'edit_svg'}/>
                                     </button>
                                 </li>)
                             })}
