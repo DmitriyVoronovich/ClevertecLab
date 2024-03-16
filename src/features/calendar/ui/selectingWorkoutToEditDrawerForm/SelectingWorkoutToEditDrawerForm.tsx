@@ -21,7 +21,6 @@ type ExerciseItem = {
 
 export const SelectingWorkoutToEditDrawerForm = (props: SelectingWorkoutToEditDrawerFormProps) => {
     const [form] = Form.useForm();
-    const [componentDisabled, setComponentDisabled] = useState<boolean>(true);
     const [checkboxes, setCheckboxes] = useState([]);
 
     const initialValues = { exercise: props.trainExercise.length
@@ -34,13 +33,6 @@ export const SelectingWorkoutToEditDrawerForm = (props: SelectingWorkoutToEditDr
     useEffect(() => {
         props.setFormSubmit(form);
     }, [form, props.setFormSubmit]);
-
-    const onChange = (_changedValues: any, allValues: any) => {
-        const isRemoveButtonDisabled = !!allValues.exercise.find((item: ExerciseItem) => item?.checkbox);
-        if (isRemoveButtonDisabled === componentDisabled) {
-            setComponentDisabled(!isRemoveButtonDisabled)
-        }
-    };
 
     const removeValue = () => {
         const editedExercises = form.getFieldsValue()?.exercise?.filter((item: ExerciseItem) => !item.checkbox)
