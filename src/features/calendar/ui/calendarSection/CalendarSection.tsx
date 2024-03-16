@@ -5,7 +5,7 @@ import './calendarSection.css';
 import locale from "antd/es/date-picker/locale/ru_RU";
 import 'dayjs/locale/ru'
 import {TrainingModal} from "../trainingModal/TrainingModal.tsx";
-import  {useRef, useState} from "react";
+import {useRef, useState} from "react";
 import {SelectInfo} from "antd/es/calendar/generateCalendar";
 import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
 import Badge from "antd/lib/badge";
@@ -49,8 +49,8 @@ export const CalendarSection = () => {
     };
 
     const onSearchForExercises = (array: any, searchDate: string) => {
-       const searchExercises = array.filter((item: any) => formateDate(item.date) === searchDate);
-       dispatch(setSearchExercises({searchExercises}))
+        const searchExercises = array.filter((item: any) => formateDate(item.date) === searchDate);
+        dispatch(setSearchExercises({searchExercises}))
     };
 
     const screenWidth = window.innerWidth;
@@ -83,20 +83,20 @@ export const CalendarSection = () => {
         const listData = getListData(value);
 
         return (
-            <ul className="calendar_list">
-                {listData.map((item) => {
-                    const color = trainingList.find(element => element.name === item.name)
-                    return (<li key={item._id} className={'calendar_list_item'}>
-                        <Badge color={color?.color} text={item.name} style={{
-                            fontWeight: '400',
-                            fontSize: '12px',
-                            lineHeight: '130%'
-                        }}/>
-                    </li>)
-                })}
-            </ul>
-        );
-    };
+                <ul className="calendar_list">
+                    {listData.map((item) => {
+                        const color = trainingList.find(element => element.name === item.name)
+                        return (<li key={item._id} className={'calendar_list_item'}>
+                            <Badge color={color?.color} text={item.name} style={{
+                                fontWeight: '400',
+                                fontSize: '12px',
+                                lineHeight: '130%'
+                            }}/>
+                        </li>)
+                    })}
+                </ul>
+                );
+            };
 
     const cellRender: CalendarProps<Dayjs>['cellRender'] = (current, info) => {
         if (info.type === 'date') return dateCellRender(current);
@@ -108,10 +108,10 @@ export const CalendarSection = () => {
         <div ref={ref} className={screenWidth < 361 ? "calendar" : 'full_calendar'}>
             {screenWidth < 361
                 ? <Calendar cellRender={cellRender} locale={locale} onSelect={onSelected}
-                       fullscreen={false}/>
-                :  <Calendar cellRender={cellRender} locale={locale} onSelect={onSelected} />}
+                            fullscreen={false}/>
+                : <Calendar cellRender={cellRender} locale={locale} onSelect={onSelected}/>}
             {visible && <TrainingModal modalStyle={modalStyle} onClose={onClose}
-                            date={date}/>}
+                                       date={date}/>}
         </div>
 
     );

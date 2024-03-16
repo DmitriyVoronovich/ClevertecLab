@@ -70,7 +70,7 @@
 
 .add_training_modal_none_list {
     padding: 16px 12px;
-    height: 91px;
+    min-height: 91px;
 }
 
 .add_training_modal .ant-modal-footer {
@@ -110,4 +110,24 @@
     height: 32px;
     border: none;
 
+}
+
+@media screen and (max-width: 361px) {
+
+    .add_training_modal_list_wrapper {
+        min-height: 81px;
+        padding: 12px;
+    }
+    .add_training_modal_none_list {
+        min-height: 91px;
+        padding: 0 12px;
+    }
+
+    .add_training_modal_button {
+        height: 32px;
+    }
+
+    .save_training_modal_button {
+        height: 32px;
+    }
 }

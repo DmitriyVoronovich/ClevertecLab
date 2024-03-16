@@ -56,3 +56,14 @@
     width: 99px;
     align-self: end;
 }
+
+@media screen and (max-width: 361px) {
+    .calendar_error_modal_container .ant-modal{
+        width: 344px;
+    }
+
+    .calendar_error_modal_container .ant-modal-content {
+        width: 344px;
+    }
+
+}

@@ -135,11 +135,11 @@ export const SelectingWorkoutToEditModal: React.FC<SelectingWorkoutToEditModalPr
                 data-test-id='modal-create-exercise'
                 className={'add_training_modal'}
                 open={true}
-                width={264}
+                width={screenWidth < 361 ? 312 : 264}
                 mask={false}
                 maskClosable={false}
                 closable={false}
-                style={screenWidth > 361 ? modalStyle : {}}
+                style={screenWidth>361 ? modalStyle : {top: '25%'}}
                 footer={[
                     <Button key="save" type="default" onClick={handleOk}
                             className={'add_training_modal_button'}

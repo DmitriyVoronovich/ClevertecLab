@@ -81,10 +81,10 @@ export const TrainingModal = (props: TrainingModalProps) => {
                 className={'training_modal'}
                 open={true}
                 onCancel={handleCancel}
-                width={264}
+                width={screenWidth< 361 ? 312 : 264}
                 mask={false}
                 maskClosable={false}
-                style={screenWidth > 361 ? props.modalStyle : {}}
+                style={screenWidth > 361 ? props.modalStyle : {top: '25%'}}
                 footer={[
                     <Button key="submit" type="primary" onClick={handleOk}
                             className={'training_modal_button'} disabled={addButtonBlock}>
@@ -112,13 +112,13 @@ export const TrainingModal = (props: TrainingModalProps) => {
                                         lineHeight: '130%',
                                     }}
                                            className={item.isImplementation ? 'title_disabled' : 'title'}/>
-                                    <Button icon={<EditOutlined/>}
-                                        className={item.isImplementation ? 'edit_svg_disabled' : 'edit_svg'}
+                                    <button className={'edit_button'}
                                         data-test-id={`modal-update-training-edit-button${index}`}
                                         disabled={item.isImplementation}
                                         onClick={item.isImplementation ? (e) => e.preventDefault() : () => onChooseWorkout(item)}
-                                    />
-
+                                    >
+                                        <EditOutlined className={item.isImplementation ? 'edit_svg_disabled' : 'edit_svg'}/>
+                                    </button>
                                 </li>)
                             })}
                         </ul>

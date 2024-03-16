@@ -121,6 +121,13 @@
         left: 0;
     }
 
+    .sidebar_logo_container {
+        width: 72px;
+        height: 18px;
+        padding-top: 14px;
+        margin: 0 auto;
+    }
+
     .close_menu {
         left: -106px;
     }

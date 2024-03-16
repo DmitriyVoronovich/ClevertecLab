@@ -58,7 +58,7 @@
     color: #262626;
 }
 
-.title_disabled  span{
+.title_disabled span {
     color: #BFBFBF;
     opacity: 0.5;
 }
@@ -106,8 +106,33 @@
     margin: 0 auto;
 }
 
+.edit_button {
+    border: none;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    height: 18px;
+    padding: 0;
+}
+
 .training_modal .ant-modal-footer {
     padding: 12px;
     margin: 0;
     border-top: 1px solid #E0E0E0;
+}
+
+@media screen and (max-width: 361px) {
+
+    .training_modal .ant-modal-content {
+        padding: 16px 0 0 0;
+        z-index: 9900;
+    }
+
+    .training_modal_list_wrapper {
+        min-height: 64px;
+        padding: 10px;
+    }
+
+    .training_modal_icon {
+        margin: 0 auto;
+    }
 }

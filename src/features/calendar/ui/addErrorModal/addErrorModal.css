@@ -62,3 +62,17 @@
     align-self: end;
     margin-top: 24px;
 }
+
+@media screen and (max-width: 361px) {
+    .add_error_modal_container .ant-modal{
+        width: 332px;
+    }
+
+    .add_error_modal_container .ant-modal-content {
+        border-radius: 4px;
+        padding: 12px 12px 12px 12px;
+        width: 344px;
+        display: flex;
+
+    }
+}
