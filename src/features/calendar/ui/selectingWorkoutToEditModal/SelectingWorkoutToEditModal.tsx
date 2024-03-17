@@ -64,11 +64,11 @@ export const SelectingWorkoutToEditModal: React.FC<SelectingWorkoutToEditModalPr
     };
 
     const handleSave = () => {
-
+        const str = 'Прыжки с нагрузкой'
         if (selectTrain === selectedTrainingItem?.name) {
 
             const trainArg = {
-                name: separateWorkout?.name || '',
+                name: str.includes(separateWorkout?.name) ? str : separateWorkout?.name,
                 date: date,
                 isImplementation: !!addButtonBlock,
                 parameters: {
