@@ -123,13 +123,9 @@
     display: flex;
 }
 
-
-.ant-modal{
-    &>div:first-child {
-        &[aria-hidden="true"] {
-            display: none;
-        }
-    }
+.input_group {
+    display: flex;
+    width: 100%;
 }
 
 @media screen and (max-width: 361px){

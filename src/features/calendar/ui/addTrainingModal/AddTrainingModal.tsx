@@ -19,6 +19,22 @@ type AddTrainingModal = {
     addButtonBlock: boolean
 }
 
+function extracted(trainName, date, trainExercise: TrainExercises[], dispatch: Dispatch<UnknownAction>) {
+    const trainArg = {
+        name: trainName?.name || '',
+        date: date,
+        isImplementation: false,
+        parameters: {
+            repeat: false,
+            period: 1,
+            jointTraining: false,
+            participants: []
+        },
+        exercises: trainExercise
+    }
+    dispatch(calendarThunks.addTraining(trainArg))
+}
+
 export const AddTrainingModal: React.FC<AddTrainingModal> = (props) => {
     const { date, onCloseAddModal, modalStyle, addButtonBlock} = props;
     const dispatch = useAppDispatch();
@@ -46,9 +62,7 @@ export const AddTrainingModal: React.FC<AddTrainingModal> = (props) => {
     }, [addTrainingStatus])
 
 
-    const handleOk = () => {
-        setOpenDrawerModal(true)
-    };
+    const handleOk = () => setOpenDrawerModal(true);
 
 
     const handleChange = (value: string) => {
@@ -59,19 +73,7 @@ export const AddTrainingModal: React.FC<AddTrainingModal> = (props) => {
     const handleSave = () => {
         const trainName = trainingList.find((item) => item.key === selectTrain)
 
-        const trainArg = {
-            name: trainName?.name || '',
-            date: date,
-            isImplementation: false,
-            parameters: {
-                repeat: false,
-                period: 1,
-                jointTraining: false,
-                participants: []
-            },
-            exercises: trainExercise
-        }
-        dispatch(calendarThunks.addTraining(trainArg))
+        extracted(trainName, date, trainExercise, dispatch);
     };
 
     const handleCancel = () => {

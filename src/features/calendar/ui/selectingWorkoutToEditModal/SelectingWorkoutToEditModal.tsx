@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button, Modal, Select} from "antd";
 import {ArrowLeftOutlined, EditOutlined} from "@ant-design/icons";
 import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
@@ -53,6 +53,12 @@ export const SelectingWorkoutToEditModal: React.FC<SelectingWorkoutToEditModalPr
         setOpenDrawerModal(true)
     };
 
+    useEffect(() => {
+        const hiddenDiv = document.querySelector('.add_training_modal > div:first-child[aria-hidden=true]');
+        if (hiddenDiv) {
+            hiddenDiv.style.display = "none";
+        }
+    }, []);
 
     const handleChange = (value: string) => {
         setSelectTrain(value)
@@ -129,7 +135,6 @@ export const SelectingWorkoutToEditModal: React.FC<SelectingWorkoutToEditModalPr
 
     return (
         <>
-
             <Modal
                 data-test-id='modal-create-exercise'
                 className={'add_training_modal'}

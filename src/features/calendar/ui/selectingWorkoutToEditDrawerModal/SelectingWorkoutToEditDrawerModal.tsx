@@ -29,7 +29,7 @@ const transformValueToTrain = (value: any) => value.map((item: any) => {
         }
 });
 export const SelectingWorkoutToEditDrawerModal: React.FC<SelectingWorkoutToEditDrawerModalProps> = (
-    {open, onAddTrainExercise, onEditDrawerModalClose, date, separateWorkout, selectedTrainingItem}
+    { onAddTrainExercise, onEditDrawerModalClose, date, separateWorkout, selectedTrainingItem}
 ) => {
 
     const [form, setForm] = useState<FormInstance>();
@@ -51,9 +51,9 @@ export const SelectingWorkoutToEditDrawerModal: React.FC<SelectingWorkoutToEditD
             data-test-id='modal-drawer-right'
             title="Редактирование"
             width={408}
-            height={screenWidth <361 && 555}
+            height={screenWidth <361 ? 555 : '100%'}
             onClose={onClose}
-            open={open}
+            open={true}
             mask={false}
             placement={screenWidth >361 ? 'right' : 'bottom'}
             maskClosable={false}
