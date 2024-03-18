@@ -6,9 +6,9 @@ import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
 import {onFinish} from "./utils/utils.ts";
 
 export const RegistrationForm = () => {
+    const dispatch = useAppDispatch();
     const [form] = Form.useForm();
     const [isPasswordValid, setIsPasswordValid] = useState(true);
-    const dispatch = useAppDispatch();
 
     const validateEmail = (email: string) => {
         const re = /\S+@\S+\.\S+/;

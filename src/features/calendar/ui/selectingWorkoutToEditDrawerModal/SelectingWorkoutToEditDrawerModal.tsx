@@ -9,6 +9,7 @@ import {TrainExercises, TrainingParams} from "../../model/calendarSlice.ts";
 import {
     SelectingWorkoutToEditDrawerForm
 } from "../selectingWorkoutToEditDrawerForm/SelectingWorkoutToEditDrawerForm.tsx";
+import {transformValueToTrain} from "../drawerModal/utils/transformValueToTrain.ts";
 
 type SelectingWorkoutToEditDrawerModalProps = {
     open: boolean
@@ -18,16 +19,7 @@ type SelectingWorkoutToEditDrawerModalProps = {
     onAddTrainExercise: (train: TrainExercises[]) => void
     selectedTrainingItem: any
 }
-const transformValueToTrain = (value: any) => value.map((item: any) => {
 
-        return {
-            name: item.name || '',
-            replays: item.replays ? item.replays : 1,
-            weight: item.weight ? item.weight : 0,
-            approaches: item.approaches ? item.approaches : 1,
-            isImplementation: false
-        }
-});
 export const SelectingWorkoutToEditDrawerModal: React.FC<SelectingWorkoutToEditDrawerModalProps> = (
     { onAddTrainExercise, onEditDrawerModalClose, date, separateWorkout, selectedTrainingItem}
 ) => {

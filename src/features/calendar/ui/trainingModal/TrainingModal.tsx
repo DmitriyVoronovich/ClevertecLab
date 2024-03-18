@@ -2,7 +2,7 @@ import {Button, Modal} from "antd";
 import icon from '../../../../accets/calendar-page/training_modal.svg'
 import './trainingModal.css';
 import {AddTrainingModal} from "../addTrainingModal/AddTrainingModal.tsx";
-import React, {useEffect, useState} from "react";
+import  {useEffect, useState} from "react";
 import {formateDate} from "../drawerModal/utils/formateDate.ts";
 import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
 import Badge from "antd/lib/badge";
@@ -10,12 +10,13 @@ import {CloseOutlined, EditOutlined} from "@ant-design/icons";
 import {
     SelectingWorkoutToEditModal
 } from "../selectingWorkoutToEditModal/SelectingWorkoutToEditModal.tsx";
-import {TrainingParams} from "../../model/calendarSlice.ts";
 import {ViewWorkouts} from "../viewWorkouts/ViewWorkouts.tsx";
 import {AddErrorModal} from "../addErrorModal/AddErrorModal.tsx";
+import {AddTrainingStatus} from "../../../../common/enums/enums.ts";
+import {TrainingParams} from "../../model/types/types.ts";
 
 type TrainingModalProps = {
-    onClose: () => void
+    onCloseTrainingModal: () => void
     modalStyle: {
         left: number
         top: number
@@ -53,7 +54,7 @@ export const TrainingModal = (props: TrainingModalProps) => {
     };
 
     const handleCancel = () => {
-        props.onClose()
+        props.onCloseTrainingModal()
     };
 
     const onCloseAddModal = () => {
@@ -126,10 +127,10 @@ export const TrainingModal = (props: TrainingModalProps) => {
                         : <img className={'training_modal_icon'} src={icon} alt={'icon'}/>}
                 </div>
             </Modal>}
-            {addTrainingStatus === 'error' && <AddErrorModal onClose={props.onClose}/>}
+            {addTrainingStatus === AddTrainingStatus.Error && <AddErrorModal onClose={props.onCloseTrainingModal}/>}
             {openAddModal && <AddTrainingModal modalStyle={props.modalStyle}
-                                               onCloseAddModal={onCloseAddModal} date={props.date}
-                                               onClose={handleCancel}
+                                               onCloseAddModal={onCloseAddModal}
+                                               date={props.date}
                                                addButtonBlock={addButtonBlock}/>}
             {openEditModal && <SelectingWorkoutToEditModal modalStyle={props.modalStyle}
                                                            addButtonBlock={addButtonBlock}

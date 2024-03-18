@@ -1,15 +1,13 @@
 import {Button} from 'antd';
-import './errorRegistration.css'
 import fon from "../../../../../accets/login-page/image/fon.png";
 import error from "../../../../../accets/login-page/svg-icon/error.svg";
 import {useNavigate} from "react-router-dom";
+import './errorRegistration.css';
 
 export const ErrorRegistration = () => {
     const navigation = useNavigate();
 
-    const redirectToRegistration = () => {
-        navigation('/auth/registration');
-    }
+    const redirectToRegistration = () => navigation('/auth/registration');
 
     return (
         <div className={'log_error_reg_container'} style={{backgroundImage: `url(${fon})`}}>

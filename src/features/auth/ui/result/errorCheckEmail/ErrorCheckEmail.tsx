@@ -1,16 +1,14 @@
-import './errorCheckEmail.css'
 import fon from "../../../../../accets/login-page/image/fon.png";
 import error from "../../../../../accets/login-page/svg-icon/error.svg";
 import {Button} from "antd";
 import {useNavigate} from "react-router-dom";
+import './errorCheckEmail.css';
 
 export const ErrorCheckEmail = () => {
     const navigation = useNavigate();
 
-    const redirectToLogin = () => {
-        navigation('/auth');
+    const redirectToLogin = () => navigation('/auth');
 
-    }
     return (
         <div className={'log_error_check_em_container'} style={{backgroundImage: `url(${fon})`}}>
             <div className={'form_fon'}></div>

@@ -1,7 +1,3 @@
-.drawer_form_container {
-
-}
-
 .form_item {
     margin-top: 24px;
 }
@@ -43,14 +39,12 @@
     gap: 3px;
 }
 
-
-
-.drawer_form_container .ant-input-number{
+.drawer_form_container .ant-input-number {
     height: 24px;
     border-radius: 0;
 }
 
-.drawer_form_container .ant-input-number-group-addon{
+.drawer_form_container .ant-input-number-group-addon {
     height: 24px;
     border-radius: 0;
 }
@@ -59,7 +53,7 @@
     min-height: 24px;
 }
 
-.input_item .ant-input-number-input{
+.input_item .ant-input-number-input {
     height: 24px;
 }
 

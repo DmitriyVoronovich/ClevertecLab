@@ -11,40 +11,40 @@ import {
     ErrorCheck,
     ErrorCheckEmail,
     ErrorLogin,
-    Error,
     ErrorRegistration,
     LoginPage,
-    Success, SuccessChangePassword
+    Success, SuccessChangePassword,Error
 } from "../../features/auth/ui";
-import {Loader} from "@components/loader/Loader.tsx";
+import {Loader} from "../../common/components";
 import {authGoogle} from "./utils/authGoogle.ts";
 import {MainPage} from "@pages/main-page/MainPage.tsx";
 import {getToken} from "../../common/utils/getToken.ts";
 import {CalendarPage} from "../../features/calendar/ui/calendarPage/CalendarPage.tsx";
-
+import {LocationState} from "../types/types.ts";
+import s from './app.module.css'
 
 
 function App() {
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
     const status = useAppSelector(state => state.app.status);
-    const locationState = useAppSelector(state => state.router.location.state);
+    const locationState = useAppSelector((state) => state.router?.location?.state as LocationState);
     const authState = useAppSelector(state => state.auth);
 
     useEffect(() => {
         window.onbeforeunload = function () {
             sessionStorage.clear();
-    }}, []);
-    authGoogle()
+        }
+    }, []);
+    authGoogle();
 
     useEffect(() => {
-
         if (!authState.isLoggedIn) {
             const token = getToken();
             if (token) {
                 dispatch(authActions.setAuthStatus({isLoggedIn: true}));
             }
         }
-    })
+    });
 
 
     return (
@@ -60,34 +60,25 @@ function App() {
                 <Route path='/auth/*' element={<LoginPage/>}>
                     <Route path='registration' element={<LoginPage/>}/>
                 </Route>
-                {locationState?.flowRedirect ? (
-                    <>
-                        <Route path={'/result'}>
-                            <Route path='error-user-exist' element={<ErrorRegistration/>}/>
-                            <Route path='error-login' element={<ErrorLogin/>}/>
-                            <Route path='success' element={<Success/>}/>
-                            <Route path='error' element={<Error/>}/>
-                            <Route path='error-check-email-no-exist' element={<ErrorCheckEmail/>}/>
-                            <Route path='error-check-email' element={<ErrorCheck/>}/>
-                            <Route path='error-change-password' element={<ErrorChangePassword/>}/>
-                            <Route path='success-change-password'
-                                   element={<SuccessChangePassword/>}/>
-                        </Route>
-                        <Route path='/auth/confirm-email'
-                               element={<CodeForm/>}/>
+                {locationState?.flowRedirect
+                    ? <> <Route path={'/result'}>
+                        <Route path='error-user-exist' element={<ErrorRegistration/>}/>
+                        <Route path='error-login' element={<ErrorLogin/>}/>
+                        <Route path='success' element={<Success/>}/>
+                        <Route path='error' element={<Error/>}/>
+                        <Route path='error-check-email-no-exist' element={<ErrorCheckEmail/>}/>
+                        <Route path='error-check-email' element={<ErrorCheck/>}/>
+                        <Route path='error-change-password' element={<ErrorChangePassword/>}/>
+                        <Route path='success-change-password' element={<SuccessChangePassword/>}/>
+                    </Route>
+                        <Route path='/auth/confirm-email' element={<CodeForm/>}/>
                         <Route path='/auth/change-password' element={<ChangePassword/>}/>
                     </>
-                ) : <Route path={'/*'} element={<Navigate to={'/auth'}/>}/>}
+                    : <Route path={'/*'} element={<Navigate to={'/auth'}/>}/>}
 
             </Routes>
             {status === "loading" &&
-                <div style={{
-                    position: "fixed",
-                    top: "0",
-                    textAlign: "center",
-                    width: "100%",
-                    height: '100vh'
-                }}>
+                <div className={s.loading}>
                     <Loader/>
                 </div>
             }

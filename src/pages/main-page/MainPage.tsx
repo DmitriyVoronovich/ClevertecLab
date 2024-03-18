@@ -1,13 +1,14 @@
 import React from 'react';
 import './main-page.css';
 import fon from "../../accets/main_page_light.png";
-import {Sidebar} from "@components/sidebar/Sidebar.tsx";
+import {Sidebar} from "../../common/components/sidebar/Sidebar.tsx";
 import {FeedbacksPage, TokenRequestError} from "../../features/feedback/ui";
 import {Route, Routes} from "react-router-dom";
 import {HomePage} from "@pages/home-page/HomePage.tsx";
 import {CalendarPage} from "../../features/calendar/ui/calendarPage/CalendarPage.tsx";
 import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
 import {setTrainingStatus} from "../../features/calendar/model/calendarSlice.ts";
+import {RequestCalendarStatus} from "../../common/enums/enums.ts";
 
 export const MainPage: React.FC = () => {
     const [open, setOpen] = React.useState(false);
@@ -35,7 +36,7 @@ export const MainPage: React.FC = () => {
     };
 
     const changeStatus = () => {
-        dispatch(setTrainingStatus({trainingStatus: 'idle'}));
+        dispatch(setTrainingStatus({trainingStatus: RequestCalendarStatus.Idle}));
     }
 
     return (

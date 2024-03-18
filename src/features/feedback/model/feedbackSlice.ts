@@ -4,6 +4,7 @@ import {appActions} from "../../../app/model/appSlice.ts";
 import {AllReview, feedbackApi, Review} from "../api/feeedbackApi.ts";
 import {compareCreatedAt} from "./utils/compareCreatedAt.ts";
 import {pushWithFlow} from "../../auth/model/utils/pushWithFlow.ts";
+import {RequestStatusType} from "../../../common/enums/enums.ts";
 
 export type RequestFeedbackStatus = "idle" | "succeeded" | "failed" | "error";
 
@@ -39,7 +40,7 @@ const getReviews = createAppAsyncThunk<{ reviews: AllReview[] }, undefined>(
     "feedback/getReviews",
     async (_, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
-        dispatch(appActions.setAppStatus({status: "loading"}));
+        dispatch(appActions.setAppStatus({status: RequestStatusType.Loading}));
         dispatch(pushWithFlow("/feedbacks"));
         try {
             const res = await feedbackApi.getFeedback();
@@ -60,7 +61,7 @@ const getReviews = createAppAsyncThunk<{ reviews: AllReview[] }, undefined>(
                 return rejectWithValue(null);
             }
         } finally {
-            dispatch(appActions.setAppStatus({status: "idle"}));
+            dispatch(appActions.setAppStatus({status: RequestStatusType.Idle}));
         }
     }
 );
@@ -69,7 +70,7 @@ const createReview = createAppAsyncThunk<undefined, Review>(
     `feedback/createReview`,
     async (arg, thunkAPI) => {
         const {dispatch, rejectWithValue} = thunkAPI;
-        dispatch(appActions.setAppStatus({status: "loading"}));
+        dispatch(appActions.setAppStatus({status: RequestStatusType.Loading}));
         try {
             const data = {message: arg.message, rating: arg.rating};
             const res = await feedbackApi.createFeedback(data);
@@ -82,7 +83,7 @@ const createReview = createAppAsyncThunk<undefined, Review>(
             dispatch(setFeedbackStatus({feedbackStatus: "error"}));
             return rejectWithValue(null);
         } finally{
-            dispatch(appActions.setAppStatus({status: "idle"}));
+            dispatch(appActions.setAppStatus({status: RequestStatusType.Idle}));
         }
     })
 

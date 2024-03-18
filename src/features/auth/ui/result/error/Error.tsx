@@ -9,7 +9,6 @@ import {push} from "redux-first-history";
 export const Error = () => {
     const dispatch = useAppDispatch();
 
-
     const redirectToRegistration = () => {
         dispatch(push('/auth/registration'));
         const data = sessionStorage.getItem('data-registration');
@@ -17,7 +16,7 @@ export const Error = () => {
         if (data !== null) {
             dispatch(authThunks.registration(JSON.parse(data)));
         }
-    }
+    };
 
     return (
         <div className={'log_error_container'} style={{backgroundImage: `url(${fon})`}}>

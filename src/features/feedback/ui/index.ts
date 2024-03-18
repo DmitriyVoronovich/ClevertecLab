@@ -5,4 +5,4 @@ export {NoFeedbacks} from "./noFeedbacks/NoFeedbacks.tsx";
 export {Review} from "./review/Review.tsx";
 export {ReviewGroup} from "./reviewGroup/ReviewGrop.tsx";
 export {SuccessResult} from "./successResult/SuccessResult.tsx";
-export {TokenRequestError} from "@components/tokenRequestError/TokenRequestError.tsx";
+export {TokenRequestError} from "../../../common/components/tokenRequestError/TokenRequestError.tsx";

@@ -1,38 +1,25 @@
 import {instance} from "../../../common/api";
+import {
+    CheckEmailParams,
+    CodeParams,
+    PasswordParams,
+    LoginParams
+} from "./types/types.ts";
 
 export const authApi = {
-    login(data: LoginParamsType) {
+    login(data: LoginParams) {
         return instance.post('auth/login', data)
     },
-    registration(data: LoginParamsType) {
+    registration(data: LoginParams) {
         return instance.post('auth/registration', data)
     },
     checkEmail(email: CheckEmailParams) {
         return instance.post('auth/check-email', email)
     },
-    confirmEmail(data: CodeParamsType) {
+    confirmEmail(data: CodeParams) {
         return instance.post('auth/confirm-email', data)
     },
-    changePassword(data: PasswordParamsType) {
+    changePassword(data: PasswordParams) {
         return instance.post('auth/change-password', data)
     },
 };
-
-export type LoginParamsType = {
-    email: string,
-    password: string
-};
-
-export type CodeParamsType = {
-    email: string,
-    code: string
-};
-
-export type PasswordParamsType = {
-    password: string,
-    confirmPassword: string,
-};
-
-export type CheckEmailParams = {
-    email: string
-}

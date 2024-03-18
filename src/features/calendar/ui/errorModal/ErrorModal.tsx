@@ -5,6 +5,7 @@ import React, {useEffect, useState} from "react";
 import {calendarThunks, setTrainingStatus} from "../../model/calendarSlice.ts";
 import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
 import {CloseOutlined} from "@ant-design/icons";
+import {RequestCalendarStatus} from "../../../../common/enums/enums.ts";
 
 
 export const ErrorModal: React.FC = () => {
@@ -13,7 +14,7 @@ export const ErrorModal: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
-        if (trainingStatus === 'error') {
+        if (trainingStatus === RequestCalendarStatus.Error) {
             return setIsModalOpen(true);
         }
     });
@@ -21,12 +22,12 @@ export const ErrorModal: React.FC = () => {
     const onCancelModal = () => {
         setIsModalOpen(false);
         dispatch(calendarThunks.trainingList())
-        dispatch(setTrainingStatus({trainingStatus: "idle"}));
+        dispatch(setTrainingStatus({trainingStatus: RequestCalendarStatus.Idle}));
     };
 
     const onCancel = () => {
         setIsModalOpen(false);
-        dispatch(setTrainingStatus({trainingStatus: "idle"}));
+        dispatch(setTrainingStatus({trainingStatus: RequestCalendarStatus.Idle}));
     };
 
     return (

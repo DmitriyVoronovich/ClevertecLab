@@ -1,59 +1,44 @@
 import type {Dayjs} from 'dayjs';
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 import {Calendar, CalendarProps} from 'antd';
-import './calendarSection.css';
 import locale from "antd/es/date-picker/locale/ru_RU";
-import 'dayjs/locale/ru'
+import 'dayjs/locale/ru';
 import {TrainingModal} from "../trainingModal/TrainingModal.tsx";
 import {useRef, useState} from "react";
 import {SelectInfo} from "antd/es/calendar/generateCalendar";
 import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
-import Badge from "antd/lib/badge";
 import {formateDate} from "../drawerModal/utils/formateDate.ts";
-import {setSearchExercises, TrainingParams} from "../../model/calendarSlice.ts";
+import {setSearchExercises} from "../../model/calendarSlice.ts";
+import {TrainingParams} from "../../model/types/types.ts";
+import {DateCellRender} from "./dateCellRender/dateCellRender.tsx";
+import './calendarSection.css';
 
-dayjs.locale('ru')
-
-const getMonthData = (value: Dayjs) => {
-    if (value.month() === 8) {
-        return 1394;
-    }
-};
+dayjs.locale('ru');
 
 export const CalendarSection = () => {
     const dispatch = useAppDispatch();
-    const training = useAppSelector(state => state.calendar.training)
-    const trainingList = useAppSelector(state => state.calendar.trainingList)
-    const [visible, setVisible] = useState(false);
+    const training = useAppSelector(state => state.calendar.training);
+    const [visibleTrainingModal, setVisibleTrainingModal] = useState(false);
     const [modalStyle, setModalStyle] = useState({left: 0, top: 0});
     const [date, setDate] = useState('');
 
     const ref = useRef<HTMLDivElement>(document.createElement("div"));
 
-    const onClose = () => {
-        setVisible(false)
-    }
+    const screenWidth = window.innerWidth;
 
-    const monthCellRender = (value: Dayjs) => {
-        const num = getMonthData(value);
-        return num ? (
-            <div className="notes-month">
-
-            </div>
-        ) : null;
-    };
+    const onCloseTrainingModal = () => setVisibleTrainingModal(false);
 
     const selectedRect = (selectedDate: Dayjs) => {
         const selectedValue = selectedDate.format('YYYY-MM-DD');
         return ref.current.querySelector(`td[title="${selectedValue}"]`)?.getBoundingClientRect();
     };
 
-    const onSearchForExercises = (array: any, searchDate: string) => {
-        const searchExercises = array.filter((item: any) => formateDate(item.date) === searchDate);
-        dispatch(setSearchExercises({searchExercises}))
+    const onSearchForExercises = (array: TrainingParams[], searchDate: string) => {
+        const searchExercises = array.filter((item: TrainingParams) => formateDate(item.date) === searchDate);
+        dispatch(setSearchExercises({searchExercises}));
     };
 
-    const screenWidth = window.innerWidth;
+    //Реф стоит ли выносить если большое число параметров
     const onSelected = (selectedDate: Dayjs, selectInfo: SelectInfo) => {
         const rect = selectedRect(selectedDate);
         onSearchForExercises(training, selectedDate.format('DD.MM.YYYY'))
@@ -66,41 +51,12 @@ export const CalendarSection = () => {
             } else {
                 setModalStyle({left: rect.left, top: rect.top});
             }
-            setVisible(true);
+            setVisibleTrainingModal(true);
         }
-    }
-    const getListData = (value: Dayjs) => {
-        const listData: TrainingParams[] = [];
-        training.forEach((item) => {
-            if (value.format('DD.MM.YYYY') === formateDate(item.date)) {
-                listData.push(item);
-            }
-        });
-        return listData;
     };
 
-    const dateCellRender = (value: Dayjs) => {
-        const listData = getListData(value);
-
-        return (
-                <ul className="calendar_list">
-                    {listData.map((item) => {
-                        const color = trainingList.find(element => element.name === item.name)
-                        return (<li key={item._id} className={'calendar_list_item'}>
-                            <Badge color={color?.color} text={item.name} style={{
-                                fontWeight: '400',
-                                fontSize: '12px',
-                                lineHeight: '130%'
-                            }}/>
-                        </li>)
-                    })}
-                </ul>
-                );
-            };
-
     const cellRender: CalendarProps<Dayjs>['cellRender'] = (current, info) => {
-        if (info.type === 'date') return dateCellRender(current);
-        if (info.type === 'month') return monthCellRender(current);
+        if (info.type === 'date') return <DateCellRender value={current}/>;
         return info.originNode;
     };
 
@@ -110,7 +66,7 @@ export const CalendarSection = () => {
                 ? <Calendar cellRender={cellRender} locale={locale} onSelect={onSelected}
                             fullscreen={false}/>
                 : <Calendar cellRender={cellRender} locale={locale} onSelect={onSelected}/>}
-            {visible && <TrainingModal modalStyle={modalStyle} onClose={onClose}
+            {visibleTrainingModal && <TrainingModal modalStyle={modalStyle} onCloseTrainingModal={onCloseTrainingModal}
                                        date={date}/>}
         </div>
 

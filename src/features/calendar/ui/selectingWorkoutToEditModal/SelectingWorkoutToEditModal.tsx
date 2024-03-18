@@ -9,6 +9,7 @@ import {calendarThunks, TrainExercises, TrainingParams} from "../../model/calend
 import {
     SelectingWorkoutToEditDrawerModal
 } from "../selectingWorkoutToEditDrawerModal/SelectingWorkoutToEditDrawerModal.tsx";
+import {AddTrainingStatus} from "../../../../common/enums/enums.ts";
 
 type SelectingWorkoutToEditModalProps = {
     onCloseEditModal: () => void
@@ -153,7 +154,7 @@ export const SelectingWorkoutToEditModal: React.FC<SelectingWorkoutToEditModalPr
                     <Button key="submit" type="default" onClick={handleSave}
                             disabled={trainExercise?.length === 0 && selectTrain !== selectedTrainingItem?.name}
                             className={'save_training_modal_button'}
-                            loading={addTrainingStatus === 'loading'}>
+                            loading={addTrainingStatus === AddTrainingStatus.Loading}>
                         {addButtonBlock ? 'Сохранить изменения' : 'Сохранить'}
                     </Button>
                 ]}

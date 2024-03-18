@@ -1,22 +1,19 @@
 import React from 'react';
-import './fragment.css';
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
+import './fragment.css';
 
 export type FragmentProps = {
     description: string;
     title: string;
     icon: string;
-    callback: any;
+    callback: () => void;
     dataId: string
 };
 
-export const Fragment: React.FC<FragmentProps> = (props) => {
+export const Fragment = ({description, title, icon, callback, dataId}: FragmentProps) => {
     const dispatch = useAppDispatch();
-    const {description, title, icon, callback, dataId} = props;
 
-    const onClickHandler = () => {
-        dispatch(callback())
-    };
+    const onClickHandler = () => dispatch(callback());
 
     return (
         <div className={'fragment_container'}>

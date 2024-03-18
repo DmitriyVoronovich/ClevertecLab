@@ -1,7 +1,7 @@
-import s from "./calendarPage.module.css";
 import set from "../../../../accets/image/set.svg";
 import {CalendarSection} from "../calendarSection/CalendarSection.tsx";
 import {ErrorModal} from "../errorModal/ErrorModal.tsx";
+import s from "./calendarPage.module.css";
 
 export const CalendarPage = () => {
 
@@ -17,7 +17,7 @@ export const CalendarPage = () => {
                 </div>
             </div>
             <CalendarSection/>
-            <ErrorModal />
+            <ErrorModal/>
         </div>
     );
 };

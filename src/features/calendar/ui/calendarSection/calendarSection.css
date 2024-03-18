@@ -138,3 +138,15 @@
 .calendar .ant-select-selection-item {
     text-transform: capitalize;
 }
+
+/*.calendar .calendar_list:before  {*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    position: absolute;*/
+/*    z-index: 999999;*/
+/*    background-color: #262626;*/
+/*    top: 0;*/
+/*}*/
+/*.calendar .ant-picker-cell .ant-picker-calendar-date-value  {*/
+/*    background-color: #fff47f;*/
+/*}*/

@@ -4,37 +4,26 @@ import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
 import fon from "../../../../accets/login-page/image/fon.png";
 import {authThunks} from "../../model/authSlice.ts";
-import {PasswordParamsType} from "../../api/authApi.ts";
-import './changePassword.css'
-
+import {PasswordParams} from "../../api/types/types.ts";
+import {onValidatePassword} from "./utils/onValidatePassword.ts";
+import {onValidateConfirmPassword} from "./utils/onValidateConfirmPassword.ts";
+import './changePassword.css';
 
 export const ChangePassword = () => {
     const [form] = Form.useForm();
-    const [isPasswordValid, setIsPasswordValid] = useState(true);
     const dispatch = useAppDispatch();
+    const [isPasswordValid, setIsPasswordValid] = useState(true);
 
-    const validatePassword = (password: string) => {
-        const re = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-        const isValid = re.test(password);
-        setIsPasswordValid(isValid);
-        return isValid;
-    };
+    const validatePassword = onValidatePassword(setIsPasswordValid);
 
-    const validateConfirmPassword = (password: string) => {
-        const re = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-        if (form.getFieldValue('password') !== password) {
-            return false;
-        } else {
-            return re.test(password);
-        }
-    };
+    const validateConfirmPassword = onValidateConfirmPassword(form);
 
-    const onFormFinish = (values: PasswordParamsType) => {
+    const onFormFinish = (values: PasswordParams) => {
         dispatch(authThunks.changePassword(values));
         sessionStorage.setItem('changePassword', JSON.stringify(values));
-    }
+    };
 
-    const onFieldsChange = (_: any, allFields: any) => {
+    const onFieldsChange = (_changedFields: any, allFields: any) => {
         const passwordField = allFields.find((field: {
             name: string[];
         }) => field.name[0] === 'password');

@@ -4,12 +4,11 @@ import attention from '../../../../accets/login-page/svg-icon/info.svg';
 import VerificationInput from "react-verification-input";
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
 import {authThunks} from "../../model/authSlice.ts";
-import './codeForm.css'
+import './codeForm.css';
 
 
 export const CodeForm = () => {
     const dispatch = useAppDispatch();
-
     const [isFormCorrect, setIsFormCorrect] = useState(true);
     const [isFormValue, setIsFormValue] = useState('');
 
@@ -20,9 +19,7 @@ export const CodeForm = () => {
         email = JSON.parse(jsonEmail)
     }
 
-    const onChangeValue = (e: string) => {
-        setIsFormValue(e)
-    }
+    const onChangeValue = (e: string) => setIsFormValue(e);
 
     const onFormComplete = (value: string) => {
         dispatch(authThunks.confirmEmail({email, code: value}))
@@ -37,12 +34,12 @@ export const CodeForm = () => {
                 <div className={'code_wrapper'}>
                     <img className={'error_img'} alt={'error'} src={attention}/>
                     <h5 className={'code_title'}>Введите код<br/> для восстановления аккауанта</h5>
-                    <p className={'code_description'}>Мы отправили вам на e-mail { email} <br/> шестизначный код. Введите его в поле ниже.</p>
+                    <p className={'code_description'}>Мы отправили вам на e-mail {email}
+                        <br/> шестизначный код. Введите его в поле ниже.</p>
                     <VerificationInput
                         inputProps={{
                             'data-test-id': 'verification-input'
                         }}
-
                         value={isFormValue}
                         onChange={onChangeValue}
                         onComplete={onFormComplete}
@@ -59,4 +56,4 @@ export const CodeForm = () => {
             </div>
         </div>
     );
-}
+};

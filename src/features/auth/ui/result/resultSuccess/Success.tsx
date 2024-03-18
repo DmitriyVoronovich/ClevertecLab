@@ -1,15 +1,13 @@
 import {Button} from 'antd';
-import './success.css'
 import fon from "../../../../../accets/login-page/image/fon.png";
 import suc from "../../../../../accets/login-page/svg-icon/success.svg";
 import {useNavigate} from "react-router-dom";
+import './success.css';
 
 export const Success = () => {
     const navigation = useNavigate();
 
-    const redirectToLogin = () => {
-        navigation('/auth');
-    }
+    const redirectToLogin = () => navigation('/auth');
 
     return (
         <div className={'success_fon_container'} style={{backgroundImage: `url(${fon})`}}>

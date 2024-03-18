@@ -3,13 +3,10 @@ import {EyeInvisibleOutlined, EyeTwoTone, GooglePlusOutlined} from '@ant-design/
 import {Button, Checkbox, Form, Input} from 'antd';
 import {authThunks} from "../../model/authSlice.ts";
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
+import {FormParams} from "./types/types.ts";
 import './loginForm.css';
-
-export type FormType = {
-    email: string
-    password: string
-    remember: boolean
-}
+import {onValidatePassword} from "../changePassword/utils/onValidatePassword.ts";
+import {onValidateEmail} from "./utils/onConfirmEmail.ts";
 
 export const LoginForm = () => {
     const [form] = Form.useForm();
@@ -18,27 +15,15 @@ export const LoginForm = () => {
     const [isEmailLogin, setIsEmailLogin] = useState('');
     const [isPasswordValid, setIsPasswordValid] = useState(false);
 
-    const onFinish = (values: FormType) => {
+    const onFinish = (values: FormParams) => {
         if (isPasswordValid) {
             dispatch(authThunks.login(values));
         }
     };
 
-    const validateEmail = (email: string) => {
-        const re = /\S+@\S+\.\S+/;
-        if (re.test(email)) {
-            setIsRepeatButtonDisabled(false)
-        }
-        return re.test(email);
-    };
+    const validateEmail = onValidateEmail(setIsRepeatButtonDisabled);
 
-    const validatePassword = (password: string) => {
-        const re = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-        const isValid = re.test(password);
-
-        setIsPasswordValid(isValid);
-        return isValid;
-    };
+    const validatePassword = onValidatePassword(setIsPasswordValid);
 
     const confirmEmail = () => {
         if (!isRepeatButtonDisabled) {
@@ -47,10 +32,7 @@ export const LoginForm = () => {
         }
     };
 
-    const onGoogleLogIn = () => {
-        window.location.href = 'https://marathon-api.clevertec.ru/auth/google'
-
-    }
+    const onGoogleLogIn = () => window.location.href = 'https://marathon-api.clevertec.ru/auth/google';
 
     const onFieldsChange = (_: any, allFields: any) => {
         const emailField = allFields.find((field: {
@@ -84,7 +66,7 @@ export const LoginForm = () => {
             onFieldsChange={onFieldsChange}
         >
             <div className={'login_form_section_one'}>
-                <Form.Item<FormType>
+                <Form.Item<FormParams>
                     className={'ant-fom-item'}
                     name="email"
                     rules={[{required: true, message: 'Please input your e-mail!'}]}
@@ -92,7 +74,7 @@ export const LoginForm = () => {
                     <Input className={'ant-fom-item-email'} addonBefore="e-mail:"
                            data-test-id='login-email'/>
                 </Form.Item>
-                <Form.Item<FormType>
+                <Form.Item<FormParams>
                     className={'ant-fom-item'}
                     name="password"
                     rules={[{required: true, message: 'Please input your Password!'}]}

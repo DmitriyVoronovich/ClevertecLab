@@ -16,7 +16,7 @@ export const ErrorChangePassword = () => {
         if (data !== null) {
             dispatch(authThunks.changePassword(JSON.parse(data)));
         }
-    }
+    };
 
     return (
         <div className={'log_change_error_container'} style={{backgroundImage: `url(${fon})`}}>

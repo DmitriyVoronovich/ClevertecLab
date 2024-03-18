@@ -2,7 +2,7 @@ import './drawerForm.css'
 import {Button, Form, Input, InputNumber} from "antd";
 import { PlusOutlined} from "@ant-design/icons";
 import {useEffect} from "react";
-import {TrainExercises} from "../../model/calendarSlice.ts";
+import {TrainExercises} from "../../model/types/types.ts";
 
 type DrawerFormProps = {
     addItem: (value: any) => void

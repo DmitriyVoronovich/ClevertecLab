@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {HeaderSection} from "@components/header/HeaderSection.tsx";
+import {HeaderSection} from "../../../../common/components/header/HeaderSection.tsx";
 import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
 import {ReviewGroup,
     FeedbackForm,

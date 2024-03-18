@@ -7,26 +7,16 @@ import {formateDate} from "./utils/formateDate.ts";
 import {DrawerForm} from "../drawerForm/DrawerForm.tsx";
 import {FormInstance} from "antd/es/form/hooks/useForm";
 import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
-import {TrainExercises} from "../../model/calendarSlice.ts";
+import {TrainExercises} from "../../model/types/types.ts";
+import {transformValueToTrain} from "./utils/transformValueToTrain.ts";
 
 type DrawerModalProps = {
-
     onDrawerModalClose: () => void
     selectTrain: string
     date: string
     onAddTrainExercise: (train: TrainExercises[]) => void
     trainExercise: TrainExercises[]
 }
-
-const transformValueToTrain = (value: TrainExercises[]) => value.map((item) => {
-    return {
-        name: item.name || '',
-        replays: item.replays ? item.replays : 1,
-        weight: item.weight ? item.weight : 0,
-        approaches: item.approaches ? item.approaches : 1,
-        isImplementation: false
-    }
-});
 
 export const DrawerModal: React.FC<DrawerModalProps> = (
     {onAddTrainExercise, onDrawerModalClose, date, selectTrain, trainExercise}

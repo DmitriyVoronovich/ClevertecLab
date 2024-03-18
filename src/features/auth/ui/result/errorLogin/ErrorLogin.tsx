@@ -1,16 +1,14 @@
 import {Button} from 'antd';
-import './errorLogin.css'
 import fon from "../../../../../accets/login-page/image/fon.png";
 import attention from "../../../../../accets/login-page/svg-icon/attention.svg";
 import {push} from "redux-first-history";
 import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
+import './errorLogin.css';
 
 export const ErrorLogin = () => {
     const dispatch = useAppDispatch();
 
-    const redirectToRegistration = () => {
-        dispatch(push('/auth'));
-    }
+    const redirectToRegistration = () => dispatch(push('/auth'));
 
     return (
         <div className={'log_error_login_container'} style={{backgroundImage: `url(${fon})`}}>
