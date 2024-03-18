@@ -40,7 +40,7 @@ export const SelectingWorkoutToEditDrawerForm = (props: SelectingWorkoutToEditDr
     }
 
 
-    const handleCheckboxChange = (e, name) => {
+    const handleCheckboxChange = (e, name: string) => {
         const checked = e.target.checked;
         setCheckboxes({...checkboxes, [name]: checked});
     };

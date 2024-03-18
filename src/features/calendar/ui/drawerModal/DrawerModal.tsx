@@ -18,16 +18,18 @@ type DrawerModalProps = {
     trainExercise: TrainExercises[]
 }
 
-const transformValueToTrain = (value: TrainExercises[]) => value.map((item) => ({
-    name: item.name,
-    replays: item.replays ? item.replays : 1,
-    weight: item.weight ? item.weight : 0,
-    approaches: item.approaches ? item.approaches : 1,
-    isImplementation: false
-}));
+const transformValueToTrain = (value: TrainExercises[]) => value.map((item) => {
+    return {
+        name: item.name || '',
+        replays: item.replays ? item.replays : 1,
+        weight: item.weight ? item.weight : 0,
+        approaches: item.approaches ? item.approaches : 1,
+        isImplementation: false
+    }
+});
 
 export const DrawerModal: React.FC<DrawerModalProps> = (
-    {open, onAddTrainExercise, onDrawerModalClose, date, selectTrain, trainExercise}
+    {onAddTrainExercise, onDrawerModalClose, date, selectTrain, trainExercise}
 ) => {
     const trainingList = useAppSelector(state => state.calendar.trainingList);
     const [form, setForm] = useState<FormInstance>();
@@ -50,7 +52,7 @@ export const DrawerModal: React.FC<DrawerModalProps> = (
         <Drawer
             data-test-id='modal-drawer-right'
             title="Добавление упражнений"
-            placement={screenWidth >361 ? 'right' : 'bottom'}
+            placement={screenWidth > 361 ? 'right' : 'bottom'}
             height={screenWidth < 361 && 555}
             width={408}
             open={true}

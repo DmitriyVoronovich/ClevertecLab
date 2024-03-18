@@ -123,6 +123,15 @@
     display: flex;
 }
 
+
+.modal{
+    &>div:first-child {
+        &[aria-hidden="true"] {
+            display: none;
+        }
+    }
+}
+
 @media screen and (max-width: 361px){
    .input_approaches_exercise .ant-input-number-handler-wrap {
         display: none;

@@ -19,7 +19,7 @@ type SelectingWorkoutToEditDrawerModalProps = {
     selectedTrainingItem: any
 }
 const transformValueToTrain = (value: any) => value.map((item: any) => {
-    const str = ' Прыжки с нагрузкой'
+    const str = 'Прыжки с нагрузкой'
         return {
             name: str.includes(item.name) ? str : item.name,
             replays: item.replays ? item.replays : 1,

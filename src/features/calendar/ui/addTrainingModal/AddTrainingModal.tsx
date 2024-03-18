@@ -20,7 +20,7 @@ type AddTrainingModal = {
 }
 
 export const AddTrainingModal: React.FC<AddTrainingModal> = (props) => {
-    const { date, onCloseAddModal, modalStyle, onClose, addButtonBlock} = props;
+    const { date, onCloseAddModal, modalStyle, addButtonBlock} = props;
     const dispatch = useAppDispatch();
     const searchExercises = useAppSelector(state => state.calendar.searchExercises);
     const addTrainingStatus = useAppSelector(state => state.calendar.addTrainingStatus);

@@ -10,7 +10,7 @@ import {useAppDispatch, useAppSelector} from "@hooks/typed-react-redux-hooks.ts"
 import {setTrainingStatus} from "../../features/calendar/model/calendarSlice.ts";
 
 export const MainPage: React.FC = () => {
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const token = localStorage.getItem('jwtToken');
     const dispatch = useAppDispatch();
     const trainingStatus = useAppSelector(state => state.calendar.trainingStatus);
