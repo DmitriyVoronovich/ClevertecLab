@@ -7,11 +7,11 @@ export const instance = axios.create({
         "Content-Type": "application/json",
     },
     withCredentials: true
-})
+});
 
 instance.interceptors.request.use((config) => {
     const token = getToken();
     config.headers.Authorization = `Bearer ${token}`
     return config
-})
+});
 

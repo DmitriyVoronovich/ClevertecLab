@@ -1,10 +1,10 @@
+import {Fragment} from "../../../common/components/fragment/Fragment.tsx";
 import './home-section.css';
-import {data} from "../../../data/data.ts";
-import {Fragment} from "@components/fragment/Fragment.tsx";
+import {NavigationCardData} from "../../../data/data.ts";
 
 export const HomeSection = () => {
     return (
-        <section className={'main_section_container'} >
+        <section className={'main_section_container'}>
             <p className={'section_block1'}>
                 С CleverFit ты сможешь:<br/>
                 — планировать свои тренировки на календаре, выбирая тип и уровень нагрузки;<br/>
@@ -22,8 +22,9 @@ export const HomeSection = () => {
                     Не откладывай на завтра — начни тренироваться уже сегодня!
                 </p>
                 <div className={'section_block2_fragment'}>
-                    {data.map(item => (
-                        <Fragment key={item.id} description={item.description} title={item.title} icon={item.icon}/>
+                    {NavigationCardData.map(item => (
+                        <Fragment key={item.id} description={item.description} title={item.title}
+                                  icon={item.icon} callback={item.callback} dataId={item.dataId}/>
                     ))}
                 </div>
             </div>
