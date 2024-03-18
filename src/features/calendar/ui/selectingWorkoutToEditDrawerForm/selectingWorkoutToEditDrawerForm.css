@@ -124,7 +124,7 @@
 }
 
 
-.modal{
+.ant-modal{
     &>div:first-child {
         &[aria-hidden="true"] {
             display: none;

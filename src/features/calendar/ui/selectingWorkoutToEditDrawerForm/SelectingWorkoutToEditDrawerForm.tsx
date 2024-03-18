@@ -69,7 +69,6 @@ export const SelectingWorkoutToEditDrawerForm = (props: SelectingWorkoutToEditDr
                                         className={'input_name_exercise'}
                                     >
                                         <Input placeholder="Упражнение"
-                                               autoFocus
                                                data-test-id={`modal-drawer-right-input-exercise${index}`}
                                                className={'input_name_exercise'} addonAfter={
                                             <Form.Item
