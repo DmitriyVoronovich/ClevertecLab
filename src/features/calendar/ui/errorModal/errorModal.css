@@ -1,4 +1,4 @@
-.calendar_error_modal_container .ant-modal{
+.calendar_error_modal_container .ant-modal {
     width: 384px;
 }
 
@@ -12,7 +12,6 @@
 
 .calendar_error_modal_container .ant-modal-body {
     display: flex;
-
 }
 
 .calendar_error_modal_container .ant-modal-close {
@@ -46,11 +45,11 @@
     font-size: 14px;
     line-height: 130%;
     text-align: start;
-    color: #8C8C8C;
+    color: #8c8c8c;
 }
 
 .calendar_error_button {
-    color: #FFFFFF;
+    color: #ffffff;
     border-radius: 2px;
     padding: 4px 15px;
     width: 99px;
@@ -58,12 +57,11 @@
 }
 
 @media screen and (max-width: 361px) {
-    .calendar_error_modal_container .ant-modal{
+    .calendar_error_modal_container .ant-modal {
         width: 344px;
     }
 
     .calendar_error_modal_container .ant-modal-content {
         width: 344px;
     }
-
 }

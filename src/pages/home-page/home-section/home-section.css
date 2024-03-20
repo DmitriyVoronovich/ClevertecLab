@@ -15,7 +15,7 @@
     color: #061178;
     margin: 0;
     border-radius: 2px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .section_block2 {
@@ -32,7 +32,7 @@
     line-height: 130%;
     color: #262626;
     margin: 0;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .section_block2_fragment {
@@ -41,7 +41,6 @@
 }
 
 @media screen and (max-width: 865px) {
-
     .section_block2_text {
         padding: 24px;
     }

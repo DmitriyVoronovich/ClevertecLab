@@ -1,20 +1,19 @@
 .drawer_form_container {
-
 }
 
 .form_item {
     margin-top: 24px;
 }
 
-.form_item .ant-input-group-addon{
-   height: 22.4px;
+.form_item .ant-input-group-addon {
+    height: 22.4px;
 }
 
 .drawer_form_container .ant-form-item {
     margin: 0;
 }
 
-.drawer_form_container input[type="text"] {
+.drawer_form_container input[type='text'] {
     height: 24px;
     margin: 0;
 }
@@ -34,7 +33,7 @@
 
 .exercise_block_title {
     text-align: start;
-    background-color: #F0F0F0;
+    background-color: #f0f0f0;
     padding: 8px;
     font-weight: 400;
     font-size: 12px;
@@ -47,14 +46,12 @@
     gap: 3px;
 }
 
-
-
-.drawer_form_container .ant-input-number{
+.drawer_form_container .ant-input-number {
     height: 24px;
     border-radius: 0;
 }
 
-.drawer_form_container .ant-input-number-group-addon{
+.drawer_form_container .ant-input-number-group-addon {
     height: 24px;
     border-radius: 0;
 }
@@ -67,15 +64,15 @@
     height: 22.4px;
 }
 
- .ant-form-item .ant-form-item-control-input{
+.ant-form-item .ant-form-item-control-input {
     min-height: 24px;
 }
 
-.input_checkbox_exercise{
+.input_checkbox_exercise {
     height: 22.4px;
 }
 
-.input_item .ant-input-number-input{
+.input_item .ant-input-number-input {
     height: 24px;
 }
 
@@ -103,8 +100,8 @@
     margin-top: 24px;
     border-radius: 0 0 6px 6px;
     height: 40px;
-    background-color: #F0F0F0;
-    color: #2F54EB;
+    background-color: #f0f0f0;
+    color: #2f54eb;
     text-align: center;
     border: none;
 }
@@ -113,7 +110,7 @@
     margin-top: 24px;
     border-radius: 0 0 6px 6px;
     height: 40px;
-    background-color: #F0F0F0;
+    background-color: #f0f0f0;
     color: #262626;
     text-align: center;
     border: none;
@@ -128,8 +125,8 @@
     width: 100%;
 }
 
-@media screen and (max-width: 361px){
-   .input_approaches_exercise .ant-input-number-handler-wrap {
+@media screen and (max-width: 361px) {
+    .input_approaches_exercise .ant-input-number-handler-wrap {
         display: none;
     }
 }

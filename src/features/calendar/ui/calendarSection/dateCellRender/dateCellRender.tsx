@@ -1,13 +1,13 @@
-import Badge from "antd/lib/badge";
-import {DateCellRenderProps} from "../types/types.ts";
-import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
-import type {Dayjs} from "dayjs";
-import {TrainingParams} from "../../../model/types/types.ts";
-import {formateDate} from "../../drawerModal/utils/formateDate.ts";
+import { useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
+import type { Dayjs } from 'dayjs';
+import { BadgeComponent } from '../../../../../common/components/badgeComponent/BadgeComponent.tsx';
+import { TrainingParams } from '../../../model/types/types.ts';
+import { formateDate } from '../../drawerModal/utils/formateDate.ts';
+import { DateCellRenderProps } from '../types/types.ts';
 
-export const DateCellRender = ({value}: DateCellRenderProps) => {
-    const training = useAppSelector(state => state.calendar.training);
-    const trainingList = useAppSelector(state => state.calendar.trainingList);
+export const DateCellRender = ({ value }: DateCellRenderProps) => {
+    const training = useAppSelector((state) => state.calendar.training);
+    const trainingList = useAppSelector((state) => state.calendar.trainingList);
 
     const getListData = (value: Dayjs) => {
         const listData: TrainingParams[] = [];
@@ -22,16 +22,20 @@ export const DateCellRender = ({value}: DateCellRenderProps) => {
     const listData = getListData(value);
 
     return (
-        <ul className="calendar_list">
-            {listData.map((item) => {
-                const color = trainingList.find(element => element.name === item.name)
-                return (<li key={item._id} className={'calendar_list_item'}>
-                    <Badge color={color?.color} text={item.name} style={{
-                        fontWeight: '400',
-                        fontSize: '12px',
-                        lineHeight: '130%'
-                    }}/>
-                </li>)
+        <ul className='calendar_list'>
+            {listData.map((item, index) => {
+                const color = trainingList.find((element) => element.name === item.name);
+                return (
+                    <li key={item._id} className={'calendar_list_item'}>
+                        <BadgeComponent
+                            name={item?.name}
+                            color={color?.color}
+                            index={index}
+                            fontSize={'12px'}
+                            fontWeight={'400'}
+                        />
+                    </li>
+                );
             })}
         </ul>
     );

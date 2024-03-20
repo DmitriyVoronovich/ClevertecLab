@@ -1,58 +1,50 @@
-import './drawerForm.css'
-import {Button, Form, Input, InputNumber} from "antd";
-import { PlusOutlined} from "@ant-design/icons";
-import {useEffect} from "react";
-import {TrainExercises} from "../../model/types/types.ts";
+import { PlusOutlined } from '@ant-design/icons';
+import { Button, Form, Input, InputNumber } from 'antd';
+import { useEffect } from 'react';
+import { DrawerFormProps, FinishValues } from './types/types.ts';
 
-type DrawerFormProps = {
-    addItem: (value: any) => void
-    setFormSubmit: any
-    trainExercise: TrainExercises[]
-}
+import './drawerForm.css';
+import { ExerciseItem } from '../workoutEditForm/types/types.ts';
 
-type ExerciseItem = {
-    name: string
-    approaches: number
-    weight: number
-    replays: number
-}
-
-export const DrawerForm = (props: DrawerFormProps) => {
+export const DrawerForm = ({ trainExercise, setFormSubmit, addItem }: DrawerFormProps) => {
     const [form] = Form.useForm();
 
-    const initialValues = { exercise: props.trainExercise.length ? props.trainExercise : [{}]}
+    const initialValues = { exercise: trainExercise.length ? trainExercise : [{}] };
 
-    const onFinish = (values: any) => {
-        const item = values.exercise.filter((item: ExerciseItem) => item.name !== undefined || '')
-        props.addItem(item)
+    const onFinish = (values: FinishValues) => {
+        const item = values.exercise.filter((item: ExerciseItem) => item.name !== undefined || '');
+        addItem(item);
     };
+
     useEffect(() => {
-        props.setFormSubmit(form);
-    }, [form, props.setFormSubmit]);
+        setFormSubmit(form);
+    }, [form, setFormSubmit]);
 
     return (
         <Form
             form={form}
-            name="dynamic_form_nest_item"
+            name='dynamic_form_nest_item'
             onFinish={onFinish}
             style={{ maxWidth: 600 }}
-            autoComplete="off"
+            autoComplete='off'
             className={'drawer_form_container'}
             initialValues={initialValues}
         >
-            <Form.List name="exercise">
+            <Form.List name='exercise'>
                 {(fields, { add }) => (
                     <>
-                        {fields.map(({ key, name, ...restField}, index) => (
+                        {fields.map(({ key, name, ...restField }, index) => (
                             <div key={key} className={'form_item'}>
                                 <Form.Item
                                     {...restField}
                                     name={[name, 'name']}
                                     className={'input_name_exercise'}
                                 >
-                                    <Input placeholder="Упражнение"
-                                           className={'input_name_exercise'}
-                                           data-test-id={`modal-drawer-right-input-exercise${index}`}/>
+                                    <Input
+                                        placeholder='Упражнение'
+                                        className={'input_name_exercise'}
+                                        data-test-id={`modal-drawer-right-input-exercise${index}`}
+                                    />
                                 </Form.Item>
                                 <div className={'exercise_train_container'}>
                                     <div className={'exercise_approaches_wrapper'}>
@@ -62,8 +54,13 @@ export const DrawerForm = (props: DrawerFormProps) => {
                                             name={[name, 'approaches']}
                                             className={'input_item'}
                                         >
-                                            <InputNumber addonBefore="+" placeholder={'1'} className={'input_approaches_exercise'} min={1}
-                                                         data-test-id={`modal-drawer-right-input-approach${index}`}/>
+                                            <InputNumber
+                                                addonBefore='+'
+                                                placeholder={'1'}
+                                                className={'input_approaches_exercise'}
+                                                min={1}
+                                                data-test-id={`modal-drawer-right-input-approach${index}`}
+                                            />
                                         </Form.Item>
                                     </div>
                                     <div className={'exercise_weight_wrapper'}>
@@ -74,8 +71,12 @@ export const DrawerForm = (props: DrawerFormProps) => {
                                                 name={[name, 'weight']}
                                                 className={'input_item'}
                                             >
-                                                <InputNumber placeholder={'0'} className={'input_approaches_exercise'} min={0}
-                                                             data-test-id={`modal-drawer-right-input-weight${index}`}/>
+                                                <InputNumber
+                                                    placeholder={'0'}
+                                                    className={'input_approaches_exercise'}
+                                                    min={0}
+                                                    data-test-id={`modal-drawer-right-input-weight${index}`}
+                                                />
                                             </Form.Item>
                                         </div>
                                         <div className={'multiplication_sign'}>x</div>
@@ -86,8 +87,12 @@ export const DrawerForm = (props: DrawerFormProps) => {
                                                 name={[name, 'replays']}
                                                 className={'input_item'}
                                             >
-                                                <InputNumber placeholder={'3'} className={'input_approaches_exercise'} min={1}
-                                                             data-test-id={`modal-drawer-right-input-quantity${index}`}/>
+                                                <InputNumber
+                                                    placeholder={'3'}
+                                                    className={'input_approaches_exercise'}
+                                                    min={1}
+                                                    data-test-id={`modal-drawer-right-input-quantity${index}`}
+                                                />
                                             </Form.Item>
                                         </div>
                                     </div>
@@ -95,7 +100,13 @@ export const DrawerForm = (props: DrawerFormProps) => {
                             </div>
                         ))}
                         <Form.Item>
-                            <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />} className={'add_drawer_button'}>
+                            <Button
+                                type='dashed'
+                                onClick={() => add()}
+                                block
+                                icon={<PlusOutlined />}
+                                className={'add_drawer_button'}
+                            >
                                 Добавить ещё
                             </Button>
                         </Form.Item>

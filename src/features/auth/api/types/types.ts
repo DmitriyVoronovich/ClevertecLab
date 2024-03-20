@@ -1,18 +1,18 @@
 export type LoginParams = {
-    email: string,
-    password: string
+    email: string;
+    password: string;
 };
 
 export type CodeParams = {
-    email: string,
-    code: string
+    email: string;
+    code: string;
 };
 
 export type PasswordParams = {
-    password: string,
-    confirmPassword: string,
+    password: string;
+    confirmPassword: string;
 };
 
 export type CheckEmailParams = {
-    email: string
+    email: string;
 };

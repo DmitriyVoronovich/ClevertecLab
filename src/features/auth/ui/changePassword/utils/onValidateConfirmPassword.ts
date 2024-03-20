@@ -1,4 +1,4 @@
-import {FormInstance} from "antd/es/form/hooks/useForm";
+import { FormInstance } from 'antd/es/form/hooks/useForm';
 
 export const onValidateConfirmPassword = (form: FormInstance<any>) => {
     return (password: string) => {
@@ -9,4 +9,4 @@ export const onValidateConfirmPassword = (form: FormInstance<any>) => {
             return re.test(password);
         }
     };
-}
+};

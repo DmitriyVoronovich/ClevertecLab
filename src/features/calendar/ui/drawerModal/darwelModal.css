@@ -60,21 +60,19 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 130%;
-    color: #8C8C8C;
+    color: #8c8c8c;
 }
 
-@media screen and (max-width: 361px){
+@media screen and (max-width: 361px) {
     .ant-drawer-content-wrapper {
         border-radius: 24px 24px 0 0;
     }
 
     .ant-drawer-content-wrapper .drawer_container {
-        border-radius:  24px 24px 0 0;
+        border-radius: 24px 24px 0 0;
     }
 
     .ant-drawer-content-wrapper .drawer_container .ant-drawer-header {
-        border-radius:  24px 24px 0 0;
+        border-radius: 24px 24px 0 0;
     }
-
 }
-

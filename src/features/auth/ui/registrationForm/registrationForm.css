@@ -39,7 +39,7 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 130%;
-    color: #8C8C8C;
+    color: #8c8c8c;
 }
 
 .registration_form_section_one {
@@ -63,16 +63,17 @@
     height: 42px;
     background-color: white;
     color: #262626;
-    border: 1px solid #E0E0E0;
+    border: 1px solid #e0e0e0;
     border-radius: 2px;
     margin: 16px 0 0 0;
 }
 
-.ant-input-affix-wrapper >input.ant-input {
+.ant-input-affix-wrapper > input.ant-input {
     height: 100%;
 }
 
-input[type="text"], input[type="email"] {
+input[type='text'],
+input[type='email'] {
     height: 40px;
 }
 

@@ -1,4 +1,4 @@
 export type validatePasswordProps = {
-    password: string
-    callback: (isValid: boolean) => void
-}
+    password: string;
+    callback: (isValid: boolean) => void;
+};

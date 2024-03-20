@@ -6,7 +6,7 @@
     margin: 0;
 }
 
-.drawer_form_container input[type="text"] {
+.drawer_form_container input[type='text'] {
     height: 24px;
     margin: 0;
 }
@@ -26,7 +26,7 @@
 
 .exercise_block_title {
     text-align: start;
-    background-color: #F0F0F0;
+    background-color: #f0f0f0;
     padding: 8px;
     font-weight: 400;
     font-size: 12px;
@@ -81,8 +81,8 @@
     margin-top: 24px;
     border-radius: 0 0 6px 6px;
     height: 40px;
-    background-color: #F0F0F0;
-    color: #2F54EB;
+    background-color: #f0f0f0;
+    color: #2f54eb;
     text-align: start;
     border: none;
 }

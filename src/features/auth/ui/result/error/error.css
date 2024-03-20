@@ -26,7 +26,7 @@
     width: 539px;
     height: 280px;
     padding: 64px 0 0;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .error_wrapper {
@@ -61,7 +61,7 @@
     font-size: 14px;
     line-height: 130%;
     text-align: center;
-    color: #8C8C8C;
+    color: #8c8c8c;
     margin: 0;
 }
 
@@ -77,7 +77,7 @@
         width: 296px;
         height: 267px;
         padding: 32px 16px 0;
-        background-color: #FFFFFF;
+        background-color: #ffffff;
     }
 
     .error_wrapper {

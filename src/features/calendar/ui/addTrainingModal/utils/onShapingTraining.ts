@@ -1,8 +1,13 @@
-import {calendarThunks} from "../../../model/calendarSlice.ts";
-import {AppDispatch} from "@redux/configure-store.ts";
-import {TrainExercises, TrainingList} from "../../../model/types/types.ts";
+import { AppDispatch } from '@redux/configure-store.ts';
+import { calendarThunks } from '../../../model/calendarSlice.ts';
+import { TrainExercises, TrainingList } from '../../../model/types/types.ts';
 
-export const  onShapingTraining = (trainName: TrainingList | undefined, date: string, trainExercise: TrainExercises[], dispatch: AppDispatch) => {
+export const onShapingTraining = (
+    trainName: TrainingList | undefined,
+    date: string,
+    trainExercise: TrainExercises[],
+    dispatch: AppDispatch,
+) => {
     const trainArg = {
         name: trainName?.name || '',
         date: date,
@@ -11,9 +16,9 @@ export const  onShapingTraining = (trainName: TrainingList | undefined, date: st
             repeat: false,
             period: 1,
             jointTraining: false,
-            participants: []
+            participants: [],
         },
-        exercises: trainExercise
-    }
-    dispatch(calendarThunks.addTraining(trainArg))
+        exercises: trainExercise,
+    };
+    dispatch(calendarThunks.addTraining(trainArg));
 };

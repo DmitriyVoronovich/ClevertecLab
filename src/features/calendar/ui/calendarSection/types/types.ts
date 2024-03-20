@@ -1,5 +1,5 @@
-import {Dayjs} from "dayjs";
+import { Dayjs } from 'dayjs';
 
 export type DateCellRenderProps = {
-    value: Dayjs
+    value: Dayjs;
 };

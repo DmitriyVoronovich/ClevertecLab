@@ -1,6 +1,6 @@
 .sidebar_content_container {
     max-height: 100%;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -64,7 +64,7 @@
 
 .sidebar_footer {
     height: 40px;
-    border-top: 1px solid #E0E0E0;
+    border-top: 1px solid #e0e0e0;
     display: flex;
     align-items: center;
     padding: 7px 16px;
@@ -89,7 +89,7 @@
 .sidebar_menu_button {
     display: flex;
     align-items: center;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     clip-path: polygon(0 0, 100% 15%, 100% 85%, 0% 100%);
     width: 20px;
     height: 66px;
@@ -141,7 +141,6 @@
     }
 
     .sidebar_menu_list {
-
         display: flex;
         flex-direction: column;
         gap: 8px;
@@ -161,7 +160,7 @@
     }
 
     .sidebar_footer {
-       justify-content: center;
+        justify-content: center;
         align-items: center;
     }
 
@@ -185,8 +184,5 @@
     .sidebar_menu_icon {
         width: 14px;
         height: 14px;
-
     }
 }
-
-

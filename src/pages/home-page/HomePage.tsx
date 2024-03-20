@@ -1,16 +1,12 @@
-import React from 'react';
-import {Header} from "@pages/home-page/header/Header.tsx";
-import {HomeSection} from "@pages/home-page/home-section/HomeSection.tsx";
-import {Footer} from "@pages/home-page/footer/Footer.tsx";
+import { Footer } from '@pages/home-page/footer/Footer.tsx';
+import { Header } from '@pages/home-page/header/Header.tsx';
+import { HomeSection } from '@pages/home-page/home-section/HomeSection.tsx';
 
-
-
-export const HomePage: React.FC = () => {
-
+export const HomePage = () => {
     return (
         <>
-            <Header/>
-            <HomeSection/>
+            <Header />
+            <HomeSection />
             <Footer />
         </>
     );

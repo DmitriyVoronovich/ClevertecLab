@@ -15,7 +15,7 @@
     flex-direction: column;
     align-items: center;
     gap: 48px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .section_title {
@@ -36,13 +36,13 @@
     font-size: 14px;
     line-height: 130%;
     text-align: center;
-    color: #8C8C8C;
+    color: #8c8c8c;
 }
 
 .section_button {
     height: 40px;
-    color: #FFFFFF;
-    background-color: #2F54EB;
+    color: #ffffff;
+    background-color: #2f54eb;
     padding: 11px 16px;
     font-weight: 400;
     font-size: 14px;
@@ -65,7 +65,7 @@
         max-width: 264px;
         padding: 48px 32px;
         gap: 48px;
-        background-color: #FFFFFF;
+        background-color: #ffffff;
     }
 
     .section_description {

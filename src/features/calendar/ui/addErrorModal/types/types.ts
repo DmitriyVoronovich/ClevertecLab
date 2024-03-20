@@ -1,3 +1,3 @@
 export type AddErrorModalProps = {
-    onClose: () => void
+    onClose: () => void;
 };

@@ -1,11 +1,9 @@
-
-
-.success_result_container .ant-modal-content{
+.success_result_container .ant-modal-content {
     margin: 0 auto;
     width: 539px;
     height: 327px;
     padding: 64px 85px 64px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     z-index: 5;
 }
 
@@ -41,10 +39,10 @@
 }
 
 @media screen and (max-width: 366px) {
-    .success_result_container .ant-modal-content{
+    .success_result_container .ant-modal-content {
         width: 328px;
         height: 294px;
         margin: 0 auto;
-        padding:32px 16px 0;
+        padding: 32px 16px 0;
     }
 }

@@ -1,19 +1,18 @@
 .header_container {
     max-width: 1357px;
-    background: #F0F5FF;
+    background: #f0f5ff;
     height: 50px;
     font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #8C8C8C;
+    color: #8c8c8c;
     display: flex;
     align-items: center;
     padding-left: 24px;
 }
 
 .header_menu {
-
 }
 
 .header_menu_item {
@@ -25,7 +24,6 @@
         max-width: 336px;
         padding-left: 24px;
     }
-
 
     .header_menu_item {
         color: #262626;

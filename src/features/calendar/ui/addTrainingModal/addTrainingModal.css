@@ -10,7 +10,7 @@
     padding: 0 12px 12.5px 12px;
     display: flex;
     gap: 5px;
-    border-bottom: 1px solid #E0E0E0;
+    border-bottom: 1px solid #e0e0e0;
     align-items: center;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .add_training_selector .ant-select-selector {
-    border-color: #FFFFFF;
+    border-color: #ffffff;
 }
 
 .add_training_modal .ant-modal-mask {
@@ -33,18 +33,17 @@
     pointer-events: all;
 }
 
-.edit_svg_disabled svg{
-    fill: #BFBFBF;
+.edit_svg_disabled svg {
+    fill: #bfbfbf;
 }
 
-.edit_svg svg{
-    fill: #2F54EB;
+.edit_svg svg {
+    fill: #2f54eb;
 }
 
 .add_training_modal_list_wrapper {
     min-height: 128px;
     padding: 0 12px 0;
-
 }
 
 .add_training_modal_list {
@@ -58,7 +57,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #8C8C8C;
+    color: #8c8c8c;
 }
 
 .add_training_modal_list_item {
@@ -76,7 +75,7 @@
 .add_training_modal .ant-modal-footer {
     padding: 12px;
     margin: 0;
-    border-top: 1px solid #E0E0E0;
+    border-top: 1px solid #e0e0e0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -86,7 +85,7 @@
 .add_training_modal_button {
     margin: 0;
     width: 100%;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     color: #262626;
     border-radius: 2px;
     height: 32px;
@@ -97,23 +96,21 @@
 }
 
 .add_training_modal .ant-btn-default:disabled {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border: none;
 }
 
 .save_training_modal_button {
     margin: 0;
     width: 100%;
-    color: #2F54EB;
-    background-color: #FFFFFF;
+    color: #2f54eb;
+    background-color: #ffffff;
     border-radius: 2px;
     height: 32px;
     border: none;
-
 }
 
 @media screen and (max-width: 361px) {
-
     .add_training_modal_list_wrapper {
         min-height: 81px;
         padding: 12px;

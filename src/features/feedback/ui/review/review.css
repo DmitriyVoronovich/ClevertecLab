@@ -2,7 +2,7 @@
     padding: 16px;
     display: flex;
     gap: 12px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .review_user_wrapper {
@@ -44,7 +44,7 @@
 .review_rate {
     height: 16px;
     gap: 4px;
-    color: #FAAD14;
+    color: #faad14;
 }
 
 .review_date {
@@ -53,7 +53,7 @@
     font-size: 12px;
     line-height: 130%;
     text-align: right;
-    color: #BFBFBF;
+    color: #bfbfbf;
 }
 
 .review_text {
@@ -61,19 +61,19 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #8C8C8C;
+    color: #8c8c8c;
     margin: 0;
     padding: 0;
     word-break: break-all;
 }
 
-.review_container svg{
-    fill: #FAAD14;
+.review_container svg {
+    fill: #faad14;
 }
 
 @media screen and (max-width: 361px) {
     .review_container {
-       flex-direction: column;
+        flex-direction: column;
     }
 
     .review_user_wrapper {
@@ -101,6 +101,6 @@
     .review_rate {
         height: 16px;
         gap: 4px;
-        color: #FAAD14;
+        color: #faad14;
     }
 }

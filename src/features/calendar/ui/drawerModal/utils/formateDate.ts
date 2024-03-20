@@ -5,4 +5,4 @@ export const formateDate = (date: string) => {
     const dd = today.getDate();
 
     return `${dd < 10 ? '0' + dd : dd}.${mm < 10 ? '0' + mm : mm}.${yyyy}`;
-}
+};

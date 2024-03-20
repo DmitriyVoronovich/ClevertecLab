@@ -1,9 +1,9 @@
 .full_calendar .ant-picker-calendar {
     padding: 24px;
-    background: #F0F5FF;
+    background: #f0f5ff;
 }
 
-.full_calendar td{
+.full_calendar td {
     min-height: 143px;
     overflow-y: hidden;
 }
@@ -12,7 +12,6 @@
     min-height: 143px;
     overflow-y: hidden;
 }
-
 
 .full_calendar .ant-picker-calendar .ant-picker-calendar-date-content {
     padding: 0;
@@ -33,29 +32,28 @@
 }
 
 .full_calendar .ant-picker-body {
-    background: #F0F5FF;
+    background: #f0f5ff;
 }
 
 .full_calendar .ant-picker-cell-inner {
-    background: #FFFFFF;
+    background: #ffffff;
 }
 
 .full_calendar .ant-select-selection-item {
     text-transform: capitalize;
 }
 
-
 .calendar {
     padding: 0 24px 16px;
-    background: #F0F5FF;
+    background: #f0f5ff;
     min-height: 348px;
 }
 
-.calendar .calendar-cell-filled{
+.calendar .calendar-cell-filled {
     background-color: green;
 }
 
-.calendar .calendar_list{
+.calendar .calendar_list {
     display: none;
 }
 
@@ -70,7 +68,6 @@
     overflow-y: hidden;
 }
 
-
 .calendar .ant-picker-calendar-header {
     padding: 12px 8px;
     height: 44px;
@@ -80,12 +77,12 @@
     justify-content: end;
 }
 
-.calendar .ant-picker-calendar-header .ant-picker-calendar-year-select{
-   width: 77px;
+.calendar .ant-picker-calendar-header .ant-picker-calendar-year-select {
+    width: 77px;
 }
 
-.calendar .ant-picker-calendar-header .ant-picker-calendar-month-select{
-   width: 68px;
+.calendar .ant-picker-calendar-header .ant-picker-calendar-month-select {
+    width: 68px;
 }
 
 .calendar .ant-select-selector {
@@ -116,7 +113,7 @@
     width: max-content;
 }
 
-.calendar .ant-picker-calendar .ant-picker-calendar-header .ant-picker-calendar-mode-switch  {
+.calendar .ant-picker-calendar .ant-picker-calendar-header .ant-picker-calendar-mode-switch {
     margin: 0;
     width: 112px;
 }
@@ -126,7 +123,7 @@
 }
 
 .calendar .ant-picker-cell .ant-picker-calendar-date-value {
-    background: #FFFFFF;
+    background: #ffffff;
     width: 37px;
     height: 24px;
     color: #262626;

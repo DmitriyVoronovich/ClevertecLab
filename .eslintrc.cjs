@@ -8,8 +8,30 @@ module.exports = {
     ],
     ignorePatterns: ['dist', '.eslintrc.cjs', 'stylelint.config.cjs', 'coverage'],
     parser: '@typescript-eslint/parser',
-    plugins: ['react-refresh'],
+    plugins: ['react-refresh', 'import'],
     rules: {
         'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+        'import/order': [
+            'error',
+            {
+                'newlines-between': 'never',
+                groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
+                pathGroups: [
+                    {
+                        pattern: '@hooks/**',
+                        group: 'external',
+                    },
+                    {
+                        pattern: '*.css',
+                        group: 'object',
+                        position: 'after',
+                    },
+                ],
+                alphabetize: {
+                    order: 'asc',
+                    caseInsensitive: true,
+                },
+            },
+        ],
     },
 };

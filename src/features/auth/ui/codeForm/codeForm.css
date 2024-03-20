@@ -25,7 +25,7 @@
     width: 539px;
     height: 428px;
     padding: 64px 0 0;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .code_wrapper {
@@ -55,7 +55,7 @@
     font-size: 14px;
     line-height: 130%;
     text-align: center;
-    color: #8C8C8C;
+    color: #8c8c8c;
     margin: 0;
 }
 
@@ -64,12 +64,13 @@
 }
 
 .character {
-    border: 1px solid #E0E0E0;
+    border: 1px solid #e0e0e0;
     border-radius: 2px;
     width: 40px;
     height: 40px;
     box-sizing: initial;
-    line-height: normal;color: #FFFFFF;
+    line-height: normal;
+    color: #ffffff;
 }
 
 .wrong_value {
@@ -77,13 +78,13 @@
 }
 
 .character--inactive {
-    color: #FFFFFF;
-    background-color: #FFFFFF;
+    color: #ffffff;
+    background-color: #ffffff;
 }
 
 .character--filled {
     color: #262626;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .character--selected {

@@ -1,10 +1,9 @@
 .fragment_container {
     border-radius: 2px;
 
-
     display: flex;
     flex-direction: column;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .fragment_title {
@@ -17,7 +16,7 @@
     line-height: 130%;
     text-align: center;
     color: #262626;
-    border-bottom: 1px solid #E0E0E0;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .fragment_button {
@@ -29,7 +28,7 @@
     align-items: center;
     gap: 8px;
     border: 0;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     cursor: pointer;
 }
 
@@ -44,7 +43,7 @@
     font-size: 14px;
     line-height: 130%;
     text-align: center;
-    color: #2F54EB;
+    color: #2f54eb;
 }
 
 @media screen and (max-width: 865px) {
@@ -71,19 +70,17 @@
 }
 
 @media screen and (min-width: 866px) {
-
     .fragment_container {
         width: 240px;
         height: 101px;
     }
 
     .fragment_title {
-       width: 192px;
+        width: 192px;
     }
 }
 
 @media screen and (max-width: 361px) {
-
     .fragment_title {
         align-items: center;
     }

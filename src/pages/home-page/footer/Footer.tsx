@@ -1,15 +1,13 @@
 import './footer.css';
-import andr from '../../../accets/image/andr.svg'
-import apple from '../../../accets/image/apple.svg'
-import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
-import {feedbackThunks} from "../../../features/feedback/model/feedbackSlice.ts";
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
+import andr from '../../../accets/image/andr.svg';
+import apple from '../../../accets/image/apple.svg';
+import { feedbackThunks } from '../../../features/feedback/model/feedbackSlice.ts';
 
-export const Footer:React.FC = () => {
+export const Footer = () => {
     const dispatch = useAppDispatch();
 
-    const onSubmittingReviewRequest = () => {
-        dispatch(feedbackThunks.getReviews());
-    }
+    const onSubmittingReviewRequest = () => dispatch(feedbackThunks.getReviews());
 
     return (
         <div className={'footer_container'}>
@@ -25,11 +23,11 @@ export const Footer:React.FC = () => {
                 </div>
                 <div className={'app_container'}>
                     <button className={'app_button'}>
-                        <img src={andr} alt="icon" className={'app_icon'}/>
+                        <img src={andr} alt='icon' className={'app_icon'} />
                         <span className={'app_button_name'}>Android OS</span>
                     </button>
                     <button className={'app_button'}>
-                        <img src={apple} alt="icon" className={'app_icon'}/>
+                        <img src={apple} alt='icon' className={'app_icon'} />
                         <span className={'app_button_name'}>Apple OS</span>
                     </button>
                 </div>

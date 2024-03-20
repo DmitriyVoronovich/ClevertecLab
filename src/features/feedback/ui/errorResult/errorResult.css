@@ -1,12 +1,10 @@
-
-
-.error_result_container .ant-modal-content{
+.error_result_container .ant-modal-content {
     margin: 0 auto;
     max-width: 539px;
     width: 100%;
     height: 345px;
     padding: 64px 0 0;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     z-index: 5;
 }
 
@@ -41,7 +39,7 @@
     font-size: 14px;
     line-height: 130%;
     text-align: center;
-    color: #8C8C8C;
+    color: #8c8c8c;
     margin: 0;
 }
 
@@ -62,13 +60,13 @@
 }
 
 .error_result_button_def {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     width: 100%;
     max-width: 180px;
     color: #262626;
     border-radius: 2px;
     height: 40px;
-    border: 1px solid #E0E0E0;
+    border: 1px solid #e0e0e0;
     padding: 0;
 }
 
