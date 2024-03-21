@@ -1,4 +1,5 @@
 import { instance } from '../../../common/api';
+
 import { CheckEmailParams, CodeParams, LoginParams, PasswordParams } from './types/types.ts';
 
 export const authApi = {

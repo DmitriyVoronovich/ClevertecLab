@@ -1,13 +1,16 @@
+import { useEffect, useState } from 'react';
 import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { Button, Modal, Select } from 'antd';
 import Badge from 'antd/lib/badge';
-import { useEffect, useState } from 'react';
+
 import { AddTrainingStatus } from '../../../../common/enums/enums.ts';
 import { TrainExercises } from '../../model/types/types.ts';
 import { DrawerModal } from '../drawerModal/DrawerModal.tsx';
+
 import { AddTrainingModalProps } from './types/types.ts';
 import { onShapingTraining } from './utils/onShapingTraining.ts';
+
 import './addTrainingModal.css';
 
 export const AddTrainingModal = ({
@@ -28,8 +31,10 @@ export const AddTrainingModal = ({
 
     const screenWidth = window.innerWidth;
     let list;
+
     if (searchExercises) {
         const array = searchExercises.map((item) => item.name);
+
         list = trainingList.filter((item) => !array.includes(item.name));
     }
 
@@ -50,6 +55,7 @@ export const AddTrainingModal = ({
 
     const handleSave = () => {
         const trainName = trainingList.find((item) => item.key === selectTrain);
+
         onShapingTraining(trainName, date, trainExercise, dispatch);
     };
 
@@ -66,7 +72,7 @@ export const AddTrainingModal = ({
         <>
             <Modal
                 data-test-id='modal-create-exercise'
-                className={'add_training_modal'}
+                className="add_training_modal"
                 open={true}
                 width={screenWidth < 361 ? 312 : 264}
                 mask={false}
@@ -78,7 +84,7 @@ export const AddTrainingModal = ({
                         key='save'
                         type='default'
                         onClick={handleOk}
-                        className={'add_training_modal_button'}
+                        className="add_training_modal_button"
                         disabled={selectTrain === 'Выбор типа тренировки'}
                     >
                         Добавить упражнения
@@ -88,14 +94,14 @@ export const AddTrainingModal = ({
                         type='default'
                         onClick={handleSave}
                         disabled={trainExercise.length === 0}
-                        className={'save_training_modal_button'}
+                        className="save_training_modal_button"
                         loading={addTrainingStatus === AddTrainingStatus.Loading}
                     >
                         Сохранить
                     </Button>,
                 ]}
             >
-                <div className={'add_training_header_wrapper'}>
+                <div className="add_training_header_wrapper">
                     <ArrowLeftOutlined
                         style={{ width: '14px', height: '14px' }}
                         onClick={handleCancel}
@@ -103,7 +109,7 @@ export const AddTrainingModal = ({
                     />
                     <Select
                         data-test-id='modal-create-exercise-select'
-                        className={'add_training_selector'}
+                        className="add_training_selector"
                         value={selectTrain}
                         onChange={handleChange}
                         style={{ width: '100%' }}
@@ -123,15 +129,14 @@ export const AddTrainingModal = ({
                         }))}
                     />
                 </div>
-                <div className={'add_training_modal_list_wrapper'}>
+                <div className="add_training_modal_list_wrapper">
                     {!trainExercise.length || !Object.keys(trainExercise[0]).length ? (
-                        <div className={'add_training_modal_none_list'}></div>
+                        <div className="add_training_modal_none_list" />
                     ) : (
-                        <ul className={'add_training_modal_list'}>
-                            {trainExercise.map((item) => {
-                                return (
-                                    <li key={item.name} className={'add_training_modal_list_item'}>
-                                        <div className={'add_training_modal_title'}>
+                        <ul className="add_training_modal_list">
+                            {trainExercise.map((item) => (
+                                    <li key={item.name} className="add_training_modal_list_item">
+                                        <div className="add_training_modal_title">
                                             {item.name}
                                         </div>
                                         <EditOutlined
@@ -140,8 +145,7 @@ export const AddTrainingModal = ({
                                             }
                                         />
                                     </li>
-                                );
-                            })}
+                                ))}
                         </ul>
                     )}
                 </div>

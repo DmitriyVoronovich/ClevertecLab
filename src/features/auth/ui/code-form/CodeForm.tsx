@@ -1,9 +1,11 @@
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
 import { useState } from 'react';
 import VerificationInput from 'react-verification-input';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
+
 import fon from '../../../../accets/login-page/image/fon.png';
 import attention from '../../../../accets/login-page/svg-icon/info.svg';
 import { authThunks } from '../../model/authSlice.ts';
+
 import './codeForm.css';
 
 function getEmailFromLocalStorage() {
@@ -28,16 +30,16 @@ export const CodeForm = () => {
     };
 
     return (
-        <div className={'code_form_container'} style={{ backgroundImage: `url(${fon})` }}>
-            <div className={'form_fon'}></div>
-            <div className={'code_container'}>
-                <div className={'code_wrapper'}>
-                    <img className={'error_img'} alt={'error'} src={attention} />
-                    <h5 className={'code_title'}>
+        <div className="code_form_container" style={{ backgroundImage: `url(${fon})` }}>
+            <div className="form_fon" />
+            <div className="code_container">
+                <div className="code_wrapper">
+                    <img className="error_img" alt="error" src={attention} />
+                    <h5 className="code_title">
                         Введите код
                         <br /> для восстановления аккауанта
                     </h5>
-                    <p className={'code_description'}>
+                    <p className="code_description">
                         Мы отправили вам на e-mail {email}
                         <br /> шестизначный код. Введите его в поле ниже.
                     </p>
@@ -56,7 +58,7 @@ export const CodeForm = () => {
                             characterFilled: 'character--filled',
                         }}
                     />
-                    <p className={'code_description'}>Не пришло письмо? Проверьте папку Спам.</p>
+                    <p className="code_description">Не пришло письмо? Проверьте папку Спам.</p>
                 </div>
             </div>
         </div>

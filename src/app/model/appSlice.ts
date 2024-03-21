@@ -1,4 +1,5 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice,PayloadAction } from '@reduxjs/toolkit';
+
 import { RequestStatusType } from '../../common/enums/enums.ts';
 
 const initialState = {

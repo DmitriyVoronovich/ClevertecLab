@@ -1,4 +1,5 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice,PayloadAction } from '@reduxjs/toolkit';
+
 import { appActions } from '../../../app/model/appSlice.ts';
 import {
     AddTrainingStatus,
@@ -8,8 +9,9 @@ import {
 import { createAppAsyncThunk } from '../../../common/utils/createAppAsyncThunk.ts';
 import { pushWithFlow } from '../../auth/model/utils/pushWithFlow.ts';
 import { calendarApi } from '../api/calendarApi.ts';
-import { colors } from './calendarData.ts';
+
 import { PostTrainingParams, TrainingList, TrainingParams } from './types/types.ts';
+import { colors } from './calendarData.ts';
 
 const slice = createSlice({
     name: 'training',
@@ -87,53 +89,72 @@ const slice = createSlice({
     },
 });
 
-// thunks
+export const calendarSlice = slice.reducer;
+export const {
+    setTrainingStatus,
+    addSearchExercises,
+    setAddTrainingStatus,
+    setSearchExercises,
+    editSearchExercises,
+} = slice.actions;
 
-const training = createAppAsyncThunk<{ training: TrainingParams[] }, undefined>(
-    `${slice.name}/training`,
-    async (_, thunkAPI) => {
-        const { dispatch, rejectWithValue } = thunkAPI;
-        dispatch(appActions.setAppStatus({ status: RequestStatusType.Loading }));
-        try {
-            const res = await calendarApi.getTraining();
-            if (res.status === 200) {
-                dispatch(calendarThunks.trainingList(() => dispatch(pushWithFlow('/calendar'))));
-                return { training: res.data };
-            } else {
-                return rejectWithValue(null);
-            }
-        } catch (e: any) {
-            dispatch(setTrainingStatus({ trainingStatus: RequestCalendarStatus.Failed }));
-            return rejectWithValue(null);
-        } finally {
-            dispatch(appActions.setAppStatus({ status: RequestStatusType.Idle }));
-        }
-    },
-);
+
+// thunks
 
 const trainingList = createAppAsyncThunk<
     {
-        trainingList: { name: string; key: string }[];
+        trainingList: Array<{ name: string; key: string }>;
     },
     () => void
 >(`${slice.name}/trainingList`, async (callback, thunkAPI) => {
     const { dispatch, rejectWithValue } = thunkAPI;
+
     dispatch(appActions.setAppStatus({ status: RequestStatusType.Loading }));
     try {
         const res = await calendarApi.getTrainingList();
+
         if (res.status === 200) {
             return { trainingList: res.data };
-        } else {
-            return rejectWithValue(null);
         }
+
+            return rejectWithValue(null);
+
     } catch (e: any) {
         dispatch(setTrainingStatus({ trainingStatus: RequestCalendarStatus.Error }));
+
         return rejectWithValue(null);
     } finally {
         dispatch(appActions.setAppStatus({ status: RequestStatusType.Idle }));
         callback?.();
     }
 });
+
+const training = createAppAsyncThunk<{ training: TrainingParams[] }, undefined>(
+    `${slice.name}/training`,
+    async (_, thunkAPI) => {
+        const { dispatch, rejectWithValue } = thunkAPI;
+
+        dispatch(appActions.setAppStatus({ status: RequestStatusType.Loading }));
+        try {
+            const res = await calendarApi.getTraining();
+
+            if (res.status === 200) {
+                dispatch(trainingList(() => dispatch(pushWithFlow('/calendar'))));
+
+                return { training: res.data };
+            }
+
+            return rejectWithValue(null);
+
+        } catch (e: any) {
+            dispatch(setTrainingStatus({ trainingStatus: RequestCalendarStatus.Failed }));
+
+            return rejectWithValue(null);
+        } finally {
+            dispatch(appActions.setAppStatus({ status: RequestStatusType.Idle }));
+        }
+    },
+);
 
 const addTraining = createAppAsyncThunk<
     {
@@ -142,20 +163,25 @@ const addTraining = createAppAsyncThunk<
     PostTrainingParams
 >(`${slice.name}/addTraining`, async (arg, thunkAPI) => {
     const { dispatch, rejectWithValue } = thunkAPI;
+
     dispatch(setAddTrainingStatus({ addTrainingStatus: AddTrainingStatus.Loading }));
     try {
         const res = await calendarApi.setTraining(arg);
+
         if (res.status === 200) {
             dispatch(addSearchExercises({ searchExercise: res.data }));
             dispatch(setAddTrainingStatus({ addTrainingStatus: AddTrainingStatus.Success }));
-            dispatch(calendarThunks.training());
+            dispatch(training());
+
             return { addTrainingStatus: AddTrainingStatus.Idle };
-        } else {
-            dispatch(setAddTrainingStatus({ addTrainingStatus: AddTrainingStatus.Error }));
-            return rejectWithValue(null);
         }
+            dispatch(setAddTrainingStatus({ addTrainingStatus: AddTrainingStatus.Error }));
+
+            return rejectWithValue(null);
+
     } catch (e: any) {
         dispatch(setAddTrainingStatus({ addTrainingStatus: AddTrainingStatus.Error }));
+
         return rejectWithValue(null);
     }
 });
@@ -167,30 +193,27 @@ const editTraining = createAppAsyncThunk<
     { training: TrainingParams; trainingId: string }
 >(`${slice.name}/editTraining`, async (arg, thunkAPI) => {
     const { dispatch, rejectWithValue } = thunkAPI;
+
     dispatch(setAddTrainingStatus({ addTrainingStatus: AddTrainingStatus.Loading }));
     try {
         const res = await calendarApi.editTraining(arg.training, arg.trainingId);
+
         if (res.status === 200) {
             dispatch(editSearchExercises({ searchExercise: arg.training }));
             dispatch(setAddTrainingStatus({ addTrainingStatus: AddTrainingStatus.Success }));
-            dispatch(calendarThunks.training());
+            dispatch(training());
+
             return { addTrainingStatus: AddTrainingStatus.Idle };
-        } else {
-            dispatch(setAddTrainingStatus({ addTrainingStatus: AddTrainingStatus.Error }));
-            return rejectWithValue(null);
         }
+            dispatch(setAddTrainingStatus({ addTrainingStatus: AddTrainingStatus.Error }));
+
+            return rejectWithValue(null);
+
     } catch (e: any) {
         dispatch(setAddTrainingStatus({ addTrainingStatus: AddTrainingStatus.Error }));
+
         return rejectWithValue(null);
     }
 });
 
-export const calendarSlice = slice.reducer;
-export const {
-    setTrainingStatus,
-    addSearchExercises,
-    setAddTrainingStatus,
-    setSearchExercises,
-    editSearchExercises,
-} = slice.actions;
 export const calendarThunks = { training, trainingList, addTraining, editTraining };

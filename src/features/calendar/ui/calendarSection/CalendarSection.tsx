@@ -1,16 +1,20 @@
+import { useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { Calendar, CalendarProps } from 'antd';
 import { SelectInfo } from 'antd/es/calendar/generateCalendar';
 import locale from 'antd/es/date-picker/locale/ru_RU';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
-import 'dayjs/locale/ru';
-import { useRef, useState } from 'react';
+
 import { isMobile } from '../../../../common/utils/isMobile.ts';
 import { TrainingModal } from '../trainingModal/TrainingModal.tsx';
+
 import { DateCellRender } from './dateCellRender/dateCellRender.tsx';
-import './calendarSection.css';
 import { onSelect } from './utils/onSelect.ts';
+
+import './calendarSection.css';
+
+import 'dayjs/locale/ru';
 
 dayjs.locale('ru');
 
@@ -28,6 +32,7 @@ export const CalendarSection = () => {
 
     const cellRender: CalendarProps<Dayjs>['cellRender'] = (current, info) => {
         if (info.type === 'date') return <DateCellRender value={current} />;
+
         return info.originNode;
     };
 

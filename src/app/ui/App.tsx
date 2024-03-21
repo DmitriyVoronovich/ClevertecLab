@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { HomePage } from '@pages/home-page/HomePage.tsx';
 import { MainPage } from '@pages/main-page/MainPage.tsx';
-import { useEffect } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+
 import { Loader } from '../../common/components';
 import { getToken } from '../../common/utils/getToken.ts';
 import { authActions } from '../../features/auth/model/authSlice.ts';
@@ -22,8 +23,12 @@ import {
 import { CalendarPage } from '../../features/calendar/ui';
 import { FeedbacksPage } from '../../features/feedback/ui';
 import { LocationState } from '../types/types.ts';
-import s from './app.module.css';
+
 import { authGoogle } from './utils/authGoogle.ts';
+
+import s from './app.module.css';
+import {ProfilePage} from '../../features/profile/ui/profile-page';
+import {SettingsPage} from '../../features/settings/ui/settings-page';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -41,6 +46,7 @@ function App() {
     useEffect(() => {
         if (!authState.isLoggedIn) {
             const token = getToken();
+
             if (token) {
                 dispatch(authActions.setAuthStatus({ isLoggedIn: true }));
             }
@@ -51,13 +57,15 @@ function App() {
         <>
             <Routes>
                 <Route
-                    path={'/'}
+                    path="/"
                     element={<Navigate to={authState.isLoggedIn ? '/main' : '/auth'} />}
                 />
-                <Route path={'/'} element={<MainPage />}>
+                <Route path="/" element={<MainPage />}>
                     <Route path='main' element={<HomePage />} />
                     <Route path='feedbacks' element={<FeedbacksPage />} />
                     <Route path='calendar' element={<CalendarPage />} />
+                    <Route path='profile' element={<ProfilePage />} />
+                    <Route path="settings" element={<SettingsPage />} />
                 </Route>
                 <Route path='/auth/*' element={<LoginPage />}>
                     <Route path='registration' element={<LoginPage />} />
@@ -65,7 +73,7 @@ function App() {
                 {locationState?.flowRedirect ? (
                     <>
                         {' '}
-                        <Route path={'/result'}>
+                        <Route path="/result">
                             <Route path='error-user-exist' element={<ErrorRegistration />} />
                             <Route path='error-login' element={<ErrorLogin />} />
                             <Route path='success' element={<Success />} />
@@ -85,7 +93,7 @@ function App() {
                         <Route path='/auth/change-password' element={<ChangePassword />} />
                     </>
                 ) : (
-                    <Route path={'/*'} element={<Navigate to={'/auth'} />} />
+                    <Route path={'/*'} element={<Navigate to="/auth" />} />
                 )}
             </Routes>
             {status === 'loading' && (

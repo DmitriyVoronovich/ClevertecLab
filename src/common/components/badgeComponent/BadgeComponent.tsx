@@ -1,4 +1,5 @@
 import Badge from 'antd/lib/badge';
+
 import { BadgeProps } from './types/types.ts';
 
 export const BadgeComponent = ({
@@ -9,19 +10,17 @@ export const BadgeComponent = ({
     index,
     colorText,
     className,
-}: BadgeProps) => {
-    return (
+}: BadgeProps) => (
         <Badge
             key={index}
             color={color}
             text={name}
             style={{
-                fontWeight: fontWeight,
-                fontSize: fontSize,
+                fontWeight,
+                fontSize,
                 lineHeight: '130%',
                 color: colorText,
             }}
             className={className}
         />
     );
-};
