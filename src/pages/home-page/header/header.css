@@ -45,6 +45,7 @@
     padding: 7px 15px;
     gap: 10px;
     margin-top: 8px;
+    cursor: pointer;
 }
 
 .header_content_svg {

@@ -4,12 +4,10 @@ type HeaderProps = {
     nameSection: string;
 };
 
-export const HeaderSection = ({ nameSection }: HeaderProps) => {
-    return (
+export const HeaderSection = ({ nameSection }: HeaderProps) => (
         <div className={s.header_container}>
             <div className={s.header_menu}>
                 Главная / <span className={s.header_menu_item}>{nameSection}</span>
             </div>
         </div>
     );
-};

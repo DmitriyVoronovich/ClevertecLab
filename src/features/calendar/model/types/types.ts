@@ -10,14 +10,14 @@ export type TrainingParams = {
         jointTraining: boolean;
         participants: string[];
     };
-    exercises: {
+    exercises: Array<{
         _id?: string;
         name: string;
         replays: number;
         weight: number;
         approaches: number;
         isImplementation: boolean;
-    }[];
+    }>;
 };
 
 export type TrainingList = {
@@ -46,11 +46,11 @@ export type PostTrainingParams = {
         jointTraining: boolean;
         participants: string[];
     };
-    exercises: {
+    exercises: Array<{
         name: string;
         replays: number;
         weight: number;
         approaches: number;
         isImplementation: boolean;
-    }[];
+    }>;
 };

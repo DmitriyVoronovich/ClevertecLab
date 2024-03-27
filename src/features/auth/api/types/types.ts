@@ -1,4 +1,8 @@
 export type LoginParams = {
+    imgSrc: string;
+    birthday: string;
+    lastName: string;
+    firstName: string;
     email: string;
     password: string;
 };
