@@ -1,0 +1,87 @@
+.settings_section_container {
+    max-width: 1333px;
+    height: 886px;
+    padding: 24px 24px 42px 24px;
+    background-color: #f5f5f5;
+}
+
+.settings_section_content {
+    height: 100%;
+    background-color: #ffffff;
+    padding: 24px;
+}
+
+.settings_section_title {
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #262626;
+    margin: 0;
+}
+
+.settings_card_wrapper {
+    display: flex;
+    gap: 25px;
+    margin-top: 16px;
+}
+
+.settings_review_group {
+    display: flex;
+    gap: 18px;
+    margin-top: 112px;
+    align-items: center;
+}
+
+.settings_review_button {
+    border-radius: 0;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+}
+
+.settings_all_review_button {
+    border-radius: 0;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: #2f54eb;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 361px) {
+    .settings_section_container {
+        width: 360px;
+        height: 998px;
+        padding: 24px 0 42px 0;
+    }
+
+    .settings_section_content {
+        width: 312px;
+        background-color: #ffffff;
+        padding: 16px 23px 16px 23px;
+    }
+
+    .settings_card_wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-top: 16px;
+    }
+
+    .settings_review_group {
+        flex-direction: column;
+        width: 100%;
+        gap: 16px;
+        margin-top: 36px;
+        align-items: center;
+    }
+
+    .settings_review_button {
+       width: 100%;
+    }
+}

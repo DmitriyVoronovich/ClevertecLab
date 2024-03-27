@@ -1,0 +1,62 @@
+.settings_container {
+    max-width: 1440px;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    position: relative;
+}
+
+.settings_header_container {
+    max-width: 1333px;
+    background: #f0f5ff;
+    height: 38px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: #262626;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+}
+
+.settings_header_container_title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    display: flex;
+    gap: 16px;
+    cursor: pointer;
+}
+
+.settings_header_menu_item {
+    color: #262626;
+}
+
+@media screen and (max-width: 361px) {
+    .settings_container {
+        width: 360px;
+        min-height: 100vh;
+        height: 100%;
+        position: relative;
+    }
+
+    .settings_header_container {
+        height: 30px;
+        max-width: 336px;
+        padding-left: 24px;
+    }
+
+    .settings_header_menu_item {
+        color: #262626;
+    }
+
+    .settings_header_title {
+        width: 275px;
+        font-weight: 500;
+        font-size: 20px;
+        padding: 0;
+    }
+}
+

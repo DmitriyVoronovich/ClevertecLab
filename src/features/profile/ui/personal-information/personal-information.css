@@ -1,0 +1,42 @@
+.personal_container {
+    display: flex;
+    flex-direction: column;
+    width: 352px;
+    gap: 16px;
+}
+
+.profile_personal_title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    color: #262626;
+}
+
+.profile_personal_form_item {
+    margin: 0;
+    border-radius: 0;
+}
+
+.profile_personal_form_item .ant-picker{
+    border-radius: 0;
+    height: 40px;
+    width: 352px;
+}
+
+@media screen and (max-width: 361px) {
+    .personal_container {
+        width: 312px;
+    }
+
+    .profile_personal_form_item {
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .profile_personal_form_item .ant-picker{
+        border-radius: 0;
+        height: 40px;
+        width: 312px;
+    }
+}
