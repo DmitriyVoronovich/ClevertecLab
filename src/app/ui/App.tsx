@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
-import { HomePage } from '@pages/home-page/HomePage.tsx';
-import { MainPage } from '@pages/main-page/MainPage.tsx';
+import { HomePage } from '@pages/home-page';
+import { MainPage } from '@pages/main-page';
 
 import { Loader } from '../../common/components';
 import { getToken } from '../../common/utils/getToken.ts';
-import { authActions } from '../../features/auth/model/authSlice.ts';
+import { authActions } from '../../features/auth/model/auth-slice.ts';
 import {
     ChangePassword,
     CodeForm,
@@ -29,6 +29,8 @@ import { authGoogle } from './utils/authGoogle.ts';
 import s from './app.module.css';
 import {ProfilePage} from '../../features/profile/ui/profile-page';
 import {SettingsPage} from '../../features/settings/ui/settings-page';
+import {profileThunks} from "../../features/profile/model/profileSlice.ts";
+import {NotFoundPage} from "../../features/404/ui";
 
 function App() {
     const dispatch = useAppDispatch();
@@ -37,13 +39,15 @@ function App() {
     const authState = useAppSelector((state) => state.auth);
 
     useEffect(() => {
-        window.onbeforeunload = function () {
+        window.onbeforeunload = () => {
             sessionStorage.clear();
         };
     }, []);
+
     authGoogle();
 
     useEffect(() => {
+        dispatch(profileThunks.me())
         if (!authState.isLoggedIn) {
             const token = getToken();
 
@@ -66,6 +70,7 @@ function App() {
                     <Route path='calendar' element={<CalendarPage />} />
                     <Route path='profile' element={<ProfilePage />} />
                     <Route path="settings" element={<SettingsPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
                 </Route>
                 <Route path='/auth/*' element={<LoginPage />}>
                     <Route path='registration' element={<LoginPage />} />
@@ -95,6 +100,7 @@ function App() {
                 ) : (
                     <Route path={'/*'} element={<Navigate to="/auth" />} />
                 )}
+                <Route path="*" element={<NotFoundPage />} />
             </Routes>
             {status === 'loading' && (
                 <div className={s.loading}>

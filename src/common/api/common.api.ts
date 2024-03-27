@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { getToken } from '../utils/getToken.ts';
 
 export const instance = axios.create({
@@ -11,6 +12,8 @@ export const instance = axios.create({
 
 instance.interceptors.request.use((config) => {
     const token = getToken();
+
     config.headers.Authorization = `Bearer ${token}`;
+
     return config;
 });

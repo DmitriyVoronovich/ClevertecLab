@@ -5,7 +5,8 @@ import icdos from '../accets/image/svg-menu/icon-dos.svg';
 import icheard from '../accets/image/svg-menu/icon-heard.svg';
 import icprof from '../accets/image/svg-menu/icon-prof.svg';
 import icrasp from '../accets/image/svg-menu/icon-rasp.svg';
-import { calendarThunks } from '../features/calendar/model/calendarSlice.ts';
+import {pushWithFlow} from '@utils/pushWithFlow.ts';
+import { calendarThunks } from '../features/calendar/model/calendar-slice.ts';
 
 export const NavigationCardData = [
     {
@@ -23,7 +24,7 @@ export const NavigationCardData = [
         title: 'Календарь',
         icon: cal,
         description: 'Назначить календарь',
-        callback: calendarThunks.training,
+        callback: calendarThunks.training(),
         dataId: 'menu-button-calendar1',
     },
     {
@@ -31,10 +32,8 @@ export const NavigationCardData = [
         title: 'Профиль',
         icon: prof,
         description: 'Заполнить профиль',
-        callback: () => {
-            console.log();
-        },
-        dataId: 'menu-button-calendar1',
+        callback: pushWithFlow('/profile'),
+        dataId: 'menu-button-profile',
     },
 ];
 
@@ -73,4 +72,28 @@ export const NavigationMenuData = [
         },
         dataId: 'menu-button-calendar1',
     },
+];
+
+export const TariffComparisonData = [
+    {
+        id: 1, title: 'Статистика за месяц', free: true, pro: true
+    },
+    {
+        id: 2, title: 'Статистика за все время', free: false, pro: true
+    },
+    {
+        id: 3, title: 'Совместные тренировки', free: true, pro: true
+    },
+    {
+        id: 4, title: 'Участие в марафонах', free: false, pro: true
+    },
+    {
+        id: 5, title: 'Приложение iOS', free: false, pro: true
+    },
+    {
+        id: 6, title: 'Приложение Android', free: false, pro: true
+    },
+    {
+        id: 7, title: 'Индивидуальный Chat GPT', free: false, pro: true
+    }
 ];

@@ -13,9 +13,7 @@ export enum AddTrainingStatus {
 
 export enum RequestStatusType {
     Idle = 'idle',
-    Succeeded = 'succeeded',
     Loading = 'loading',
-    Failed = 'failed',
 }
 
 export enum RequestFeedbackStatus {
@@ -23,4 +21,18 @@ export enum RequestFeedbackStatus {
     Succeeded = 'succeeded',
     Error = 'error',
     Failed = 'failed',
+}
+
+export enum RequestSettingsStatus {
+    Idle = 'idle',
+    Succeeded = 'succeeded',
+    Selected = 'selected',
+}
+
+export enum RequestProfileStatus {
+    Idle = 'idle',
+    Succeeded = 'succeeded',
+    Selected = 'selected',
+    Error = 'error',
+    Failed = 'failed'
 }

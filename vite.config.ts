@@ -24,4 +24,4 @@ export default defineConfig(({ command }) => ({
             '@enums': path.resolve(__dirname, 'src/common/enums'),
         },
     },
-});
+}))

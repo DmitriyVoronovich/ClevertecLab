@@ -1,17 +1,17 @@
-import { createSlice,PayloadAction } from '@reduxjs/toolkit';
-
-import { appActions } from '../../../app/model/appSlice.ts';
 import {
     AddTrainingStatus,
     RequestCalendarStatus,
     RequestStatusType,
-} from '../../../common/enums/enums.ts';
-import { createAppAsyncThunk } from '../../../common/utils/createAppAsyncThunk.ts';
-import { pushWithFlow } from '../../auth/model/utils/pushWithFlow.ts';
-import { calendarApi } from '../api/calendarApi.ts';
+} from '@enums/enums.ts';
+import { createSlice,PayloadAction } from '@reduxjs/toolkit';
+import { createAppAsyncThunk } from '@utils/createAppAsyncThunk.ts';
+import { pushWithFlow } from '@utils/pushWithFlow.ts';
+
+import { appActions } from '../../../app/model/appSlice.ts';
+import { calendarApi } from '../api/calendar-api.ts';
 
 import { PostTrainingParams, TrainingList, TrainingParams } from './types/types.ts';
-import { colors } from './calendarData.ts';
+import { colors } from './calendar-data.ts';
 
 const slice = createSlice({
     name: 'training',

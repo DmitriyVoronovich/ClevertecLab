@@ -1,12 +1,13 @@
 import { instance } from '../../../common/api';
 
-import { CheckEmailParams, CodeParams, LoginParams, PasswordParams } from './types/types.ts';
+import { CheckEmailParams, CodeParams, PasswordParams } from './types/types.ts';
+import {FormParams} from '../ui/login-form/types/types.ts';
 
 export const authApi = {
-    login(data: LoginParams) {
+    login(data: FormParams) {
         return instance.post('auth/login', data);
     },
-    registration(data: LoginParams) {
+    registration(data: FormParams) {
         return instance.post('auth/registration', data);
     },
     checkEmail(email: CheckEmailParams) {

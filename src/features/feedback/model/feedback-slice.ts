@@ -1,11 +1,13 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { RequestFeedbackStatus, RequestStatusType } from '@enums/enums.ts';
+import { createSlice,PayloadAction } from '@reduxjs/toolkit';
+import { createAppAsyncThunk } from '@utils/createAppAsyncThunk.ts';
+import { pushWithFlow } from '@utils/pushWithFlow.ts';
+
 import { appActions } from '../../../app/model/appSlice.ts';
-import { RequestFeedbackStatus, RequestStatusType } from '../../../common/enums/enums.ts';
-import { createAppAsyncThunk } from '../../../common/utils/createAppAsyncThunk.ts';
-import { pushWithFlow } from '../../auth/model/utils/pushWithFlow.ts';
-import { feedbackApi } from '../api/feeedbackApi.ts';
+import { feedbackApi } from '../api/feeedback-api.ts';
 import { AllReview, Review } from '../api/types/types.ts';
-import { compareCreatedAt } from './utils/compareCreatedAt.ts';
+
+import { compareCreatedAt } from './utils/compare-created-at.ts';
 
 const slice = createSlice({
     name: 'feedback',
@@ -47,26 +49,32 @@ const getReviews = createAppAsyncThunk<{ reviews: AllReview[] }, undefined>(
     'feedback/getReviews',
     async (_, thunkAPI) => {
         const { dispatch, rejectWithValue } = thunkAPI;
+
         dispatch(appActions.setAppStatus({ status: RequestStatusType.Loading }));
         dispatch(pushWithFlow('/feedbacks'));
         try {
             const res = await feedbackApi.getFeedback();
+
             if (res.status === 200) {
                 const reviews = res.data;
+
                 return { reviews };
-            } else {
-                return rejectWithValue(null);
             }
+
+                return rejectWithValue(null);
+
         } catch (e: any) {
             if (e.response?.status === 403) {
                 localStorage.removeItem('jwtToken');
                 sessionStorage.removeItem('jwtToken');
                 dispatch(pushWithFlow('/auth'));
-                return rejectWithValue(null);
-            } else {
-                dispatch(setFeedbackStatus({ feedbackStatus: RequestFeedbackStatus.Failed }));
+
                 return rejectWithValue(null);
             }
+                dispatch(setFeedbackStatus({ feedbackStatus: RequestFeedbackStatus.Failed }));
+
+                return rejectWithValue(null);
+
         } finally {
             dispatch(appActions.setAppStatus({ status: RequestStatusType.Idle }));
         }
@@ -74,13 +82,15 @@ const getReviews = createAppAsyncThunk<{ reviews: AllReview[] }, undefined>(
 );
 
 const createReview = createAppAsyncThunk<undefined, Review>(
-    `feedback/createReview`,
+    'feedback/createReview',
     async (arg, thunkAPI) => {
         const { dispatch, rejectWithValue } = thunkAPI;
+
         dispatch(appActions.setAppStatus({ status: RequestStatusType.Loading }));
         try {
             const data = { message: arg.message, rating: arg.rating };
             const res = await feedbackApi.createFeedback(data);
+
             if (res.status === 200 || res.status === 201) {
                 dispatch(setFeedbackStatus({ feedbackStatus: RequestFeedbackStatus.Succeeded }));
             } else {
@@ -88,6 +98,7 @@ const createReview = createAppAsyncThunk<undefined, Review>(
             }
         } catch (e) {
             dispatch(setFeedbackStatus({ feedbackStatus: RequestFeedbackStatus.Error }));
+
             return rejectWithValue(null);
         } finally {
             dispatch(appActions.setAppStatus({ status: RequestStatusType.Idle }));

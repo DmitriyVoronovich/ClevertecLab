@@ -1,11 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { createBrowserHistory } from 'history';
 import { combineReducers } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
+import { configureStore } from '@reduxjs/toolkit';
+import { createBrowserHistory } from 'history';
+
 import { appSlice } from '../app/model/appSlice.ts';
-import { authSlice } from '../features/auth/model/authSlice.ts';
-import { calendarSlice } from '../features/calendar/model/calendarSlice.ts';
-import { feedbackSlice } from '../features/feedback/model/feedbackSlice.ts';
+import { authSlice } from '../features/auth/model/auth-slice.ts';
+import { calendarSlice } from '../features/calendar/model/calendar-slice.ts';
+import { feedbackSlice } from '../features/feedback/model/feedback-slice.ts';
+import {profileSlice} from "../features/profile/model/profileSlice.ts";
+import {settingsSlice} from "../features/settings/model/settings-slice.ts";
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -20,6 +23,8 @@ export const store = configureStore({
         app: appSlice,
         feedback: feedbackSlice,
         calendar: calendarSlice,
+        profile: profileSlice,
+        settings: settingsSlice
     }),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(routerMiddleware),
 });
