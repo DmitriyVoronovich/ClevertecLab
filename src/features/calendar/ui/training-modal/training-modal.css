@@ -55,7 +55,7 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
 }
 
 .title_disabled span {
@@ -66,12 +66,12 @@
 .training_header_description {
     padding: 0;
     margin: 0;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
     text-align: start;
-    color: #8c8c8c;
+    color: var(--basic-font-color);
 }
 
 .training_modal_list_wrapper {
@@ -87,7 +87,7 @@
 }
 
 .training_modal_button:disabled {
-    color: #ffffff;
+    color: var(--basic-white-color);
     background-color: #2f54eb;
 }
 
@@ -107,7 +107,7 @@
 
 .edit_button {
     border: none;
-    background-color: #ffffff;
+    background-color: var(--basic-white-color);
     cursor: pointer;
     height: 18px;
     padding: 0;

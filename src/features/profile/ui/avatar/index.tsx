@@ -43,7 +43,11 @@ export const Avatar = ({onModalOpen, onButtonDisablet}: AvatarProps) => {
         const handleChange: UploadProps['onChange'] = (info) => {
 
             if (info.file.status === 'error') {
-                setFileList([])
+                setFileList([{
+                    uid: '-1',
+                    name: 'image.png',
+                    status: 'error',
+                }])
             }
         };
 

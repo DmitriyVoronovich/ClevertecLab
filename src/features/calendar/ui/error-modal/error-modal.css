@@ -33,23 +33,23 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
-    color: #262626;
-    font-family: Inter, sans-serif;
+    color: var(--basic-title-color);
+    font-family: var(--basic-font-family);
 }
 
 .calendar_error_text {
     padding: 0;
     margin: 0;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
     text-align: start;
-    color: #8c8c8c;
+    color: var(--basic-font-color);
 }
 
 .calendar_error_button {
-    color: #ffffff;
+    color: var(--basic-white-color);
     border-radius: 2px;
     padding: 4px 15px;
     width: 99px;

@@ -11,6 +11,8 @@ export const LoginPage = () => {
     const location = useLocation();
     const locationPath = location.pathname.split('/');
 
+    const isActive = locationPath.length === 2
+
     return (
         <div className="login_form_container" style={{ backgroundImage: `url(${fon})` }}>
             <div className="form_fon" />
@@ -23,7 +25,7 @@ export const LoginPage = () => {
                         <Link to="/auth" style={{ width: '100%' }}>
                             <button
                                 className={`${
-                                    locationPath.length !== 2
+                                    !isActive
                                         ? 'login_button'
                                         : 'login_button active'
                                 }`}
@@ -34,7 +36,7 @@ export const LoginPage = () => {
                         <Link to="/auth/registration" style={{ width: '100%' }}>
                             <button
                                 className={`${
-                                    locationPath.length === 2
+                                    isActive
                                         ? 'login_button'
                                         : 'login_button active'
                                 }`}

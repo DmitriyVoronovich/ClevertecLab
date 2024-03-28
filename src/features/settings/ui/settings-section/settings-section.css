@@ -7,16 +7,16 @@
 
 .settings_section_content {
     height: 100%;
-    background-color: #ffffff;
-    padding: 24px;
+    background-color: var(--basic-white-color);
+    padding: var(--basic-padding);
 }
 
 .settings_section_title {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 500;
     font-size: 20px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
     margin: 0;
 }
 
@@ -35,16 +35,17 @@
 
 .settings_review_button {
     border-radius: 0;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
     text-align: center;
+    background-color: var(--primary-color);
 }
 
 .settings_all_review_button {
     border-radius: 0;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
@@ -62,7 +63,7 @@
 
     .settings_section_content {
         width: 312px;
-        background-color: #ffffff;
+        background-color: var(--basic-white-color);
         padding: 16px 23px 16px 23px;
     }
 

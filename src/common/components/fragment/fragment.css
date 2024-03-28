@@ -3,19 +3,19 @@
 
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: var(--basic-white-color);
 }
 
 .fragment_title {
     padding: 12px 24px;
 
     height: 45px;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
     text-align: center;
-    color: #262626;
+    color: var(--basic-title-color);
     border-bottom: 1px solid #e0e0e0;
 }
 
@@ -28,7 +28,7 @@
     align-items: center;
     gap: 8px;
     border: 0;
-    background-color: #ffffff;
+    background-color: var(--basic-white-color);
     cursor: pointer;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .fragment_button_name {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;

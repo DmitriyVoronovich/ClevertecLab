@@ -27,18 +27,18 @@
 }
 
 .switch_item_title {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     height: 22px;
     font-weight: 700;
     font-size: 14px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
     display: flex;
     align-items: center;
 }
 
 .switch_item_title_dis {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     height: 22px;
     font-weight: 700;
     font-size: 14px;
@@ -85,7 +85,7 @@
 
 
     .switch_item_title_dis {
-        font-family: Inter, sans-serif;
+        font-family: var(--basic-font-family);
         height: 22px;
         font-weight: 700;
         font-size: 14px;

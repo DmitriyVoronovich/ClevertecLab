@@ -42,7 +42,7 @@
     font-size: 14px;
     line-height: 130%;
     text-align: center;
-    color: #8C8C8C;
+    color: var(--basic-font-color);
 }
 
 @media screen and (max-width: 361px){
@@ -57,7 +57,7 @@
     }
 
     .avatar_container .ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-name{
-        color: #FFFFFF;
+        color: var(--basic-white-color);
     }
 
     .avatar_container .ant-upload-list-item .ant-upload-list-item-done {
@@ -65,6 +65,6 @@
     }
 
     .avatar_container button{
-        background-color: #FFFFFF;
+        background-color: var(--basic-white-color);
     }
 }

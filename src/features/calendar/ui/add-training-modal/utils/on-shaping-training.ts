@@ -4,10 +4,10 @@ import { calendarThunks } from '../../../model/calendar-slice.ts';
 import { TrainExercises, TrainingList } from '../../../model/types/types.ts';
 
 export const onShapingTraining = (
-    trainName: TrainingList | undefined,
     date: string,
     trainExercise: TrainExercises[],
     dispatch: AppDispatch,
+    trainName?: TrainingList,
 ) => {
     const trainArg = {
         name: trainName?.name || '',

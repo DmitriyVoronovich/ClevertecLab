@@ -13,9 +13,9 @@
 }
 
 .not_found_page_content {
-    padding: 24px 24px 24px 24px;
+    padding: var(--basic-padding);
     height: 100%;
-    background-color: #FFFFFF;
+    background-color: var(--basic-white-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,31 +34,32 @@ display: flex;
 
 .not_found_page_title {
     margin: 24px 0 0 0;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 500;
     font-size: 24px;
     line-height: 130%;
     text-align: center;
-    color: #262626;
+    color: var(--basic-title-color);
 }
 
 .not_found_page_description {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
     text-align: center;
-    color: #8C8C8C;
+    color: var(--basic-font-color);
 }
 
 .not_found_page_button {
     height: 40px;
     margin-top: 24px;
     border-radius: 0;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--basic-white-color);
+    background-color: var(--primary-color);
 }

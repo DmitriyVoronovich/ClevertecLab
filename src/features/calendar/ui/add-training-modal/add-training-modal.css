@@ -19,7 +19,7 @@
 }
 
 .add_training_selector .ant-select-selector {
-    border-color: #ffffff;
+    border-color: var(--basic-white-color);
 }
 
 .add_training_modal .ant-modal-mask {
@@ -57,7 +57,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #8c8c8c;
+    color: var(--basic-font-color);
 }
 
 .add_training_modal_list_item {
@@ -85,8 +85,8 @@
 .add_training_modal_button {
     margin: 0;
     width: 100%;
-    background-color: #ffffff;
-    color: #262626;
+    background-color: var(--basic-white-color);
+    color: var(--basic-title-color);
     border-radius: 2px;
     height: 32px;
 }
@@ -96,7 +96,7 @@
 }
 
 .add_training_modal .ant-btn-default:disabled {
-    background-color: #ffffff;
+    background-color: var(--basic-white-color);
     border: none;
 }
 
@@ -104,7 +104,7 @@
     margin: 0;
     width: 100%;
     color: #2f54eb;
-    background-color: #ffffff;
+    background-color: var(--basic-white-color);
     border-radius: 2px;
     height: 32px;
     border: none;

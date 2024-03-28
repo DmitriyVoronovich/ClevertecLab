@@ -1,20 +1,41 @@
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
+import {useAppDispatch} from '@hooks/typed-react-redux-hooks.ts';
+import {pushWithFlow} from '@utils/pushWithFlow.ts';
+import classNames from 'classnames';
 
 import exit from '../../../accets/image/exit.svg';
 import menuicon from '../../../accets/image/svg-menu/menu.svg';
-import { NavigationMenuData } from '../../../data/data.ts';
-import { Logo } from '../logo/Logo.tsx';
+import {NavigationMenuData} from '../../../data/data.ts';
+import {Logo} from '../logo/Logo.tsx';
 
 import './sidebar.css';
-import {pushWithFlow} from '@utils/pushWithFlow.ts';
 
 export type SidebarProps = {
     handleOpen: () => void;
     open: boolean;
 };
 
-export const Sidebar = ({ handleOpen, open }: SidebarProps) => {
+export const Sidebar = ({handleOpen, open}: SidebarProps) => {
     const dispatch = useAppDispatch();
+
+    const sidebarContentContainer = classNames({
+        'sidebar_content_container': true,
+        'close_menu': !open
+    });
+
+    const sidebarMenuWrapper = classNames({
+        'sidebar_menu_wrapper': true,
+        'close_menu_item': open
+    });
+
+    const sidebarFooter = classNames({
+        'sidebar_footer': true,
+        'close_menu_item': open
+    });
+
+    const sidebarFooterText = classNames({
+        'sidebar_footer_text': true,
+        'close': open
+    });
 
     const logOut = () => {
         localStorage.removeItem('jwtToken');
@@ -35,7 +56,7 @@ export const Sidebar = ({ handleOpen, open }: SidebarProps) => {
                 onClick={onClickHandler}
                 data-test-id={item.dataId}
             >
-                <img src={item.icon} alt="menu icon" className="sidebar_item_icon" />
+                <img src={item.icon} alt="menu icon" className="sidebar_item_icon"/>
                 <span className={`${open ? 'sidebar_item_title' : 'sidebar_item_title close'}`}>
                     {item.title}
                 </span>
@@ -45,30 +66,26 @@ export const Sidebar = ({ handleOpen, open }: SidebarProps) => {
 
     return (
         <div
-            className={`${
-                open ? 'sidebar_content_container' : 'sidebar_content_container close_menu'
-            }`}
+            className={sidebarContentContainer}
         >
             <div
-                className={`${
-                    open ? 'sidebar_menu_wrapper' : 'sidebar_menu_wrapper close_menu_item'
-                }`}
+                className={sidebarMenuWrapper}
             >
                 <div
                     className={`${
                         open ? 'sidebar_logo_container' : 'sidebar_logo_container close_logo_item'
                     }`}
                 >
-                    <Logo open={open} />
+                    <Logo open={open}/>
                 </div>
                 <div className="sidebar_menu_list">{menu}</div>
             </div>
             <div
-                className={`${open ? 'sidebar_footer' : 'sidebar_footer close_menu_item'}`}
+                className={sidebarFooter}
                 onClick={logOut}
             >
-                <img src={exit} alt="exit button" className="sidebar_footer_img" />
-                <span className={`${open ? 'sidebar_footer_text' : 'sidebar_footer_text close'}`}>
+                <img src={exit} alt="exit button" className="sidebar_footer_img"/>
+                <span className={sidebarFooterText}>
                     Выход
                 </span>
             </div>

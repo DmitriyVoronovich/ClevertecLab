@@ -1,6 +1,6 @@
 .sidebar_content_container {
     max-height: 100%;
-    background-color: #ffffff;
+    background-color: var(--basic-white-color);
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -51,11 +51,11 @@
 
 .sidebar_item_title {
     display: block;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
 }
 
 .close {
@@ -79,17 +79,17 @@
 
 .sidebar_footer_text {
     padding-left: 15px;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
 }
 
 .sidebar_menu_button {
     display: flex;
     align-items: center;
-    background-color: #ffffff;
+    background-color: var(--basic-white-color);
     clip-path: polygon(0 0, 100% 15%, 100% 85%, 0% 100%);
     width: 20px;
     height: 66px;

@@ -8,3 +8,7 @@ export const DEFAULT_PERIOD = {
     cost: 0,
     days: 0
 };
+
+export const VALIDATE_PASSWORD = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+export const VALIDATE_EMAIL = /\S+@\S+\.\S+/;

@@ -1,11 +1,12 @@
 import { FormInstance } from 'antd/es/form/hooks/useForm';
 
+import {VALIDATE_PASSWORD} from '../../../../../data/constant.ts';
+
 export const onValidateConfirmPassword = (form: FormInstance<any>) => (password: string) => {
-        const re = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
         if (form.getFieldValue('password') !== password) {
             return false;
         }
 
-            return re.test(password);
+            return VALIDATE_PASSWORD.test(password);
     };

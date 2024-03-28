@@ -2,7 +2,7 @@
     padding: 16px;
     display: flex;
     gap: 12px;
-    background-color: #ffffff;
+    background-color: var(--basic-white-color);
 }
 
 .review_user_wrapper {
@@ -21,11 +21,11 @@
 }
 
 .review_user_name {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
     text-align: start;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .review_date {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 12px;
     line-height: 130%;
@@ -57,11 +57,11 @@
 }
 
 .review_text {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #8c8c8c;
+    color: var(--basic-font-color);
     margin: 0;
     padding: 0;
     word-break: break-all;

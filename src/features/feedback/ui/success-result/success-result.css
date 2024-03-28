@@ -3,7 +3,7 @@
     width: 539px;
     height: 327px;
     padding: 64px 85px 64px;
-    background-color: #ffffff;
+    background-color: var(--basic-white-color);
     z-index: 5;
 }
 
@@ -22,12 +22,12 @@
 }
 
 .success_title {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 500;
     font-size: 24px;
     line-height: 130%;
     text-align: center;
-    color: #262626;
+    color: var(--basic-title-color);
     margin: 24px 0 0 0;
 }
 

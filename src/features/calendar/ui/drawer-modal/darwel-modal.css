@@ -25,14 +25,14 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
 }
 
 .drawer_container .ant-drawer-title {
     font-weight: 500;
     font-size: 20px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
 }
 
 .drawer_container .ant-drawer-close {
@@ -60,7 +60,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 130%;
-    color: #8c8c8c;
+    color: var(--basic-font-color);
 }
 
 @media screen and (max-width: 361px) {

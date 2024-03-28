@@ -10,7 +10,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
 }
 
 @media screen and (max-width: 361px) {
@@ -28,7 +28,7 @@
         font-weight: 500;
         font-size: 16px;
         line-height: 130%;
-        color: #262626;
+        color: var(--basic-title-color);
     }
 
     .privacy_information_container .ant-fom-item-password {

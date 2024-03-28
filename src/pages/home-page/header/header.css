@@ -2,7 +2,7 @@
     max-width: 1398px;
     height: 100%;
     padding: 16px 24px;
-    background: #f0f5ff;
+    background: var(--basic-bg-color);
     display: flex;
     flex-direction: column;
 }
@@ -14,11 +14,11 @@
 }
 
 .header_menu_item {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
 }
 
 .header_wrapper {
@@ -31,11 +31,11 @@
 .header_title {
     padding: 14px 0 6px;
     max-width: 900px;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 700;
     font-size: 38px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
     margin: 0;
 }
 
@@ -94,7 +94,7 @@
         margin-top: 0;
         border-bottom: 1px solid #e0e0e0;
         border-radius: 50%;
-        background-color: #ffffff;
+        background-color: var(--basic-white-color);
         display: flex;
         justify-content: center;
         align-items: center;

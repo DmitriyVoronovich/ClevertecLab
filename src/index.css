@@ -67,11 +67,12 @@
 /*    }*/
 /*}*/
 
-.ant-btn {
-    background-color: #2f54eb;
+:root {
+    --primary-color: #2f54eb;
+    --basic-bg-color: #f0f5ff;
+    --basic-font-color: #8C8C8C;
+    --basic-white-color: #FFFFFF;
+    --basic-title-color: #262626;
+    --basic-padding: 24px;
+    --basic-font-family: Inter, sans-serif;
 }
-
-.body {
-    font-family: Inter, sans-serif;
-}
-

@@ -15,7 +15,7 @@ export const ErrorChangePassword = () => {
         dispatch(pushWithFlow('/result/error-changePassword'));
         const data = sessionStorage.getItem('changePassword');
 
-        if (data !== null) {
+        if (data) {
             dispatch(authThunks.changePassword(JSON.parse(data)));
         }
     };

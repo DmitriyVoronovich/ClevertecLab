@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 import { AddTrainingStatus } from '@enums/enums.ts';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
+import {isMobile} from '@utils/isMobile.ts';
 import { Button, Modal, Select } from 'antd';
 import Badge from 'antd/lib/badge';
 
@@ -29,7 +30,8 @@ export const AddTrainingModal = ({
     // @ts-ignore
     const [trainExercise, setTrainExercise] = useState<TrainExercises[]>([{}]);
 
-    const screenWidth = window.innerWidth;
+    const isListEmpty  = !trainExercise.length || !Object.keys(trainExercise[0]).length
+
     let list;
 
     if (searchExercises) {
@@ -74,11 +76,11 @@ export const AddTrainingModal = ({
                 data-test-id='modal-create-exercise'
                 className="add_training_modal"
                 open={true}
-                width={screenWidth < 361 ? 312 : 264}
+                width={isMobile() ? 312 : 264}
                 mask={false}
                 maskClosable={false}
                 closable={false}
-                style={screenWidth > 361 ? modalStyle : { top: '25%' }}
+                style={isMobile() ? { top: '25%' } : modalStyle }
                 footer={[
                     <Button
                         key='save'
@@ -130,7 +132,7 @@ export const AddTrainingModal = ({
                     />
                 </div>
                 <div className="add_training_modal_list_wrapper">
-                    {!trainExercise.length || !Object.keys(trainExercise[0]).length ? (
+                    {isListEmpty ? (
                         <div className="add_training_modal_none_list" />
                     ) : (
                         <ul className="add_training_modal_list">

@@ -26,7 +26,7 @@
     width: 539px;
     height: 280px;
     padding: 64px 0 0;
-    background-color: #ffffff;
+    background-color: var(--basic-white-color);
 }
 
 .error_wrapper {
@@ -45,23 +45,23 @@
 
 .error_title {
     width: 100%;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 500;
     font-size: 24px;
     line-height: 130%;
     text-align: center;
-    color: #262626;
+    color: var(--basic-title-color);
     margin: 24px 0 0 0;
 }
 
 .error_description {
     width: 100%;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
     text-align: center;
-    color: #8c8c8c;
+    color: var(--basic-font-color);
     margin: 0;
 }
 
@@ -77,7 +77,7 @@
         width: 296px;
         height: 267px;
         padding: 32px 16px 0;
-        background-color: #ffffff;
+        background-color: var(--basic-white-color);
     }
 
     .error_wrapper {

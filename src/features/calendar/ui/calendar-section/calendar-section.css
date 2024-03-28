@@ -1,6 +1,6 @@
 .full_calendar .ant-picker-calendar {
-    padding: 24px;
-    background: #f0f5ff;
+    padding: var(--basic-padding);
+    background: var(--basic-bg-color);
 }
 
 .full_calendar td {
@@ -32,11 +32,11 @@
 }
 
 .full_calendar .ant-picker-body {
-    background: #f0f5ff;
+    background: var(--basic-bg-color);
 }
 
 .full_calendar .ant-picker-cell-inner {
-    background: #ffffff;
+    background: var(--basic-white-color);
 }
 
 .full_calendar .ant-select-selection-item {
@@ -45,7 +45,7 @@
 
 .calendar {
     padding: 0 24px 16px;
-    background: #f0f5ff;
+    background: var(--basic-bg-color);
     min-height: 348px;
 }
 
@@ -123,10 +123,10 @@
 }
 
 .calendar .ant-picker-cell .ant-picker-calendar-date-value {
-    background: #ffffff;
+    background: var(--basic-white-color);
     width: 37px;
     height: 24px;
-    color: #262626;
+    color: var(--basic-title-color);
 }
 .calendar .ant-picker-cell .ant-picker-cell-in-view {
     padding: 0;

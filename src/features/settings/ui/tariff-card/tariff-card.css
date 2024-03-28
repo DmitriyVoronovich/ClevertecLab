@@ -17,11 +17,11 @@
 }
 
 .traffic_card_title {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 500;
     font-size: 16px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
     text-transform: uppercase;
 }
 
@@ -33,7 +33,7 @@
 .traffic_card_item {
     color: #2F54EB;
     cursor: pointer;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
@@ -57,7 +57,7 @@
 }
 
 .tariff_status {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 500;
     font-size: 16px;
     line-height: 130%;
@@ -92,11 +92,11 @@
     }
 
     .traffic_card_title {
-        font-family: Inter, sans-serif;
+        font-family: var(--basic-font-family);
         font-weight: 500;
         font-size: 16px;
         line-height: 130%;
-        color: #262626;
+        color: var(--basic-title-color);
         text-transform: uppercase;
     }
 

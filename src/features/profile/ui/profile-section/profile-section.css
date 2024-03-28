@@ -13,8 +13,8 @@
 
 .profile_section_content {
     height: 100%;
-    background-color: #ffffff;
-    padding: 24px;
+    background-color: var(--basic-white-color);
+    padding: var(--basic-padding);
 }
 
 .profile_personal_information {
@@ -26,9 +26,10 @@
 .profile-form-button {
     width: 206px;
     height: 42px;
-    color: #ffffff;
+    color: var(--basic-white-color);
     border-radius: 2px;
     margin: 54px 0 0 0;
+    background-color: var(--primary-color);
 }
 
 .notification {

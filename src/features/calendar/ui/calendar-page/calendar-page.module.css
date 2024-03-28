@@ -8,20 +8,20 @@
 
 .header_container {
     max-width: 1333px;
-    background: #f0f5ff;
+    background: var(--basic-bg-color);
     height: 64px;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #8c8c8c;
+    color: var(--basic-font-color);
     display: flex;
     flex-direction: column;
     padding: 16px 24px 0;
 }
 
 .header_menu_item {
-    color: #262626;
+    color: var(--basic-title-color);
 }
 
 .header_content_wrapper {
@@ -58,7 +58,7 @@
     }
 
     .header_menu_item {
-        color: #262626;
+        color: var(--basic-title-color);
     }
 
     .header_title {
@@ -76,7 +76,7 @@
         margin-top: 0;
         border-bottom: 1px solid #e0e0e0;
         border-radius: 50%;
-        background-color: #ffffff;
+        background-color: var(--basic-white-color);
         display: flex;
         justify-content: center;
         align-items: center;

@@ -1,12 +1,12 @@
 .header_container {
     max-width: 1357px;
-    background: #f0f5ff;
+    background: var(--basic-bg-color);
     height: 50px;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #8c8c8c;
+    color: var(--basic-font-color);
     display: flex;
     align-items: center;
     padding-left: 24px;
@@ -16,7 +16,7 @@
 }
 
 .header_menu_item {
-    color: #262626;
+    color: var(--basic-title-color);
 }
 
 @media screen and (max-width: 361px) {
@@ -26,6 +26,6 @@
     }
 
     .header_menu_item {
-        color: #262626;
+        color: var(--basic-title-color);
     }
 }

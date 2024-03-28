@@ -4,8 +4,9 @@ import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts'
 import {Button, Form, notification} from 'antd';
 import {NotificationPlacement} from 'antd/es/notification/interface';
 
+import {VALIDATE_EMAIL, VALIDATE_PASSWORD} from '../../../../data/constant.ts';
 import {LoginParams} from '../../../auth/api/types/types.ts';
-import {profileThunks} from '../../model/profileSlice.ts';
+import {profileThunks, setProfileStatus} from '../../model/profileSlice.ts';
 import {Avatar} from '../avatar';
 import {FileSizeError} from '../file-size-error';
 import {PersonalInformation} from '../personal-information';
@@ -31,7 +32,7 @@ export const ProfileSection = () => {
         api.open({
             message: <SuccessNotification/>,
             className: 'notification',
-            duration: 3.5,
+            duration: 4,
             closeIcon: false,
             placement
         });
@@ -40,11 +41,15 @@ export const ProfileSection = () => {
     const onModalOpen = () => {
         setOpenErrorSizeModal(true)
         setSaveBattonDisabled(true)
-    }
+    };
 
     useEffect(() => {
         if (profileStatus === RequestProfileStatus.Selected) {
-            openNotification('bottom')
+            openNotification('bottom');
+            form.setFieldsValue({
+                password: undefined,
+                repeatPassword: undefined,
+            });
         }
         if (profileStatus === RequestProfileStatus.Failed) {
             onModalOpen()
@@ -53,18 +58,16 @@ export const ProfileSection = () => {
     }, [profileStatus])
 
     const validateEmail = (email: string) => {
-        const re = /\S+@\S+\.\S+/;
 
-        if (re.test(email)) {
+        if (VALIDATE_EMAIL.test(email)) {
             setSaveBattonDisabled(false)
         }
 
-        return re.test(email);
+        return VALIDATE_EMAIL.test(email);
     };
 
     const validatePassword = (password: string) => {
-        const re = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-        const isValid = re.test(password);
+        const isValid = VALIDATE_PASSWORD.test(password);
 
         if (password === undefined) {
             setIsPasswordValid(true);
@@ -79,7 +82,6 @@ export const ProfileSection = () => {
     };
 
     const validateRepeatPassword = (password: string) => {
-        const re = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
         if (form.getFieldValue('password') === undefined) {
 
@@ -91,8 +93,7 @@ export const ProfileSection = () => {
             }
             setSaveBattonDisabled(false)
 
-            return re.test(password);
-
+            return VALIDATE_PASSWORD.test(password);
     };
 
     const onFieldsChange = (_: any, allFields: any) => {
@@ -160,11 +161,10 @@ export const ProfileSection = () => {
     const onModalClose = () => {
         setOpenErrorSizeModal(false)
         setSaveBattonDisabled(true)
-    }
+        dispatch(setProfileStatus({profileStatus: RequestProfileStatus.Idle}))
+    };
 
-    const onButtonDisablet = () => {
-        setSaveBattonDisabled(true)
-    }
+    const onButtonDisablet = () => setSaveBattonDisabled(true);
 
     return (
         <>

@@ -3,6 +3,8 @@ import { EyeInvisibleOutlined, EyeTwoTone, GooglePlusOutlined } from '@ant-desig
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
 import { Button, Form, Input } from 'antd';
 
+import {VALIDATE_EMAIL, VALIDATE_PASSWORD} from '../../../../data/constant.ts';
+
 import { onFinish } from './utils/utils.ts';
 
 import './registration-form.css';
@@ -13,14 +15,12 @@ export const RegistrationForm = () => {
     const [isPasswordValid, setIsPasswordValid] = useState(true);
 
     const validateEmail = (email: string) => {
-        const re = /\S+@\S+\.\S+/;
 
-        return re.test(email);
+        return VALIDATE_EMAIL.test(email);
     };
 
     const validatePassword = (password: string) => {
-        const re = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-        const isValid = re.test(password);
+        const isValid = VALIDATE_PASSWORD.test(password);
 
         setIsPasswordValid(isValid);
 
@@ -28,13 +28,12 @@ export const RegistrationForm = () => {
     };
 
     const validateRepeatPassword = (password: string) => {
-        const re = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
         if (form.getFieldValue('password') !== password) {
             return false;
         }
 
-            return re.test(password);
+            return VALIDATE_PASSWORD.test(password);
 
     };
 
