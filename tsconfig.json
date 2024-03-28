@@ -19,13 +19,15 @@
         "baseUrl": ".",
         "paths": {
             "@public/*": ["./public/*"],
-            "@components/*": ["./src/components/*"],
+            "@components/*": ["./src/common/components/*"],
             "@constants/*": ["./src/constants/*"],
             "@hooks/*": ["./src/hooks/*"],
             "@pages/*": ["./src/pages/*"],
             "@redux/*": ["./src/redux/*"],
             "@types/*": ["./src/types/*"],
-            "@utils/*": ["./src/utils/*"]
+            "@utils/*": ["./src/common/utils/*"],
+            "@image/*": ["./src/accets/*"],
+            "@enums/*": ["./src/common/enums/*"]
         },
         "plugins": [
             {

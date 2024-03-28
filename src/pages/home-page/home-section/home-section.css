@@ -3,19 +3,19 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    padding: 24px;
+    padding: var(--basic-padding);
 }
 
 .section_block1 {
-    padding: 24px;
-    font-family: Inter, sans-serif;
+    padding: var(--basic-padding);
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
     color: #061178;
     margin: 0;
     border-radius: 2px;
-    background-color: #FFFFFF;
+    background-color: var(--basic-white-color);
 }
 
 .section_block2 {
@@ -26,13 +26,13 @@
 
 .section_block2_text {
     padding: 24px 84px 24px 24px;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 500;
     font-size: 20px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
     margin: 0;
-    background-color: #FFFFFF;
+    background-color: var(--basic-white-color);
 }
 
 .section_block2_fragment {
@@ -41,9 +41,8 @@
 }
 
 @media screen and (max-width: 865px) {
-
     .section_block2_text {
-        padding: 24px;
+        padding: var(--basic-padding);
     }
 }
 

@@ -1,0 +1,119 @@
+.container {
+    max-width: 1440px;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    position: relative;
+}
+
+.header_container {
+    max-width: 1333px;
+    background: var(--basic-bg-color);
+    height: 38px;
+    font-family: var(--basic-font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: var(--basic-title-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+}
+
+.header_container_title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+}
+
+.header_menu_item {
+    color: var(--basic-title-color);
+}
+
+.header_content_wrapper {
+    width: 99px;
+    display: flex;
+    align-items: center;
+    padding: 7px 15px;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.header_content_svg {
+    width: 14px;
+    height: 14px;
+}
+
+@media screen and (max-width: 865px) {
+    .header_content_wrapper {
+        width: 105px;
+        padding: 0;
+    }
+
+    .header_content_svg {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 361px) {
+
+    .container {
+        width: 360px;
+        min-height: 100vh;
+        height: 100%;
+        position: relative;
+    }
+
+    .header_container {
+        height: 82px;
+        max-width: 336px;
+        padding-left: 24px;
+    }
+
+    .header_menu_item {
+        color: var(--basic-title-color);
+    }
+
+    .header_container_title {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 130%;
+        align-self: start;
+    }
+
+    .header_title {
+        width: 275px;
+        font-weight: 500;
+        font-size: 20px;
+        padding: 0;
+    }
+
+    .header_content_wrapper {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        gap: 0;
+        margin-top: 0;
+        border-radius: 50%;
+        background-color: var(--basic-bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: end;
+    }
+
+    .header_content_svg {
+        width: 14px;
+        height: 14px;
+       ;
+    }
+
+    .header_content_item {
+        display: none;
+    }
+
+    .header_content_svg {
+        display: block;
+    }
+}
+

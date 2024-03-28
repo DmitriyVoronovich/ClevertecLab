@@ -1,0 +1,117 @@
+.tariff_card_conteiner {
+    border-radius: 2px;
+    width: 240px;
+    height: 297px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.traffic_card_header {
+    padding: 0 24px;
+    width: 192px;
+    height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.traffic_card_title {
+    font-family: var(--basic-font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--basic-title-color);
+    text-transform: uppercase;
+}
+
+.traffic_card_title span{
+    text-transform: lowercase;
+    margin-left: 5px;
+}
+
+.traffic_card_item {
+    color: #2F54EB;
+    cursor: pointer;
+    font-family: var(--basic-font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+}
+
+.tariff_status_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 95px;
+}
+
+.tariff_status_wrapper_active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 95px;
+}
+
+.tariff_status {
+    font-family: var(--basic-font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    color: #030852;
+}
+
+.tariff_status_button {
+    border: 1px solid #2F54EB;
+    border-radius: 2px;
+    padding: 4px 15px;
+    width: 129px;
+    height: 40px;
+}
+
+@media screen and (max-width: 361px) {
+    .tariff_card_conteiner {
+        border-radius: 2px;
+        width: 312px;
+        height: 312px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .traffic_card_header {
+        padding: 0 24px;
+        width: 264px;
+        height: 53px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .traffic_card_title {
+        font-family: var(--basic-font-family);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 130%;
+        color: var(--basic-title-color);
+        text-transform: uppercase;
+    }
+
+    .traffic_card_title span{
+        text-transform: lowercase;
+        margin-left: 5px;
+    }
+
+    .tariff_status_wrapper_active {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        height: 95px;
+    }
+
+}

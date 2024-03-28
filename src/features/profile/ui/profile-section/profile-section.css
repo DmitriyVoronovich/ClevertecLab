@@ -1,0 +1,85 @@
+.profile_section_container {
+    max-width: 1333px;
+    height: 886px;
+    padding: 24px 24px 42px 24px;
+}
+
+.ant-notification .ant-notification-notice-wrapper .ant-notification-notice {
+    padding: 0;
+    margin: 0;
+    width: 395px;
+    height: 40px;
+}
+
+.profile_section_content {
+    height: 100%;
+    background-color: var(--basic-white-color);
+    padding: var(--basic-padding);
+}
+
+.profile_personal_information {
+    display: flex;
+    max-width: 480px;
+    gap: 18px
+}
+
+.profile-form-button {
+    width: 206px;
+    height: 42px;
+    color: var(--basic-white-color);
+    border-radius: 2px;
+    margin: 54px 0 0 0;
+    background-color: var(--primary-color);
+}
+
+.notification {
+    background-color: white;
+    border-radius: 0;
+    border: 0;
+
+}
+
+.ant-notification .ant-notification-notice-wrapper {
+    box-shadow: none;
+}
+
+.ant-notification-notice-close {
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+@media screen and (max-width: 361px) {
+    .profile_section_container {
+        max-width: 360px;
+        height: 693px;
+        padding: 24px 0 42px 0;
+    }
+
+    .ant-notification .ant-notification-notice-wrapper .ant-notification-notice {
+        width: 0;
+        height: 0;
+    }
+
+    .profile_section_content {
+        padding: 16px 24px 0 24px;
+    }
+
+    .profile_personal_information {
+        display: flex;
+        flex-direction: column-reverse;
+        max-width: 312px;
+        gap: 16px
+    }
+
+    .profile-form-button {
+        width: 312px;
+        height: 40px;
+        border-radius: 2px;
+        margin: 50px 0 0 0;
+    }
+
+    .ant-notification-notice-close {
+        padding-bottom: 20px;
+        padding-left: 20px;
+    }
+}

@@ -1,0 +1,75 @@
+
+
+.profile_error_modal_container .ant-modal-content {
+    border-radius: 4px;
+    padding: 32px 32px 24px 32px;
+    width: 416px;
+}
+
+.profile_error_modal_container .ant-modal-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.profile_error_modal_container .ant-modal-close {
+    margin-right: 5px;
+}
+
+.profile_error_content_wrapper {
+    display: flex;
+}
+
+.profile_error_img {
+    width: 24px;
+    height: 24px;
+    color: red;
+}
+
+.profile_error_wrapper_text {
+    margin-left: 16px;
+}
+
+.profile_error_text_title {
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--basic-title-color);
+    font-family: var(--basic-font-family);
+}
+
+.profile_error_text {
+    padding: 5px 0 0 0;
+    margin: 0;
+    font-family: var(--basic-font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: start;
+    color: var(--basic-font-color);
+}
+
+.profile_error_button {
+    color: var(--basic-white-color);
+    border-radius: 2px;
+    padding: 4px 15px;
+    width: 99px;
+    align-self: end;
+    margin-top: 24px;
+    background-color: var(--primary-color);
+}
+
+@media screen and (max-width: 361px) {
+    .profile_error_modal_container .ant-modal {
+        width: 332px;
+    }
+
+    .profile_error_modal_container .ant-modal-content {
+        border-radius: 4px;
+        padding: 12px 12px 12px 12px;
+        width: 344px;
+        display: flex;
+    }
+}

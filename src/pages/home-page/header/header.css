@@ -2,7 +2,7 @@
     max-width: 1398px;
     height: 100%;
     padding: 16px 24px;
-    background: #F0F5FF;
+    background: var(--basic-bg-color);
     display: flex;
     flex-direction: column;
 }
@@ -14,11 +14,11 @@
 }
 
 .header_menu_item {
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
 }
 
 .header_wrapper {
@@ -31,20 +31,21 @@
 .header_title {
     padding: 14px 0 6px;
     max-width: 900px;
-    font-family: Inter, sans-serif;
+    font-family: var(--basic-font-family);
     font-weight: 700;
     font-size: 38px;
     line-height: 130%;
-    color: #262626;
+    color: var(--basic-title-color);
     margin: 0;
 }
 
-.header_content_wrapper{
+.header_content_wrapper {
     width: 99px;
     display: flex;
     padding: 7px 15px;
-    gap:10px;
+    gap: 10px;
     margin-top: 8px;
+    cursor: pointer;
 }
 
 .header_content_svg {
@@ -67,7 +68,7 @@
         font-size: 24px;
     }
 
-    .header_content_wrapper{
+    .header_content_wrapper {
         width: 105px;
         padding: 0;
     }
@@ -85,15 +86,15 @@
         padding: 0;
     }
 
-    .header_content_wrapper{
+    .header_content_wrapper {
         width: 32px;
         height: 32px;
         padding: 0;
-        gap:0;
+        gap: 0;
         margin-top: 0;
-        border-bottom: 1px solid #E0E0E0;
+        border-bottom: 1px solid #e0e0e0;
         border-radius: 50%;
-        background-color: #FFFFFF;
+        background-color: var(--basic-white-color);
         display: flex;
         justify-content: center;
         align-items: center;

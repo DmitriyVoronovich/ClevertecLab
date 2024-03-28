@@ -1,14 +1,13 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {RequestStatusType} from "../../common/enums/enums.ts";
+import { createSlice,PayloadAction } from '@reduxjs/toolkit';
+
+import { RequestStatusType } from '../../common/enums/enums.ts';
 
 const initialState = {
     status: RequestStatusType.Idle as RequestStatusType,
 };
 
-
-
 const slice = createSlice({
-    name: "app",
+    name: 'app',
     initialState,
     reducers: {
         setAppStatus: (state, action: PayloadAction<{ status: RequestStatusType }>) => {

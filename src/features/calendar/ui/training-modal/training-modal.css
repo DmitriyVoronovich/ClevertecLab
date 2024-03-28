@@ -1,0 +1,136 @@
+.training_modal .ant-modal-content {
+    padding: 16px 0 0 0;
+    z-index: 9900;
+}
+
+.training_modal {
+    margin: 0;
+}
+
+.ant-modal-mask {
+    background: transparent;
+    pointer-events: none;
+}
+
+.ant-modal-wrap {
+    pointer-events: none;
+}
+
+.ant-modal {
+    pointer-events: all;
+}
+
+.edit_svg_disabled svg {
+    fill: #bfbfbf;
+}
+
+.edit_svg svg {
+    fill: #2f54eb;
+}
+
+.training_modal_list {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-align: start;
+}
+
+.training_modal_list_item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.training_header_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 12px;
+}
+
+.training_header_title {
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 130%;
+    color: var(--basic-title-color);
+}
+
+.title_disabled span {
+    color: #bfbfbf;
+    opacity: 0.5;
+}
+
+.training_header_description {
+    padding: 0;
+    margin: 0;
+    font-family: var(--basic-font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: start;
+    color: var(--basic-font-color);
+}
+
+.training_modal_list_wrapper {
+    margin-top: 16px;
+    display: flex;
+    padding: 0 12px;
+    min-height: 128px;
+}
+
+.training_modal_button {
+    width: 100%;
+    border-radius: 2px;
+}
+
+.training_modal_button:disabled {
+    color: var(--basic-white-color);
+    background-color: #2f54eb;
+}
+
+.training_modal .ant-modal-close {
+    width: 12px;
+    height: 12px;
+}
+
+.training_modal .ant-modal-close svg {
+    width: 12px;
+    height: 12px;
+}
+
+.training_modal_icon {
+    margin: 0 auto;
+}
+
+.edit_button {
+    border: none;
+    background-color: var(--basic-white-color);
+    cursor: pointer;
+    height: 18px;
+    padding: 0;
+}
+
+.training_modal .ant-modal-footer {
+    padding: 12px;
+    margin: 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+@media screen and (max-width: 361px) {
+    .training_modal .ant-modal-content {
+        padding: 16px 0 0 0;
+        z-index: 9900;
+    }
+
+    .training_modal_list_wrapper {
+        min-height: 64px;
+        padding: 10px;
+    }
+
+    .training_modal_icon {
+        margin: 0 auto;
+    }
+}
