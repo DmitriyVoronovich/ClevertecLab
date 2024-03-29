@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
+import error from '@image/login-page/svg-icon/error.svg';
 import { Button } from 'antd';
 
-import fon from '../../../../../accets/login-page/image/fon.png';
-import error from '../../../../../accets/login-page/svg-icon/error.svg';
+import fon from '../../../../../assets/login-page/image/fon.png';
 
 import './error-registration.css';
 

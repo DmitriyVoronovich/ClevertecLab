@@ -1,10 +1,10 @@
-import cal from '../accets/image/cal.svg';
-import heard from '../accets/image/heard.svg';
-import prof from '../accets/image/prof.svg';
-import icdos from '../accets/image/svg-menu/icon-dos.svg';
-import icheard from '../accets/image/svg-menu/icon-heard.svg';
-import icprof from '../accets/image/svg-menu/icon-prof.svg';
-import icrasp from '../accets/image/svg-menu/icon-rasp.svg';
+import cal from '@image/image/cal.svg';
+import heard from '@image/image/heard.svg';
+import prof from '@image/image/prof.svg';
+import icdos from '@image/image/svg-menu/icon-dos.svg';
+import icheard from '@image/image/svg-menu/icon-heard.svg';
+import icprof from '@image/image/svg-menu/icon-prof.svg';
+import icrasp from '@image/image/svg-menu/icon-rasp.svg';
 import {pushWithFlow} from '@utils/pushWithFlow.ts';
 import { calendarThunks } from '../features/calendar/model/calendar-slice.ts';
 

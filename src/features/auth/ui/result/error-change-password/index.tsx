@@ -1,9 +1,9 @@
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
+import error from '@image/login-page/svg-icon/error.svg';
 import { pushWithFlow } from '@utils/pushWithFlow.ts';
 import { Button } from 'antd';
 
-import fon from '../../../../../accets/login-page/image/fon.png';
-import error from '../../../../../accets/login-page/svg-icon/error.svg';
+import fon from '../../../../../assets/login-page/image/fon.png';
 import { authThunks } from '../../../model/auth-slice.ts';
 
 import './error-change-password.css';

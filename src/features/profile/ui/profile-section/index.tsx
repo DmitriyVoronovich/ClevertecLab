@@ -1,10 +1,11 @@
 import {useEffect, useState} from 'react';
+import {VALIDATE_EMAIL, VALIDATE_PASSWORD} from '@data/constant.ts';
 import {RequestProfileStatus} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import {Button, Form, notification} from 'antd';
 import {NotificationPlacement} from 'antd/es/notification/interface';
+import moment from 'moment';
 
-import {VALIDATE_EMAIL, VALIDATE_PASSWORD} from '../../../../data/constant.ts';
 import {LoginParams} from '../../../auth/api/types/types.ts';
 import {profileThunks, setProfileStatus} from '../../model/profileSlice.ts';
 import {Avatar} from '../avatar';
@@ -139,7 +140,7 @@ export const ProfileSection = () => {
     const onFinish = (values: LoginParams) => {
         let dateStr
         if (values.birthday) {
-           dateStr = values.birthday.format('YYYY-MM-DDTHH:mm:ss');
+            dateStr = moment(values.birthday).format('YYYY-MM-DDTHH:mm:ss');
         }
 
         const user = {
@@ -153,9 +154,9 @@ export const ProfileSection = () => {
                 sendNotification: meInformation.sendNotification
             }
         }
-        console.log(user)
+
         setSaveBattonDisabled(true)
-        dispatch(profileThunks.editUserInformation({user: user}));
+        dispatch(profileThunks.editUserInformation({user}));
     };
 
     const onModalClose = () => {

@@ -3,9 +3,9 @@ import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { Button, Modal, Select } from 'antd';
 
-import { BadgeComponent } from '@components/badgeComponent/BadgeComponent.tsx';
+import { BadgeComponent } from '@components/badge-component';
 import { AddTrainingStatus } from '@enums/enums.ts';
-import { isMobile } from '@utils/isMobile.ts';
+import { useIsMobile } from '@utils/useIsMobile.ts';
 import { calendarThunks } from '../../model/calendar-slice.ts';
 import { TrainExercises } from '../../model/types/types.ts';
 import { DrawerModal } from '../drawer-modal';
@@ -31,6 +31,7 @@ export const SelectingWorkoutToEdit = ({
     const [openDrawerModal, setOpenDrawerModal] = useState(false);
     const [selectTrain, setSelectTrain] = useState(separateWorkout.name);
     const [trainExercise, setTrainExercise] = useState<TrainExercises[]>(separateWorkout.exercises);
+    const isMobile = useIsMobile();
 
     const selectedTrainingItem = trainingList.find((item) => item.name === separateWorkout.name);
 
@@ -110,11 +111,11 @@ export const SelectingWorkoutToEdit = ({
                 data-test-id='modal-create-exercise'
                 className="add_training_modal"
                 open={true}
-                width={isMobile() ? 312 : 264}
+                width={isMobile ? 312 : 264}
                 mask={false}
                 maskClosable={false}
                 closable={false}
-                style={isMobile() ? { top: '25%' } : modalStyle}
+                style={isMobile ? { top: '25%' } : modalStyle}
                 footer={[
                     <Button
                         key='save'

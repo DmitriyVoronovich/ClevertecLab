@@ -1,7 +1,7 @@
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
 
-import andr from '../../../accets/image/andr.svg';
-import apple from '../../../accets/image/apple.svg';
+import andr from '@image/image/andr.svg';
+import apple from '@image/image/apple.svg';
 import { feedbackThunks } from '../../../features/feedback/model/feedback-slice.ts';
 
 import './footer.css';

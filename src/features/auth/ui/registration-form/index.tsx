@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { EyeInvisibleOutlined, EyeTwoTone, GooglePlusOutlined } from '@ant-design/icons';
+import {VALIDATE_EMAIL, VALIDATE_PASSWORD} from '@data/constant.ts';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
 import { Button, Form, Input } from 'antd';
-
-import {VALIDATE_EMAIL, VALIDATE_PASSWORD} from '../../../../data/constant.ts';
+import classNames from 'classnames';
 
 import { onFinish } from './utils/utils.ts';
 
@@ -14,10 +14,9 @@ export const RegistrationForm = () => {
     const [form] = Form.useForm();
     const [isPasswordValid, setIsPasswordValid] = useState(true);
 
-    const validateEmail = (email: string) => {
+    const registrationPasswordMessage = classNames({'registration_password_message': true, 'error': !isPasswordValid});
 
-        return VALIDATE_EMAIL.test(email);
-    };
+    const validateEmail = (email: string) => VALIDATE_EMAIL.test(email);
 
     const validatePassword = (password: string) => {
         const isValid = VALIDATE_PASSWORD.test(password);
@@ -103,7 +102,7 @@ export const RegistrationForm = () => {
                     />
                 </Form.Item>
                 <span
-                    className={`registration_password_message ${!isPasswordValid ? 'error' : ''}`}
+                    className={registrationPasswordMessage}
                 >
                     Пароль не менее 8 символов, с заглавной буквой и цифрой
                 </span>

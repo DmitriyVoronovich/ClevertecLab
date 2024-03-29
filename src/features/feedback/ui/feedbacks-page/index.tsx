@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import { HeaderSection } from '@components/header';
 import { RequestFeedbackStatus } from '@enums/enums.ts';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 
-import { HeaderSection } from '../../../../common/components';
 import { setFeedbackStatus } from '../../model/feedback-slice.ts';
 import {
     ErrorResult,

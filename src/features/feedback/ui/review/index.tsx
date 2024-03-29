@@ -1,8 +1,8 @@
 import React from 'react';
 import { StarFilled, StarOutlined } from '@ant-design/icons';
+import ava from '@image/feedback-page/default_avatar.svg';
 import { Rate } from 'antd';
 
-import ava from '../../../../accets/feedback-page/default_avatar.svg';
 import { formateDate } from '../../../calendar/ui/drawer-modal/utils/formate-date.ts';
 
 import { ReviewProps } from './types/types.ts';

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { Button } from 'antd';
 
@@ -11,10 +11,6 @@ import s from './review-group.module.css';
 export const ReviewGroup = ({ showModalForm }: ReviewGroupProps) => {
     const reviewList = useAppSelector((state) => state.feedback.reviews);
     const [seeAllReview, setSeeAllReview] = useState(false);
-
-    useEffect(() => {
-
-    }, [reviewList]);
 
     const onReviewToggle = () => setSeeAllReview(!seeAllReview);
 

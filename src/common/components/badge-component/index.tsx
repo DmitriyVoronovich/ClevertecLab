@@ -1,6 +1,5 @@
+import { BadgeProps } from '@components/badge-component/types/types.ts';
 import Badge from 'antd/lib/badge';
-
-import { BadgeProps } from './types/types.ts';
 
 export const BadgeComponent = ({
     name,

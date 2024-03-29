@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { RequestFeedbackStatus } from '@enums/enums.ts';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
+import success from '@image/login-page/svg-icon/success.svg';
 import { Button, Modal } from 'antd';
 
-import success from '../../../../accets/login-page/svg-icon/success.svg';
 import { feedbackThunks, setFeedbackStatus } from '../../model/feedback-slice.ts';
 
 import './success-result.css';
@@ -15,9 +15,9 @@ export const SuccessResult = () => {
 
     useEffect(() => {
         if (feedbackStatus === RequestFeedbackStatus.Succeeded) {
-            return setIsModalOpen(true);
+            setIsModalOpen(true);
         }
-    });
+    }, [feedbackStatus]);
 
     const onClickHandler = () => {
         dispatch(feedbackThunks.getReviews());

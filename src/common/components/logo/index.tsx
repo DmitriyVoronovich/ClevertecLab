@@ -1,5 +1,5 @@
-import clever from '../../../accets/image/clever.svg';
-import fit from '../../../accets/image/fit.svg';
+import clever from '@image/image/clever.svg';
+import fit from '@image/image/fit.svg';
 
 import './logo.css';
 

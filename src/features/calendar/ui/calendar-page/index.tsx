@@ -1,4 +1,5 @@
-import set from '../../../../accets/image/set.svg';
+import set from '@image/image/set.svg';
+
 import { CalendarSection } from '../calendar-section';
 import { ErrorModal } from '../error-modal';
 

@@ -4,8 +4,8 @@ import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.t
 import { HomePage } from '@pages/home-page';
 import { MainPage } from '@pages/main-page';
 
-import { Loader } from '../../common/components';
-import { getToken } from '../../common/utils/getToken.ts';
+import { getToken } from '@utils/getToken.ts';
+import { Loader } from '@components/loader';
 import { authActions } from '../../features/auth/model/auth-slice.ts';
 import {
     ChangePassword,
@@ -29,8 +29,8 @@ import { authGoogle } from './utils/authGoogle.ts';
 import s from './app.module.css';
 import {ProfilePage} from '../../features/profile/ui/profile-page';
 import {SettingsPage} from '../../features/settings/ui/settings-page';
-import {profileThunks} from "../../features/profile/model/profileSlice.ts";
-import {NotFoundPage} from "../../features/404/ui";
+import {profileThunks} from '../../features/profile/model/profileSlice.ts';
+import {NotFoundPage} from '../../features/404/ui';
 
 function App() {
     const dispatch = useAppDispatch();

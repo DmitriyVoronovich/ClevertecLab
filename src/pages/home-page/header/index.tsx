@@ -1,4 +1,4 @@
-import set from '../../../accets/image/set.svg';
+import set from '@image/image/set.svg';
 
 import './header.css';
 import {settingsThunks} from '../../../features/settings/model/settings-slice.ts';

@@ -1,8 +1,8 @@
 import {RequestProfileStatus} from '@enums/enums.ts';
 import {useAppDispatch} from '@hooks/typed-react-redux-hooks.ts';
+import error from '@image/calendar-page/add_error.svg';
 import {Button, Modal} from 'antd';
 
-import error from '../../../../accets/calendar-page/add_error.svg';
 import {setProfileStatus} from '../../model/profileSlice.ts';
 
 import './profile-request-error.css';

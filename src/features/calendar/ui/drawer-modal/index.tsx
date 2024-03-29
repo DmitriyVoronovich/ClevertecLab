@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
+import { BadgeComponent } from '@components/badge-component';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
+import { useIsMobile } from '@utils/useIsMobile.ts';
 import { Drawer } from 'antd';
 import { FormInstance } from 'antd/es/form/hooks/useForm';
 
-import { BadgeComponent } from '@components/badgeComponent/BadgeComponent.tsx';
-import { isMobile } from '@utils/isMobile.ts';
 import { DrawerForm } from '../drawer-form';
 import { ExerciseItem } from '../workout-edit-form/types/types.ts';
 
@@ -24,6 +24,7 @@ export const DrawerModal = ({
 }: DrawerModalProps) => {
     const trainingList = useAppSelector((state) => state.calendar.trainingList);
     const [form, setForm] = useState<FormInstance>();
+    const isMobile = useIsMobile();
 
     const train = trainingList.find((item) => item.key === selectTrain);
 
@@ -43,8 +44,8 @@ export const DrawerModal = ({
         <Drawer
             data-test-id='modal-drawer-right'
             title='Добавление упражнений'
-            placement={isMobile() ? 'bottom' : 'right'}
-            height={isMobile() ? 555 : '100%'}
+            placement={isMobile ? 'bottom' : 'right'}
+            height={isMobile ? 555 : '100%'}
             width={408}
             open={true}
             onClose={onClose}

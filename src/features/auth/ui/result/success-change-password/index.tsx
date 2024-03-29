@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
+import suc from '@image/login-page/svg-icon/success.svg';
 import { Button } from 'antd';
 
-import fon from '../../../../../accets/login-page/image/fon.png';
-import suc from '../../../../../accets/login-page/svg-icon/success.svg';
+import fon from '../../../../../assets/login-page/image/fon.png';
 
 import './success-change-password.css';
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 import { AddTrainingStatus } from '@enums/enums.ts';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
-import {isMobile} from '@utils/isMobile.ts';
+import {useIsMobile} from '@utils/useIsMobile.ts';
 import { Button, Modal, Select } from 'antd';
 import Badge from 'antd/lib/badge';
 
@@ -26,6 +26,7 @@ export const AddTrainingModal = ({
     const trainingList = useAppSelector((state) => state.calendar.trainingList);
     const [openDrawerModal, setOpenDrawerModal] = useState(false);
     const [selectTrain, setSelectTrain] = useState('Выбор типа тренировки');
+    const isMobile = useIsMobile();
 
     // @ts-ignore
     const [trainExercise, setTrainExercise] = useState<TrainExercises[]>([{}]);
@@ -76,11 +77,11 @@ export const AddTrainingModal = ({
                 data-test-id='modal-create-exercise'
                 className="add_training_modal"
                 open={true}
-                width={isMobile() ? 312 : 264}
+                width={isMobile ? 312 : 264}
                 mask={false}
                 maskClosable={false}
                 closable={false}
-                style={isMobile() ? { top: '25%' } : modalStyle }
+                style={isMobile ? { top: '25%' } : modalStyle }
                 footer={[
                     <Button
                         key='save'

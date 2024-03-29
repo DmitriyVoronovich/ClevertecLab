@@ -4,7 +4,7 @@ import { RequestCalendarStatus } from '@enums/enums.ts';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { Button, Modal } from 'antd';
 
-import error from '../../../../accets/calendar-page/error_modal_svg.svg';
+import error from '@image/calendar-page/error_modal_svg.svg';
 import { calendarThunks, setTrainingStatus } from '../../model/calendar-slice.ts';
 
 import './error-modal.css';
@@ -16,9 +16,9 @@ export const ErrorModal = () => {
 
     useEffect(() => {
         if (trainingStatus === RequestCalendarStatus.Error) {
-            return setIsModalOpen(true);
+            setIsModalOpen(true);
         }
-    });
+    }, [trainingStatus]);
 
     const onCancelModal = () => {
         setIsModalOpen(false);

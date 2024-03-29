@@ -29,6 +29,7 @@ module.exports = {
         'import/no-absolute-path': 'off',
         'react/react-in-jsx-scope': 'off',
         "no-param-reassign": "off",
+        "no-underscore-dangle": ["error", { "allow": ["_id"] }],
         'import/no-extraneous-dependencies': [
             'error',
             {

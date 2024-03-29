@@ -1,7 +1,8 @@
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
-import { Logo } from '@components/logo/Logo.tsx';
+import { Logo } from '@components/logo';
+import classNames from 'classnames';
 
-import fon from '../../../../accets/login-page/image/fon.png';
+import fon from '../../../../assets/login-page/image/fon.png';
 import { LoginForm } from '../login-form';
 import { RegistrationForm } from '../registration-form';
 
@@ -11,7 +12,10 @@ export const LoginPage = () => {
     const location = useLocation();
     const locationPath = location.pathname.split('/');
 
-    const isActive = locationPath.length === 2
+    const isActive = locationPath.length === 2;
+
+    const loginButton = classNames({'login_button': true, 'active': isActive});
+    const registrationButton = classNames({'login_button': true, 'active': !isActive});
 
     return (
         <div className="login_form_container" style={{ backgroundImage: `url(${fon})` }}>
@@ -23,24 +27,12 @@ export const LoginPage = () => {
                 <div className="form_container">
                     <div className="form_button_container">
                         <Link to="/auth" style={{ width: '100%' }}>
-                            <button
-                                className={`${
-                                    !isActive
-                                        ? 'login_button'
-                                        : 'login_button active'
-                                }`}
-                            >
+                            <button className={loginButton}>
                                 Вход
                             </button>
                         </Link>
                         <Link to="/auth/registration" style={{ width: '100%' }}>
-                            <button
-                                className={`${
-                                    isActive
-                                        ? 'login_button'
-                                        : 'login_button active'
-                                }`}
-                            >
+                            <button className={registrationButton}>
                                 Регистрация
                             </button>
                         </Link>

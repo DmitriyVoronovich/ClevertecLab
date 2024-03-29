@@ -1,15 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {TokenRequestErrorProps} from '@components/token-request-error/types/types.ts';
+import error from '@image/login-page/svg-icon/error_check.svg';
 import { Button, Modal } from 'antd';
 
-import error from '../../../accets/login-page/svg-icon/error_check.svg';
-
 import './tokenRequestError.css';
-
-type TokenRequestErrorProps = {
-    callback: () => void;
-    status: string;
-};
 
 export const TokenRequestError = ({ callback, status }: TokenRequestErrorProps) => {
     const navigation = useNavigate();
@@ -17,9 +12,9 @@ export const TokenRequestError = ({ callback, status }: TokenRequestErrorProps) 
 
     useEffect(() => {
         if (status === 'failed') {
-            return setIsModalOpen(true);
+            setIsModalOpen(true);
         }
-    });
+    }, [status]);
 
     const onCancelModalForm = () => {
         setIsModalOpen(false);

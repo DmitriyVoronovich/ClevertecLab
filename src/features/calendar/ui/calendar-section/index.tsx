@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
-import { isMobile } from '@utils/isMobile.ts';
+import { useIsMobile } from '@utils/useIsMobile.ts';
 import { Calendar, CalendarProps } from 'antd';
 import { SelectInfo } from 'antd/es/calendar/generateCalendar';
 import locale from 'antd/es/date-picker/locale/ru_RU';
@@ -25,6 +25,7 @@ export const CalendarSection = () => {
     const [modalStyle, setModalStyle] = useState({ left: 0, top: 0 });
     const [date, setDate] = useState('');
     const ref = useRef<HTMLDivElement>(document.createElement('div'));
+    const isMobile = useIsMobile();
 
     const onCloseTrainingModal = () => setVisibleTrainingModal(false);
 
@@ -37,14 +38,14 @@ export const CalendarSection = () => {
     };
 
     return (
-        <div ref={ref} className={isMobile() ? 'calendar' : 'full_calendar'}>
+        <div ref={ref} className={isMobile ? 'calendar' : 'full_calendar'}>
             <Calendar
                 cellRender={cellRender}
                 locale={locale}
                 onSelect={(selectedDate: Dayjs, selectInfo: SelectInfo) =>
                     onSelected(selectedDate, selectInfo, ref, training)
                 }
-                fullscreen={!isMobile()}
+                fullscreen={!isMobile}
             />
             {visibleTrainingModal && (
                 <TrainingModal

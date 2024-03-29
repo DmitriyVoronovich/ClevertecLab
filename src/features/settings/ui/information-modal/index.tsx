@@ -1,7 +1,7 @@
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import {Modal} from 'antd';
 
-import info from '../../../../accets/settings-page/information_icon.svg'
+import info from '@image/settings-page/information_icon.svg'
 
 import {onCloseInformationModal} from './utils/on-close-information-modal.ts';
 

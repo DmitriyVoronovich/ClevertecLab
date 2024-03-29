@@ -4,7 +4,7 @@ import { RequestCalendarStatus } from '@enums/enums.ts';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { HomePage } from '@pages/home-page';
 
-import fon from '../../accets/main_page_light.png';
+import fon from '../../assets/main_page_light.png';
 import { Sidebar } from '../../common/components';
 import {NotFoundPage} from '../../features/404/ui';
 import { setTrainingStatus } from '../../features/calendar/model/calendar-slice.ts';
