@@ -31,6 +31,7 @@ import {ProfilePage} from '../../features/profile/ui/profile-page';
 import {SettingsPage} from '../../features/settings/ui/settings-page';
 import {profileThunks} from '../../features/profile/model/profileSlice.ts';
 import {NotFoundPage} from '../../features/404/ui';
+import {TrainingPage} from "../../features/training/ui/training-page";
 
 function App() {
     const dispatch = useAppDispatch();
@@ -70,6 +71,7 @@ function App() {
                     <Route path='calendar' element={<CalendarPage />} />
                     <Route path='profile' element={<ProfilePage />} />
                     <Route path="settings" element={<SettingsPage />} />
+                    <Route path="training" element={<TrainingPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
                 <Route path='/auth/*' element={<LoginPage />}>

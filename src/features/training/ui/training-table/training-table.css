@@ -1,0 +1,115 @@
+.table_container {
+    margin-top: 36px;
+}
+
+.table_container .ant-modal-root .ant-modal-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.table_container .ant-table-wrapper .ant-table-pagination-right {
+    justify-content: flex-start;
+    margin-top: 24px;
+    height: 24px;
+}
+
+.tablet {
+    width: 555px;
+}
+
+.tablet .ant-pagination {
+    margin-top: 24px;
+}
+
+.tablet .ant-pagination .ant-pagination-item {
+    height: 20px;
+    min-width: 24px;
+    font-size: 14px;
+    line-height: 130%;
+    font-weight: 400;
+    border-radius: 0;
+}
+
+.tablet .ant-pagination .ant-pagination-prev .ant-pagination-item-link {
+    height: 24px;
+    width: 24px;
+    text-align: end;
+}
+
+.tablet .ant-pagination .ant-pagination-next .ant-pagination-item-link {
+    height: 24px;
+    width: 24px;
+}
+
+.tablet th .ant-table-cell .ant-table-cell-ellipsis {
+    margin-right: 12px;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+    padding: 0 8px;
+    width: 240px;
+    font-family: var(--basic-font-family);
+    color: var(--basic-title-color);
+    background-color: #f0f0f0;
+    font-size: 14px;
+    line-height: 130%;
+    font-weight: 400;
+}
+
+.ant-table-wrapper .ant-table-tbody > tr > td {
+    padding: 7px 0 0 0;
+    border-bottom: 0;
+}
+
+.ant-table-wrapper table {
+    border-spacing: 12px;
+}
+
+.ant-table-wrapper .ant-table-wrapper .ant-table-container table > thead > tr:first-child > *:first-child {
+    border-radius: 0;
+    margin-right: 12px;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > td {
+    background-color: var(--basic-white-color);
+    border: 0;
+}
+
+.training_element_wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 7px;
+}
+
+.ant-table-wrapper .ant-table-container table>thead>tr:first-child >*:first-child {
+    border-radius: 0;
+}
+
+.training_element_wrapper svg{
+    fill: #474747
+}
+
+.tablet .edit_svg svg{
+    width: 25px;
+    height: 25px;
+}
+
+.tablet .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector{
+    width: 201px;
+    border-radius: 0;
+    background-color: #f0f0f0;
+    border: none;
+    padding: 0;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: var(--basic-font-family);
+    line-height: 130%;
+}
+
+.table_no_border_title .ant-table-wrapper .ant-table-thead > tr > td {
+    border-right: none
+}

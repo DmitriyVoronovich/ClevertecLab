@@ -1,0 +1,106 @@
+.form_item {
+    margin-top: 24px;
+}
+
+.form_list_wrapper .ant-form-item {
+    margin: 0;
+    padding: 0;
+}
+
+.form_list_wrapper input[type='text'] {
+    height: 24px;
+    margin: 0;
+}
+
+.exercise_train_container {
+    display: flex;
+    gap: 32px;
+    margin-top: 8px;
+}
+
+.exercise_approaches_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 120px;
+}
+
+.exercise_block_title {
+    text-align: start;
+    background-color: #f0f0f0;
+    padding: 8px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    color: var(--basic-title-color);
+}
+
+.exercise_weight_wrapper {
+    display: flex;
+    gap: 3px;
+}
+
+.ant-input-number-group .ant-input-number-group-addon {
+    height: 24px;
+    border-radius: 0;
+}
+
+.ant-input-number {
+    height: 24px;
+    border-radius: 0;
+}
+
+.exercise_weight_wrapper {
+    height: 67px;
+}
+
+.list_item {
+    min-height: 24px;
+}
+
+.ant-input-number-input-wrap .ant-input-number .ant-input-number-input {
+    border-radius: 0;
+}
+
+.list_item .ant-input-number-input {
+    height: 24px;
+}
+
+.exercise_weight {
+    width: 89px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.exercise_quantity {
+    width: 89px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.multiplication_sign {
+    color: #cacaca;
+    align-self: end;
+    padding-bottom: 7px;
+}
+
+.add_drawer_button {
+    border-radius: 0 0 6px 6px;
+    height: 40px;
+    background-color: #f0f0f0;
+    color: #2f54eb;
+    text-align: start;
+    border: none;
+}
+
+.ant-input-disabled:disabled {
+    opacity: 1;
+    color: var(--basic-title-color);
+}
+
+.ant-input-number-input:disabled {
+    opacity: 1;
+    color: var(--basic-title-color);
+}

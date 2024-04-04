@@ -59,7 +59,7 @@ export const AddTrainingModal = ({
     const handleSave = () => {
         const trainName = trainingList.find((item) => item.key === selectTrain);
 
-        onShapingTraining(trainName, date, trainExercise, dispatch);
+        onShapingTraining(date, trainExercise, dispatch, trainName);
     };
 
     const handleCancel = () => {

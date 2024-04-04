@@ -7,8 +7,9 @@ import { appSlice } from '../app/model/appSlice.ts';
 import { authSlice } from '../features/auth/model/auth-slice.ts';
 import { calendarSlice } from '../features/calendar/model/calendar-slice.ts';
 import { feedbackSlice } from '../features/feedback/model/feedback-slice.ts';
-import {profileSlice} from "../features/profile/model/profileSlice.ts";
-import {settingsSlice} from "../features/settings/model/settings-slice.ts";
+import {profileSlice} from '../features/profile/model/profileSlice.ts';
+import {settingsSlice} from '../features/settings/model/settings-slice.ts';
+import {trainingSlice} from '../features/training/model/training-slice.ts';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -24,7 +25,8 @@ export const store = configureStore({
         feedback: feedbackSlice,
         calendar: calendarSlice,
         profile: profileSlice,
-        settings: settingsSlice
+        settings: settingsSlice,
+        training: trainingSlice
     }),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(routerMiddleware),
 });

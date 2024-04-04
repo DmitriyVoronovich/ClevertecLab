@@ -1,0 +1,57 @@
+.not_workouts_container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.not_workouts_description {
+    margin: 204px auto 0;
+    font-family: var(--basic-font-family);
+    color: var(--basic-title-color);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 130%;
+}
+
+.not_workouts_button {
+    width: 174px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: var(--basic-white-color);
+    border-radius: 0;
+    margin: 76px auto 0;
+    font-family: var(--basic-font-family);
+}
+
+.training_table_container {
+    display: flex;
+    flex-direction: column;
+    gap: 54px;
+}
+
+.add_training_button {
+    width: 182px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: var(--basic-white-color);
+    border-radius: 0;
+    margin-top: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add_training_button_title {
+    font-family: var(--basic-font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+}
+
+.add_training_button svg{
+    fill: var(--basic-white-color);
+}
+
+.add_training_button:hover svg{
+    fill: var(--primary-color);
+}

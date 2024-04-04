@@ -54,6 +54,7 @@
     padding: 4px 15px;
     width: 99px;
     align-self: end;
+    background-color: var(--primary-color);
 }
 
 @media screen and (max-width: 361px) {

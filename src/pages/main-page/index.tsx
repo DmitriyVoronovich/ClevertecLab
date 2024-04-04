@@ -14,6 +14,7 @@ import {ProfilePage} from '../../features/profile/ui/profile-page';
 import {SettingsPage} from '../../features/settings/ui/settings-page';
 
 import './main-page.css';
+import {TrainingPage} from "../../features/training/ui/training-page";
 
 export const MainPage = () => {
     const dispatch = useAppDispatch();
@@ -54,6 +55,7 @@ export const MainPage = () => {
                     <Route path="calendar" element={<CalendarPage />} />
                     <Route path="profile" element={<ProfilePage />} />
                     <Route path="settings" element={<SettingsPage />} />
+                    <Route path="training" element={<TrainingPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </div>

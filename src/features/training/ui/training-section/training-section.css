@@ -1,0 +1,29 @@
+.training_section_container {
+    padding: 24px 24px 42px 24px;
+    max-width: 1333px;
+    min-height: 862px;
+    background-color: var(--basic-white-color);
+}
+
+.training_section_title_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px 0 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.training_section_title {
+    margin: 12px 0 0 0;
+    font-family: var(--basic-font-family);
+    color: var(--basic-title-color);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 130%;
+    cursor: pointer;
+}
+
+.active {
+    color: #5977ef;
+    border-bottom: 2px solid #5977ef;
+}

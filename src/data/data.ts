@@ -7,6 +7,7 @@ import icprof from '@image/image/svg-menu/icon-prof.svg';
 import icrasp from '@image/image/svg-menu/icon-rasp.svg';
 import {pushWithFlow} from '@utils/pushWithFlow.ts';
 import { calendarThunks } from '../features/calendar/model/calendar-slice.ts';
+import {trainingThunks} from "../features/training/model/training-slice.ts";
 
 export const NavigationCardData = [
     {
@@ -14,9 +15,7 @@ export const NavigationCardData = [
         title: 'Тренировки',
         icon: heard,
         description: 'Расписать тренировки',
-        callback: () => {
-            console.log();
-        },
+        callback: trainingThunks.getTraining(),
         dataId: 'menu-button-calendar1',
     },
     {
@@ -97,3 +96,30 @@ export const TariffComparisonData = [
         id: 7, title: 'Индивидуальный Chat GPT', free: false, pro: true
     }
 ];
+
+export const DaySelectorData = [
+    {key: 1, title: 'Понедельник'},
+    {key: 2, title: 'Вторник'},
+    {key: 3, title: 'Среда'},
+    {key: 4, title: 'Четверг'},
+    {key: 5, title: 'Пятница'},
+    {key: 6, title: 'Суббота'},
+    {key: 7, title: 'Воскресенье'}
+];
+
+export const PeriodicitySelectorData = [
+    {key: 1, title: 'Через 1 день'},
+    {key: 2, title: 'Через 2 дня'},
+    {key: 3, title: 'Через 3 дня'},
+    {key: 4, title: 'Через 4 дня'},
+    {key: 5, title: 'Через 5 дней'},
+    {key: 6, title: 'Через 6 дней'},
+    {key: 7, title: '1 раз в неделю'}
+]
+
+export const TableSelectorData = [
+    {id: 1, title: 'Переодичность'},
+    {id: 2, title: 'Сортировка по дате'},
+    {id: 3, title: 'Сортировка по дням'},
+    {id: 4, title: 'Сортировка по всему'}
+]

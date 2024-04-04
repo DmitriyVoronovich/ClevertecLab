@@ -14,7 +14,7 @@ import { PostTrainingParams, TrainingList, TrainingParams } from './types/types.
 import { colors } from './calendar-data.ts';
 
 const slice = createSlice({
-    name: 'training',
+    name: 'calendar',
     initialState: {
         training: [] as TrainingParams[],
         trainingStatus: RequestCalendarStatus.Idle as RequestCalendarStatus,
@@ -54,6 +54,14 @@ const slice = createSlice({
             }>,
         ) => {
             state.searchExercises = [...state.searchExercises, action.payload.searchExercise];
+        },
+        setTraining: (
+            state,
+            action: PayloadAction<{
+                training: TrainingParams[];
+            }>,
+        ) => {
+            state.training = action.payload.training;
         },
         editSearchExercises: (
             state,
@@ -96,6 +104,7 @@ export const {
     setAddTrainingStatus,
     setSearchExercises,
     editSearchExercises,
+    setTraining,
 } = slice.actions;
 
 

@@ -1,0 +1,58 @@
+.training_form_container {
+    padding-top: 24px;
+}
+
+.training_form_container .ant-select-single {
+    height: 28px;
+}
+
+.training_selector .ant-select-selector {
+    border-radius: 0;
+    height: 28px;
+}
+
+.training_selector .ant-select-selection-item {
+    color: var(--basic-title-color)
+}
+
+.training_date {
+    border-radius: 0;
+    height: 28px;
+    width: 156px;
+}
+
+.training_date_wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 28px;
+    margin-top: 8px;
+}
+
+.training_checkbox .ant-checkbox-inner {
+    border-radius: 0;
+}
+
+.training_checkbox {
+    color: var(--basic-title-color);
+}
+
+.training_checkbox span {
+    padding-right: 0;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--basic-font-family);
+    line-height: 130%;
+    color: var(--basic-title-color);
+}
+
+.date_title {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--basic-font-family);
+    line-height: 130%;
+    color: var(--basic-title-color);
+}
+
+@media screen and (max-width: 361px) {
+
+}

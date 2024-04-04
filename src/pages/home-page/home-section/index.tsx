@@ -1,5 +1,5 @@
-import { Fragment } from '../../../common/components';
-import { NavigationCardData } from '../../../data/data.ts';
+import { Fragment } from '@components/fragment';
+import { NavigationCardData } from '@data/data.ts';
 
 import './home-section.css';
 

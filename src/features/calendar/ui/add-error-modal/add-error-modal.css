@@ -60,6 +60,7 @@
     width: 99px;
     align-self: end;
     margin-top: 24px;
+    background-color: var(--primary-color);
 }
 
 @media screen and (max-width: 361px) {

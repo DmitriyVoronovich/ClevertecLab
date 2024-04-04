@@ -1,0 +1,9 @@
+.alert-wrapper {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 396px;
+    border: 1px solid #b7eb8f;
+}
