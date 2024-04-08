@@ -4,20 +4,25 @@ import classNames from 'classnames';
 
 import {MyWorkouts} from '../ my-workouts';
 import {setAddTrainingStatus} from '../../../calendar/model/calendar-slice.ts';
+import {inviteThunks} from '../../../invite/model/invite-slice.ts';
 import {
     setRequestTrainStatus,
     setSelectedMenuItem,
     trainingThunks
 } from '../../model/training-slice.ts';
+import {JointTraining} from '../joint-training-block/joint-training';
+import {UserJointTrainingList} from '../joint-training-block/user-joint-training-list';
+import {MyTrainingPartner} from '../my-training-partner';
 
 import {AlertNotification} from './alert-notification';
 
 import './training-section.css';
-import {JointTraining} from "../joint-training-block/joint-training";
+import Badge from "antd/lib/badge";
 
 export const TrainingSection = () => {
     const dispatch = useAppDispatch();
     const selectedMenuItem = useAppSelector((state) => state.training.selectedMenuItem);
+    const inviteList = useAppSelector((state) => state.invite.inviteList);
     const requestTrainStatus = useAppSelector((state) => state.training.requestTrainStatus);
     const addTrainingStatus = useAppSelector((state) => state.calendar.addTrainingStatus);
 
@@ -33,7 +38,7 @@ export const TrainingSection = () => {
 
     const marafonTitle = classNames({
         'training_section_title': true,
-        'active': selectedMenuItem === TrainingSelectedMenu.Marafon
+        'active': false
     })
 
     const onAddAlertClose = () => dispatch(setRequestTrainStatus({ requestTrainStatus: RequestTrainStatus.Idle }));
@@ -44,8 +49,8 @@ export const TrainingSection = () => {
     const onJointTrainingOpen = () => {
         dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.JointTraining}));
         dispatch(trainingThunks.getTrainingPalsList());
+        dispatch(inviteThunks.getInvite())
     };
-    const onMarafonPageOpen = () => dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.Marafon}));
 
     return (<>
             <div className="training_section_container">
@@ -53,13 +58,15 @@ export const TrainingSection = () => {
                     <h3 className={workoutsTrainingTitle} onClick={onMyWorkoutOpen}>Мои
                         тренировки</h3>
                     <h3 className={jointTrainingTitle} onClick={onJointTrainingOpen}>Совместные
-                        тренировки</h3>
-                    <h3 className={marafonTitle} onClick={onMarafonPageOpen}>Марафоны</h3>
+                        тренировки <Badge count={inviteList.length} /></h3>
+                    <h3 className={marafonTitle}>Марафоны</h3>
                 </div>
                 {selectedMenuItem === TrainingSelectedMenu.MyWorkouts && <MyWorkouts/>}
                 {selectedMenuItem === TrainingSelectedMenu.JointTraining && <JointTraining/>}
+                {selectedMenuItem === TrainingSelectedMenu.UserJointTrainingList && <UserJointTrainingList/>}
+                {selectedMenuItem === TrainingSelectedMenu.MyTrainingPartner && <MyTrainingPartner/>}
             </div>
-            {requestTrainStatus === RequestTrainStatus.Succeeded && <AlertNotification onClose={onAddAlertClose} message="Новая тренировка успешно добавлена"/>}
+            {requestTrainStatus === RequestTrainStatus.Succeeded && <AlertNotification onClose={onAddAlertClose} dataId={'create-training-success-alert'} message="Новая тренировка успешно добавлена"/>}
             {addTrainingStatus === AddTrainingStatus.Success && <AlertNotification onClose={onEditAlertClose} message="Тренировка успешно обновлена"/>}
         </>
 

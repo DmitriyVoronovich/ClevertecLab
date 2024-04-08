@@ -11,13 +11,17 @@ import {AddTrainingDrawerForm} from '../add-training-drawer-form';
 import {AddTrainingDrawerModalProps} from './types/types.ts';
 
 import './add-training-drawer-modal.css';
+import {InvitationToJointTraining} from "@enums/enums.ts";
 
-export const AddTrainingDrawerModal = ({onClose}: AddTrainingDrawerModalProps) => {
+export const AddTrainingDrawerModal = ({onClose, user}: AddTrainingDrawerModalProps) => {
     const dispatch = useAppDispatch();
     const trainList = useAppSelector((state) => state.calendar.trainingList);
+    const invitationMode = useAppSelector((state) => state.training.invitationMode);
     const [form, setForm] = useState<FormInstance>();
     const [disabledSaveButton, setDisabledSaveButton] = useState(true);
     const isMobile = useIsMobile();
+
+    const invitationModeOn = invitationMode === InvitationToJointTraining.Invitation
 
     const onSaveTraining = () => {
         onClose();
@@ -33,9 +37,9 @@ export const AddTrainingDrawerModal = ({onClose}: AddTrainingDrawerModalProps) =
 
     const onFinish = (values: any, periodicityOpen: boolean) => {
         const trainName = trainList.find((item) => item.key === values.selector)
-
+        const name = invitationModeOn ? user?.trainingType : trainName?.name
         const train = {
-            name: trainName?.name,
+            name,
             date: values.date,
             isImplementation: false,
             parameters: {
@@ -57,23 +61,29 @@ export const AddTrainingDrawerModal = ({onClose}: AddTrainingDrawerModalProps) =
 
     return (
         <Drawer
-            title='Новая тренировка'
+            data-test-id='modal-drawer-right'
+            title={invitationModeOn ? 'Совместная тренировка' : 'Добавление упражнений'}
             placement={isMobile ? 'bottom' : 'right'}
             height={isMobile ? 555 : '100%'}
             width={408}
             open={true}
             footer={
-                <Button className='drawer_footer_button' onClick={onSaveTraining} disabled={disabledSaveButton}>Сохранить</Button>
+                <Button className='drawer_footer_button'
+                        onClick={onSaveTraining}
+                        disabled={disabledSaveButton}>
+                    {invitationModeOn ? 'Отправить приглашение' : 'Сохранить'}
+                </Button>
             }
             onClose={onCloseDrawer}
             mask={false}
             maskClosable={false}
             className="training_drawer_container"
-            closeIcon={<CloseOutlined/>}
+            closeIcon={<CloseOutlined data-test-id='modal-drawer-right-button-close'/>}
             extra={<PlusOutlined style={{width: '14px', height: '14px'}}/>}
         >
             <AddTrainingDrawerForm setFormSubmit={setForm}
                                    onFinish={onFinish}
+                                   user={user}
                                    onUnDisabledSaveButton={onUnDisabledSaveButton}
                                    onDisabledSaveButton={onDisabledSaveButton}/>
         </Drawer>

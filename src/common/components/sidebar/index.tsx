@@ -1,5 +1,5 @@
 import {NavigationMenuData} from '@data/data.ts';
-import {useAppDispatch} from '@hooks/typed-react-redux-hooks.ts';
+import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import exit from '@image/image/exit.svg';
 import menuIcon from '@image/image/svg-menu/menu.svg';
 import {pushWithFlow} from '@utils/pushWithFlow.ts';
@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import {Logo} from '../logo';
 
 import './sidebar.css';
+import Badge from "antd/lib/badge";
 
 export type SidebarProps = {
     handleOpen: () => void;
@@ -16,6 +17,7 @@ export type SidebarProps = {
 
 export const Sidebar = ({handleOpen, open}: SidebarProps) => {
     const dispatch = useAppDispatch();
+    const inviteList = useAppSelector((state) => state.invite.inviteList);
 
     const sidebarContentContainer = classNames({
         'sidebar_content_container': true,
@@ -50,15 +52,17 @@ export const Sidebar = ({handleOpen, open}: SidebarProps) => {
         };
 
         return (
-            <div className="sidebar_menu_item"
-                 key={item.id}
-                 onClick={onClickHandler}
-                 data-test-id={item.dataId}>
-                <img src={item.icon} alt="menu icon" className="sidebar_item_icon"/>
-                <span className={`${open ? 'sidebar_item_title' : 'sidebar_item_title close'}`}>
+            <Badge count={item.title === 'Тренировки' ? inviteList.length : 0} data-test-id={item.dataNotId}>
+                <div className="sidebar_menu_item"
+                     key={item.id}
+                     onClick={onClickHandler}
+                     data-test-id={item.dataId}>
+                    <img src={item.icon} alt="menu icon" className="sidebar_item_icon"/>
+                    <span className={`${open ? 'sidebar_item_title' : 'sidebar_item_title close'}`}>
                     {item.title}
                 </span>
-            </div>
+                </div>
+            </Badge>
         );
     });
 

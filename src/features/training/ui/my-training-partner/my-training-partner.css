@@ -1,0 +1,21 @@
+.my_train_partner_container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+.my_train_partner_title {
+    margin: 0;
+    font-family: var(--basic-font-family);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 130%;
+    color: var(--basic-title-color);
+}
+
+.my_train_card_wrapper {
+    display: flex;
+    gap: 16px;
+}

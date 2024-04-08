@@ -1,0 +1,15 @@
+.user_information_modal_container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 455px;
+    width: 100%;
+    padding: 40px 32px;
+    max-height: 106px;
+}
+
+.user_information_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}

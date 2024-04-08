@@ -1,0 +1,47 @@
+.user_training_list_container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user_training_top_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 734px;
+    width: 100%;
+}
+
+.user_training_button {
+    display: flex;
+    gap: 16px;
+    height: 38px;
+    border: none;
+    align-items: center;
+    background-color: var(--basic-white-color);
+    font-family: var(--basic-font-family);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 130%;
+    color: var(--basic-title-color);
+    cursor: pointer;
+}
+
+.user_training_search_input {
+
+}
+
+.user_training_top_wrapper input[type='text'] {
+    height: 32px;
+    width: 484px;
+    padding: 4px 0 4px 12px;
+    border: 1px solid #BFBFBF;
+    font-family: var(--basic-font-family);
+    font-size: 14px;
+    color: #BFBFBF;
+}
+
+.ant-input-search >.ant-input-group >.ant-input-group-addon:last-child .ant-input-search-button {
+    border-radius: 0;
+    border-color: #BFBFBF;
+}

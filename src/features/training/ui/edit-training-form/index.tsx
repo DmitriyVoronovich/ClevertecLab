@@ -42,6 +42,10 @@ export const EditTrainingForm = ({
         }
     };
 
+    const disabledDate = (current: any) => {
+        return current && current < Date.now();
+    }
+
     const onOpenPeriodicity = (e: CheckboxChangeEvent) => setPeriodicityOpen(e.target.checked);
 
     const onChangePeriodicity = (data: any) => setPeriodicityValue(data);

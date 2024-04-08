@@ -40,12 +40,18 @@ export enum RequestProfileStatus {
 export enum TrainingSelectedMenu {
     MyWorkouts = 'myWorkouts',
     JointTraining = 'jointTraining',
-    Marafon = 'Marafon'
+    UserJointTrainingList = 'userJointTrainingList',
+    MyTrainingPartner = 'myTrainingPartner'
 }
 
 export enum RequestTrainStatus {
     Idle = 'idle',
     Succeeded = 'succeeded',
-    Edit = 'edit',
-    Failed = 'failed'
+    Failed = 'failed',
+    Error = 'error',
+}
+
+export enum InvitationToJointTraining {
+    Idle = 'idle',
+    Invitation = 'invitation'
 }

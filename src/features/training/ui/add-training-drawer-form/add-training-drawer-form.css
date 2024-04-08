@@ -53,6 +53,15 @@
     color: var(--basic-title-color);
 }
 
+.invite_card_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    height: 42px;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+}
+
 @media screen and (max-width: 361px) {
 
 }

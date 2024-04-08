@@ -1,0 +1,20 @@
+.user_joint_training_container {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: 1134px;
+}
+
+.user_joint_training_pagination {
+    margin-top: 16px;
+}
+
+.user_joint_training_pagination .ant-pagination .ant-pagination-item{
+    border-radius: 0;
+    border-color: var(--primary-color);
+}
+
+.user_joint_training_pagination .ant-pagination .ant-pagination-item-active a{
+    color: var(--primary-color);
+}

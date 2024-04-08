@@ -16,7 +16,7 @@ export const NavigationCardData = [
         icon: heard,
         description: 'Расписать тренировки',
         callback: trainingThunks.getTraining(),
-        dataId: 'menu-button-calendar1',
+        dataId: 'menu-button-training',
     },
     {
         id: 2,
@@ -43,33 +43,31 @@ export const NavigationMenuData = [
         icon: icrasp,
         callback: calendarThunks.training,
         dataId: 'menu-button-calendar',
+        dataNotId:'a'
     },
     {
         id: 2,
         title: 'Тренировки',
         icon: icheard,
-        callback: () => {
-            console.log();
-        },
+        callback: () => {},
         dataId: 'menu-button-calendar1',
+        dataNotId:'notification-about-joint-training'
     },
     {
         id: 3,
         title: 'Достижения',
         icon: icdos,
-        callback: () => {
-            console.log();
-        },
+        callback: () => {},
         dataId: 'menu-button-calendar1',
+        dataNotId:'a'
     },
     {
         id: 4,
         title: 'Профиль',
         icon: icprof,
-        callback: () => {
-            console.log();
-        },
+        callback: () => {},
         dataId: 'menu-button-calendar1',
+        dataNotId:'a'
     },
 ];
 
@@ -118,7 +116,7 @@ export const PeriodicitySelectorData = [
 ]
 
 export const TableSelectorData = [
-    {id: 1, title: 'Переодичность'},
+    {id: 1, title: 'Периодичность'},
     {id: 2, title: 'Сортировка по дате'},
     {id: 3, title: 'Сортировка по дням'},
     {id: 4, title: 'Сортировка по всему'}

@@ -127,8 +127,8 @@ export const TrainingTable = () => {
             key: 'jointTraining',
             width: 30,
             dataIndex: 'jointTraining',
-            render: (_, record) => (
-                <Button onClick={() => onEditDrawerOpen(record)} className='edit_button'>
+            render: (_, record, index) => (
+                <Button onClick={() => onEditDrawerOpen(record)} className='edit_button' data-test-id={`update-my-training-table-icon${index}`}>
                     <EditOutlined
                         size={25}
                         className="edit_svg"
@@ -144,7 +144,9 @@ export const TrainingTable = () => {
                 <Table columns={columns}
                        dataSource={training}
                        className='tablet'
+                       showSorterTooltip={false}
                        pagination={training.length < 14 ? false : {pageSize: 14}}
+                       data-test-id='my-trainings-table'
                 />
             </div>
             {

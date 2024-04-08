@@ -28,7 +28,7 @@ export const MyWorkouts = () => {
                 </div>
                 : <div className="training_table_container">
                     <TrainingTable/>
-                    {trainingList.length && <Button className={s.add_training_button} onClick={onOpenDrawer}>
+                    {trainingList.length && <Button className={s.add_training_button} onClick={onOpenDrawer} data-test-id='create-new-training-button'>
                         <PlusOutlined size={14}/>
                         <span className={s.add_training_button_title}>Новая тренировка</span>
                     </Button>}
