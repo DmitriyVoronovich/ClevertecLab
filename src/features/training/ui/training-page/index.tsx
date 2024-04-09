@@ -1,18 +1,25 @@
 import {useEffect, useState} from 'react';
-import {RequestCalendarStatus, RequestTrainStatus} from '@enums/enums.ts';
+import {RequestCalendarStatus, RequestTrainStatus, TrainingSelectedMenu} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import set from '@image/image/set.svg';
 
 import {calendarThunks, setTrainingStatus} from '../../../calendar/model/calendar-slice.ts';
 import {AddErrorModal, ErrorModal} from '../../../calendar/ui';
-import {setRequestTrainStatus, trainingThunks} from '../../model/training-slice.ts';
+import {
+    setRequestTrainStatus,
+    setSelectedMenuItem,
+    trainingThunks
+} from '../../model/training-slice.ts';
 import {TrainingSection} from '../training-section';
 
 import s from './training-page.module.css';
 import {pushWithFlow} from "@utils/pushWithFlow.ts";
+import {findPopularWorkout} from "../joint-training-block/joint-training";
 
 export const TrainingPage = () => {
     const dispatch = useAppDispatch();
+    const training = useAppSelector((state) => state.calendar.training);
+    const trainingList = useAppSelector((state) => state.calendar.trainingList);
     const trainingStatus = useAppSelector((state) => state.calendar.trainingStatus);
     const requestTrainStatus = useAppSelector((state) => state.training.requestTrainStatus);
     const [openAddErrorModal, setOpenAddErrorModal] = useState(false);
@@ -34,9 +41,16 @@ export const TrainingPage = () => {
 
     const onRefreshTrainingListBack = () => dispatch(setTrainingStatus({ trainingStatus: RequestCalendarStatus.Idle }))
 
-    const onRefreshUserJointTrainingBack = () => dispatch(setRequestTrainStatus({ requestTrainStatus: RequestTrainStatus.Idle }))
+    const onRefreshUserJointTrainingBack = () => {
+        dispatch(setRequestTrainStatus({requestTrainStatus: RequestTrainStatus.Idle}))
+        dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.JointTraining}));
+    }
 
-    const onRefreshUserJointTraining = () => dispatch(trainingThunks.getUserTrainingList());
+    const onRefreshUserJointTraining = () => {
+        const popularTrain = trainingList.find((item) => item.name === findPopularWorkout(training));
+
+        dispatch(trainingThunks.getUserTrainingList({trainingType: `${popularTrain?.key}`}));
+    }
 
     const onBackToMain = () => {
         dispatch(pushWithFlow('/main'))

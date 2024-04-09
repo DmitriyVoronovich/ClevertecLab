@@ -20,9 +20,10 @@ import './user-card.css';
 type UserCardProps = {
     user: TrainingPals
     searchString: string
+    index: number
 }
 
-export const UserCard = ({user, searchString}: UserCardProps) => {
+export const UserCard = ({user, searchString, index}: UserCardProps) => {
     const dispatch = useAppDispatch();
     const [open, setOpen] = useState(false);
 
@@ -44,7 +45,7 @@ export const UserCard = ({user, searchString}: UserCardProps) => {
 
     return (
         <>
-            <Card bordered={false} style={{width: 234}} className='card'>
+            <Card bordered={false} style={{width: 234}} className='card' data-test-id={`joint-training-cards${index}`}>
                 <div className='card_header_wrapper'>
                     <Avatar size={42} src={user.imageSrc ? user.imageSrc : avatar}/>
                     <h6 className='card_header_title'>
@@ -52,17 +53,8 @@ export const UserCard = ({user, searchString}: UserCardProps) => {
                             highlightClassName="highligh_text"
                             searchWords={[searchString]}
                             autoEscape={true}
-                            textToHighlight={name[0]}
+                            textToHighlight={user.name}
                         />
-                        {secondName[1] && <br/>}
-                        {secondName[1] && (
-                            <Highlighter
-                                highlightClassName="highligh_text"
-                                searchWords={[searchString]}
-                                autoEscape={true}
-                                textToHighlight={secondName[1]}
-                            />
-                        )}
                     </h6>
                 </div>
                 <div className='card_information_wrapper'>

@@ -19,9 +19,9 @@ type InviteModalDetailsProps = {
 export const InviteModalDetails = ({user, onCloseModal, modalStyle}: InviteModalDetailsProps) => {
     const trainList = useAppSelector((state) => state.calendar.trainingList)
 
-    const trainName = trainList.find((item) => item.name === user[0].training.name);
+    const trainName = trainList.find((item) => item.name === user.training.name);
     const periodName = PeriodicitySelectorData.find((item) =>
-        item.key === user[0].training.parameters.period);
+        item.key === user.training.parameters.period);
     const isMobile = useIsMobile();
 
     return (
@@ -41,10 +41,10 @@ export const InviteModalDetails = ({user, onCloseModal, modalStyle}: InviteModal
             <div className='invite_information_wrapper'>
                 <div className='invite_information_block'>
                     <span className='invite_information_period'>{periodName?.title}</span>
-                    <span className='invite_information_date'>{formateDate(user[0].training.date)}</span>
+                    <span className='invite_information_date'>{formateDate(user.training.date)}</span>
 
                 </div>
-                {user[0].training.exercises.map((item: ExerciseItem) => (
+                {user.training.exercises.map((item: ExerciseItem) => (
                         <div className='invite_information_block'>
                             <span className='invite_exercises_name'>{item.name}</span>
                             <span className='invite_exercises'>

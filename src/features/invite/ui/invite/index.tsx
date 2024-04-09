@@ -67,7 +67,7 @@ const Invite = () => {
                             <Button style={{color: '#ffffff', background: '#2f54eb'}}
                                     className='invite_button'
                             onClick={() => onAcceptedInvite(item)}>
-                                Тренироваться всместе
+                                Тренироваться вместе
                             </Button>
                             <Button className='invite_button'
                                     onClick={() => onRejectedInvite(item)}>

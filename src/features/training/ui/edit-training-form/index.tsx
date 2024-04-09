@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {DaySelectorData, PeriodicitySelectorData} from '@data/data.ts';
 import {useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import {Checkbox, DatePicker, Form, Select} from 'antd';
@@ -7,6 +7,7 @@ import moment from 'moment';
 
 import {EditTrainingFormProps} from './types/types.ts';
 import {EditTrainingFormList} from './edit-training-form-list';
+import {ExerciseItem} from "../../../calendar/ui/workout-edit-form/types/types.ts";
 
 
 export const EditTrainingForm = ({
@@ -19,6 +20,7 @@ export const EditTrainingForm = ({
     const [selectTrain, setSelectTrain] = useState('');
     const [periodicityOpen, setPeriodicityOpen] = useState(false);
     const [periodicityValue, setPeriodicityValue] = useState(false);
+    const [checkboxes, setCheckboxes] = useState([]);
 
     const [form] = Form.useForm();
 
@@ -42,9 +44,24 @@ export const EditTrainingForm = ({
         }
     };
 
-    const disabledDate = (current: any) => {
-        return current && current < Date.now();
-    }
+
+
+    const removeValue = () => {
+        const editedExercises = form
+            .getFieldsValue()
+            ?.exercise?.filter((item: ExerciseItem) => !item.checkbox);
+
+        form.setFieldsValue({ exercise: editedExercises });
+    };
+
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
+        const {checked} = e.target;
+
+        setCheckboxes({ ...checkboxes, [name]: checked });
+    };
+
+    const someCheckbox = Object.values(checkboxes).some((value) => value);
+
 
     const onOpenPeriodicity = (e: CheckboxChangeEvent) => setPeriodicityOpen(e.target.checked);
 
@@ -72,16 +89,17 @@ export const EditTrainingForm = ({
             </Form.Item>
             <div className='training_date_wrapper'>
                 <Form.Item name="date">
-                    <DatePicker className="training_date" format="DD.MM.YYYY"/>
+                    <DatePicker className="training_date" format="DD.MM.YYYY" data-test-id='modal-drawer-right-date-picker' />
                 </Form.Item>
                 <Form.Item name='repeat'>
-                    <Checkbox className='training_checkbox' onChange={onOpenPeriodicity}>С
+                    <Checkbox className='training_checkbox' onChange={onOpenPeriodicity} data-test-id='modal-drawer-right-checkbox-period'>С
                         переодичностью</Checkbox>
                 </Form.Item>
             </div>
             {periodicityOpen && <div className='training_date_wrapper'>
                 <Form.Item name="period">
                     <Select
+                        data-test-id='modal-drawer-right-select-period'
                         onChange={onChangePeriodicity}
                         className="training_selector"
                         style={{width: '156px'}}
@@ -108,7 +126,7 @@ export const EditTrainingForm = ({
                     />
                 </Form.Item>}
             </div>}
-            <EditTrainingFormList/>
+            <EditTrainingFormList removeValue={removeValue} handleCheckboxChange={handleCheckboxChange} someCheckbox={someCheckbox}/>
         </Form>
     );
 };

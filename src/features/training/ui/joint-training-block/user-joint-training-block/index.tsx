@@ -23,10 +23,18 @@ export const UserJointTrainingBlock = ({filteredUsers, searchString}: UserJointT
     const statusOrder: { [index: string]: number } = {
         'accepted': 1,
         'pending': 2,
-        'rejected': 3
+        'rejected': 3,
+        null: 4
     };
 
     const sortedTrainingList  = currentItems.sort((a, b) => {
+        if (statusOrder[a.status] < statusOrder[b.status]) {
+            return -1;
+        }
+        if (statusOrder[a.status] > statusOrder[b.status]) {
+            return 1;
+        }
+
         if (a.name < b.name) {
             return -1;
         }
@@ -34,7 +42,7 @@ export const UserJointTrainingBlock = ({filteredUsers, searchString}: UserJointT
             return 1;
         }
 
-        return statusOrder[a.status] - statusOrder[b.status];
+        return 0;
     });
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
@@ -42,8 +50,8 @@ export const UserJointTrainingBlock = ({filteredUsers, searchString}: UserJointT
     return (
         <>
             <div className='user_joint_training_container'>
-                {sortedTrainingList.map((item) => (
-                    <UserCard key={item.id} user={item} searchString={searchString}/>
+                {sortedTrainingList.map((item, index) => (
+                    <UserCard key={item.id} user={item} searchString={searchString} index={index}/>
                 ))}
             </div>
             <div className='user_joint_training_pagination'>

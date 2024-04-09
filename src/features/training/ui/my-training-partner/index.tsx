@@ -1,9 +1,12 @@
-import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
-import {UserInformationCard} from "./user-infom-card";
-import './my-training-partner.css';
-import {UserInformationModal} from "../user-information-modal";
 import {useState} from "react";
+import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
+
 import {TrainingPals} from "../../model/types/types.ts";
+import {UserInformationModal} from "../user-information-modal";
+
+import {UserInformationCard} from "./user-infom-card";
+
+import './my-training-partner.css';
 
 export const MyTrainingPartner = () => {
     const trainingPalsList = useAppSelector((state) => state.training.trainingPalsList);

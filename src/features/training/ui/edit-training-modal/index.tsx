@@ -14,7 +14,7 @@ import {EditTrainingModal} from './types/types.ts';
 export const EditTrainingDrawer = ({onClose, separateWorkout}: EditTrainingModal) => {
     const dispatch = useAppDispatch();
     const [form, setForm] = useState<FormInstance>();
-    const [disabledEditButton, setDisabledEditButton] = useState(true);
+    const [disabledEditButton, setDisabledEditButton] = useState(false);
     const isMobile = useIsMobile();
 
     const onSaveTraining = () => {
@@ -56,7 +56,8 @@ export const EditTrainingDrawer = ({onClose, separateWorkout}: EditTrainingModal
 
     return (
         <Drawer
-            title='Редактировать тренировку'
+            data-test-id='modal-drawer-right'
+            title='Редактирование'
             placement={isMobile ? 'bottom' : 'right'}
             height={isMobile ? 555 : '100%'}
             width={408}
@@ -69,7 +70,7 @@ export const EditTrainingDrawer = ({onClose, separateWorkout}: EditTrainingModal
             mask={false}
             maskClosable={false}
             className="training_drawer_container"
-            closeIcon={<CloseOutlined/>}
+            closeIcon={<CloseOutlined data-test-id='modal-drawer-right-button-close'/>}
             extra={<EditOutlined style={{width: '14px', height: '14px'}}/>}
         >
             <EditTrainingForm setFormSubmit={setForm}

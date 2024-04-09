@@ -25,6 +25,7 @@ import { trainingApi} from '../api/training-api.ts';
 
 import {TrainingPals} from './types/types.ts';
 import {Invitation, inviteApi} from '../../invite/api/invite-api.ts';
+import {inviteThunks} from "../../invite/model/invite-slice.ts";
 
 
 const slice = createSlice({
@@ -46,13 +47,20 @@ const slice = createSlice({
         ) => {
             state.selectedMenuItem = action.payload.selectedMenuItem;
         },
-        setUserId: (
+        setChangeUserStatus: (
             state,
             action: PayloadAction<{
                 userId: string;
             }>,
         ) => {
-            state.userId = action.payload.userId;
+            state.jointTrainingUserList = state.jointTrainingUserList.map(item => {
+                if(item.id === action.payload.userId){
+                    return {...item, status: 'pending'};
+                }
+
+                    return item;
+
+            });
         },
         setRequestTrainStatus: (
             state, action: PayloadAction<{
@@ -68,6 +76,21 @@ const slice = createSlice({
         ) => {
             state.invitationMode = action.payload.invitationMode
         },
+        setRemoveTrain: (
+            state, action: PayloadAction<{
+                id: string
+            }>
+        ) => {
+            state.trainingPalsList = state.trainingPalsList.filter((item) => item.inviteId !== action.payload.id)
+        },
+        setUserId: (
+            state,
+            action: PayloadAction<{
+                userId: string;
+            }>,
+        ) => {
+            state.userId = action.payload.userId;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -77,6 +100,9 @@ const slice = createSlice({
             .addCase(getUserTrainingList.fulfilled, (state, action) => {
                 state.jointTrainingUserList = action.payload.jointTrainingUserList;
             })
+            .addCase(getAllUserTrainingList.fulfilled, (state, action) => {
+                state.jointTrainingUserList = action.payload.jointTrainingUserList;
+            })
     }
 });
 
@@ -84,37 +110,10 @@ export const {
     setSelectedMenuItem,
     setRequestTrainStatus,
     setInvitationMode,
+    setRemoveTrain,
+    setChangeUserStatus,
     setUserId
 } = slice.actions;
-
-const sendInvite = createAppAsyncThunk<
-    {
-        requestTrainStatus: RequestTrainStatus;
-    },
-    { invitation: Invitation }
->(`${slice.name}/sendInvite`, async (arg, thunkAPI) => {
-    const {dispatch, rejectWithValue} = thunkAPI;
-
-    try {
-        const res = await inviteApi.sendAnInvitation({
-            to: arg.invitation.to,
-            trainingId: arg.invitation.trainingId
-        });
-
-        if (res.status === 200) {
-
-            return {requestTrainStatus: RequestTrainStatus.Idle};
-        }
-
-        return rejectWithValue(null);
-
-    } catch (e: any) {
-
-        return rejectWithValue(null);
-    } finally {
-        dispatch(setInvitationMode({invitationMode: InvitationToJointTraining.Idle}))
-    }
-});
 
 const getTraining = createAppAsyncThunk<{ training: TrainingParams[] }, undefined>(
     `${slice.name}/getTraining`,
@@ -127,7 +126,7 @@ const getTraining = createAppAsyncThunk<{ training: TrainingParams[] }, undefine
 
             if (res.status === 200) {
                 dispatch(calendarThunks.trainingList(() => dispatch(pushWithFlow('/training'))));
-                dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.MyWorkouts}));
+
 
                 dispatch(setTraining({training: res.data}))
                 return {training: res.data};
@@ -161,7 +160,7 @@ const addTraining = createAppAsyncThunk<
             dispatch(addSearchExercises({searchExercise: res.data}));
             dispatch(setRequestTrainStatus({requestTrainStatus: RequestTrainStatus.Succeeded}));
             if (invitationMode) {
-                dispatch(sendInvite({invitation: {to: userId, trainingId: res.data._id}}))
+                dispatch(inviteThunks.sendInvite({invitation: {to: userId, trainingId: res.data._id}}))
             }
             dispatch(getTraining());
 
@@ -264,6 +263,34 @@ const getUserTrainingList = createAppAsyncThunk<{ jointTrainingUserList: Trainin
     },
 );
 
+const getAllUserTrainingList = createAppAsyncThunk<{ jointTrainingUserList: TrainingPals[] }, undefined>(
+    `${slice.name}/getAllUserTrainingList`,
+    async (_, thunkAPI) => {
+        const {dispatch, rejectWithValue} = thunkAPI;
+
+        dispatch(appActions.setAppStatus({status: RequestStatusType.Loading}));
+        try {
+
+            const res = await trainingApi.getAllUserJointTraining();
+
+            if (res.status === 200) {
+                return {jointTrainingUserList: res.data};
+            }
+
+            return rejectWithValue(null);
+
+        } catch (e: any) {
+            dispatch(setRequestTrainStatus({requestTrainStatus: RequestTrainStatus.Error}));
+
+            return rejectWithValue(null);
+        } finally {
+            dispatch(appActions.setAppStatus({status: RequestStatusType.Idle}));
+        }
+    },
+);
+
+
+
 export const trainingSlice = slice.reducer;
 
 
@@ -273,5 +300,5 @@ export const trainingThunks = {
     editTraining,
     getTrainingPalsList,
     getUserTrainingList,
-    sendInvite
+    getAllUserTrainingList
 };

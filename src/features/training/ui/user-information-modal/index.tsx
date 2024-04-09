@@ -17,8 +17,6 @@ type UserInformationModalProps = {
 
 export const UserInformationModal = ({onCloseModal, user}: UserInformationModalProps) => {
 const dispatch = useAppDispatch()
-    const name = user.name.split(' ');
-    const secondName = user.name.split(' ');
 
     const onRemoveTraining = () => {
         dispatch(inviteThunks.removeInvite({id:user.inviteId}))
@@ -37,9 +35,7 @@ const dispatch = useAppDispatch()
                     <div className='card_header_wrapper'>
                         <Avatar size={42} src={user.imageSrc ? user.imageSrc : avatar}/>
                         <h6 className='card_header_title'>
-                            {name[0]}
-                            {secondName[1] && <br/>}
-                            {secondName[1] && secondName[1]}
+                            {user.name}
                         </h6>
                     </div>
                     <div className='card_footer_description'>

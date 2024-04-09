@@ -103,9 +103,7 @@ export const AddTrainingDrawerForm = ({
                     <div className='invite_card_header_wrapper'>
                         <Avatar size={42} src={user?.imageSrc ? user.imageSrc : avatar}/>
                         <h6 className='card_header_title'>
-                            {name[0]}
-                            {secondName[1] && <br/>}
-                            {secondName[1]}
+                            {user?.name}
                         </h6>
                     </div>
                     <BadgeComponent name={train?.name} color={train?.color} fontWeight="500" fontSize='14px' colorText='#8C8C8C' className='' index={1}/>

@@ -9,32 +9,32 @@ import {TrainingParams} from "../../../../calendar/model/types/types.ts";
 import {MyTrainingPartner} from "../../my-training-partner";
 import Invite from "../../../../invite/ui/invite";
 
+export const findPopularWorkout = (workouts: TrainingParams[]) => {
+    const workoutLoad = workouts.reduce((acc: { [key: string]: number }, workout) => {
+        const load = workout.exercises.reduce((accum: number, {
+            replays,
+            weight,
+            approaches
+        }) => accum + replays * weight * approaches, 0);
+
+        return ({
+            ...acc,
+            [workout.name]: (acc[workout.name] || 0) + load,
+        });
+    }, {});
+
+    return Object.keys(workoutLoad).reduce((a, b) => workoutLoad[a] > workoutLoad[b] ? a : b);
+}
 export const JointTraining = () => {
     const dispatch = useAppDispatch();
     const training = useAppSelector((state) => state.calendar.training);
     const trainingList = useAppSelector((state) => state.calendar.trainingList);
     const trainingPalsList = useAppSelector((state) => state.training.trainingPalsList);
+
     const inviteList = useAppSelector((state) => state.invite.inviteList)
 
-    const findPopularWorkout = (workouts: TrainingParams[]) => {
-        const workoutLoad = workouts.reduce((acc: { [key: string]: number }, workout) => {
-            const load = workout.exercises.reduce((accum: number, {
-                replays,
-                weight,
-                approaches
-            }) => accum + replays * weight * approaches, 0);
-
-            return ({
-                ...acc,
-                [workout.name]: (acc[workout.name] || 0) + load,
-            });
-        }, {});
-
-        return Object.keys(workoutLoad).reduce((a, b) => workoutLoad[a] > workoutLoad[b] ? a : b);
-    }
-
     const onViewJointTrainingList = () => {
-        dispatch(trainingThunks.getUserTrainingList({trainingType: ''}));
+        dispatch(trainingThunks.getAllUserTrainingList());
         dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.UserJointTrainingList}));
     };
 
@@ -57,15 +57,12 @@ export const JointTraining = () => {
             <div className={s.joint_training_button_group}>
                 <Button className={s.joint_training_button}
                         onClick={onViewJointTrainingList}>Случайный выбор</Button>
-                <Button className={s.joint_training_friend_button} onClick={onClicked}>Выбор друга
-                    по моим видам
-                    тренировок</Button>
+                <Button className={s.joint_training_friend_button} onClick={onClicked}>Выбор друга по моим тренировкам</Button>
             </div>
         </div>
         {trainingPalsList.length === 0 ? <div className={s.joint_training_description_wrapper}>
                 <p className={s.joint_training_description_title}>Мои партнёры по тренировкам</p>
-                <p className={s.joint_training_description_text}>У вас пока нет партнёров для совместных
-                    тренировок</p>
+                <p className={s.joint_training_description_text}>У вас пока нет партнёров для совместных тренировок</p>
             </div>
             : <MyTrainingPartner/>}
     </div>)

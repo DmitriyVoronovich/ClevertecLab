@@ -51,7 +51,7 @@ export const TrainingSection = () => {
         dispatch(trainingThunks.getTrainingPalsList());
         dispatch(inviteThunks.getInvite())
     };
-
+    console.log(selectedMenuItem)
     return (<>
             <div className="training_section_container">
                 <div className="training_section_title_wrapper">
@@ -66,8 +66,8 @@ export const TrainingSection = () => {
                 {selectedMenuItem === TrainingSelectedMenu.UserJointTrainingList && <UserJointTrainingList/>}
                 {selectedMenuItem === TrainingSelectedMenu.MyTrainingPartner && <MyTrainingPartner/>}
             </div>
-            {requestTrainStatus === RequestTrainStatus.Succeeded && <AlertNotification onClose={onAddAlertClose} dataId={'create-training-success-alert'} message="Новая тренировка успешно добавлена"/>}
-            {addTrainingStatus === AddTrainingStatus.Success && <AlertNotification onClose={onEditAlertClose} message="Тренировка успешно обновлена"/>}
+            {requestTrainStatus === RequestTrainStatus.Succeeded && <AlertNotification onClose={onAddAlertClose} dataId="create-training-success-alert" message="Новая тренировка успешно добавлена"/>}
+            {addTrainingStatus === AddTrainingStatus.Success && <AlertNotification onClose={onEditAlertClose} dataId="create-training-success-alert" message="Тренировка успешно обновлена"/>}
         </>
 
     );

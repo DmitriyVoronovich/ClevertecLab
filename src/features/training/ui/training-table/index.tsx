@@ -15,6 +15,19 @@ import {TableModal} from './table-modal';
 
 import './training-table.css';
 
+const sortByDate = (a: TrainingParams, b: TrainingParams) => new Date(a.date).getTime() - new Date(b.date).getTime();
+
+const sortByPeriod = (a: TrainingParams, b: TrainingParams) => {
+    if (a.parameters.period === null) return 1;
+    if (b.parameters.period === null) return -1;
+
+    return  b.parameters.period - a.parameters.period;
+};
+
+function getSorter(value: string) {
+    return (a: TrainingParams, b: TrainingParams) =>
+        value === 'Периодичность' ? sortByPeriod(b, a) : sortByDate(a, b);
+}
 
 export const TrainingTable = () => {
     const training = useAppSelector((state) => state.calendar.training);
@@ -59,6 +72,27 @@ export const TrainingTable = () => {
         }
     };
 
+    useEffect(() => {
+        const observer = new MutationObserver(mutations => {
+
+            for (const mutation of mutations) {
+
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    const addedNode = mutation.addedNodes[0];
+
+                    if (addedNode instanceof HTMLSpanElement && addedNode.getAttribute('aria-live') === 'polite') {
+                        addedNode.innerText = 'Non visible text to fix';
+                    }
+                }
+            }
+        });
+
+        observer.observe(ref.current, {childList: true, subtree: true});
+
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
 
     const columns: TableProps<TrainingParams>['columns'] = [
         {
@@ -69,24 +103,25 @@ export const TrainingTable = () => {
             fixed: 'left',
             render: (text, record) => (
                 <>
-                    <div onClick={(e) => onModalOpen(e)} className='training_element_wrapper'
-                         ref={ref}>
+                    <div onClick={(e) => onModalOpen(e)} className='training_element_wrapper'>
                         <Element title={text}/>
                         <DownOutlined size={14}/>
-
                     </div>
                     {modalOpen &&
                         <TableModal onModalClose={onModalClose}
-                                    train={record} modalStyle={modalStyle} onEditDrawerOpen={onEditDrawerOpen}/>}
+                                    train={record} modalStyle={modalStyle}
+                                    onEditDrawerOpen={onEditDrawerOpen}/>}
                 </>
             )
         },
         {
-            title: () => (
+            title: (
+                <div ref={ref}>
                     <Select
                         onChange={onChangePeriodicity}
                         className="table_title_selector"
                         value={value}
+                        virtual={false}
                         options={TableSelectorData.map((item) => ({
                             value: item.id,
                             label: (
@@ -94,20 +129,21 @@ export const TrainingTable = () => {
                             ),
                         }))}
                     />
-                ),
+                </div>
+            ),
             key: 'date',
             width: 240,
-            sorter: (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+            sorter: getSorter(value),
+            // sortDirections: ['ascend', 'descend', 'ascend'],
             dataIndex: 'date',
             render: (date, record) => {
-
                 let formatedDate;
 
                 switch (value) {
                     case 'Сортировка по дате':
                         formatedDate = formateDate(date);
                         break;
-                    case 'Переодичность':
+                    case 'Периодичность':
                         formatedDate = formatPeriod(record.parameters.period);
                         break;
                     case 'Сортировка по дням':
@@ -145,15 +181,16 @@ export const TrainingTable = () => {
                        dataSource={training}
                        className='tablet'
                        showSorterTooltip={false}
-                       pagination={training.length < 14 ? false : {pageSize: 14}}
+                       pagination={training.length < 10 ? false : {pageSize: 10}}
                        data-test-id='my-trainings-table'
                 />
             </div>
             {
-               editDrawerOpen && <EditTrainingDrawer onClose={onEditDrawerClose} separateWorkout={separateWorkout}/>
+                editDrawerOpen &&
+                <EditTrainingDrawer onClose={onEditDrawerClose} separateWorkout={separateWorkout}/>
             }
             {addTrainingStatus === AddTrainingStatus.Error && (
-                <AddErrorModal onClose={onModalClose} />
+                <AddErrorModal onClose={onModalClose}/>
             )}
         </>
 

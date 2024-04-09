@@ -10,8 +10,6 @@ type UserInfomationCard = {
 }
 
 export const UserInformationCard = ({user, onShowModal, index}: UserInfomationCard) => {
-    const name = user.name.split(' ');
-    const secondName = user.name.split(' ');
 
     return (
         <Card className='.card_partner_container' style={{background: '#ffffff', padding: '12px', width: 234}} onClick={() => onShowModal(user)}
@@ -19,9 +17,7 @@ export const UserInformationCard = ({user, onShowModal, index}: UserInfomationCa
             <div className='card_header_wrapper'>
                 <Avatar size={42} src={user.imageSrc ? user.imageSrc : avatar}/>
                 <h6 className='card_header_title'>
-                    {name[0]}
-                    {secondName[1] && <br/>}
-                    {secondName[1] && secondName[1]}
+                    {user.name}
                 </h6>
             </div>
             <div className='card_information_wrapper'>

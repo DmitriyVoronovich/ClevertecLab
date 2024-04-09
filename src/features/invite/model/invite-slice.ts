@@ -1,10 +1,22 @@
-import {RequestStatusType, RequestTrainStatus} from '@enums/enums.ts';
-import {createSlice} from '@reduxjs/toolkit';
+import {
+    InvitationToJointTraining,
+    RequestStatusType,
+    RequestTrainStatus,
+    TrainingSelectedMenu
+} from '@enums/enums.ts';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {createAppAsyncThunk} from '@utils/createAppAsyncThunk.ts';
 
 import {appActions} from '../../../app/model/appSlice.ts';
-import {setRequestTrainStatus, trainingThunks} from '../../training/model/training-slice.ts';
-import {inviteApi, InviteParams, ResponseInvitation} from '../api/invite-api.ts';
+import {
+    setChangeUserStatus,
+    setInvitationMode,
+    setRemoveTrain,
+    setRequestTrainStatus,
+    setSelectedMenuItem,
+    trainingThunks
+} from '../../training/model/training-slice.ts';
+import {Invitation, inviteApi, InviteParams, ResponseInvitation} from '../api/invite-api.ts';
 
 
 const slice = createSlice({
@@ -12,25 +24,30 @@ const slice = createSlice({
     initialState: {
         inviteList: [] as InviteParams[]
     },
-    reducers: {},
+    reducers: {
+        setFilterInvite: (
+            state, action: PayloadAction<{
+                invite: string
+            }>
+        ) => {
+            state.inviteList = state.inviteList.filter((item) => item._id !== action.payload.invite)
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getInvite.fulfilled, (state, action) => {
                 state.inviteList = action.payload.inviteList;
             })
-            .addCase(resToInvite.fulfilled, (state, action) => {
-                state.inviteList = state.inviteList.filter((item) => item._id !== action.payload.invite._id);
-            })
     }
 });
 
-export const {} = slice.actions;
+export const {setFilterInvite} = slice.actions;
 
 const getInvite = createAppAsyncThunk<
     {
         inviteList: InviteParams[];
     },
-   undefined
+    undefined
 >(`${slice.name}/getInvite`, async (_arg, thunkAPI) => {
     const {dispatch, rejectWithValue} = thunkAPI;
 
@@ -67,6 +84,13 @@ const resToInvite = createAppAsyncThunk<
 
         if (res.status === 200) {
 
+            dispatch(setFilterInvite({invite: arg.id}))
+
+            if (res.data.status === 'accepted') {
+                dispatch(trainingThunks.getTrainingPalsList());
+                dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.MyTrainingPartner}));
+            }
+
             return {invite: res.data};
         }
 
@@ -88,11 +112,12 @@ const removeInvite = createAppAsyncThunk<
 
     dispatch(appActions.setAppStatus({status: RequestStatusType.Loading}));
     try {
-        const res = await inviteApi.removeInvitation(id );
+        const res = await inviteApi.removeInvitation(id);
 
         if (res.status === 200) {
 
-            dispatch(trainingThunks.getTrainingPalsList())
+            dispatch(setFilterInvite({invite: id}))
+            dispatch(setRemoveTrain({id}))
 
             return undefined;
         }
@@ -108,8 +133,37 @@ const removeInvite = createAppAsyncThunk<
     }
 });
 
+const sendInvite = createAppAsyncThunk<
+    undefined,
+    { invitation: Invitation }
+>(`${slice.name}/sendInvite`, async (arg, thunkAPI) => {
+    const {dispatch, rejectWithValue} = thunkAPI;
+
+    try {
+        const res = await inviteApi.sendAnInvitation({
+            to: arg.invitation.to,
+            trainingId: arg.invitation.trainingId
+        });
+
+        if (res.status === 200) {
+
+            dispatch(setChangeUserStatus({userId: res.data.to}));
+            dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.UserJointTrainingList}));
+            return undefined;
+        }
+
+        return rejectWithValue(null);
+
+    } catch (e: any) {
+
+        return rejectWithValue(null);
+    } finally {
+        dispatch(setInvitationMode({invitationMode: InvitationToJointTraining.Idle}))
+    }
+});
+
 
 export const inviteSlice = slice.reducer;
 
 
-export const inviteThunks = {getInvite, resToInvite, removeInvite};
+export const inviteThunks = {getInvite, resToInvite, removeInvite, sendInvite};

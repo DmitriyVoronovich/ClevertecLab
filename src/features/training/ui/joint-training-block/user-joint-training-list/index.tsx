@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {ArrowLeftOutlined} from '@ant-design/icons';
 import {TrainingSelectedMenu} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
