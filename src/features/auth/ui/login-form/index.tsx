@@ -10,6 +10,7 @@ import { FormParams } from './types/types.ts';
 import { onValidateEmail } from './utils/on-confirm-email.ts';
 
 import './login-form.css';
+import {pushWithFlow} from "@utils/pushWithFlow.ts";
 
 export const LoginForm = () => {
     const [form] = Form.useForm();
@@ -36,7 +37,7 @@ export const LoginForm = () => {
     };
 
     const onGoogleLogIn = () =>
-        (window.location.href = 'https://marathon-api.clevertec.ru/auth/google');
+        (dispatch(pushWithFlow('https://marathon-api.clevertec.ru/auth/google')));
 
     const onFieldsChange = (_: any, allFields: any) => {
         const emailField = allFields.find((field: { name: string[] }) => field.name[0] === 'email');
