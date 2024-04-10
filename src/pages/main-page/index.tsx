@@ -15,6 +15,7 @@ import {SettingsPage} from '../../features/settings/ui/settings-page';
 
 import './main-page.css';
 import {TrainingPage} from "../../features/training/ui/training-page";
+import {pushWithFlow} from "@utils/pushWithFlow.ts";
 
 export const MainPage = () => {
     const dispatch = useAppDispatch();
@@ -37,7 +38,7 @@ export const MainPage = () => {
     }
 
     if (!tog && !isLoggedIn) {
-        window.location.href = '/auth';
+        dispatch(pushWithFlow('/auth'))
     }
 
     const handleOpen = () => setOpen(!open);
