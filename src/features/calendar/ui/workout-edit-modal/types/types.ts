@@ -6,5 +6,5 @@ export type WorkoutEditModalProps = {
     separateWorkout: TrainingParams;
     date: string;
     onAddTrainExercise: (train: TrainExercises[]) => void;
-    selectedTrainingItem: TrainingList | undefined;
+    selectedTrainingItem?: TrainingList;
 };

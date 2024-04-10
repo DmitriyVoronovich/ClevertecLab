@@ -3,8 +3,7 @@ import avatar from '@image/feedback-page/default_avatar.svg';
 import {formateDate} from '../../../../calendar/ui/drawer-modal/utils/formate-date.ts';
 import {InviteProps} from './types/types.ts';
 
-export const Invite = ({user, onRejectedInvite, onAcceptedInvite, onOpenModalWithDetails}: InviteProps) => {
-    return (
+export const Invite = ({user, onRejectedInvite, onAcceptedInvite, onOpenModalWithDetails}: InviteProps) => (
         <div className='invite_block_wrapper'>
             <div className='invite_block_user_section'>
                 <Avatar size={42}
@@ -24,8 +23,7 @@ export const Invite = ({user, onRejectedInvite, onAcceptedInvite, onOpenModalWit
                 </div>
             </div>
             <div className='invite_button_section'>
-                <Button style={{color: '#ffffff', background: '#2f54eb'}}
-                        className='invite_button'
+                <Button className='invite_button_acced'
                         onClick={() => onAcceptedInvite(user)}>
                     Тренироваться вместе
                 </Button>
@@ -36,4 +34,3 @@ export const Invite = ({user, onRejectedInvite, onAcceptedInvite, onOpenModalWit
             </div>
         </div>
     );
-};

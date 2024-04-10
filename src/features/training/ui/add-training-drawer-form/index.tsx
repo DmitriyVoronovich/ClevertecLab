@@ -59,14 +59,14 @@ export const AddTrainingDrawerForm = ({
         const dateField = allFields.find(
             (field: { name: string[] }) => field.name[0] === 'date',
         );
-        const noValueName = nameField.find((item: any) =>item.value === undefined)
+        const isValueNameEmpty = nameField.find((item: any) =>!item.value)
         if (invitationModeOn) {
-            if (!noValueName && dateField.value !== undefined) {
+            if (!isValueNameEmpty && dateField?.value) {
                 onUnDisabledSaveButton()
             } else {
                 onDisabledSaveButton()
             }
-        } else if (selectorField.value !== undefined && !noValueName && dateField.value !== undefined) {
+        } else if (selectorField?.value && !isValueNameEmpty && dateField?.value) {
             onUnDisabledSaveButton()
         } else {
             onDisabledSaveButton()

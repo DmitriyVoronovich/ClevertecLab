@@ -1,6 +1,6 @@
 export type BadgeProps = {
-    name: string | undefined;
-    color: string | undefined;
+    name?: string;
+    color?: string;
     index: number;
     fontWeight: string;
     fontSize: string;

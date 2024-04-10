@@ -37,7 +37,7 @@ export type TrainExercises = {
 };
 
 export type PostTrainingParams = {
-    name: string | undefined;
+    name?: string;
     date: string;
     isImplementation: boolean;
     parameters: {

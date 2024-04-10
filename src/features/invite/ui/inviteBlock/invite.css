@@ -111,6 +111,17 @@
     border-radius: 0;
 }
 
+.invite_button_acced {
+    background-color: var(--primary-color);
+    color: var(--basic-white-color);
+    width: 190px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: var(--basic-font-family);
+    line-height: 130%;
+    border-radius: 0;
+}
+
 @media screen and (max-width: 834px) {
     .invite_container {
         align-items: start;

@@ -35,8 +35,8 @@ export const InviteModalDetails = ({user, onCloseModal, modalStyle}: InviteModal
                     <span className='invite_information_date'>{formateDate(user.training.date)}</span>
 
                 </div>
-                {user.training.exercises.map((item: ExerciseItem) => (
-                        <div className='invite_information_block'>
+                {user?.training?.exercises?.map((item: ExerciseItem) => (
+                        <div className='invite_information_block' key={item.name}>
                             <span className='invite_exercises_name'>{item.name}</span>
                             <span className='invite_exercises'>
                                 {item.replays} x ({item.weight === 0 ? item.approaches : item.weight} {item.weight === 0 ? '' : 'кг'})

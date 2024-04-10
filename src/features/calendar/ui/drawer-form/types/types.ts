@@ -5,7 +5,7 @@ import { TrainExercises } from '../../../model/types/types.ts';
 
 export type DrawerFormProps = {
     addItem: (value: TrainExercises[]) => void;
-    setFormSubmit: React.Dispatch<React.SetStateAction<FormInstance | undefined>>;
+    setFormSubmit?: React.Dispatch<React.SetStateAction<FormInstance>>;
     trainExercise: TrainExercises[];
 };
 

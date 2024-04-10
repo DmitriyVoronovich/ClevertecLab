@@ -17,7 +17,7 @@ import {
     trainingThunks
 } from '../../training/model/training-slice.ts';
 import {inviteApi} from '../api/invite-api.ts';
-import {Invitation, InviteParams, ResponseInvitation} from "../api/types/types.ts";
+import {Invitation, InviteParams, ResponseInvitation} from '../api/types/types.ts';
 
 
 const slice = createSlice({
@@ -56,12 +56,7 @@ const getInvite = createAppAsyncThunk<
     try {
         const res = await inviteApi.getInvite();
 
-        if (res.status === 200) {
-
-            return {inviteList: res.data};
-        }
-
-        return rejectWithValue(null);
+        return {inviteList: res.data};
 
     } catch (e: any) {
 
@@ -83,19 +78,14 @@ const resToInvite = createAppAsyncThunk<
     try {
         const res = await inviteApi.responseToInvitation({id: arg.id, status: arg.status});
 
-        if (res.status === 200) {
+        dispatch(setFilterInvite({invite: arg.id}))
 
-            dispatch(setFilterInvite({invite: arg.id}))
-
-            if (res.data.status === 'accepted') {
-                dispatch(trainingThunks.getTrainingPalsList());
-                dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.MyTrainingPartner}));
-            }
-
-            return {invite: res.data};
+        if (res.data.status === 'accepted') {
+            dispatch(trainingThunks.getTrainingPalsList());
+            dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.MyTrainingPartner}));
         }
 
-        return rejectWithValue(null);
+        return {invite: res.data};
 
     } catch (e: any) {
 
@@ -115,15 +105,10 @@ const removeInvite = createAppAsyncThunk<
     try {
         const res = await inviteApi.removeInvitation(id);
 
-        if (res.status === 200) {
+        dispatch(setFilterInvite({invite: id}))
+        dispatch(setRemoveTrain({id}))
 
-            dispatch(setFilterInvite({invite: id}))
-            dispatch(setRemoveTrain({id}))
-
-            return undefined;
-        }
-
-        return rejectWithValue(null);
+        return undefined;
 
     } catch (e: any) {
         dispatch(setRequestTrainStatus({requestTrainStatus: RequestTrainStatus.Failed}));
@@ -146,14 +131,10 @@ const sendInvite = createAppAsyncThunk<
             trainingId: arg.invitation.trainingId
         });
 
-        if (res.status === 200) {
-
             dispatch(setChangeUserStatus({userId: res.data.to}));
             dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.UserJointTrainingList}));
-            return undefined;
-        }
 
-        return rejectWithValue(null);
+            return undefined;
 
     } catch (e: any) {
 
