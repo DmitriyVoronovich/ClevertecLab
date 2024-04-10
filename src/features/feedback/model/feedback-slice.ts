@@ -8,6 +8,7 @@ import { feedbackApi } from '../api/feeedback-api.ts';
 import { AllReview, Review } from '../api/types/types.ts';
 
 import { compareCreatedAt } from './utils/compare-created-at.ts';
+import {profileThunks} from "../../profile/model/profileSlice.ts";
 
 const slice = createSlice({
     name: 'feedback',
@@ -56,6 +57,7 @@ const getReviews = createAppAsyncThunk<{ reviews: AllReview[] }, undefined>(
             const res = await feedbackApi.getFeedback();
 
             if (res.status === 200) {
+                dispatch(profileThunks.me())
                 const reviews = res.data;
 
                 return { reviews };

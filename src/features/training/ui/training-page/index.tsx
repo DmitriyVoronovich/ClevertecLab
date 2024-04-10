@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {RequestCalendarStatus, RequestTrainStatus, TrainingSelectedMenu} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import set from '@image/image/set.svg';
-import {pushWithFlow} from '@utils/pushWithFlow.ts';
+import {goBackToMain} from '@utils/go-back-to-main.ts';
 
 import {calendarThunks, setTrainingStatus} from '../../../calendar/model/calendar-slice.ts';
 import {AddErrorModal, ErrorModal} from '../../../calendar/ui';
@@ -52,7 +52,7 @@ export const TrainingPage = () => {
         dispatch(trainingThunks.getUserTrainingList({trainingType: `${popularTrain?.key}`}));
     };
 
-    const onBackToMain = () => dispatch(pushWithFlow('/main'));
+    const onBackToMain = goBackToMain(dispatch);
 
     return (<>
             <div className={s.container}>

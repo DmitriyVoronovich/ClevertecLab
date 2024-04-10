@@ -1,9 +1,16 @@
 import {PlusOutlined} from '@ant-design/icons';
 import {Button, Form, Input, InputNumber} from 'antd';
 
-import './add-training-form-list.css';
+import {AddTrainingFormListProps} from '../types/types.ts';
 
-export const AddTrainingFormList = () => {
+import './add-training-form-list.css';
+import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
+import {InvitationToJointTraining} from "@enums/enums.ts";
+
+export const AddTrainingFormList = ({onDisabledSaveButton}:AddTrainingFormListProps) => {
+    const invitationMode = useAppSelector((state) => state.training.invitationMode);
+
+    const invitationModeOn = invitationMode === InvitationToJointTraining.Invitation;
     const initialValue = [{}]
 
     return (
@@ -80,7 +87,11 @@ export const AddTrainingFormList = () => {
                     <Form.Item>
                         <Button
                             type='dashed'
-                            onClick={() => add()}
+                            onClick={() => {
+                                add()
+                                if ( !invitationModeOn) {
+                                onDisabledSaveButton()}
+                            }}
                             block={true}
                             icon={<PlusOutlined />}
                             className="add_drawer_button"

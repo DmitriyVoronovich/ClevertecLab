@@ -55,17 +55,18 @@ export const AddTrainingDrawerForm = ({
         const selectorField = allFields.find((field: {
             name: string[]
         }) => field.name[0] === 'selector');
-        const nameField = allFields.find((field: { name: string[] }) => field.name[2] === 'name');
+        const nameField = allFields.filter((field: { name: string[] }) => field.name[2] === 'name');
         const dateField = allFields.find(
             (field: { name: string[] }) => field.name[0] === 'date',
         );
+        const noValueName = nameField.find((item: any) =>item.value === undefined)
         if (invitationModeOn) {
-            if (nameField.value !== undefined && dateField.value !== undefined) {
+            if (!noValueName && dateField.value !== undefined) {
                 onUnDisabledSaveButton()
             } else {
                 onDisabledSaveButton()
             }
-        } else if (selectorField.value !== undefined && nameField.value !== undefined && dateField.value !== undefined) {
+        } else if (selectorField.value !== undefined && !noValueName && dateField.value !== undefined) {
             onUnDisabledSaveButton()
         } else {
             onDisabledSaveButton()
@@ -158,7 +159,7 @@ export const AddTrainingDrawerForm = ({
                     />
                 </Form.Item>}
             </div>}
-            <AddTrainingFormList/>
+            <AddTrainingFormList onDisabledSaveButton={onDisabledSaveButton}/>
         </Form>
     );
 };

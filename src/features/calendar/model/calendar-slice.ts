@@ -12,6 +12,7 @@ import { calendarApi } from '../api/calendar-api.ts';
 
 import { PostTrainingParams, TrainingList, TrainingParams } from './types/types.ts';
 import { colors } from './calendar-data.ts';
+import {profileThunks} from "../../profile/model/profileSlice.ts";
 
 const slice = createSlice({
     name: 'calendar',
@@ -148,6 +149,7 @@ const training = createAppAsyncThunk<{ training: TrainingParams[] }, undefined>(
             const res = await calendarApi.getTraining();
 
             if (res.status === 200) {
+                dispatch(profileThunks.me());
                 dispatch(trainingList(() => dispatch(pushWithFlow('/calendar'))));
 
                 return { training: res.data };

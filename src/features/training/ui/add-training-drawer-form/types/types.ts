@@ -8,4 +8,8 @@ export type AddTrainingDrawerFormProps = {
     onDisabledSaveButton: () => void
     onUnDisabledSaveButton: () => void
     user?: TrainingPals
-}
+};
+
+export type AddTrainingFormListProps = {
+    onDisabledSaveButton: () => void
+};

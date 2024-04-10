@@ -31,7 +31,7 @@ import {ProfilePage} from '../../features/profile/ui';
 import {SettingsPage} from '../../features/settings/ui/settings-page';
 import {profileThunks} from '../../features/profile/model/profileSlice.ts';
 import {NotFoundPage} from '../../features/404/ui';
-import {TrainingPage} from "../../features/training/ui/training-page";
+import {TrainingPage} from '../../features/training/ui/training-page';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -43,12 +43,12 @@ function App() {
         window.onbeforeunload = () => {
             sessionStorage.clear();
         };
+        dispatch(profileThunks.me())
     }, []);
 
     authGoogle();
 
     useEffect(() => {
-        dispatch(profileThunks.me())
         if (!authState.isLoggedIn) {
             const token = getToken();
 
@@ -59,7 +59,7 @@ function App() {
     });
 
     return (
-        <>
+        <div className={s.appContainer}>
             <Routes>
                 <Route
                     path="/"
@@ -109,7 +109,7 @@ function App() {
                     <Loader />
                 </div>
             )}
-        </>
+        </div>
     );
 }
 

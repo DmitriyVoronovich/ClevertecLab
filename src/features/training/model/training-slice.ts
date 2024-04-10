@@ -25,6 +25,7 @@ import { trainingApi} from '../api/training-api.ts';
 
 import {TrainingPals} from './types/types.ts';
 import {inviteThunks} from "../../invite/model/invite-slice.ts";
+import {profileThunks} from "../../profile/model/profileSlice.ts";
 
 
 const slice = createSlice({
@@ -124,10 +125,10 @@ const getTraining = createAppAsyncThunk<{ training: TrainingParams[] }, undefine
             const res = await calendarApi.getTraining();
 
             if (res.status === 200) {
+                dispatch(profileThunks.me());
                 dispatch(calendarThunks.trainingList(() => dispatch(pushWithFlow('/training'))));
+                dispatch(setTraining({training: res.data}));
 
-
-                dispatch(setTraining({training: res.data}))
                 return {training: res.data};
             }
 

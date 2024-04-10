@@ -48,15 +48,14 @@ export const Sidebar = ({handleOpen, open}: SidebarProps) => {
 
     const menu = NavigationMenuData.map((item) => {
         const onClickHandler = () => {
-            dispatch(item.callback());
+            dispatch(item.callback);
         };
 
         return (
             <Badge count={item.title === 'Тренировки' ? inviteList.length : 0} data-test-id={item.dataNotId}>
                 <div className="sidebar_menu_item"
                      key={item.id}
-                     onClick={onClickHandler}
-                     data-test-id={item.dataId}>
+                     onClick={onClickHandler}>
                     <img src={item.icon} alt="menu icon" className="sidebar_item_icon"/>
                     <span className={`${open ? 'sidebar_item_title' : 'sidebar_item_title close'}`}>
                     {item.title}

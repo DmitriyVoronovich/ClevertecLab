@@ -70,6 +70,7 @@ const editUserInformation = createAppAsyncThunk<
         const res = await profileApi.editUserInformation(user.user);
 
         if (res.status === 200) {
+            dispatch(me())
             dispatch(setProfileStatus({profileStatus: RequestProfileStatus.Selected}));
 
             return {meInformation: res.data};

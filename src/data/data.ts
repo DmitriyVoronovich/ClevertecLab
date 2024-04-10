@@ -6,8 +6,9 @@ import icheard from '@image/image/svg-menu/icon-heard.svg';
 import icprof from '@image/image/svg-menu/icon-prof.svg';
 import icrasp from '@image/image/svg-menu/icon-rasp.svg';
 import {pushWithFlow} from '@utils/pushWithFlow.ts';
+
 import { calendarThunks } from '../features/calendar/model/calendar-slice.ts';
-import {trainingThunks} from "../features/training/model/training-slice.ts";
+import {trainingThunks} from '../features/training/model/training-slice.ts';
 
 export const NavigationCardData = [
     {
@@ -41,16 +42,14 @@ export const NavigationMenuData = [
         id: 1,
         title: 'Календарь',
         icon: icrasp,
-        callback: calendarThunks.training,
-        dataId: 'menu-button-calendar',
+        callback: calendarThunks.training(),
         dataNotId:'a'
     },
     {
         id: 2,
         title: 'Тренировки',
         icon: icheard,
-        callback: () => {},
-        dataId: 'menu-button-calendar1',
+        callback: trainingThunks.getTraining(),
         dataNotId:'notification-about-joint-training'
     },
     {
@@ -58,15 +57,13 @@ export const NavigationMenuData = [
         title: 'Достижения',
         icon: icdos,
         callback: () => {},
-        dataId: 'menu-button-calendar1',
         dataNotId:'a'
     },
     {
         id: 4,
         title: 'Профиль',
         icon: icprof,
-        callback: () => {},
-        dataId: 'menu-button-calendar1',
+        callback: pushWithFlow('/profile'),
         dataNotId:'a'
     },
 ];
