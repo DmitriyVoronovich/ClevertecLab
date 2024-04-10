@@ -21,7 +21,7 @@ import { mount } from 'cypress/react18';
 
 import './commands';
 
-// Augment the Cypress namespace to include type definitions for
+// Augment the Cypress namespace to include types definitions for
 // your custom command.
 // Alternatively, can be defined in cypress/support/component.d.ts
 // with a <reference path="./component" /> at the top of your spec.

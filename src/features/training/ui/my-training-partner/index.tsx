@@ -1,17 +1,17 @@
-import {useState} from "react";
-import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
+import {useState} from 'react';
+import {useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 
-import {TrainingPals} from "../../model/types/types.ts";
-import {UserInformationModal} from "../user-information-modal";
+import {TrainingPals} from '../../model/types/types.ts';
+import {UserInformationModal} from '../user-information-modal';
 
-import {UserInformationCard} from "./user-infom-card";
+import {UserInformationCard} from './user-infom-card';
 
 import './my-training-partner.css';
 
 export const MyTrainingPartner = () => {
     const trainingPalsList = useAppSelector((state) => state.training.trainingPalsList);
     const [modalOpen, setModalOpen] = useState(false);
-    const [userInformation, setUserInformation] = useState({} as TrainingPals)
+    const [userInformation, setUserInformation] = useState({} as TrainingPals);
 
     const onShowModal = (user: TrainingPals) => {
         setUserInformation(user);

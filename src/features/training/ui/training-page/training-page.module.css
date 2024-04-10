@@ -10,6 +10,10 @@
     padding: var(--basic-padding);
 }
 
+.go_main {
+    cursor: pointer;
+}
+
 .header_container {
     max-width: 1333px;
     background: var(--basic-bg-color);
@@ -54,7 +58,9 @@
 }
 
 @media screen and (max-width: 361px) {
-    max-width: 360px;
+    .section_wrapper {
+        padding: 24px 0 42px 0;
+    }
 
     .header_container {
         max-width: 336px;

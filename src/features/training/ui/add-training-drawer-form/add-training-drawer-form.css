@@ -63,5 +63,15 @@
 }
 
 @media screen and (max-width: 361px) {
+    .training_form_container {
+        padding-top: 16px;
+    }
 
+    .training_form_container .ant-form-item {
+        margin-bottom: 20px;
+    }
+
+    .training_form_container .form_item {
+        margin-top: 20px;
+    }
 }

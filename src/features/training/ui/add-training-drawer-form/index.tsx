@@ -28,22 +28,16 @@ export const AddTrainingDrawerForm = ({
 
     const [form] = Form.useForm();
     const invitationModeOn = invitationMode === InvitationToJointTraining.Invitation;
-    const name = user?.name.split(' ');
-    const secondName = user?.name.split(' ');
 
     useEffect(() => {
         setFormSubmit(form);
     }, [form, setFormSubmit]);
 
-    const onDeterminingWorkoutType = (value: string) => {
-        return trainingList.find((item) => item.name === value)
-    }
+    const onDeterminingWorkoutType = (value: string) => trainingList.find((item) => item.name === value);
 
-    const train = (onDeterminingWorkoutType(user?.trainingType))
+    const train = (onDeterminingWorkoutType(user?.trainingType));
 
-    const disabledDate = (current: any) => {
-        return current && current < Date.now();
-    }
+    const disabledDate = (current: any) => current && current < Date.now();
 
     const handleChange = (value: any) => {
         const selectData = trainingList.find((item) => item.key === value)
@@ -55,9 +49,7 @@ export const AddTrainingDrawerForm = ({
 
     const onOpenPeriodicity = (e: any) => setPeriodicityOpen(e.target.checked);
 
-    const onChangePeriodicity = (e: any) => {
-        setPeriodicityValue(e);
-    }
+    const onChangePeriodicity = (e: any) => setPeriodicityValue(e);
 
     const onFieldsChange = (_: any, allFields: any) => {
         const selectorField = allFields.find((field: {

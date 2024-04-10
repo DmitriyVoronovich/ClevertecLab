@@ -1,24 +1,15 @@
-import {Modal} from "antd";
-import {useAppSelector} from "@hooks/typed-react-redux-hooks.ts";
-import {BadgeComponent} from "@components/badge-component";
+import {Modal} from 'antd';
+import {useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
+import {BadgeComponent} from '@components/badge-component';
 import './invite-modal-details.css'
-import {PeriodicitySelectorData} from "@data/data.ts";
-import {formateDate} from "../../../../calendar/ui/drawer-modal/utils/formate-date.ts";
-import {ExerciseItem} from "../../../../calendar/ui/workout-edit-form/types/types.ts";
-import {useIsMobile} from "@utils/useIsMobile.ts";
-
-type InviteModalDetailsProps = {
-    user: any
-    onCloseModal: () => void
-    modalStyle: {
-        left: number,
-        top: number
-    }
-}
+import {PeriodicitySelectorData} from '@data/data.ts';
+import {formateDate} from '../../../../../calendar/ui/drawer-modal/utils/formate-date.ts';
+import {ExerciseItem} from '../../../../../calendar/ui/workout-edit-form/types/types.ts';
+import {useIsMobile} from '@utils/useIsMobile.ts';
+import {InviteModalDetailsProps} from './types/types.ts';
 
 export const InviteModalDetails = ({user, onCloseModal, modalStyle}: InviteModalDetailsProps) => {
-    const trainList = useAppSelector((state) => state.calendar.trainingList)
-
+    const trainList = useAppSelector((state) => state.calendar.trainingList);
     const trainName = trainList.find((item) => item.name === user.training.name);
     const periodName = PeriodicitySelectorData.find((item) =>
         item.key === user.training.parameters.period);
@@ -27,11 +18,11 @@ export const InviteModalDetails = ({user, onCloseModal, modalStyle}: InviteModal
     return (
         <Modal maskClosable={false}
                className='modal'
-               style={isMobile ? { top: '25%' } : modalStyle }
+               style={ modalStyle }
                mask={false}
                footer={false}
                open={true}
-               width={312}
+               width={isMobile ? 288 : 312}
                data-test-id='joint-training-review-card'
                onCancel={onCloseModal}>
             <div className='invite_modal_header'>

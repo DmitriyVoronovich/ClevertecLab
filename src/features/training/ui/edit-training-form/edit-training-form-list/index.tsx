@@ -1,13 +1,7 @@
 import {MinusOutlined, PlusOutlined} from '@ant-design/icons';
 import {Button, Checkbox, Form, Input, InputNumber} from 'antd';
-import React from "react";
 
-
-type EditTrainingFormListProps = {
-    removeValue: () => void
-    handleCheckboxChange: (e: any, name: string) => void
-    someCheckbox: boolean
-}
+import {EditTrainingFormListProps} from '../types/types.ts';
 
 export const EditTrainingFormList = ({removeValue, someCheckbox, handleCheckboxChange}:EditTrainingFormListProps) => (
         <div className="form_list_wrapper">
@@ -29,7 +23,7 @@ export const EditTrainingFormList = ({removeValue, someCheckbox, handleCheckboxC
                                                 valuePropName='checked'
                                             >
                                                 <Checkbox
-                                                    className="input_checkbox_exercise"
+                                                    className="edit_input_checkbox_exercise"
                                                     data-test-id={`modal-drawer-right-checkbox-exercise${index}`}
                                                     onChange={handleCheckboxChange}
                                                 />

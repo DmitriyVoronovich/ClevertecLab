@@ -1,5 +1,6 @@
 import {AddTrainingStatus, RequestTrainStatus, TrainingSelectedMenu} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
+import Badge from 'antd/lib/badge';
 import classNames from 'classnames';
 
 import {MyWorkouts} from '../ my-workouts';
@@ -17,7 +18,6 @@ import {MyTrainingPartner} from '../my-training-partner';
 import {AlertNotification} from './alert-notification';
 
 import './training-section.css';
-import Badge from "antd/lib/badge";
 
 export const TrainingSection = () => {
     const dispatch = useAppDispatch();
@@ -29,17 +29,17 @@ export const TrainingSection = () => {
     const workoutsTrainingTitle = classNames({
         'training_section_title': true,
         'active': selectedMenuItem === TrainingSelectedMenu.MyWorkouts
-    })
+    });
 
     const jointTrainingTitle = classNames({
         'training_section_title': true,
         'active': selectedMenuItem === TrainingSelectedMenu.JointTraining
-    })
+    });
 
     const marafonTitle = classNames({
         'training_section_title': true,
         'active': false
-    })
+    });
 
     const onAddAlertClose = () => dispatch(setRequestTrainStatus({ requestTrainStatus: RequestTrainStatus.Idle }));
 
@@ -49,9 +49,9 @@ export const TrainingSection = () => {
     const onJointTrainingOpen = () => {
         dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.JointTraining}));
         dispatch(trainingThunks.getTrainingPalsList());
-        dispatch(inviteThunks.getInvite())
+        dispatch(inviteThunks.getInvite());
     };
-    console.log(selectedMenuItem)
+
     return (<>
             <div className="training_section_container">
                 <div className="training_section_title_wrapper">

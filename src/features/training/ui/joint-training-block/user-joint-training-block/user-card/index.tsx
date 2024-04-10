@@ -1,34 +1,28 @@
-import {useState} from "react";
-import Highlighter from "react-highlight-words";
-import {CheckCircleFilled, ExclamationCircleOutlined} from "@ant-design/icons";
-import {InvitationToJointTraining, TrainingSelectedMenu} from "@enums/enums.ts";
-import {useAppDispatch} from "@hooks/typed-react-redux-hooks.ts";
-import {Avatar, Button, Card, Tooltip} from "antd";
+import {useState} from 'react';
+import Highlighter from 'react-highlight-words';
+import {CheckCircleFilled, ExclamationCircleOutlined} from '@ant-design/icons';
+import {InvitationToJointTraining, TrainingSelectedMenu} from '@enums/enums.ts';
+import {useAppDispatch} from '@hooks/typed-react-redux-hooks.ts';
+import {useIsMobile} from '@utils/useIsMobile.ts';
+import {Avatar, Button, Card, Tooltip} from 'antd';
 
 import avatar from '../../../../../../assets/feedback-page/default_avatar.svg';
 import {
     setInvitationMode,
     setSelectedMenuItem,
     setUserId,
-    trainingThunks
-} from "../../../../model/training-slice.ts";
-import {TrainingPals} from "../../../../model/types/types.ts";
-import {AddTrainingDrawerModal} from "../../../add-training-drawer-modal";
+} from '../../../../model/training-slice.ts';
+import {AddTrainingDrawerModal} from '../../../add-training-drawer-modal';
+
+import {UserCardProps} from './types/types.ts';
 
 import './user-card.css';
-
-type UserCardProps = {
-    user: TrainingPals
-    searchString: string
-    index: number
-}
 
 export const UserCard = ({user, searchString, index}: UserCardProps) => {
     const dispatch = useAppDispatch();
     const [open, setOpen] = useState(false);
+    const isMobile = useIsMobile();
 
-    const name = user.name.split(' ');
-    const secondName = user.name.split(' ');
     const onCloseDrawer = () => {
         dispatch(setInvitationMode({invitationMode: InvitationToJointTraining.Invitation}));
         dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.JointTraining}));
@@ -45,7 +39,7 @@ export const UserCard = ({user, searchString, index}: UserCardProps) => {
 
     return (
         <>
-            <Card bordered={false} style={{width: 234}} className='card' data-test-id={`joint-training-cards${index}`}>
+            <Card bordered={false} style={isMobile ? {width: 312} : {width: 234}} className='card' data-test-id={`joint-training-cards${index}`}>
                 <div className='card_header_wrapper'>
                     <Avatar size={42} src={user.imageSrc ? user.imageSrc : avatar}/>
                     <h6 className='card_header_title'>

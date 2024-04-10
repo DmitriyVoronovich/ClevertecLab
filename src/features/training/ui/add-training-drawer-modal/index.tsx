@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {CloseOutlined, PlusOutlined} from '@ant-design/icons';
+import {InvitationToJointTraining} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import {useIsMobile} from '@utils/useIsMobile.ts';
 import {Button, Drawer} from 'antd';
@@ -11,7 +12,6 @@ import {AddTrainingDrawerForm} from '../add-training-drawer-form';
 import {AddTrainingDrawerModalProps} from './types/types.ts';
 
 import './add-training-drawer-modal.css';
-import {InvitationToJointTraining} from "@enums/enums.ts";
 
 export const AddTrainingDrawerModal = ({onClose, user}: AddTrainingDrawerModalProps) => {
     const dispatch = useAppDispatch();

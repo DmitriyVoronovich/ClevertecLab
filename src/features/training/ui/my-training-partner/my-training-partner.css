@@ -19,3 +19,17 @@
     display: flex;
     gap: 16px;
 }
+
+@media screen and (max-width: 834px) {
+
+    .my_train_card_wrapper {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 361px) {
+
+    .my_train_card_wrapper {
+       flex-direction: column;
+    }
+}

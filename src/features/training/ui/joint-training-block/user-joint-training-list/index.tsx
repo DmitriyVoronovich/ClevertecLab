@@ -1,7 +1,8 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {ArrowLeftOutlined} from '@ant-design/icons';
 import {TrainingSelectedMenu} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
+import {useIsMobile} from '@utils/useIsMobile.ts';
 import {Input} from 'antd';
 
 import {setSelectedMenuItem} from '../../../model/training-slice.ts';
@@ -13,6 +14,7 @@ export const UserJointTrainingList = () => {
     const dispatch = useAppDispatch();
     const jointTrainingUserList = useAppSelector((state) => state.training.jointTrainingUserList);
     const [searchString, setSearchString] = useState('');
+    const isMobile = useIsMobile();
 
     const filteredUsers = jointTrainingUserList.filter(user =>
         user.name.toLowerCase().includes(searchString.toLowerCase())
@@ -33,7 +35,7 @@ export const UserJointTrainingList = () => {
                         <span>Назад</span>
                     </button>
                     <Input.Search placeholder="Поиск по имени"
-                                  style={{width: 484}}
+                                  style={isMobile? {width: 270}:{width: 484}}
                                   data-test-id='search-input'
                                   onChange={e => setSearchString(e.target.value)}/>
                 </div>

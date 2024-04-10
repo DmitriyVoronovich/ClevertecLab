@@ -24,7 +24,6 @@ import {PostTrainingParams, TrainingParams} from '../../calendar/model/types/typ
 import { trainingApi} from '../api/training-api.ts';
 
 import {TrainingPals} from './types/types.ts';
-import {Invitation, inviteApi} from '../../invite/api/invite-api.ts';
 import {inviteThunks} from "../../invite/model/invite-slice.ts";
 
 

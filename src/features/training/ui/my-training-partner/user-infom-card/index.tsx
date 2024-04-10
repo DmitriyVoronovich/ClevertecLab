@@ -1,18 +1,18 @@
-import {Avatar, Card} from "antd";
-import avatar from "@image/feedback-page/default_avatar.svg";
-import {TrainingPals} from "../../../model/types/types.ts";
-import './user-information-card.css'
+import avatar from '@image/feedback-page/default_avatar.svg';
+import {useIsMobile} from '@utils/useIsMobile.ts';
+import {Avatar, Card} from 'antd';
 
-type UserInfomationCard = {
-    user: TrainingPals
-    onShowModal: (user: TrainingPals) => void
-    index: number
-}
+import {UserInformationCardProps} from './types/types.ts';
 
-export const UserInformationCard = ({user, onShowModal, index}: UserInfomationCard) => {
+import './user-information-card.css';
+
+export const UserInformationCard = ({user, onShowModal, index}: UserInformationCardProps) => {
+    const isMobile = useIsMobile();
 
     return (
-        <Card className='.card_partner_container' style={{background: '#ffffff', padding: '12px', width: 234}} onClick={() => onShowModal(user)}
+        <Card className='.card_partner_container'
+              style={isMobile ? {background: '#ffffff', padding: '12px', width: 295} : {background: '#ffffff', padding: '12px', width: 234}}
+              onClick={() => onShowModal(user)}
               data-test-id={`joint-training-cards${index}`}>
             <div className='card_header_wrapper'>
                 <Avatar size={42} src={user.imageSrc ? user.imageSrc : avatar}/>

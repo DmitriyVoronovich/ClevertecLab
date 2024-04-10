@@ -10,4 +10,4 @@ export const Element = ({title}: ElementProps) => {
 
     return (<BadgeComponent name={data?.name} color={data?.color} fontSize="14" index={1}
                             fontWeight="400" colorText="#3b3b3b"/>)
-}
+};

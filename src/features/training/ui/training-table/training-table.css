@@ -113,3 +113,31 @@
 .table_no_border_title .ant-table-wrapper .ant-table-thead > tr > td {
     border-right: none
 }
+
+.hidden-title {
+    height: 0;
+    overflow: hidden;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > td {
+    border-spacing: 0;
+}
+
+@media screen and (max-width: 361px) {
+    .table_container {
+        margin-top: 20px;
+    }
+
+    .tablet {
+        width: 312px;
+    }
+
+    .ant-table-wrapper .ant-table-thead > tr > th {
+        padding: 0 8px;
+        width: 134px;
+    }
+
+    .tablet .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector{
+        width: 134px;
+    }
+}

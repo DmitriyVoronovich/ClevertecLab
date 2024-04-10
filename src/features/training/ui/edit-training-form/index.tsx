@@ -5,9 +5,10 @@ import {Checkbox, DatePicker, Form, Select} from 'antd';
 import {CheckboxChangeEvent} from 'antd/es/checkbox';
 import moment from 'moment';
 
+import {ExerciseItem} from '../../../calendar/ui/workout-edit-form/types/types.ts';
+
 import {EditTrainingFormProps} from './types/types.ts';
 import {EditTrainingFormList} from './edit-training-form-list';
-import {ExerciseItem} from "../../../calendar/ui/workout-edit-form/types/types.ts";
 
 
 export const EditTrainingForm = ({
@@ -43,8 +44,6 @@ export const EditTrainingForm = ({
             setSelectTrain(selectData.name);
         }
     };
-
-
 
     const removeValue = () => {
         const editedExercises = form

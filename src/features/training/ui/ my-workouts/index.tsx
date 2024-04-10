@@ -13,7 +13,6 @@ export const MyWorkouts = () => {
     const trainingList = useAppSelector((state) => state.calendar.trainingList);
     const [open, setOpen] = useState(false);
 
-
     const onCloseDrawer = () => setOpen(false);
 
     const onOpenDrawer = () => setOpen(true);

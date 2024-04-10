@@ -16,7 +16,8 @@ import {
     setSelectedMenuItem,
     trainingThunks
 } from '../../training/model/training-slice.ts';
-import {Invitation, inviteApi, InviteParams, ResponseInvitation} from '../api/invite-api.ts';
+import {inviteApi} from '../api/invite-api.ts';
+import {Invitation, InviteParams, ResponseInvitation} from "../api/types/types.ts";
 
 
 const slice = createSlice({

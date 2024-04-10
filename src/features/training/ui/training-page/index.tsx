@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import {RequestCalendarStatus, RequestTrainStatus, TrainingSelectedMenu} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import set from '@image/image/set.svg';
+import {pushWithFlow} from '@utils/pushWithFlow.ts';
 
 import {calendarThunks, setTrainingStatus} from '../../../calendar/model/calendar-slice.ts';
 import {AddErrorModal, ErrorModal} from '../../../calendar/ui';
@@ -10,11 +11,12 @@ import {
     setSelectedMenuItem,
     trainingThunks
 } from '../../model/training-slice.ts';
+import {
+    findPopularWorkout
+} from '../joint-training-block/joint-training/utils/find-popular-workout.ts';
 import {TrainingSection} from '../training-section';
 
 import s from './training-page.module.css';
-import {pushWithFlow} from "@utils/pushWithFlow.ts";
-import {findPopularWorkout} from "../joint-training-block/joint-training";
 
 export const TrainingPage = () => {
     const dispatch = useAppDispatch();
@@ -35,32 +37,28 @@ export const TrainingPage = () => {
         dispatch(setRequestTrainStatus({requestTrainStatus: RequestTrainStatus.Idle}))
     };
 
-    const onRefreshTrainingList = () => dispatch(calendarThunks.trainingList(() => {
-        console.log();
-    }));
+    const onRefreshTrainingList = () => dispatch(calendarThunks.trainingList(() => {}));
 
-    const onRefreshTrainingListBack = () => dispatch(setTrainingStatus({ trainingStatus: RequestCalendarStatus.Idle }))
+    const onRefreshTrainingListBack = () => dispatch(setTrainingStatus({ trainingStatus: RequestCalendarStatus.Idle }));
 
     const onRefreshUserJointTrainingBack = () => {
-        dispatch(setRequestTrainStatus({requestTrainStatus: RequestTrainStatus.Idle}))
+        dispatch(setRequestTrainStatus({requestTrainStatus: RequestTrainStatus.Idle}));
         dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.JointTraining}));
-    }
+    };
 
     const onRefreshUserJointTraining = () => {
         const popularTrain = trainingList.find((item) => item.name === findPopularWorkout(training));
 
         dispatch(trainingThunks.getUserTrainingList({trainingType: `${popularTrain?.key}`}));
-    }
+    };
 
-    const onBackToMain = () => {
-        dispatch(pushWithFlow('/main'))
-    }
+    const onBackToMain = () => dispatch(pushWithFlow('/main'));
 
     return (<>
             <div className={s.container}>
                 <div className={s.header_container}>
                     <div >
-                        <span onClick={onBackToMain}>Главная</span> / <span className={s.header_menu_item}>Тренировки</span>
+                        <span onClick={onBackToMain} className='s.go_main'>Главная</span> / <span className={s.header_menu_item}>Тренировки</span>
                     </div>
                     <div className={s.header_content_wrapper}>
                         <img src={set} className={s.header_content_svg} alt="Настройки"/>

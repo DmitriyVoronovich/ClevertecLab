@@ -9,3 +9,9 @@ export type EditTrainingFormProps = {
     separateWorkout: TrainingParams
     onUnDisabledEditButton: () => void
 };
+
+export type EditTrainingFormListProps = {
+    removeValue: () => void
+    handleCheckboxChange: (e: any, name: string) => void
+    someCheckbox: boolean
+}

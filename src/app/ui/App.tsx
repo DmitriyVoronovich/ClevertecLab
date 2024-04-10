@@ -27,7 +27,7 @@ import { LocationState } from '../types/types.ts';
 import { authGoogle } from './utils/authGoogle.ts';
 
 import s from './app.module.css';
-import {ProfilePage} from '../../features/profile/ui/profile-page';
+import {ProfilePage} from '../../features/profile/ui';
 import {SettingsPage} from '../../features/settings/ui/settings-page';
 import {profileThunks} from '../../features/profile/model/profileSlice.ts';
 import {NotFoundPage} from '../../features/404/ui';

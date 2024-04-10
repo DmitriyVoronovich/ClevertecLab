@@ -27,3 +27,26 @@
     color: #5977ef;
     border-bottom: 2px solid #5977ef;
 }
+
+@media screen and (max-width: 834px) {
+
+    .training_section_title_wrapper {
+        padding: 12px 0;
+    }
+
+    .training_section_title {
+        margin: 0;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 361px) {
+    .training_section_title_wrapper {
+
+    }
+
+    .training_section_title {
+        padding: 0;
+        text-align: center;
+    }
+}
