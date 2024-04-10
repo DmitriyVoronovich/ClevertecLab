@@ -24,23 +24,19 @@ export const UserJointTrainingList = () => {
         dispatch(setSelectedMenuItem({selectedMenuItem: TrainingSelectedMenu.JointTraining}));
     };
 
-
-
     return (
-        <>
-            <div className='user_training_list_container'>
-                <div className='user_training_top_wrapper'>
-                    <button className='user_training_button' onClick={onJointTrainingSectionBack}>
-                        <ArrowLeftOutlined size={14} style={{width: '14px'}}/>
-                        <span>Назад</span>
-                    </button>
-                    <Input.Search placeholder="Поиск по имени"
-                                  style={isMobile? {width: 270}:{width: 484}}
-                                  data-test-id='search-input'
-                                  onChange={e => setSearchString(e.target.value)}/>
-                </div>
-                <UserJointTrainingBlock filteredUsers={filteredUsers} searchString={searchString} />
+        <div className='user_training_list_container'>
+            <div className='user_training_top_wrapper'>
+                <button className='user_training_button' onClick={onJointTrainingSectionBack}>
+                    <ArrowLeftOutlined size={14} style={{width: '14px'}}/>
+                    <span>Назад</span>
+                </button>
+                <Input.Search placeholder="Поиск по имени"
+                              style={isMobile ? {width: 270} : {width: 484}}
+                              data-test-id='search-input'
+                              onChange={e => setSearchString(e.target.value)}/>
             </div>
-        </>
+            <UserJointTrainingBlock filteredUsers={filteredUsers} searchString={searchString}/>
+        </div>
     );
 };

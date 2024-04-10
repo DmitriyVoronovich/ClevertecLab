@@ -36,6 +36,16 @@ export const Sidebar = ({handleOpen, open}: SidebarProps) => {
         'close': !open
     });
 
+    const sidebarLogContainer = classNames({
+        'sidebar_logo_container': true,
+        'close_logo_item': !open
+    });
+
+    const sidebarItemTitle = classNames({
+        'sidebar_item_title': true,
+        'close': !open
+    });
+
     const logOut = () => {
         localStorage.removeItem('jwtToken');
         sessionStorage.removeItem('jwtToken');
@@ -54,7 +64,7 @@ export const Sidebar = ({handleOpen, open}: SidebarProps) => {
                      key={item.id}
                      onClick={onClickHandler}>
                     <img src={item.icon} alt="menu icon" className="sidebar_item_icon"/>
-                    <span className={`${open ? 'sidebar_item_title' : 'sidebar_item_title close'}`}>
+                    <span className={sidebarItemTitle}>
                     {item.title}
                 </span>
                 </div>
@@ -65,9 +75,7 @@ export const Sidebar = ({handleOpen, open}: SidebarProps) => {
     return (
         <div className={sidebarContentContainer}>
             <div className={sidebarMenuWrapper}>
-                <div className={`${
-                    open ? 'sidebar_logo_container' : 'sidebar_logo_container close_logo_item'
-                }`}>
+                <div className={sidebarLogContainer}>
                     <Logo open={open}/>
                 </div>
                 <div className="sidebar_menu_list">{menu}</div>
