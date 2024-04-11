@@ -1,12 +1,12 @@
 import {useState} from 'react';
+import {DEFAULT_PERIOD} from '@data/constant.ts';
 import {RequestProfileStatus} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import {Button} from 'antd';
 
-import {DEFAULT_PERIOD} from '../../../../data/constant.ts';
 import {feedbackThunks} from '../../../feedback/model/feedback-slice.ts';
 import {FeedbackForm} from '../../../feedback/ui';
-import {ProfileRequestError} from '../../../profile/ui/profile-request-error';
+import {ProfileRequestError} from '../../../profile/ui';
 import {SwitchGroup} from '../switch-group';
 import {TariffCard} from '../tariff-card';
 
@@ -30,7 +30,7 @@ export const SettingsSection = ({onDrawerOpen}: SettingsSectionProps) => {
         _id: trafficList._id,
         name: 'FREE',
         periods: trafficList?.[0]?.periods || DEFAULT_PERIOD
-    }
+    };
 
     const onSubmittingReviewRequest = () => dispatch(feedbackThunks.getReviews());
 

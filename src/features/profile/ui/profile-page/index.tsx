@@ -1,6 +1,6 @@
 import {useAppDispatch} from '@hooks/typed-react-redux-hooks.ts';
+import set from '@image/image/set.svg';
 
-import set from '../../../../accets/image/set.svg';
 import {settingsThunks} from '../../../settings/model/settings-slice.ts';
 import {ProfileSection} from '../profile-section';
 

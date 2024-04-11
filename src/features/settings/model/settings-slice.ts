@@ -3,6 +3,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {createAppAsyncThunk} from '@utils/createAppAsyncThunk.ts';
 import {pushWithFlow} from '@utils/pushWithFlow.ts';
 
+import {profileThunks} from '../../profile/model/profileSlice.ts';
 import {settingsApi} from '../api/settings-api.ts';
 
 import {TrafficList} from './types/types.ts';
@@ -17,6 +18,7 @@ const getTrafficList = createAppAsyncThunk<
         const res = await settingsApi.getTrafficList();
 
         if (res.status === 200) {
+            dispatch(profileThunks.me());
             return {trafficList: res.data};
         }
 

@@ -1,7 +1,7 @@
 import { useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import type { Dayjs } from 'dayjs';
 
-import { BadgeComponent } from '@components/badgeComponent/BadgeComponent.tsx';
+import { BadgeComponent } from '@components/badge-component';
 import { TrainingParams } from '../../../model/types/types.ts';
 import { formateDate } from '../../drawer-modal/utils/formate-date.ts';
 import { DateCellRenderProps } from '../types/types.ts';

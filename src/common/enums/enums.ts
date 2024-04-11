@@ -36,3 +36,22 @@ export enum RequestProfileStatus {
     Error = 'error',
     Failed = 'failed'
 }
+
+export enum TrainingSelectedMenu {
+    MyWorkouts = 'myWorkouts',
+    JointTraining = 'jointTraining',
+    UserJointTrainingList = 'userJointTrainingList',
+    MyTrainingPartner = 'myTrainingPartner'
+}
+
+export enum RequestTrainStatus {
+    Idle = 'idle',
+    Succeeded = 'succeeded',
+    Failed = 'failed',
+    Error = 'error',
+}
+
+export enum InvitationToJointTraining {
+    Idle = 'idle',
+    Invitation = 'invitation'
+}

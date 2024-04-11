@@ -5,4 +5,4 @@ export { NoFeedbacks } from './no-feedbacks';
 export { Review } from './review';
 export { ReviewGroup } from './review-group';
 export { SuccessResult } from './success-result';
-export { TokenRequestError } from '../../../common/components/tokenRequestError/TokenRequestError.tsx';
+export { TokenRequestError } from '@components/token-request-error';

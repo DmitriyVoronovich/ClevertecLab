@@ -1,12 +1,9 @@
+import error from '@image/calendar-page/add_error.svg';
 import {Button, Modal} from 'antd';
-
-import error from '../../../../accets/calendar-page/add_error.svg';
 
 import {FileSizeErrorProps} from './types/types.ts';
 
 import './file-size-error.css';
-
-
 
 export const FileSizeError = ({onClose}: FileSizeErrorProps) => {
 

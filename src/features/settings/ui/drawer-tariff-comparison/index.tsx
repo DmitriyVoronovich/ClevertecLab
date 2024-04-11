@@ -5,11 +5,11 @@ import {
     CloseCircleOutlined,
     CloseOutlined
 } from '@ant-design/icons';
+import {TariffComparisonData} from '@data/data.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
-import {isMobile} from '@utils/isMobile.ts';
+import {useIsMobile} from '@utils/useIsMobile.ts';
 import {Button, Drawer, Radio, RadioChangeEvent} from 'antd';
 
-import {TariffComparisonData} from '../../../../data/data.ts';
 import {formatMonth} from '../../../calendar/ui/drawer-modal/utils/formate-date.ts';
 import {settingsThunks} from '../../model/settings-slice.ts';
 
@@ -24,6 +24,7 @@ export const DrawerTariffComparison = ({onDrawerClose, tariff}: DrawerTariffComp
     const trafficList = useAppSelector((state) => state.settings.trafficList);
     const [value, setValue] = useState(1);
     const [disadledButton, setDisadledButton] = useState(true);
+    const isMobile = useIsMobile();
 
     const onChange = (e: RadioChangeEvent) => {
         setValue(e.target.value);
@@ -51,8 +52,8 @@ export const DrawerTariffComparison = ({onDrawerClose, tariff}: DrawerTariffComp
         <Drawer
             data-test-id='tariff-sider'
             title='Сравнить тарифы'
-            placement={isMobile() ? 'bottom' : 'right'}
-            height={isMobile() ? 555 : '100%'}
+            placement={isMobile ? 'bottom' : 'right'}
+            height={isMobile ? 555 : '100%'}
             width={408}
             open={true}
             onClose={onDrawerClose}

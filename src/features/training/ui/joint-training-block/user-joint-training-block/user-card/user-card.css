@@ -1,0 +1,114 @@
+.ant-card {
+    background: #F0F5FF;
+    border-radius: 0;
+    padding: 16px 16px 8px 16px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.ant-card .ant-avatar{
+    color: var(--basic-title-color);
+    background: #F0F5FF;
+}
+
+.ant-card .ant-card-body {
+    padding: 0;
+}
+
+.card_header_wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    height: 42px;
+}
+
+.invite_card_header_wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    height: 42px;
+}
+
+.card_header_title {
+    display: block;
+    width: 70px;
+    font-size: 14px;
+    font-family: var(--basic-font-family);
+    font-weight: 400;
+    line-height: 130%;
+    color: var(--basic-title-color);
+    margin: 0;
+}
+
+.card_information_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 12px;
+}
+
+.card_description_wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.card_description_title {
+    width: 110px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: var(--basic-font-family);
+    line-height: 130%;
+    color: var(--basic-font-color);
+}
+
+.card_description_text {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--basic-font-family);
+    line-height: 130%;
+    color: var(--primary-color);
+}
+
+.card_button {
+    margin-top: 20px;
+    background-color: var(--basic-white-color);
+    color: var(--basic-title-color);
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: var(--basic-font-family);
+    line-height: 130%;
+    border-radius: 0;
+}
+
+.card_footer_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.card_footer_description {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.card_footer_description_text {
+    font-family: var(--basic-font-family);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 130%;
+    color: var(--basic-title-color);
+}
+
+.highligh_text  {
+    color: #FF7875;
+    background: #F0F5FF;
+}

@@ -1,9 +1,10 @@
-import {ExclamationCircleOutlined} from '@ant-design/icons';
+import {BLACKTHEMETOOLTIP, NOTIFICATIONSTOOLTIP, TRAINTOOLTIP} from '@data/constant.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
-import {Form, Switch, Tooltip} from 'antd';
+import {Form} from 'antd';
 
-import {BLACKTHEMETOOLTIP, NOTIFICATIONSTOOLTIP, TRAINTOOLTIP} from '../../../../data/constant.ts';
 import {profileThunks} from '../../../profile/model/profileSlice.ts';
+
+import {SwitchComponent} from './switch';
 
 import './switch-group.css';
 
@@ -41,58 +42,34 @@ export const SwitchGroup = () => {
                       blackTheme: false
                   }}
             >
-                <div className='switch_item'>
-                    <div className='switch_item_title'>
-                        <span>Открыт для совместных тренировок</span>
-                        <Tooltip placement="bottomLeft" title={TRAINTOOLTIP}
-                                 overlayStyle={{width: '205px'}}>
-                            <ExclamationCircleOutlined  data-test-id='tariff-trainings-icon' style={{
-                                fontSize: '16px',
-                                marginLeft: '4px',
-                                color: '#8C8C8C'
-                            }}/>
-                        </Tooltip>
-                    </div>
-                    <Form.Item name='jointTraining'>
-                        <Switch data-test-id='tariff-trainings' onChange={(value) => handleSwitchChange('jointTraining', value)}/>
-                    </Form.Item>
-                </div>
-                <div className='switch_item'>
-                    <div className='switch_item_title'>
-                        <span>Уведомления</span>
-                        <Tooltip placement="bottomLeft" title={NOTIFICATIONSTOOLTIP}
-                                 overlayStyle={{width: '205px'}}
-                                >
-                            <ExclamationCircleOutlined  data-test-id='tariff-notifications-icon' style={{
-                                fontSize: '16px',
-                                marginLeft: '4px',
-                                color: '#8C8C8C'
-                            }}/>
-                        </Tooltip>
-                    </div>
-                    <Form.Item name="notifications">
-                        <Switch data-test-id='tariff-notifications' onChange={(value) => handleSwitchChange('notifications', value)}/>
-                    </Form.Item>
-                </div>
-                <div className='switch_item'>
-                    <div className={meInformation.tariff ? 'switch_item_title' : 'switch_item_title_dis'}>
-                        <span>Темная тема</span>
-                        <Tooltip placement="bottomLeft"
-                                 title={BLACKTHEMETOOLTIP}
-                                 overlayStyle={{width: '113px'}}>
-                            <ExclamationCircleOutlined data-test-id='tariff-theme-icon' style={{
-                                fontSize: '16px',
-                                marginLeft: '4px',
-                                color: '#8C8C8C'
-                            }}/>
-                        </Tooltip>
-                    </div>
-                    <Form.Item name="blackTheme">
-                        <Switch disabled={!meInformation.tariff}
-                                data-test-id='tariff-theme'
-                                onChange={(value) => handleSwitchChange('blackTheme', value)}/>
-                    </Form.Item>
-                </div>
+                <SwitchComponent title="Открыт для совместных тренировок"
+                                 overlayStyle="205px"
+                                 onChange={handleSwitchChange}
+                                 dataTestIcon="tariff-trainings-icon"
+                                 dataTestItem='tariff-trainings'
+                                 formItemName='jointTraining'
+                                 tooltip={TRAINTOOLTIP}
+                                 className='switch_item_title'
+                                 key={1}/>
+                <SwitchComponent title="Уведомления"
+                                 overlayStyle="205px"
+                                 onChange={handleSwitchChange}
+                                 dataTestIcon="tariff-notifications-icon"
+                                 dataTestItem='tariff-notifications'
+                                 formItemName='notifications'
+                                 tooltip={NOTIFICATIONSTOOLTIP}
+                                 className='switch_item_title'
+                                 key={2}/>
+                <SwitchComponent title="Темная тема"
+                                 overlayStyle="113px"
+                                 onChange={handleSwitchChange}
+                                 dataTestIcon="tariff-theme-icon"
+                                 dataTestItem='tariff-theme'
+                                 formItemName='blackTheme'
+                                 tooltip={BLACKTHEMETOOLTIP}
+                                 className={meInformation.tariff ? 'switch_item_title' : 'switch_item_title_dis'}
+                                 disabled={!meInformation.tariff}
+                                 key={3}/>
             </Form>
         </div>
     );

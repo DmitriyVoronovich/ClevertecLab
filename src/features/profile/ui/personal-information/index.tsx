@@ -1,6 +1,5 @@
+import {DATE_FORMAT} from '@data/constant.ts';
 import {DatePicker, Form, Input} from 'antd';
-
-import {DATE_FORMAT} from '../../../../data/constant.ts';
 
 import './personal-information.css'
 

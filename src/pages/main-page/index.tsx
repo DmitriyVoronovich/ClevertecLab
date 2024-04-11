@@ -4,7 +4,7 @@ import { RequestCalendarStatus } from '@enums/enums.ts';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { HomePage } from '@pages/home-page';
 
-import fon from '../../accets/main_page_light.png';
+import fon from '../../assets/main_page_light.png';
 import { Sidebar } from '../../common/components';
 import {NotFoundPage} from '../../features/404/ui';
 import { setTrainingStatus } from '../../features/calendar/model/calendar-slice.ts';
@@ -14,6 +14,8 @@ import {ProfilePage} from '../../features/profile/ui/profile-page';
 import {SettingsPage} from '../../features/settings/ui/settings-page';
 
 import './main-page.css';
+import {TrainingPage} from "../../features/training/ui/training-page";
+import {pushWithFlow} from "@utils/pushWithFlow.ts";
 
 export const MainPage = () => {
     const dispatch = useAppDispatch();
@@ -36,7 +38,7 @@ export const MainPage = () => {
     }
 
     if (!tog && !isLoggedIn) {
-        window.location.href = '/auth';
+        dispatch(pushWithFlow('/auth'))
     }
 
     const handleOpen = () => setOpen(!open);
@@ -54,6 +56,7 @@ export const MainPage = () => {
                     <Route path="calendar" element={<CalendarPage />} />
                     <Route path="profile" element={<ProfilePage />} />
                     <Route path="settings" element={<SettingsPage />} />
+                    <Route path="training" element={<TrainingPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </div>

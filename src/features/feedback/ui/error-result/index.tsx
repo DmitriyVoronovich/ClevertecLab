@@ -17,9 +17,9 @@ export const ErrorResult = ({ showModalForm }: ErrorResultProps) => {
 
     useEffect(() => {
         if (feedbackStatus === RequestFeedbackStatus.Error) {
-            return setIsModalOpen(true);
+            setIsModalOpen(true);
         }
-    });
+    }, [feedbackStatus]);
 
     const onModalClose = () => {
         dispatch(setFeedbackStatus({ feedbackStatus: RequestFeedbackStatus.Error }));

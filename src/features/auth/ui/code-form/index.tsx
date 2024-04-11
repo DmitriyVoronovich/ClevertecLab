@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import VerificationInput from 'react-verification-input';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
+import attention from '@image/login-page/svg-icon/info.svg';
 
-import fon from '../../../../accets/login-page/image/fon.png';
-import attention from '../../../../accets/login-page/svg-icon/info.svg';
+import fon from '../../../../assets/login-page/image/fon.png';
 import { authThunks } from '../../model/auth-slice.ts';
 
 import './code-form.css';
-
-function getEmailFromLocalStorage() {
-    const jsonEmail = localStorage.getItem('email');
-
-    return jsonEmail && JSON.parse(jsonEmail);
-}
+import {getEmailFromLocalStorage} from './utils/get-email-from-local-storage.ts';
 
 export const CodeForm = () => {
     const dispatch = useAppDispatch();

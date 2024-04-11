@@ -12,9 +12,10 @@ import { calendarApi } from '../api/calendar-api.ts';
 
 import { PostTrainingParams, TrainingList, TrainingParams } from './types/types.ts';
 import { colors } from './calendar-data.ts';
+import {profileThunks} from "../../profile/model/profileSlice.ts";
 
 const slice = createSlice({
-    name: 'training',
+    name: 'calendar',
     initialState: {
         training: [] as TrainingParams[],
         trainingStatus: RequestCalendarStatus.Idle as RequestCalendarStatus,
@@ -54,6 +55,14 @@ const slice = createSlice({
             }>,
         ) => {
             state.searchExercises = [...state.searchExercises, action.payload.searchExercise];
+        },
+        setTraining: (
+            state,
+            action: PayloadAction<{
+                training: TrainingParams[];
+            }>,
+        ) => {
+            state.training = action.payload.training;
         },
         editSearchExercises: (
             state,
@@ -96,6 +105,7 @@ export const {
     setAddTrainingStatus,
     setSearchExercises,
     editSearchExercises,
+    setTraining,
 } = slice.actions;
 
 
@@ -139,6 +149,7 @@ const training = createAppAsyncThunk<{ training: TrainingParams[] }, undefined>(
             const res = await calendarApi.getTraining();
 
             if (res.status === 200) {
+                dispatch(profileThunks.me());
                 dispatch(trainingList(() => dispatch(pushWithFlow('/calendar'))));
 
                 return { training: res.data };

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CloseOutlined, EditOutlined } from '@ant-design/icons';
 import { BadgeComponent } from '@components/index.ts';
-import { isMobile } from '@utils/isMobile.ts';
+import { useIsMobile } from '@utils/useIsMobile.ts';
 import { Drawer } from 'antd';
 import { FormInstance } from 'antd/es/form/hooks/useForm';
 
@@ -22,6 +22,7 @@ export const WorkoutEditModal = ({
     selectedTrainingItem,
 }: WorkoutEditModalProps) => {
     const [form, setForm] = useState<FormInstance>();
+    const isMobile = useIsMobile();
 
     const addItem = (value: ExerciseItem[]) => {
         const transformTrainValues = transformValueToTrain(value);
@@ -40,11 +41,11 @@ export const WorkoutEditModal = ({
             data-test-id='modal-drawer-right'
             title='Редактирование'
             width={408}
-            height={isMobile() ? 555 : '100%'}
+            height={isMobile ? 555 : '100%'}
             onClose={onClose}
             open={true}
             mask={false}
-            placement={isMobile() ? 'bottom' : 'right'}
+            placement={isMobile ? 'bottom' : 'right'}
             maskClosable={false}
             className="drawer_container"
             closeIcon={<CloseOutlined data-test-id='modal-drawer-right-button-close' />}

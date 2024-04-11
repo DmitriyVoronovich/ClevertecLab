@@ -1,43 +1,28 @@
-import { useEffect, useState } from 'react';
-import { CloseOutlined } from '@ant-design/icons';
-import { RequestCalendarStatus } from '@enums/enums.ts';
-import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
-import { Button, Modal } from 'antd';
-
-import error from '../../../../accets/calendar-page/error_modal_svg.svg';
-import { calendarThunks, setTrainingStatus } from '../../model/calendar-slice.ts';
+import {CloseOutlined} from '@ant-design/icons';
+import error from '@image/calendar-page/error_modal_svg.svg';
+import {Button, Modal} from 'antd';
 
 import './error-modal.css';
 
-export const ErrorModal = () => {
-    const dispatch = useAppDispatch();
-    const trainingStatus = useAppSelector((state) => state.calendar.trainingStatus);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+type ErrorModalProps = {
+    callback: () => void
+    back: () => void
+}
 
-    useEffect(() => {
-        if (trainingStatus === RequestCalendarStatus.Error) {
-            return setIsModalOpen(true);
-        }
-    });
+export const ErrorModal = ({callback, back}: ErrorModalProps) => {
 
     const onCancelModal = () => {
-        setIsModalOpen(false);
-        dispatch(
-            calendarThunks.trainingList(() => {
-                console.log();
-            }),
-        );
-        dispatch(setTrainingStatus({ trainingStatus: RequestCalendarStatus.Idle }));
+        callback();
+        back();
     };
 
     const onCancel = () => {
-        setIsModalOpen(false);
-        dispatch(setTrainingStatus({ trainingStatus: RequestCalendarStatus.Idle }));
+        back();
     };
 
     return (
         <Modal
-            open={isModalOpen}
+            open={true}
             footer={null}
             className="calendar_error_modal_container"
             onCancel={onCancel}

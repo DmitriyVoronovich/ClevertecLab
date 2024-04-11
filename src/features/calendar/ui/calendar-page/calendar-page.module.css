@@ -1,9 +1,13 @@
 .container {
     max-width: 1440px;
     width: 100%;
-    min-height: 100vh;
-    height: 100%;
     position: relative;
+}
+
+.section_wrapper {
+    max-width: 1333px;
+    width: 100%;
+    padding: 0 24px;
 }
 
 .header_container {
@@ -36,6 +40,10 @@
 .header_content_svg {
     width: 14px;
     height: 14px;
+}
+
+.go_main {
+    cursor: pointer;
 }
 
 @media screen and (max-width: 865px) {

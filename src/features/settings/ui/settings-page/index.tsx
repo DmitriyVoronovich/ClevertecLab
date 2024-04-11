@@ -4,7 +4,8 @@ import {ArrowLeftOutlined} from '@ant-design/icons';
 import {RequestSettingsStatus} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 
-import {setSettingsStatus, TrafficList} from '../../model/settings-slice.ts';
+import {setSettingsStatus} from '../../model/settings-slice.ts';
+import {TrafficList} from '../../model/types/types.ts';
 import {DrawerTariffComparison} from '../drawer-tariff-comparison';
 import {InformationModal} from '../information-modal';
 import {SettingsSection} from '../settings-section';

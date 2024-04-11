@@ -36,7 +36,7 @@
     background-color: white;
     border-radius: 0;
     border: 0;
-
+    z-index: 60;
 }
 
 .ant-notification .ant-notification-notice-wrapper {
