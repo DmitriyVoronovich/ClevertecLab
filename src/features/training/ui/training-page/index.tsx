@@ -58,7 +58,7 @@ export const TrainingPage = () => {
             <div className={s.container}>
                 <div className={s.header_container}>
                     <div >
-                        <span onClick={onBackToMain} className='s.go_main'>Главная</span> / <span className={s.header_menu_item}>Тренировки</span>
+                        <span onClick={onBackToMain} className={s.go_main}>Главная</span> / <span className={s.header_menu_item}>Тренировки</span>
                     </div>
                     <div className={s.header_content_wrapper}>
                         <img src={set} className={s.header_content_svg} alt="Настройки"/>

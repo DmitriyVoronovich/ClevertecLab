@@ -23,7 +23,7 @@ export const CalendarPage = () => {
         <div className={s.container}>
             <div className={s.header_container}>
                 <div>
-                    <span onClick={onBackToMain} className='s.go_main'>Главная</span> / <span
+                    <span onClick={onBackToMain} className={s.go_main}>Главная</span> / <span
                     className={s.header_menu_item}>Календарь</span>
                 </div>
                 <div className={s.header_content_wrapper}>
