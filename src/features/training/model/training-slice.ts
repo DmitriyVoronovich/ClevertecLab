@@ -10,7 +10,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {createAppAsyncThunk} from '@utils/createAppAsyncThunk.ts';
 import {pushWithFlow} from '@utils/pushWithFlow.ts';
 
-import {appActions} from '../../../app/model/appSlice.ts';
+import {appActions} from '../../../app/model/app-slice.ts';
 import {calendarApi} from '../../calendar/api/calendar-api.ts';
 import {
     addSearchExercises,

@@ -1,1 +1,1 @@
-export { instance } from './common.api.ts';
+export { instance } from './common-api.ts';

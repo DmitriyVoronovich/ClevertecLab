@@ -7,7 +7,7 @@ import icprof from '@image/image/svg-menu/icon-prof.svg';
 import icrasp from '@image/image/svg-menu/icon-rasp.svg';
 import {pushWithFlow} from '@utils/pushWithFlow.ts';
 
-import { calendarThunks } from '../features/calendar/model/calendar-slice.ts';
+import {calendarThunks} from '../features/calendar/model/calendar-slice.ts';
 import {trainingThunks} from '../features/training/model/training-slice.ts';
 
 export const NavigationCardData = [
@@ -42,14 +42,14 @@ export const NavigationMenuData = [
         id: 1,
         title: 'Календарь',
         icon: icrasp,
-        callback: calendarThunks.training(),
+        callback: calendarThunks.training,
         dataNotId:'a'
     },
     {
         id: 2,
         title: 'Тренировки',
         icon: icheard,
-        callback: trainingThunks.getTraining(),
+        callback: trainingThunks.getTraining,
         dataNotId:'notification-about-joint-training'
     },
     {
@@ -63,7 +63,7 @@ export const NavigationMenuData = [
         id: 4,
         title: 'Профиль',
         icon: icprof,
-        callback: pushWithFlow('/profile'),
+        callback: () => (pushWithFlow('/profile')),
         dataNotId:'a'
     },
 ];

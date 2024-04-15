@@ -1,3 +1,11 @@
+import {
+    sidebarContentContainerClass,
+    sidebarFooterClass,
+    sidebarFooterTextClass,
+    sidebarItemTitleClass,
+    sidebarLogContainerClass,
+    sidebarMenuWrapperClass
+} from '@components/sidebar/class-names.ts';
 import {NavigationMenuDataProps, SidebarProps} from '@components/sidebar/types/types.ts';
 import {NavigationMenuData} from '@data/data.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
@@ -5,7 +13,6 @@ import exit from '@image/image/exit.svg';
 import menuIcon from '@image/image/svg-menu/menu.svg';
 import {pushWithFlow} from '@utils/pushWithFlow.ts';
 import Badge from 'antd/lib/badge';
-import classNames from 'classnames';
 
 import {Logo} from '../logo';
 
@@ -16,35 +23,17 @@ export const Sidebar = ({handleOpen, open}: SidebarProps) => {
     const inviteList = useAppSelector((state) => state.invite.inviteList);
     const badgeCount = (item: NavigationMenuDataProps) => item.title === 'Тренировки' ? inviteList.length : 0
 
-    const sidebarContentContainer = classNames({
-        'sidebar_content_container': true,
-        'close_menu': !open
-    });
+    const sidebarContentContainer = sidebarContentContainerClass(open);
 
-    const sidebarMenuWrapper = classNames({
-        'sidebar_menu_wrapper': true,
-        'close_menu_item': open
-    });
+    const sidebarMenuWrapper = sidebarMenuWrapperClass(open);
 
-    const sidebarFooter = classNames({
-        'sidebar_footer': true,
-        'close_menu_item': open
-    });
+    const sidebarFooter = sidebarFooterClass(open);
 
-    const sidebarFooterText = classNames({
-        'sidebar_footer_text': true,
-        'close': !open
-    });
+    const sidebarFooterText = sidebarFooterTextClass(open);
 
-    const sidebarLogContainer = classNames({
-        'sidebar_logo_container': true,
-        'close_logo_item': !open
-    });
+    const sidebarLogContainer = sidebarLogContainerClass(open);
 
-    const sidebarItemTitle = classNames({
-        'sidebar_item_title': true,
-        'close': !open
-    });
+    const sidebarItemTitle = sidebarItemTitleClass(open);
 
     const logOut = () => {
         localStorage.removeItem('jwtToken');
@@ -54,13 +43,14 @@ export const Sidebar = ({handleOpen, open}: SidebarProps) => {
     };
 
     const menu = NavigationMenuData.map((item) => {
-        const onClickHandler = () => {
-            dispatch(item.callback);
-        };
+        const onClickHandler = () => dispatch(item.callback());
 
         return (
-            <Badge count={badgeCount(item)} data-test-id={item.dataNotId} key={item.id}>
+            <Badge count={badgeCount(item.title)} data-test-id={item.dataNotId} key={item.id}>
                 <div className="sidebar_menu_item"
+                     role='button'
+                     tabIndex={0}
+                     onKeyDown={onClickHandler}
                      key={item.id}
                      onClick={onClickHandler}>
                     <img src={item.icon} alt="menu icon" className="sidebar_item_icon"/>
@@ -81,13 +71,21 @@ export const Sidebar = ({handleOpen, open}: SidebarProps) => {
                 <div className="sidebar_menu_list">{menu}</div>
             </div>
             <div className={sidebarFooter}
+                 role='button'
+                 tabIndex={0}
+                 onKeyDown={logOut}
                  onClick={logOut}>
                 <img src={exit} alt="exit button" className="sidebar_footer_img"/>
                 <span className={sidebarFooterText}>
                     Выход
                 </span>
             </div>
-            <div className="sidebar_menu_button" onClick={handleOpen} data-test-id='sider-switch'>
+            <div className="sidebar_menu_button"
+                 onClick={handleOpen}
+                 role='button'
+                 tabIndex={0}
+                 onKeyDown={handleOpen}
+                 data-test-id='sider-switch'>
                 <img
                     src={menuIcon}
                     alt="menu button"

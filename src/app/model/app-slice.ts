@@ -1,6 +1,5 @@
+import { RequestStatusType } from '@enums/enums.ts';
 import { createSlice,PayloadAction } from '@reduxjs/toolkit';
-
-import { RequestStatusType } from '../../common/enums/enums.ts';
 
 const initialState = {
     status: RequestStatusType.Idle as RequestStatusType,

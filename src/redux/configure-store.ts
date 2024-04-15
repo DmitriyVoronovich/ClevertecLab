@@ -3,14 +3,14 @@ import { createReduxHistoryContext } from 'redux-first-history';
 import { configureStore } from '@reduxjs/toolkit';
 import { createBrowserHistory } from 'history';
 
-import { appSlice } from '../app/model/appSlice.ts';
+import { appSlice } from '../app/model/app-slice.ts';
 import { authSlice } from '../features/auth/model/auth-slice.ts';
 import { calendarSlice } from '../features/calendar/model/calendar-slice.ts';
 import { feedbackSlice } from '../features/feedback/model/feedback-slice.ts';
 import {profileSlice} from '../features/profile/model/profileSlice.ts';
 import {settingsSlice} from '../features/settings/model/settings-slice.ts';
 import {trainingSlice} from '../features/training/model/training-slice.ts';
-import {inviteSlice} from "../features/invite/model/invite-slice.ts";
+import {inviteSlice} from '../features/invite/model/invite-slice.ts';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),

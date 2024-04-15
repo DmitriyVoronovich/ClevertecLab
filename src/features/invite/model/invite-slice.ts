@@ -7,7 +7,7 @@ import {
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {createAppAsyncThunk} from '@utils/createAppAsyncThunk.ts';
 
-import {appActions} from '../../../app/model/appSlice.ts';
+import {appActions} from '../../../app/model/app-slice.ts';
 import {
     setChangeUserStatus,
     setInvitationMode,

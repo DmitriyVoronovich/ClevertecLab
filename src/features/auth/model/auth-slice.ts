@@ -3,7 +3,7 @@ import { createSlice,PayloadAction } from '@reduxjs/toolkit';
 import { createAppAsyncThunk } from '@utils/createAppAsyncThunk.ts';
 import { pushWithFlow } from '@utils/pushWithFlow.ts';
 
-import { appActions } from '../../../app/model/appSlice.ts';
+import { appActions } from '../../../app/model/app-slice.ts';
 import { authApi } from '../api/authApi.ts';
 import { CodeParams, PasswordParams } from '../api/types/types.ts';
 import {FormParams} from '../ui/login-form/types/types.ts';
