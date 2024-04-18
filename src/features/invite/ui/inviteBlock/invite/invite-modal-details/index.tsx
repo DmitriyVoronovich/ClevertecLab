@@ -5,7 +5,7 @@ import './invite-modal-details.css'
 import {PeriodicitySelectorData} from '@data/data.ts';
 import {formateDate} from '../../../../../calendar/ui/drawer-modal/utils/formate-date.ts';
 import {ExerciseItem} from '../../../../../calendar/ui/workout-edit-form/types/types.ts';
-import {useIsMobile} from '@utils/useIsMobile.ts';
+import {useIsMobile} from '@utils/use-is-mobile.ts';
 import {InviteModalDetailsProps} from './types/types.ts';
 
 export const InviteModalDetails = ({user, onCloseModal, modalStyle}: InviteModalDetailsProps) => {

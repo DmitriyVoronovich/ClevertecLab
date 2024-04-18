@@ -1,6 +1,6 @@
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
 import error from '@image/login-page/svg-icon/error.svg';
-import { pushWithFlow } from '@utils/pushWithFlow.ts';
+import { pushWithFlow } from '@utils/push-with-flow.ts';
 import { Button } from 'antd';
 
 import fon from '../../../../../assets/login-page/image/fon.png';

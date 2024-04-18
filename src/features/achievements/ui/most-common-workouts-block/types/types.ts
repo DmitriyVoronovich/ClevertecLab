@@ -4,3 +4,7 @@ export type MostCommonWorkoutsBlockProps = {
     filterTraining: TrainingParams[]
     segmentValue: string
 };
+
+export type PopularItems = {
+    [name: string]: number;
+}

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 import { AddTrainingStatus } from '@enums/enums.ts';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
-import {useIsMobile} from '@utils/useIsMobile.ts';
+import {useIsMobile} from '@utils/use-is-mobile.ts';
 import { Button, Modal, Select } from 'antd';
 import Badge from 'antd/lib/badge';
 

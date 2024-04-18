@@ -1,7 +1,7 @@
 import {RequestSettingsStatus} from '@enums/enums.ts';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {createAppAsyncThunk} from '@utils/createAppAsyncThunk.ts';
-import {pushWithFlow} from '@utils/pushWithFlow.ts';
+import {createAppAsyncThunk} from '@utils/create-app-async-thunk.ts';
+import {pushWithFlow} from '@utils/push-with-flow.ts';
 
 import {profileThunks} from '../../profile/model/profileSlice.ts';
 import {settingsApi} from '../api/settings-api.ts';

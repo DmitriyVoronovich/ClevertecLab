@@ -1,28 +1,26 @@
-import {MostCommonWorkoutsBlockProps} from './types/types.ts';
+import {MostCommonWorkoutsBlockProps, PopularItems} from './types/types.ts';
 
 import './most-common-workouts-block.css';
+import {TrainingParams} from "../../../calendar/model/types/types.ts";
 
 export const MostCommonWorkoutsBlock = ({filterTraining, segmentValue}: MostCommonWorkoutsBlockProps) => {
 
-    const popularTraining = {};
-    const popularExercise = {};
+    const popularTraining: PopularItems = {};
+    const popularExercise: PopularItems = {};
 
     for (let i = 0; i < filterTraining.length; i++) {
-        const item = filterTraining[i];
+        const item: TrainingParams = filterTraining[i];
 
         if (popularTraining[item.name]) {
-
             popularTraining[item.name]++;
         } else {
             popularTraining[item.name] = 1;
         }
 
-        // проходимся по упражнениям в тренировках
         for (let j = 0; j < item.exercises.length; j++) {
-            const exercise = item.exercises[j];
+            const exercise: {name: string} = item.exercises[j];
 
             if (popularExercise[exercise.name]) {
-
                 popularExercise[exercise.name]++;
             } else {
                 popularExercise[exercise.name] = 1;
@@ -30,7 +28,9 @@ export const MostCommonWorkoutsBlock = ({filterTraining, segmentValue}: MostComm
         }
     }
 
-    const mostPopular = obj => Object.keys(obj)?.reduce((a, b) => obj[a] > obj[b] ? a : b);
+    const mostPopular = (obj: PopularItems) => {
+        return Object.keys(obj)?.reduce((a, b) => obj[a] > obj[b] ? a : b);
+    };
 
     return (
         <div className='common_workouts_container'>

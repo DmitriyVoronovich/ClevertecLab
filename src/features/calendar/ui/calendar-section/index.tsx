@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
-import { useIsMobile } from '@utils/useIsMobile.ts';
+import { useIsMobile } from '@utils/use-is-mobile.ts';
 import { Calendar, CalendarProps } from 'antd';
 import { SelectInfo } from 'antd/es/calendar/generateCalendar';
 import locale from 'antd/es/date-picker/locale/ru_RU';

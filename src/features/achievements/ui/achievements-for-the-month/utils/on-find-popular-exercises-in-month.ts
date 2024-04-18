@@ -1,5 +1,8 @@
+import {TrainingParams} from "../../../../calendar/model/types/types.ts";
+import {ExerciseCount, PopularExercise, PopularExercisesByWeekDay} from "../types/types.ts";
+
 export const onFindPopularExercisesInMonth = (filterTraining: TrainingParams[]) => {
-    const popularExercisesByDay = {0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {}};
+    const popularExercisesByDay: PopularExercisesByWeekDay = {0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {}};
 
     filterTraining.forEach(item => {
         const dayOfWeek = (new Date(item.date).getDay() + 6) % 7;
@@ -14,12 +17,12 @@ export const onFindPopularExercisesInMonth = (filterTraining: TrainingParams[]) 
         });
     });
 
-    const mostPopular = (obj: { [x: string]: never; }) => {
+    const mostPopular = (obj: ExerciseCount): PopularExercise => {
         if (Object.keys(obj).length === 0) {
             return { exercise: null, count: 0 };
         }
 
-        const mostPopularKey = Object.keys(obj).reduce((a, b) => obj[a] > obj[b] ? a : b, '');
+        const mostPopularKey = Object.keys(obj).reduce((a, b) => obj[a] > obj[b] ? a : b);
 
         return {
             exercise: mostPopularKey,
@@ -28,10 +31,10 @@ export const onFindPopularExercisesInMonth = (filterTraining: TrainingParams[]) 
     };
 
     return Object.keys(popularExercisesByDay).map(day => {
-        const mostPopularExercise = mostPopular(popularExercisesByDay[day]);
+        const mostPopularExercise = mostPopular(popularExercisesByDay[parseInt(day)]);
 
         return {
-            day,
+            date: day,
             mostPopularExercise: mostPopularExercise.exercise,
             count: mostPopularExercise.count
         };

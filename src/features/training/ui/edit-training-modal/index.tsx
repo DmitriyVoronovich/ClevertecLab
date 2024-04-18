@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {CloseOutlined, EditOutlined} from '@ant-design/icons';
 import {useAppDispatch} from '@hooks/typed-react-redux-hooks.ts';
-import {useIsMobile} from '@utils/useIsMobile.ts';
+import {useIsMobile} from '@utils/use-is-mobile.ts';
 import {Button, Drawer} from 'antd';
 import {FormInstance} from 'antd/es/form/hooks/useForm';
 

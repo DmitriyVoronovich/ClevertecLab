@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {ArrowLeftOutlined} from '@ant-design/icons';
 import {TrainingSelectedMenu} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
-import {useIsMobile} from '@utils/useIsMobile.ts';
+import {useIsMobile} from '@utils/use-is-mobile.ts';
 import {Input} from 'antd';
 
 import {setSelectedMenuItem} from '../../../model/training-slice.ts';

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
 import { BadgeComponent } from '@components/badge-component';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
-import { useIsMobile } from '@utils/useIsMobile.ts';
+import { useIsMobile } from '@utils/use-is-mobile.ts';
 import { Drawer } from 'antd';
 import { FormInstance } from 'antd/es/form/hooks/useForm';
 

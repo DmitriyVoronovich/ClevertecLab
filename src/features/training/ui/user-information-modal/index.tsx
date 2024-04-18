@@ -2,7 +2,7 @@ import {CheckCircleFilled} from '@ant-design/icons';
 import {TrainingSelectedMenu} from '@enums/enums.ts';
 import {useAppDispatch} from '@hooks/typed-react-redux-hooks.ts';
 import avatar from '@image/feedback-page/default_avatar.svg';
-import {useIsMobile} from '@utils/useIsMobile.ts';
+import {useIsMobile} from '@utils/use-is-mobile.ts';
 import {Avatar, Button, Modal} from 'antd';
 
 import {inviteThunks} from '../../../invite/model/invite-slice.ts';

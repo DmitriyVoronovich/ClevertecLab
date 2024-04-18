@@ -4,7 +4,6 @@ import {useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import {Card, Segmented} from 'antd';
 
 import notTrain from '../../../../assets/not_train.png';
-import {formateDate} from '../../../calendar/ui/drawer-modal/utils/formate-date.ts';
 import {BlockWithLoadCards} from '../block-with-load-cards';
 import {MostCommonExercisesBlock} from '../most-common-exercises-block';
 import {MostCommonWorkoutsBlock} from '../most-common-workouts-block';
@@ -15,7 +14,10 @@ import {onDataTransform} from './utils/on-data-transform.ts';
 import {onGettingWeekTraining} from './utils/on-getting-a-week-training.ts';
 
 import './achievements-for-the-week.css';
-import {useIsMobile} from "@utils/useIsMobile.ts";
+import {useIsMobile} from "@utils/use-is-mobile.ts";
+import {columnWeekConfig} from "./utils/column-week-config.ts";
+import {WeekDayLoad} from "./week-day-load.tsx";
+
 
 export const AchievementsForTheWeek = ({section}: AchievementsForTheWeekProps) => {
     const training = useAppSelector((state) => state.calendar.training);
@@ -43,32 +45,10 @@ export const AchievementsForTheWeek = ({section}: AchievementsForTheWeekProps) =
 
     const onHandleChange = (value: string) => setSegmentValue(value);
 
-    const config = {
-        axis: {
-            lineExtension: [0, 2],
-            x: {
-                tick: false,
-            },
-            y: {
-                tick: false,
-                labelFormatter: (datum) => `${datum} кг`,
-            },
-        },
-        data: selectedTraining.map(item => ({
-            date: formateDate(item.date).slice(0, 5),
-            load: item.load
-        })),
-        xField: 'date',
-        yField: 'load',
-        width: isMobile ? 318 : 520,
-        style: {
-            maxWidth: 30,
-        },
-        scrollbar: {type: 'horizontal'},
-    };
+    const config = columnWeekConfig(selectedTraining, isMobile);
 
     const trainingsArePresent = selectedTraining.filter(item => item.load !== 0).length
-        && segmentedFilteredTraining.length !== 0
+        && segmentedFilteredTraining.length !== 0;
 
     return (
         <div className='achievements_for_week_container'>
@@ -93,12 +73,7 @@ export const AchievementsForTheWeek = ({section}: AchievementsForTheWeekProps) =
                                     недели</h6>
                                 {trainingDays.map((item, index) => {
                                     return (
-                                        <div className='column_info_wrapper' key={index}>
-                                            <div className='info_number_of_day'>{index + 1}</div>
-                                            <span className='info_day_name'>{item.dayOfWeek}</span>
-                                            <span
-                                                className='info_day_load'>{item.load === 0 ? '' : `${item.load} кг`}</span>
-                                        </div>
+                                        <WeekDayLoad load={item.load} day={item.dayOfWeek} index={index} key={index}/>
                                     )
                                 })}
                             </div>
@@ -107,7 +82,8 @@ export const AchievementsForTheWeek = ({section}: AchievementsForTheWeekProps) =
                                             training={selectedTraining}/>
                         <MostCommonWorkoutsBlock filterTraining={segmentedFilteredTraining}
                                                  segmentValue={segmentValue}/>
-                        <MostCommonExercisesBlock section={section} filterTraining={segmentedFilteredTraining}/>
+                        <MostCommonExercisesBlock section={section}
+                                                  filterTraining={segmentedFilteredTraining}/>
                     </>
                     : <div className='not_train_container'>
                         <img src={notTrain} alt='not found train image' className='not_train_img'/>

@@ -1,5 +1,4 @@
 .header_container {
-    max-width: 1357px;
     background: var(--basic-bg-color);
     height: 50px;
     font-family: var(--basic-font-family);
@@ -13,6 +12,11 @@
 }
 
 .header_menu {
+
+}
+
+.go_main {
+    cursor: pointer;
 }
 
 .header_menu_item {

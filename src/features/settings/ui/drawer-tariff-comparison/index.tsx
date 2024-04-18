@@ -7,7 +7,7 @@ import {
 } from '@ant-design/icons';
 import {TariffComparisonData} from '@data/data.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
-import {useIsMobile} from '@utils/useIsMobile.ts';
+import {useIsMobile} from '@utils/use-is-mobile.ts';
 import {Button, Drawer, Radio, RadioChangeEvent} from 'antd';
 
 import {formatMonth} from '../../../calendar/ui/drawer-modal/utils/formate-date.ts';

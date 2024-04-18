@@ -10,7 +10,7 @@ import { FormParams } from './types/types.ts';
 import { onValidateEmail } from './utils/on-confirm-email.ts';
 
 import './login-form.css';
-import {pushWithFlow} from "@utils/pushWithFlow.ts";
+import {pushWithFlow} from "@utils/push-with-flow.ts";
 
 export const LoginForm = () => {
     const [form] = Form.useForm();

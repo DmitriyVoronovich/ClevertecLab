@@ -4,20 +4,26 @@ import set from '@image/image/set.svg';
 import {goBackToMain} from '@utils/go-back-to-main.ts';
 
 import {calendarThunks, setTrainingStatus} from '../../model/calendar-slice.ts';
-import { CalendarSection } from '../calendar-section';
-import { ErrorModal } from '../error-modal';
+import {CalendarSection} from '../calendar-section';
+import {ErrorModal} from '../error-modal';
 
 import s from './calendar-page.module.css';
+import {settingsThunks} from "../../../settings/model/settings-slice.ts";
 
 export const CalendarPage = () => {
     const dispatch = useAppDispatch()
     const trainingStatus = useAppSelector((state) => state.calendar.trainingStatus);
 
-    const onRefreshTrainingList = () => dispatch(calendarThunks.trainingList(() => {}));
+    const onRefreshTrainingList = () => dispatch(calendarThunks.trainingList(() => {
+    }));
 
-    const onRefreshTrainingListBack = () => dispatch(setTrainingStatus({ trainingStatus: RequestCalendarStatus.Idle }));
+    const onRefreshTrainingListBack = () => dispatch(setTrainingStatus({trainingStatus: RequestCalendarStatus.Idle}));
 
     const onBackToMain = goBackToMain(dispatch);
+
+    const onSettingPageOpen = () => {
+        dispatch(settingsThunks.getTrafficList());
+    };
 
     return (
         <div className={s.container}>
@@ -26,13 +32,14 @@ export const CalendarPage = () => {
                     <span onClick={onBackToMain} className={s.go_main}>Главная</span> / <span
                     className={s.header_menu_item}>Календарь</span>
                 </div>
-                <div className={s.header_content_wrapper}>
-                <img src={set} className={s.header_content_svg} alt="Настройки"/>
+                <div className={s.header_content_wrapper} onClick={onSettingPageOpen}>
+                    <img src={set} className={s.header_content_svg} alt="Настройки"/>
                     <span className={s.header_content_item}>Настройки</span>
                 </div>
             </div>
             <CalendarSection/>
-            {trainingStatus === RequestCalendarStatus.Error && <ErrorModal callback={onRefreshTrainingList} back={onRefreshTrainingListBack}/>}
+            {trainingStatus === RequestCalendarStatus.Error &&
+                <ErrorModal callback={onRefreshTrainingList} back={onRefreshTrainingListBack}/>}
         </div>
     );
 }

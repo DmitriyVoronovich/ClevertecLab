@@ -3,7 +3,7 @@ import Highlighter from 'react-highlight-words';
 import {CheckCircleFilled, ExclamationCircleOutlined} from '@ant-design/icons';
 import {InvitationToJointTraining, TrainingSelectedMenu} from '@enums/enums.ts';
 import {useAppDispatch} from '@hooks/typed-react-redux-hooks.ts';
-import {useIsMobile} from '@utils/useIsMobile.ts';
+import {useIsMobile} from '@utils/use-is-mobile.ts';
 import {Avatar, Button, Card, Tooltip} from 'antd';
 
 import avatar from '../../../../../../assets/feedback-page/default_avatar.svg';

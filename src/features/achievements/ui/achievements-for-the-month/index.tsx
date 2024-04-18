@@ -15,13 +15,18 @@ import {onGettingMonthTraining} from './utils/on-getting-month-training.ts';
 
 import '../achievements-for-the-week/achievements-for-the-week.css';
 import './achievements-for-the-month.css';
-import {useIsMobile} from "@utils/useIsMobile.ts";
+import {useIsMobile} from "@utils/use-is-mobile.ts";
 import {DownOutlined} from "@ant-design/icons";
+import {useIsTablet} from "@utils/use-is-tablet.ts";
+import {columnMonthConfig} from "./utils/column-month-config.ts";
+import {onFourWeekDivision} from "./utils/four-week-division.ts";
+import {DayLoadInformation} from "./day-load-information.tsx";
 
 export const AchievementsForTheMonth = ({section}: AchievementsForTheMonthProps) => {
     const training = useAppSelector((state) => state.calendar.training);
     const [segmentValue, setSegmentValue] = useState('Все');
     const isMobile = useIsMobile();
+    const isTablet = useIsTablet();
     const { Panel } = Collapse;
 
     let segmentedFilteredTraining
@@ -31,57 +36,22 @@ export const AchievementsForTheMonth = ({section}: AchievementsForTheMonthProps)
 
     if (segmentValue !== 'Все') {
         segmentedFilteredTraining = filteredWeekTraining.filteredData.filter((item) => item.name === segmentValue);
-
         selectedTraining = onGettingMonthTraining(segmentedFilteredTraining, filteredWeekTraining.start, filteredWeekTraining.end);
 
     } else {
-        const weekTraining = onFilterLastFourWeeks(training);
-
-        segmentedFilteredTraining = weekTraining.filteredData;
-        selectedTraining = onGettingMonthTraining(weekTraining.filteredData, weekTraining.start, weekTraining.end);
+        segmentedFilteredTraining = filteredWeekTraining.filteredData;
+        selectedTraining = onGettingMonthTraining(filteredWeekTraining.filteredData, filteredWeekTraining.start, filteredWeekTraining.end);
+        console.log(selectedTraining)
     }
 
-    const numSubArrays = 4;
-    const lenSubArray = 7;
-    const newArray = [];
-
-    for (let i = 0; i < numSubArrays; i++) {
-        newArray.push(selectedTraining.slice(i * lenSubArray, (i + 1) * lenSubArray));
-    }
+    const fourWeekArray = onFourWeekDivision(selectedTraining);
 
     const onHandleChange = (value: string) => setSegmentValue(value);
 
-    const config = {
-        axis: {
-            lineExtension: [0, 2],
-            y: {
-                tick: false,
-                labelFormatter: (datum) => `${datum} кг`
-            },
-            x: {
-                tick: false,
-            },
-        },
-        data: selectedTraining.map((item) => ({
-            date: formateDate(item.date).slice(0, 5),
-            load: item.load
-        })),
-        xField: 'date',
-        yField: 'load',
-        width: isMobile && 326,
-        height: isMobile && 236,
-        style: {
-            maxWidth: 30,
-        },
-        scrollbar: {
-            x: {
-                ratio: 0.5,
-            },
-        },
-    };
+    const config = columnMonthConfig(selectedTraining, isMobile, isTablet);
 
     const trainingsArePresent = selectedTraining.filter(item => item.load !== 0).length
-        && segmentedFilteredTraining.length !== 0
+        && segmentedFilteredTraining.length !== 0;
 
     return (
         <div className='achievements_for_week_container'>
@@ -106,7 +76,7 @@ export const AchievementsForTheMonth = ({section}: AchievementsForTheMonthProps)
                             <div className='column_month_training_info_wrapper'>
                                 {isMobile
                                     ? (
-                                        newArray.map((week) => (
+                                        fourWeekArray.map((week) => (
                                             <Collapse bordered={false} ghost={true} expandIconPosition="end"
                                                       expandIcon={({ isActive }) => <DownOutlined rotate={isActive ? 180 : 0} />}>
                                                 <Panel
@@ -114,16 +84,7 @@ export const AchievementsForTheMonth = ({section}: AchievementsForTheMonthProps)
                                                     key={week[0].date}>
                                                     {
                                                         week.map((item, index) => (
-                                                            <div
-                                                                className='column_week_info_wrapper'
-                                                                key={item.date}>
-                                                                <div
-                                                                    className='info_number_of_day'>{index + 1}</div>
-                                                                <span
-                                                                    className='info_week_day_name'>{formateDate(item.date)}</span>
-                                                                <span
-                                                                    className='info_day_load'>{item.load === 0 ? '' : `${item.load} кг`}</span>
-                                                            </div>
+                                                            <DayLoadInformation index={index} item={item} key={index}/>
                                                         ))
                                                     }
                                                 </Panel>
@@ -131,22 +92,14 @@ export const AchievementsForTheMonth = ({section}: AchievementsForTheMonthProps)
                                         ))
                                     )
                                     : (
-                                        newArray.map((week) => (
+                                        fourWeekArray.map((week) => (
                                             <div className='week_training_info_wrapper'>
                                                 <span className='week_period'>
                                                     Неделя {formateDate(week[0].date).slice(0, 5)} - {formateDate(week[6].date).slice(0, 5)}
                                                 </span>
                                                 {
                                                     week.map((item, index) => (
-                                                        <div className='column_week_info_wrapper'
-                                                             key={item.date}>
-                                                            <div
-                                                                className='info_number_of_day'>{index + 1}</div>
-                                                            <span
-                                                                className='info_week_day_name'>{formateDate(item.date)}</span>
-                                                            <span
-                                                                className='info_day_load'>{item.load === 0 ? '' : `${item.load} кг`}</span>
-                                                        </div>
+                                                        <DayLoadInformation index={index} item={item} key={index}/>
                                                     ))
                                                 }
                                             </div>

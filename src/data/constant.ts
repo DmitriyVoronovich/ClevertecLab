@@ -12,3 +12,7 @@ export const DEFAULT_PERIOD = {
 export const VALIDATE_PASSWORD = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
 export const VALIDATE_EMAIL = /\S+@\S+\.\S+/;
+
+export const POPULAR_WEEK_EXERCISES_TITLE = 'Самые частые упражнения по дням недели';
+
+export const POPULAR_MONTH_EXERCISES_TITLE = 'Самые частые упражнения по дням недели за месяц';

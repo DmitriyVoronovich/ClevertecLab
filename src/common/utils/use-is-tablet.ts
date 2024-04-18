@@ -1,9 +1,9 @@
 // eslint-disable-next-line unicorn/filename-case
 import {useEffect, useState} from 'react';
 
-const isWindowMobile = () => window.innerWidth < 361;
+const isWindowMobile = () => window.innerWidth < 835;
 
-export const useIsMobile = () => {
+export const useIsTablet = () => {
     const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
@@ -20,4 +20,4 @@ export const useIsMobile = () => {
     }, [])
 
     return isMobile
-}
+};

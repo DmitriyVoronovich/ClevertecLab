@@ -1,8 +1,8 @@
-export const onTransformMonthDataDate = (training: Array<{count: number, day: string, mostPopularExercise: string | null}>) => {
+export const onTransformMonthDataDate = (training: Array<{count: number, date: string, mostPopularExercise: string | null}>) => {
     const days = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
 
     return training.map(item => {
-        const dayNumber = parseInt(item.day, 10);
+        const dayNumber = parseInt(item.date, 10);
 
         return {
             ...item,
@@ -10,5 +10,4 @@ export const onTransformMonthDataDate = (training: Array<{count: number, day: st
             dayOfWeek: days[dayNumber]
         };
     });
-
-}
+};

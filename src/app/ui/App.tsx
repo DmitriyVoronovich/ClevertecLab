@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.t
 import { HomePage } from '@pages/home-page';
 import { MainPage } from '@pages/main-page';
 
-import { getToken } from '@utils/getToken.ts';
+import { getToken } from '@utils/get-token.ts';
 import { Loader } from '@components/loader';
 import { authActions } from '../../features/auth/model/auth-slice.ts';
 import {
@@ -60,7 +60,7 @@ function App() {
     });
 
     return (
-        <div className={s.appContainer}>
+        <div className={s.app_container}>
             <Routes>
                 <Route
                     path="/"

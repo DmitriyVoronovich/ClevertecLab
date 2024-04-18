@@ -11,7 +11,7 @@ import {NavigationMenuData} from '@data/data.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import exit from '@image/image/exit.svg';
 import menuIcon from '@image/image/svg-menu/menu.svg';
-import {pushWithFlow} from '@utils/pushWithFlow.ts';
+import {pushWithFlow} from '@utils/push-with-flow.ts';
 import Badge from 'antd/lib/badge';
 
 import {Logo} from '../logo';

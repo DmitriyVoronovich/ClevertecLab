@@ -1,7 +1,7 @@
 import {RequestCalendarStatus, RequestStatusType} from '@enums/enums.ts';
 import {createSlice} from '@reduxjs/toolkit';
-import {createAppAsyncThunk} from '@utils/createAppAsyncThunk.ts';
-import {pushWithFlow} from '@utils/pushWithFlow.ts';
+import {createAppAsyncThunk} from '@utils/create-app-async-thunk.ts';
+import {pushWithFlow} from '@utils/push-with-flow.ts';
 
 import {appActions} from '../../../app/model/app-slice.ts';
 import {calendarApi} from '../../calendar/api/calendar-api.ts';

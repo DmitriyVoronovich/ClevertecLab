@@ -1,5 +1,3 @@
-import {formateDate} from '../../../../calendar/ui/drawer-modal/utils/formate-date.ts';
-
 export const onDataTransform = (selectedTraining: Array<{date: string | number, load: number}>) => {
     const modifiedLoadByDateArray = selectedTraining.map(item => {
         const date = !isNaN(Number(item.date))

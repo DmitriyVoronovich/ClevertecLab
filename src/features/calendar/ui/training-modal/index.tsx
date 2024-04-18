@@ -4,7 +4,7 @@ import { BadgeComponent } from '@components/index.ts';
 import { AddTrainingStatus } from '@enums/enums.ts';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import icon from '@image/calendar-page/training_modal.svg';
-import { useIsMobile } from '@utils/useIsMobile.ts';
+import { useIsMobile } from '@utils/use-is-mobile.ts';
 import { Button, Modal } from 'antd';
 
 import { TrainingParams } from '../../model/types/types.ts';

@@ -15,7 +15,7 @@ import {SettingsPage} from '../../features/settings/ui/settings-page';
 
 import './main-page.css';
 import {TrainingPage} from "../../features/training/ui/training-page";
-import {pushWithFlow} from "@utils/pushWithFlow.ts";
+import {pushWithFlow} from "@utils/push-with-flow.ts";
 import {AchievementsPage} from "../../features/achievements/ui/achievements-page";
 
 export const MainPage = () => {

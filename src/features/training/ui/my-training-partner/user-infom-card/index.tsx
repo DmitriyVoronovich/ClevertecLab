@@ -1,5 +1,5 @@
 import avatar from '@image/feedback-page/default_avatar.svg';
-import {useIsMobile} from '@utils/useIsMobile.ts';
+import {useIsMobile} from '@utils/use-is-mobile.ts';
 import {Avatar, Card} from 'antd';
 
 import {UserInformationCardProps} from './types/types.ts';

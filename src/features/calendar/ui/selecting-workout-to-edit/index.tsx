@@ -5,7 +5,7 @@ import { Button, Modal, Select } from 'antd';
 
 import { BadgeComponent } from '@components/badge-component';
 import { AddTrainingStatus } from '@enums/enums.ts';
-import { useIsMobile } from '@utils/useIsMobile.ts';
+import { useIsMobile } from '@utils/use-is-mobile.ts';
 import { calendarThunks } from '../../model/calendar-slice.ts';
 import { TrainExercises } from '../../model/types/types.ts';
 import { DrawerModal } from '../drawer-modal';

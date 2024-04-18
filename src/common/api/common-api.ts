@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { getToken } from '../utils/getToken.ts';
+import { getToken } from '@utils/get-token.ts';
 
 export const instance = axios.create({
     baseURL: 'https://marathon-api.clevertec.ru/',

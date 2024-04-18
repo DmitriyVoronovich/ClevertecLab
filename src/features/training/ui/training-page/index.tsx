@@ -17,6 +17,7 @@ import {
 import {TrainingSection} from '../training-section';
 
 import s from './training-page.module.css';
+import {settingsThunks} from "../../../settings/model/settings-slice.ts";
 
 export const TrainingPage = () => {
     const dispatch = useAppDispatch();
@@ -54,13 +55,17 @@ export const TrainingPage = () => {
 
     const onBackToMain = goBackToMain(dispatch);
 
+    const onSettingPageOpen = () => {
+        dispatch(settingsThunks.getTrafficList());
+    };
+
     return (<>
             <div className={s.container}>
                 <div className={s.header_container}>
                     <div >
                         <span onClick={onBackToMain} className={s.go_main}>Главная</span> / <span className={s.header_menu_item}>Тренировки</span>
                     </div>
-                    <div className={s.header_content_wrapper}>
+                    <div className={s.header_content_wrapper} onClick={onSettingPageOpen}>
                         <img src={set} className={s.header_content_svg} alt="Настройки"/>
                         <span className={s.header_content_item}>Настройки</span>
                     </div>

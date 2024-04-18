@@ -5,7 +5,7 @@ import icdos from '@image/image/svg-menu/icon-dos.svg';
 import icheard from '@image/image/svg-menu/icon-heard.svg';
 import icprof from '@image/image/svg-menu/icon-prof.svg';
 import icrasp from '@image/image/svg-menu/icon-rasp.svg';
-import {pushWithFlow} from '@utils/pushWithFlow.ts';
+import {pushWithFlow} from '@utils/push-with-flow.ts';
 
 import {calendarThunks} from '../features/calendar/model/calendar-slice.ts';
 import {trainingThunks} from '../features/training/model/training-slice.ts';
@@ -44,7 +44,7 @@ export const NavigationMenuData = [
         title: 'Календарь',
         icon: icrasp,
         callback: calendarThunks.training,
-        dataNotId:'a'
+        dataNotId:''
     },
     {
         id: 2,
@@ -65,7 +65,7 @@ export const NavigationMenuData = [
         title: 'Профиль',
         icon: icprof,
         callback: () => (pushWithFlow('/profile')),
-        dataNotId:'a'
+        dataNotId:''
     },
 ];
 

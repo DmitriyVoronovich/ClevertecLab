@@ -1,9 +1,8 @@
 import {TrainingParams} from '../../../../calendar/model/types/types.ts';
+import {LoadByDate, LoadByDateItem} from "../types/types.ts";
 
-export const onGettingMonthTraining = (training, startDate, endDate) => {
-    const loadByDate = training.reduce((accum, item) => {
-
-        // Проверка формата даты. Если она в формате миллисекунд, преобразуем её в ISO 8601
+export const onGettingMonthTraining = (training: TrainingParams[], startDate: string, endDate: string) => {
+    const loadByDate = training.reduce((accum: LoadByDate, item) => {
         let dateObject;
         if ( /^\d+$/.test(item.date)) {
             dateObject = new Date(+item.date);
@@ -24,13 +23,24 @@ export const onGettingMonthTraining = (training, startDate, endDate) => {
         return accum;
     }, {});
 
-    const loadByDateArray = Object.entries(loadByDate).map(([date, load]) => ({date, load}));
-
-    const startDateObj = new Date(startDate);
-    startDateObj.setUTCHours(0, 0, 0, 0);
-
     const endDateObj = new Date(endDate);
     endDateObj.setUTCHours(0, 0, 0, 0);
+
+    const loadByDateArray: LoadByDateItem[] = Object.entries(loadByDate).map(([date, load]) => {
+        const updatedDate = new Date(date);
+
+        if (updatedDate.getUTCDate() === endDateObj.getUTCDate()) {
+            updatedDate.setUTCHours(0, 0, 0, 0);
+        }
+
+        return {
+            date: updatedDate.toISOString(),
+            load: Number(load),
+        };
+    });
+    const startDateObj = new Date(startDate);
+
+    startDateObj.setUTCHours(0, 0, 0, 0);
 
     const daysDiff = Math.ceil((endDateObj.valueOf() - startDateObj.valueOf()) / (1000 * 3600 * 24)) + 1;
 

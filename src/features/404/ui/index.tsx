@@ -1,6 +1,6 @@
 import {useAppDispatch} from '@hooks/typed-react-redux-hooks.ts';
 import not_found from '@image/404/404.png';
-import {pushWithFlow} from '@utils/pushWithFlow.ts';
+import {pushWithFlow} from '@utils/push-with-flow.ts';
 import {Button} from 'antd';
 
 import s from './not-found-page.module.css';

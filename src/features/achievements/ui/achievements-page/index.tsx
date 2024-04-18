@@ -9,6 +9,7 @@ import {setRequestTrainStatus} from '../../../training/model/training-slice.ts';
 import {AchievementsSection} from '../achievements-section';
 
 import s from '../../../training/ui/training-page/training-page.module.css';
+import {settingsThunks} from "../../../settings/model/settings-slice.ts";
 
 export const AchievementsPage = () => {
     const dispatch = useAppDispatch();
@@ -22,9 +23,14 @@ export const AchievementsPage = () => {
     }, [requestTrainStatus]);
 
     const onBackToMain = goBackToMain(dispatch);
+
     const onCloseAddErrorModal = () => {
         setOpenAddErrorModal(false)
         dispatch(setRequestTrainStatus({requestTrainStatus: RequestTrainStatus.Idle}))
+    };
+
+    const onSettingPageOpen = () => {
+        dispatch(settingsThunks.getTrafficList());
     };
 
     return (
@@ -35,7 +41,7 @@ export const AchievementsPage = () => {
                         <span onClick={onBackToMain} className={s.go_main}>Главная</span> / <span
                         className={s.header_menu_item}>Достижения</span>
                     </div>
-                    <div className={s.header_content_wrapper}>
+                    <div className={s.header_content_wrapper} onClick={onSettingPageOpen}>
                         <img src={set} className={s.header_content_svg} alt="Настройки"/>
                         <span className={s.header_content_item}>Настройки</span>
                     </div>

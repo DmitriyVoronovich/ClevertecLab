@@ -1,7 +1,7 @@
 import {Dispatch} from 'react';
 import {RequestSettingsStatus} from '@enums/enums.ts';
 import {UnknownAction} from '@reduxjs/toolkit';
-import {pushWithFlow} from '@utils/pushWithFlow.ts';
+import {pushWithFlow} from '@utils/push-with-flow.ts';
 
 import {setSettingsStatus} from '../../../model/settings-slice.ts';
 

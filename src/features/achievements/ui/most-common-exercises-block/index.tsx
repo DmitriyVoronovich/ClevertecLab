@@ -10,7 +10,10 @@ import {onTransformDataDate} from './utils/on-transform-data-date.ts';
 import {onTransformMonthDataDate} from './utils/on-transform-month-data-date.ts';
 
 import './most-common-exercises-block.css';
-import {useIsMobile} from "@utils/useIsMobile.ts";
+import {useIsMobile} from "@utils/use-is-mobile.ts";
+import {pieConfig} from "./utils/pie-config.ts";
+import {POPULAR_MONTH_EXERCISES_TITLE, POPULAR_WEEK_EXERCISES_TITLE} from "@data/constant.ts";
+import {PopularWeekExercises} from "./popular-week-exercises.tsx";
 
 export const MostCommonExercisesBlock = ({
                                              filterTraining,
@@ -21,7 +24,7 @@ export const MostCommonExercisesBlock = ({
     let resultList
     let trainingDays
 
-    if (section !== '2') {
+    if (section !== 'За месяц') {
         resultList = onFindPopularExercises(filterTraining);
         trainingDays = onTransformDataDate(resultList);
     } else {
@@ -30,54 +33,18 @@ export const MostCommonExercisesBlock = ({
         trainingDays = onTransformMonthDataDate(resultList);
     }
 
-    const config = {
-        data: trainingDays,
-        axis: {
-            y: {
-                tick: false,
-            },
-            x: {
-                tick: false,
-            },
-        },
-        angleField: 'count',
-        colorField: 'mostPopularExercise',
-        innerRadius: 0.3,
-        radius: 0.4,
-        legend: false,
-        width: isMobile? 318 : 520,
-        height: isMobile? 211 : 334,
-        style: {
-            width: '156px'
-        },
-        label: {
-            text: 'mostPopularExercise',
-            style: {
-                fontWeight: 'bold',
-            },
-            connector: false,
-            position: 'outside',
-            line: false,
-        },
-    };
+    const config = pieConfig(trainingDays, isMobile);
 
     return (
         <div className='common_exercises_container'>
             <Pie {...config} />
             <div className='column_training_info_wrapper'>
                 <h6 style={{width: '194px'}} className='column_info_title'>
-                    {section !== '2' ? 'Самые частые упражнения по дням недели' : 'Самые частые упражнения по дням недели за месяц'}
+                    {section !== 'За месяц' ? POPULAR_WEEK_EXERCISES_TITLE : POPULAR_MONTH_EXERCISES_TITLE}
                 </h6>
                 {trainingDays.map((item, index) => {
                     return (
-                        <div className='column_info_wrapper' key={index}>
-                            <div className='info_number_of_day'
-                                 style={{backgroundColor: 'red'}}>{index + 1}</div>
-                            <span className='info_day_name'>{item.dayOfWeek}</span>
-                            <span
-                                className='info_day_load'>{item.mostPopularExercise === '' || item.mostPopularExercise === null
-                                ? '' : `${item.mostPopularExercise}`}</span>
-                        </div>
+                        <PopularWeekExercises index={index} key={index} item={item}/>
                     )
                 })}
             </div>

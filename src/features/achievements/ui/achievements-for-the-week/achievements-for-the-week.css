@@ -57,6 +57,7 @@
 }
 
 .column_training_info_wrapper {
+    gap: 16px;
     display: flex;
     flex-direction: column;
     max-width: 203px;
@@ -79,7 +80,6 @@
     align-items: center;
     justify-content: start;
     gap: 16px;
-    margin-top: 18px;
     width: 300px;
 }
 

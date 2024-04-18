@@ -5,7 +5,7 @@ import {
     TrainingSelectedMenu
 } from '@enums/enums.ts';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {createAppAsyncThunk} from '@utils/createAppAsyncThunk.ts';
+import {createAppAsyncThunk} from '@utils/create-app-async-thunk.ts';
 
 import {appActions} from '../../../app/model/app-slice.ts';
 import {

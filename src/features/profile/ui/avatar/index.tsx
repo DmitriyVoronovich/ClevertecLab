@@ -3,7 +3,7 @@ import {PlusOutlined} from '@ant-design/icons';
 import {API_URL} from '@data/constant.ts';
 import {RequestProfileStatus} from '@enums/enums.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
-import {useIsMobile} from '@utils/useIsMobile.ts';
+import {useIsMobile} from '@utils/use-is-mobile.ts';
 import {Form, message, Upload, UploadProps} from 'antd';
 
 import {profileThunks} from '../../model/profileSlice.ts';

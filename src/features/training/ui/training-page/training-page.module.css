@@ -46,6 +46,10 @@
     height: 14px;
 }
 
+.header_content_wrapper {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 865px) {
     .header_content_wrapper {
         width: 105px;

@@ -1,5 +1,4 @@
 
-
 import {onGettingPopularTrain} from './on-getting-populartrain.ts';
 import {formateDate} from "../../../../calendar/ui/drawer-modal/utils/formate-date.ts";
 
@@ -10,7 +9,7 @@ export const onTransformDataDate = (resultList: Array<{ date: string, mostPopula
             : new Date(item.date);
 
         return {
-            date: formateDate(date),
+            date: formateDate(`${date}`),
             mostPopularExercise: item.mostPopularExercise,
             count: item.count,
             dayOfWeek: date.getDay()
@@ -38,4 +37,4 @@ export const onTransformDataDate = (resultList: Array<{ date: string, mostPopula
             dayOfWeek: formatter.format(dateObject)
         }
     });
-}
+};

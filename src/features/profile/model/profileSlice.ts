@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {createAppAsyncThunk} from '@utils/createAppAsyncThunk.ts';
+import {createAppAsyncThunk} from '@utils/create-app-async-thunk.ts';
 import {RequestProfileStatus} from '@enums/enums.ts';
 import {ProfileInformation} from './types/types.ts';
 import {profileApi} from '../api/profile-api.ts';

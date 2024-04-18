@@ -9,10 +9,9 @@ export const onGettingPopularTrain = (trainList: { date: string, mostPopularExer
     });
 
     lastSevenDays.forEach(day => {
-        // Проверяем, есть ли этот день уже в loadByDateArray
+
         const existingDay = trainList.find(item => item.date === day);
 
-        // Если день не найден, добавляем его с нагрузкой 0
         if (!existingDay) {
             trainList.push({
                 date: day,

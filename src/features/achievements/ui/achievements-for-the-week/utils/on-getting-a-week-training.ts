@@ -1,9 +1,9 @@
 import {TrainingParams} from '../../../../calendar/model/types/types.ts';
+import {LoadByDate, LoadByDateItem} from "../../achievements-for-the-month/types/types.ts";
 
 export const onGettingWeekTraining = (training: TrainingParams[]) => {
 
-    const loadByDate = training.reduce((accum, item) => {
-        // Проверка формата даты. Если она в формате миллисекунд, преобразуем её в ISO 8601
+    const loadByDate = training.reduce((accum: LoadByDate, item) => {
         let dateObject;
         if ( /^\d+$/.test(item.date)) {
             dateObject = new Date(+item.date);
@@ -13,28 +13,21 @@ export const onGettingWeekTraining = (training: TrainingParams[]) => {
         }
         const date = dateObject.toISOString();
 
-        // Получаем всю нагрузку на день
-        const load = item.exercises.reduce((sum, exercise) =>
-            sum + exercise.approaches * exercise.weight * exercise.replays, 0);
+        const load = item.exercises.reduce((sum, exercise) => sum + exercise.approaches * exercise.weight * exercise.replays, 0);
 
-        // Если дата уже присутствует в объекте, добавляем нагрузку к текущей сумме
         if (accum[date]) {
             accum[date] += load;
-        }
-        // Если даты ещё нет в объекте, добавляем новый элемент вместе с датой и нагрузкой
-        else {
+        } else {
             accum[date] = load;
         }
 
         return accum;
     }, {});
 
-    // Преобразуем объект в массив
-    const loadByDateArray = Object.entries(loadByDate).map(([date, load]) => ({date, load}));
+    const loadByDateArray: LoadByDateItem[] = Object.entries(loadByDate).map(([date, load]) => ({date, load: Number(load)}));
 
     const lastSevenDays = Array(7).fill(null).map((_, index) => {
         const date = new Date();
-
         date.setUTCHours(0, 0, 0, 0)
         date.setDate(date.getDate() - index);
 
@@ -42,7 +35,6 @@ export const onGettingWeekTraining = (training: TrainingParams[]) => {
     });
 
     lastSevenDays.forEach(day => {
-
         const existingDay = loadByDateArray.find(({ date }) => date === day);
 
         if (!existingDay) {
@@ -59,4 +51,4 @@ export const onGettingWeekTraining = (training: TrainingParams[]) => {
 
         return dateA - dateB;
     });
-}
+};

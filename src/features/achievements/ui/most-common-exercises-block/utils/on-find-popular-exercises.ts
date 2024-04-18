@@ -1,13 +1,13 @@
 import {TrainingParams} from '../../../../calendar/model/types/types.ts';
+import {ExerciseCount} from "../../achievements-for-the-month/types/types.ts";
+import {MostPopularExercise, PopularExerciseByDate} from "../types/types.ts";
 
-export const onFindPopularExercises = (filterTraining) => {
-    const popularExercisesByDate = {};
+export const onFindPopularExercises = (filterTraining: TrainingParams[]) => {
+    const popularExercisesByDate: PopularExerciseByDate = {};
 
-    // Проходимся по объектам тренировок
     for (let i = 0; i < filterTraining.length; i++) {
         const item = filterTraining[i];
 
-        // Проверяем формат даты и приводим к нужному формату, если необходимо
         let dateObject;
         if ( /^\d+$/.test(item.date)) {
             dateObject = new Date(+item.date);
@@ -17,10 +17,9 @@ export const onFindPopularExercises = (filterTraining) => {
         }
         const date = dateObject.toISOString();
 
-        popularExercisesByDate[date] = popularExercisesByDate[date] || {}; // создаем объект для этой даты, если его еще нет
-        const popularExercise = popularExercisesByDate[date]; // используем этот объект
+        popularExercisesByDate[date] = popularExercisesByDate[date] || {};
+        const popularExercise = popularExercisesByDate[date];
 
-        // Проходимся по упражнениям в тренировках
         for (let j = 0; j < item.exercises.length; j++) {
             const exercise = item.exercises[j];
 
@@ -32,8 +31,7 @@ export const onFindPopularExercises = (filterTraining) => {
         }
     }
 
-    // Метод, который возвращает самую популярную запись
-    const mostPopular = (obj) => {
+    const mostPopular = (obj: ExerciseCount): MostPopularExercise => {
         const mostPopularKey = Object.keys(obj).reduce((a, b) => obj[a] > obj[b] ? a : b);
 
         return {
@@ -51,4 +49,4 @@ export const onFindPopularExercises = (filterTraining) => {
             count: mostPopularExercise.count
         };
     });
-}
+};

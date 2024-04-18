@@ -1,34 +1,15 @@
-import {useState} from 'react';
-import {Tabs, TabsProps} from 'antd';
-
-import {AchievementsForTheMonth} from '../achievements-for-the-month';
-import {AchievementsForTheWeek} from '../achievements-for-the-week';
+import {SetStateAction, useState} from 'react';
+import {Tabs} from 'antd';
 
 import './achievements-section.css';
+import {tabsAchievementsItem} from "./tab-achievements-item.tsx";
 
 export const AchievementsSection = () => {
     const [section, setSection] = useState('');
 
-    const onSectionChange = (value) => setSection(value);
+    const onSectionChange = (value: SetStateAction<string>) => setSection(value);
 
-    const items: TabsProps['items'] = [
-        {
-            key: '1',
-            label: 'За неделю',
-            children: <AchievementsForTheWeek section={section}/>,
-        },
-        {
-            key: '2',
-            label: 'За месяц',
-            children: <AchievementsForTheMonth section={section}/>,
-        },
-        {
-            key: '3',
-            label: 'За все время (PRO)',
-            children: 'Content of Tab Pane 3',
-            disabled: true,
-        },
-    ];
+    const items = tabsAchievementsItem(section);
 
     return (
         <div className="achievements_section_container">
