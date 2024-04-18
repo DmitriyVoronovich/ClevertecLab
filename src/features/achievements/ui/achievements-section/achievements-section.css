@@ -1,0 +1,32 @@
+.achievements_tab .ant-tabs-nav-list {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.achievements_tab .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+
+}
+
+.achievements_tab .ant-tabs .ant-tabs-tab+.ant-tabs-tab{
+    padding: 0;
+    margin: 0;
+}
+
+.ant-tabs .ant-tabs-tab-btn {
+    font-family: var(--basic-font-family);
+    color: var(--basic-title-color);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 130%;
+    cursor: pointer;
+}
+
+.ant-tabs .ant-tabs-tab{
+    padding: 12px 0 0 0;
+    margin: 0;
+}
+
+.ant-tabs .ant-tabs-nav-list{
+    padding: 0 32px 0 12px;
+    margin: 0;
+}

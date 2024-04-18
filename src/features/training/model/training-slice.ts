@@ -289,10 +289,7 @@ const getAllUserTrainingList = createAppAsyncThunk<{ jointTrainingUserList: Trai
     },
 );
 
-
-
 export const trainingSlice = slice.reducer;
-
 
 export const trainingThunks = {
     getTraining,

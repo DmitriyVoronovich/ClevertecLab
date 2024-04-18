@@ -1,0 +1,32 @@
+.common_workouts_container {
+    margin-top: 84px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: start;
+}
+
+.common_workouts_wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.common_workouts_title {
+    width: 108px;
+    padding-right: 80px;
+    font-family: var(--basic-font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    color: var(--basic-font-color);
+}
+
+.common_workouts_name {
+    text-transform: lowercase;
+    font-family: var(--basic-font-family);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 130%;
+    color: var(--basic-title-color);
+}

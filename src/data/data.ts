@@ -9,6 +9,7 @@ import {pushWithFlow} from '@utils/pushWithFlow.ts';
 
 import {calendarThunks} from '../features/calendar/model/calendar-slice.ts';
 import {trainingThunks} from '../features/training/model/training-slice.ts';
+import {achievementsThunks} from "../features/achievements/model/achievements-slice.ts";
 
 export const NavigationCardData = [
     {
@@ -56,8 +57,8 @@ export const NavigationMenuData = [
         id: 3,
         title: 'Достижения',
         icon: icdos,
-        callback: () => {},
-        dataNotId:'a'
+        callback: achievementsThunks.getTraining,
+        dataNotId:'sidebar-achievements'
     },
     {
         id: 4,

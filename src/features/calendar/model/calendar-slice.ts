@@ -7,7 +7,7 @@ import { createSlice,PayloadAction } from '@reduxjs/toolkit';
 import { createAppAsyncThunk } from '@utils/createAppAsyncThunk.ts';
 import { pushWithFlow } from '@utils/pushWithFlow.ts';
 
-import { appActions } from '../../../app/model/appSlice.ts';
+import { appActions } from '../../../app/model/app-slice.ts';
 import { calendarApi } from '../api/calendar-api.ts';
 
 import { PostTrainingParams, TrainingList, TrainingParams } from './types/types.ts';

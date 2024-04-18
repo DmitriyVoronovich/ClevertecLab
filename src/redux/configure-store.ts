@@ -11,6 +11,7 @@ import {profileSlice} from '../features/profile/model/profileSlice.ts';
 import {settingsSlice} from '../features/settings/model/settings-slice.ts';
 import {trainingSlice} from '../features/training/model/training-slice.ts';
 import {inviteSlice} from '../features/invite/model/invite-slice.ts';
+import {achievementsSlice} from '../features/achievements/model/achievements-slice.ts';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -28,7 +29,8 @@ export const store = configureStore({
         profile: profileSlice,
         settings: settingsSlice,
         training: trainingSlice,
-        invite: inviteSlice
+        invite: inviteSlice,
+        achievements: achievementsSlice
     }),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(routerMiddleware),
 });

@@ -1,0 +1,5 @@
+.common_exercises_container {
+    display: flex;
+    align-items: center;
+    gap: 150px;
+}

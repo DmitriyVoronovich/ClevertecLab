@@ -1,0 +1,37 @@
+.block_load_card_container {
+    margin-top: 48px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.load_card_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--basic-padding);
+    text-align: center;
+    background-color: var(--basic-white-color);
+}
+
+.load_card_wrapper .ant-statistic{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.load_card_wrapper .ant-statistic-content-value{
+    font-family: var(--basic-font-family);
+    font-weight: bold;
+    font-size: 38px;
+    line-height: 130%;
+    color: var(--basic-title-color);
+}
+
+.load_card_wrapper .ant-statistic-title{
+    font-family: var(--basic-font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    color: var(--basic-font-color);
+    width: 91px;
+}
