@@ -68,3 +68,53 @@
     color: var(--basic-title-color);
     text-align: start;
 }
+
+@media screen and (max-width: 835px) {
+
+    .column_month_card {
+        background-color: var(--basic-white-color);
+        width: 100%;
+        max-width: 520px;
+        height: 375px;
+    }
+
+    .column_month_title {
+        font-family: var(--basic-font-family);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        color: var(--basic-title-color);
+        display: flex;
+        justify-content: center;
+    }
+
+    .column_month_training_info_wrapper {
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        gap: 16px;
+        max-width: 970px;
+        margin-top: 150px;
+    }
+}
+
+@media screen and (max-width: 361px) {
+
+    .column_month_card {
+        height: 275px;
+    }
+
+    .column_month_training_info_wrapper {
+        margin-top: 0;
+    }
+
+    .column_month_training_info_wrapper .ant-collapse-content-box {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .column_month_training_info_wrapper .ant-collapse>.ant-collapse-item >.ant-collapse-header {
+        padding: 0;
+    }
+}

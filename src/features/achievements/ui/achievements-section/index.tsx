@@ -31,7 +31,7 @@ export const AchievementsSection = () => {
     ];
 
     return (
-        <div className="training_section_container">
+        <div className="achievements_section_container">
             <div>
                 <Tabs defaultActiveKey="1" items={items} onChange={onSectionChange}
                       className='achievements_tab' destroyInactiveTabPane={true}/>

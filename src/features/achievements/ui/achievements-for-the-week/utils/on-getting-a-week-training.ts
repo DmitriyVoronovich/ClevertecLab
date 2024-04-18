@@ -1,6 +1,6 @@
 import {TrainingParams} from '../../../../calendar/model/types/types.ts';
 
-export const onGettingWeekTraining = (training) => {
+export const onGettingWeekTraining = (training: TrainingParams[]) => {
 
     const loadByDate = training.reduce((accum, item) => {
         // Проверка формата даты. Если она в формате миллисекунд, преобразуем её в ISO 8601

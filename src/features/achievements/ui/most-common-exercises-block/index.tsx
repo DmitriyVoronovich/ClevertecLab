@@ -1,35 +1,32 @@
 import {Pie} from '@ant-design/plots';
 
-import {TrainingParams} from '../../../calendar/model/types/types.ts';
+import {
+    onFindPopularExercisesInMonth
+} from '../achievements-for-the-month/utils/on-find-popular-exercises-in-month.ts';
 
+import {MostCommonExercisesBlockProps} from './types/types.ts';
 import {onFindPopularExercises} from './utils/on-find-popular-exercises.ts';
 import {onTransformDataDate} from './utils/on-transform-data-date.ts';
 import {onTransformMonthDataDate} from './utils/on-transform-month-data-date.ts';
 
 import './most-common-exercises-block.css';
-import {
-    onFindPopularExercisesInMonth
-} from "../achievements-for-the-month/utils/on-find-popular-exercises-in-month.ts";
-
-export type MostCommonExercisesBlockProps = {
-    filterTraining: TrainingParams[]
-    section: string
-}
+import {useIsMobile} from "@utils/useIsMobile.ts";
 
 export const MostCommonExercisesBlock = ({
                                              filterTraining,
                                              section
                                          }: MostCommonExercisesBlockProps) => {
+    const isMobile = useIsMobile();
+
     let resultList
     let trainingDays
 
-    console.log(filterTraining)
     if (section !== '2') {
         resultList = onFindPopularExercises(filterTraining);
         trainingDays = onTransformDataDate(resultList);
     } else {
         resultList = onFindPopularExercisesInMonth(filterTraining);
-        console.log(resultList)
+
         trainingDays = onTransformMonthDataDate(resultList);
     }
 
@@ -48,8 +45,8 @@ export const MostCommonExercisesBlock = ({
         innerRadius: 0.3,
         radius: 0.4,
         legend: false,
-        width: 520,
-        height: 334,
+        width: isMobile? 318 : 520,
+        height: isMobile? 211 : 334,
         style: {
             width: '156px'
         },

@@ -1,10 +1,13 @@
+.achievements_section_container {
+    padding: 24px 24px 42px 24px;
+    max-width: 1333px;
+    min-height: 862px;
+    background-color: var(--basic-white-color);
+}
+
 .achievements_tab .ant-tabs-nav-list {
     justify-content: space-between;
     width: 100%;
-}
-
-.achievements_tab .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
-
 }
 
 .achievements_tab .ant-tabs .ant-tabs-tab+.ant-tabs-tab{
@@ -14,7 +17,7 @@
 
 .ant-tabs .ant-tabs-tab-btn {
     font-family: var(--basic-font-family);
-    color: var(--basic-title-color);
+
     font-size: 24px;
     font-weight: 500;
     line-height: 130%;
@@ -29,4 +32,51 @@
 .ant-tabs .ant-tabs-nav-list{
     padding: 0 32px 0 12px;
     margin: 0;
+}
+
+.ant-tabs-tab-disabled .ant-tabs-tab-btn{
+    color: #BFBFBF;
+}
+
+@media screen and (max-width: 361px) {
+    .achievements_section_container {
+        padding: 16px;
+        min-height: 362px;
+    }
+
+    .achievements_tab .ant-tabs-nav-list {
+        justify-content: space-between;
+        width: 336px;
+    }
+
+    .achievements_tab .ant-tabs .ant-tabs-tab+.ant-tabs-tab{
+        padding: 0;
+        margin: 0;
+    }
+
+    .ant-tabs .ant-tabs-tab+.ant-tabs-tab {
+        margin: 0;
+    }
+
+    .ant-tabs .ant-tabs-tab-btn {
+        font-family: var(--basic-font-family);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 130%;
+        cursor: pointer;
+    }
+
+    .ant-tabs-tab-btn {
+        padding-bottom: 14px;
+    }
+
+    .ant-tabs .ant-tabs-tab{
+        padding: 0;
+        margin: 0;
+    }
+
+    .ant-tabs .ant-tabs-nav-list{
+        padding: 0 ;
+        margin: 0;
+    }
 }

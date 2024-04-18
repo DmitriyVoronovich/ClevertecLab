@@ -1,15 +1,12 @@
 import {Card, Statistic} from 'antd';
 
-import {TrainingParams} from '../../../calendar/model/types/types.ts';
+import {BlockWithLoadCardsProps} from './types/types.ts';
 
 import './block-with-load-cards.css';
-
-export type BlockWithLoadCardsProps = {
-    filterTraining: TrainingParams[]
-    training: Array<{ date: string, load: number }>
-}
+import {useIsMobile} from "@utils/useIsMobile.ts";
 
 export const BlockWithLoadCards = ({filterTraining, training}: BlockWithLoadCardsProps) => {
+    const isMobile = useIsMobile();
 
     const totalLoad = training.reduce((accum, item) => accum += item.load, 0);
     const loadPerDay = totalLoad / training.length;
@@ -30,16 +27,16 @@ export const BlockWithLoadCards = ({filterTraining, training}: BlockWithLoadCard
 
     return (
         <div className='block_load_card_container'>
-            <Card style={{width: 156}} className='load_card_wrapper'>
+            <Card style={isMobile ? {width: 328} : {width: 156}} className='load_card_wrapper'>
                 <Statistic title="Общая нагрузка, кг" value={totalLoad}/>
             </Card>
-            <Card style={{width: 156}} className='load_card_wrapper'>
+            <Card style={isMobile ? {width: 328} : {width: 156}} className='load_card_wrapper'>
                 <Statistic title="Нагрузка в день, кг" value={loadPerDay} precision={1}/>
             </Card>
-            <Card style={{width: 156}} className='load_card_wrapper'>
+            <Card style={isMobile ? {width: 328} : {width: 156}} className='load_card_wrapper'>
                 <Statistic title="Количество повторений, раз" value={numberOfRepetitions}/>
             </Card>
-            <Card style={{width: 156}} className='load_card_wrapper'>
+            <Card style={isMobile ? {width: 328} : {width: 156}} className='load_card_wrapper'>
                 <Statistic title="Подходы, раз" value={approaches}/>
             </Card>
         </div>

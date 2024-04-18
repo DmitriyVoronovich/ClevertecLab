@@ -35,3 +35,44 @@
     color: var(--basic-font-color);
     width: 91px;
 }
+
+@media screen and (max-width: 835px) {
+    .block_load_card_container {
+        max-width: 330px;
+        margin-top: 0;
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 361px) {
+    .block_load_card_container {
+        margin-top: 0;
+        gap: 16px;
+    }
+
+    .load_card_wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .load_card_wrapper .ant-statistic{
+        width: 318px;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row-reverse;
+    }
+
+    .load_card_wrapper .ant-statistic-title{
+        font-family: var(--basic-font-family);
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 130%;
+        color: var(--basic-font-color);
+        width: 160px;
+        text-align: end;
+    }
+}

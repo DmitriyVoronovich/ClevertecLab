@@ -30,3 +30,31 @@
     line-height: 130%;
     color: var(--basic-title-color);
 }
+
+@media screen and (max-width: 835px) {
+    .common_workouts_container {
+        margin-top: 0;
+        gap:0;
+        align-items: start;
+    }
+
+    .common_workouts_title {
+        width: 157px;
+        font-size: 14px;
+        padding-right: 50px;
+    }
+
+    .common_workouts_name {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 361px) {
+    .common_workouts_container {
+        gap:16px;
+        padding-right: 0;
+    }
+    .common_workouts_title {
+        padding-right: 0;
+    }
+}

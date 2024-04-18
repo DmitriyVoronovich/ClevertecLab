@@ -9,20 +9,18 @@ import {BlockWithLoadCards} from '../block-with-load-cards';
 import {MostCommonExercisesBlock} from '../most-common-exercises-block';
 import {MostCommonWorkoutsBlock} from '../most-common-workouts-block';
 
+import {AchievementsForTheWeekProps} from './types/types.ts';
 import {onFilteredWeekTraining} from './utils/filtered-week-training.ts';
 import {onDataTransform} from './utils/on-data-transform.ts';
 import {onGettingWeekTraining} from './utils/on-getting-a-week-training.ts';
 
 import './achievements-for-the-week.css';
-import {userTrain} from "../mock.ts";
-
-export type AchievementsForTheWeekProps = {
-    section: string
-}
+import {useIsMobile} from "@utils/useIsMobile.ts";
 
 export const AchievementsForTheWeek = ({section}: AchievementsForTheWeekProps) => {
     const training = useAppSelector((state) => state.calendar.training);
     const [segmentValue, setSegmentValue] = useState('Все');
+    const isMobile = useIsMobile();
 
     let segmentedFilteredTraining
     let selectedTraining
@@ -48,21 +46,21 @@ export const AchievementsForTheWeek = ({section}: AchievementsForTheWeekProps) =
     const config = {
         axis: {
             lineExtension: [0, 2],
-            y: {
-                tick: false,
-            },
             x: {
                 tick: false,
-                line: true,
+            },
+            y: {
+                tick: false,
+                labelFormatter: (datum) => `${datum} кг`,
             },
         },
-        data: selectedTraining.map((item) => ({
+        data: selectedTraining.map(item => ({
             date: formateDate(item.date).slice(0, 5),
             load: item.load
         })),
         xField: 'date',
         yField: 'load',
-        width: 520,
+        width: isMobile ? 318 : 520,
         style: {
             maxWidth: 30,
         },
@@ -78,6 +76,7 @@ export const AchievementsForTheWeek = ({section}: AchievementsForTheWeekProps) =
                 <div className='load_chart_header'>
                     <span className='load_chart_type'>Тип тренировки:</span>
                     <Segmented<string>
+                        className='load_chart_segmented'
                         options={['Все', 'Силовая', 'Ноги', 'Грудь', 'Спина', 'Руки']}
                         onChange={onHandleChange}
                     />

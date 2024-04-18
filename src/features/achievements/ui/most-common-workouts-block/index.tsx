@@ -1,11 +1,6 @@
-import {TrainingParams} from '../../../calendar/model/types/types.ts';
+import {MostCommonWorkoutsBlockProps} from './types/types.ts';
 
 import './most-common-workouts-block.css';
-
-export type MostCommonWorkoutsBlockProps = {
-    filterTraining: TrainingParams[]
-    segmentValue: string
-}
 
 export const MostCommonWorkoutsBlock = ({filterTraining, segmentValue}: MostCommonWorkoutsBlockProps) => {
 
