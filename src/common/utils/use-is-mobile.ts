@@ -1,7 +1,8 @@
 // eslint-disable-next-line unicorn/filename-case
 import {useEffect, useState} from 'react';
+import {MOBILE_SIZE} from '@utils/constant/constant.ts';
 
-const isWindowMobile = () => window.innerWidth < 361;
+const isWindowMobile = () => window.innerWidth < MOBILE_SIZE;
 
 export const useIsMobile = () => {
     const [isMobile, setIsMobile] = useState(false)
@@ -15,7 +16,6 @@ export const useIsMobile = () => {
 
         handleResize();
 
-        // Remove event listener on cleanup
         return () => window.removeEventListener('resize', handleResize);
     }, [])
 

@@ -6,8 +6,9 @@ import attention from '@image/login-page/svg-icon/info.svg';
 import fon from '../../../../assets/login-page/image/fon.png';
 import { authThunks } from '../../model/auth-slice.ts';
 
-import './code-form.css';
 import {getEmailFromLocalStorage} from './utils/get-email-from-local-storage.ts';
+
+import './code-form.css';
 
 export const CodeForm = () => {
     const dispatch = useAppDispatch();

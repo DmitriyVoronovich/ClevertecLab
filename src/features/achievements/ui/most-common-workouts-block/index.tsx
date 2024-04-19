@@ -2,9 +2,9 @@ import {MostCommonWorkoutsBlockProps, PopularItems} from './types/types.ts';
 
 import './most-common-workouts-block.css';
 import {TrainingParams} from "../../../calendar/model/types/types.ts";
+import {ALL_DAYS} from "../achievements-for-the-week/constant/constant.ts";
 
-export const MostCommonWorkoutsBlock = ({filterTraining, segmentValue}: MostCommonWorkoutsBlockProps) => {
-
+function getPopularData(filterTraining: TrainingParams[]) {
     const popularTraining: PopularItems = {};
     const popularExercise: PopularItems = {};
 
@@ -18,7 +18,7 @@ export const MostCommonWorkoutsBlock = ({filterTraining, segmentValue}: MostComm
         }
 
         for (let j = 0; j < item.exercises.length; j++) {
-            const exercise: {name: string} = item.exercises[j];
+            const exercise: { name: string } = item.exercises[j];
 
             if (popularExercise[exercise.name]) {
                 popularExercise[exercise.name]++;
@@ -28,13 +28,21 @@ export const MostCommonWorkoutsBlock = ({filterTraining, segmentValue}: MostComm
         }
     }
 
-    const mostPopular = (obj: PopularItems) => {
-        return Object.keys(obj)?.reduce((a, b) => obj[a] > obj[b] ? a : b);
-    };
+    return {popularTraining, popularExercise};
+}
+
+function getMostPopular() {
+    return (obj: PopularItems) => Object.keys(obj)?.reduce((a, b) => obj[a] > obj[b] ? a : b);
+}
+
+export const MostCommonWorkoutsBlock = ({filterTraining, segmentValue}: MostCommonWorkoutsBlockProps) => {
+    const {popularTraining, popularExercise} = getPopularData(filterTraining);
+
+    const mostPopular = getMostPopular();
 
     return (
         <div className='common_workouts_container'>
-            {segmentValue === 'Все' && <div className='common_workouts_wrapper'>
+            {segmentValue === ALL_DAYS && <div className='common_workouts_wrapper'>
                 <span className='common_workouts_title'>Самая частая тренировка</span>
                 <span className='common_workouts_name'>{mostPopular(popularTraining)}</span>
             </div>}

@@ -84,7 +84,7 @@ export const ChangePassword = () => {
                             </Form.Item>
                             <span
                                 className={`change_password_password_message ${
-                                    !isPasswordValid ? 'error' : ''
+                                    isPasswordValid ? '' : 'error'
                                 }`}
                             >
                                 Пароль не менее 8 символов, с заглавной буквой и цифрой

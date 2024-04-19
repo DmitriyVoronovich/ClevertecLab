@@ -1,9 +1,9 @@
-import {TabsProps} from "antd";
-import {AchievementsForTheWeek} from "../achievements-for-the-week";
-import {AchievementsForTheMonth} from "../achievements-for-the-month";
+import {TabsProps} from 'antd';
 
-export const tabsAchievementsItem = (section: string) => {
-    const items: TabsProps['items'] = [
+import {AchievementsForTheMonth} from '../achievements-for-the-month';
+import {AchievementsForTheWeek} from '../achievements-for-the-week';
+
+export const tabsAchievementsItem = (section: string) => [
         {
             key: 'За неделю',
             label: 'За неделю',
@@ -20,6 +20,4 @@ export const tabsAchievementsItem = (section: string) => {
             children: 'Content of Tab Pane 3',
             disabled: true,
         },
-    ];
-    return items;
-}
+    ] as TabsProps['items'];

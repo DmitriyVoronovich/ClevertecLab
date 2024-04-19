@@ -1,4 +1,4 @@
-import {VALIDATE_EMAIL} from '../../../../../data/constant.ts';
+import {VALIDATE_EMAIL} from '@data/constant.ts';
 
 export const onValidateEmail = (
     setIsRepeatButtonDisabled: (value: ((prevState: boolean) => boolean) | boolean) => void,

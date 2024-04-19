@@ -1,8 +1,8 @@
-
-import {onGettingPopularTrain} from './on-getting-populartrain.ts';
-import {formateDate} from "../../../../calendar/ui/drawer-modal/utils/formate-date.ts";
+import {formateDate} from '../../../../../calendar/ui/drawer-modal/utils/formate-date.ts';
+import {onGettingPopularTrain} from '../on-getting-populartrain/on-getting-populartrain.ts';
 
 export const onTransformDataDate = (resultList: Array<{ date: string, mostPopularExercise: string, count: number }>) => {
+
     const modifiedByDateArray = onGettingPopularTrain(resultList).map(item => {
         const date = !isNaN(Number(item.date))
             ? new Date(Number(item.date))

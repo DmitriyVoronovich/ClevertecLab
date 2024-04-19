@@ -1,8 +1,9 @@
-import {formateDate} from "../../../../calendar/ui/drawer-modal/utils/formate-date.ts";
-import {LoadByDateItem} from "../../achievements-for-the-month/types/types.ts";
+import {formateDate} from '../../../../../calendar/ui/drawer-modal/utils/formate-date.ts';
+import {LoadByDateItem} from '../../../achievements-for-the-month/types/types.ts';
 
-export const columnWeekConfig = (selectedTraining: LoadByDateItem[], isMobile: boolean) => {
-    return {
+import {getWeekColumnWidth} from './get-week-column-width.ts';
+
+export const columnWeekConfig = (selectedTraining: LoadByDateItem[], isMobile: boolean) => ({
         axis: {
             lineExtension: [0, 2],
             x: {
@@ -10,7 +11,7 @@ export const columnWeekConfig = (selectedTraining: LoadByDateItem[], isMobile: b
             },
             y: {
                 tick: false,
-                labelFormatter: (datum: any) => `${datum} кг`,
+                labelFormatter: (datum: string) => `${datum} кг`,
             },
         },
         data: selectedTraining.map(item => ({
@@ -19,10 +20,9 @@ export const columnWeekConfig = (selectedTraining: LoadByDateItem[], isMobile: b
         })),
         xField: 'date',
         yField: 'load',
-        width: isMobile ? 318 : 520,
+        width: getWeekColumnWidth(isMobile),
         style: {
             maxWidth: 30,
         },
         scrollbar: {type: 'horizontal'},
-    };
-}
+    })

@@ -1,35 +1,36 @@
-import {formateDate} from "../../../../calendar/ui/drawer-modal/utils/formate-date.ts";
-import {LoadByDateItem} from "../types/types.ts";
+import {formateDate} from '../../../../calendar/ui/drawer-modal/utils/formate-date.ts';
+import {LoadByDateItem} from '../types/types.ts';
+
+import {getHeight, getWidth} from './get-column-size.ts';
 
 export const columnMonthConfig = (selectedTraining: LoadByDateItem[],
                                   isMobile: boolean,
-                                  isTablet: boolean) => {
-    return {
-        axis: {
-            lineExtension: [0, 2],
-            y: {
-                tick: false,
-                labelFormatter: (datum: any) => `${datum} кг`
-            },
-            x: {
-                tick: false,
-            },
+                                  isTablet: boolean) => ({
+    axis: {
+        lineExtension: [0, 2],
+        y: {
+            tick: false,
+            labelFormatter: (datum: string) => `${datum} кг`
         },
-        data: selectedTraining.map((item: { date: string; load: any; }) => ({
-            date: formateDate(item.date).slice(0, 5),
-            load: item.load
-        })),
-        xField: 'date',
-        yField: 'load',
-        width: isMobile ? 326 : isTablet ? 520 : 1136,
-        height: isMobile ? 236 : isTablet ? 374 : 374,
-        style: {
-            maxWidth: 30,
+        x: {
+            tick: false,
         },
-        scrollbar: {
-            x: {
-                ratio: 0.5,
-            },
+    },
+    data: selectedTraining.map((item: { date: string; load: any; }) => ({
+        date: formateDate(item.date).slice(0, 5),
+        load: item.load
+    })),
+    xField: 'date',
+    yField: 'load',
+    // no magic value and move to function
+    width: getWidth(isMobile, isTablet),
+    height: getHeight(isMobile),
+    style: {
+        maxWidth: 30,
+    },
+    scrollbar: {
+        x: {
+            ratio: 0.5,
         },
-    };
-}
+    },
+})

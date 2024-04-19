@@ -25,6 +25,8 @@ export type LoadByDateItem = {
 };
 
 export type DayLoadInformationProps = {
+    color?: string
     index: number
-    item: LoadByDateItem
+    name: string
+    load: string
 }

@@ -1,15 +1,15 @@
 import {SetStateAction, useState} from 'react';
 import {Tabs} from 'antd';
 
+import {tabsAchievementsItem} from './tab-achievements-item.tsx';
+
 import './achievements-section.css';
-import {tabsAchievementsItem} from "./tab-achievements-item.tsx";
 
 export const AchievementsSection = () => {
     const [section, setSection] = useState('');
+    const items = tabsAchievementsItem(section);
 
     const onSectionChange = (value: SetStateAction<string>) => setSection(value);
-
-    const items = tabsAchievementsItem(section);
 
     return (
         <div className="achievements_section_container">

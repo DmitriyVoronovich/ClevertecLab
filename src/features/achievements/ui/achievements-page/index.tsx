@@ -5,11 +5,11 @@ import set from '@image/image/set.svg';
 import {goBackToMain} from '@utils/go-back-to-main.ts';
 
 import {AddErrorModal} from '../../../calendar/ui';
+import {settingsThunks} from '../../../settings/model/settings-slice.ts';
 import {setRequestTrainStatus} from '../../../training/model/training-slice.ts';
 import {AchievementsSection} from '../achievements-section';
 
 import s from '../../../training/ui/training-page/training-page.module.css';
-import {settingsThunks} from "../../../settings/model/settings-slice.ts";
 
 export const AchievementsPage = () => {
     const dispatch = useAppDispatch();
@@ -29,9 +29,7 @@ export const AchievementsPage = () => {
         dispatch(setRequestTrainStatus({requestTrainStatus: RequestTrainStatus.Idle}))
     };
 
-    const onSettingPageOpen = () => {
-        dispatch(settingsThunks.getTrafficList());
-    };
+    const onSettingPageOpen = () => dispatch(settingsThunks.getTrafficList());
 
     return (
         <>

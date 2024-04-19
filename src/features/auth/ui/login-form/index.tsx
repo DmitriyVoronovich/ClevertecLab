@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { EyeInvisibleOutlined, EyeTwoTone, GooglePlusOutlined } from '@ant-design/icons';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
+import {pushWithFlow} from '@utils/push-with-flow.ts';
 import { Button, Checkbox, Form, Input } from 'antd';
 
 import { authThunks } from '../../model/auth-slice.ts';
@@ -10,7 +11,6 @@ import { FormParams } from './types/types.ts';
 import { onValidateEmail } from './utils/on-confirm-email.ts';
 
 import './login-form.css';
-import {pushWithFlow} from "@utils/push-with-flow.ts";
 
 export const LoginForm = () => {
     const [form] = Form.useForm();

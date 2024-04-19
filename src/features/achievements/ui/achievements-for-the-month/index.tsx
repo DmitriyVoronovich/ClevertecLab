@@ -1,7 +1,10 @@
 import {useState} from 'react';
+import {DownOutlined} from '@ant-design/icons';
 import {Column} from '@ant-design/plots';
 import {useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import notTrain from '@image/not_train.png';
+import {useIsMobile} from '@utils/use-is-mobile.ts';
+import {useIsTablet} from '@utils/use-is-tablet.ts';
 import {Card, Collapse, Segmented} from 'antd';
 
 import {formateDate} from '../../../calendar/ui/drawer-modal/utils/formate-date.ts';
@@ -10,38 +13,35 @@ import {MostCommonExercisesBlock} from '../most-common-exercises-block';
 import {MostCommonWorkoutsBlock} from '../most-common-workouts-block';
 
 import {AchievementsForTheMonthProps} from './types/types.ts';
-import {onFilterLastFourWeeks} from './utils/on-filter-data-by-month.ts';
-import {onGettingMonthTraining} from './utils/on-getting-month-training.ts';
+import {columnMonthConfig} from './utils/column-month-config.ts';
+import {onFourWeekDivision} from './utils/four-week-division.ts';
+import {onFilterLastFourWeeks} from './utils/on-filter-data-by-month/on-filter-data-by-month.ts';
+import {onGettingMonthTraining} from './utils/on-getting-month-training/on-getting-month-training.ts';
+import {DayLoadInformation} from './day-load-information.tsx';
 
 import '../achievements-for-the-week/achievements-for-the-week.css';
 import './achievements-for-the-month.css';
-import {useIsMobile} from "@utils/use-is-mobile.ts";
-import {DownOutlined} from "@ant-design/icons";
-import {useIsTablet} from "@utils/use-is-tablet.ts";
-import {columnMonthConfig} from "./utils/column-month-config.ts";
-import {onFourWeekDivision} from "./utils/four-week-division.ts";
-import {DayLoadInformation} from "./day-load-information.tsx";
+import {ALL_DAYS} from "../achievements-for-the-week/constant/constant.ts";
 
 export const AchievementsForTheMonth = ({section}: AchievementsForTheMonthProps) => {
     const training = useAppSelector((state) => state.calendar.training);
-    const [segmentValue, setSegmentValue] = useState('Все');
+    const [segmentValue, setSegmentValue] = useState(ALL_DAYS);
     const isMobile = useIsMobile();
     const isTablet = useIsTablet();
-    const { Panel } = Collapse;
+    const {Panel} = Collapse;
 
     let segmentedFilteredTraining
     let selectedTraining
 
     const filteredWeekTraining = onFilterLastFourWeeks(training);
 
-    if (segmentValue !== 'Все') {
+    if (segmentValue !== ALL_DAYS) {
         segmentedFilteredTraining = filteredWeekTraining.filteredData.filter((item) => item.name === segmentValue);
         selectedTraining = onGettingMonthTraining(segmentedFilteredTraining, filteredWeekTraining.start, filteredWeekTraining.end);
 
     } else {
         segmentedFilteredTraining = filteredWeekTraining.filteredData;
         selectedTraining = onGettingMonthTraining(filteredWeekTraining.filteredData, filteredWeekTraining.start, filteredWeekTraining.end);
-        console.log(selectedTraining)
     }
 
     const fourWeekArray = onFourWeekDivision(selectedTraining);
@@ -77,14 +77,19 @@ export const AchievementsForTheMonth = ({section}: AchievementsForTheMonthProps)
                                 {isMobile
                                     ? (
                                         fourWeekArray.map((week) => (
-                                            <Collapse bordered={false} ghost={true} expandIconPosition="end"
-                                                      expandIcon={({ isActive }) => <DownOutlined rotate={isActive ? 180 : 0} />}>
+                                            <Collapse bordered={false} ghost={true}
+                                                      expandIconPosition="end"
+                                                      expandIcon={({isActive}) => <DownOutlined
+                                                          rotate={isActive ? 180 : 0}/>}>
                                                 <Panel
                                                     header={`Неделя ${formateDate(week[0].date).slice(0, 5)} - ${formateDate(week[6].date).slice(0, 5)}`}
                                                     key={week[0].date}>
                                                     {
                                                         week.map((item, index) => (
-                                                            <DayLoadInformation index={index} item={item} key={index}/>
+                                                            <DayLoadInformation index={index}
+                                                                                name={formateDate(item.date)}
+                                                                                key={index}
+                                                                                load={item.load === 0 ? '' : `${item.load} кг`}/>
                                                         ))
                                                     }
                                                 </Panel>
@@ -99,7 +104,10 @@ export const AchievementsForTheMonth = ({section}: AchievementsForTheMonthProps)
                                                 </span>
                                                 {
                                                     week.map((item, index) => (
-                                                        <DayLoadInformation index={index} item={item} key={index}/>
+                                                        <DayLoadInformation index={index}
+                                                                            name={formateDate(item.date)}
+                                                                            key={index}
+                                                                            load={item.load === 0 ? '' : `${item.load} кг`}/>
                                                     ))
                                                 }
                                             </div>

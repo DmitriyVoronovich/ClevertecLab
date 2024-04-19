@@ -1,4 +1,4 @@
-import {VALIDATE_PASSWORD} from '../../../../../data/constant.ts';
+import {VALIDATE_PASSWORD} from '@data/constant.ts';
 
 export const onValidatePassword = (
     setIsPasswordValid: (value: ((prevState: boolean) => boolean) | boolean) => void,

@@ -1,45 +1,37 @@
 import {useState} from 'react';
 import {Column} from '@ant-design/plots';
 import {useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
+import {useIsMobile} from '@utils/use-is-mobile.ts';
 import {Card, Segmented} from 'antd';
 
 import notTrain from '../../../../assets/not_train.png';
+import {DayLoadInformation} from '../achievements-for-the-month/day-load-information.tsx';
 import {BlockWithLoadCards} from '../block-with-load-cards';
 import {MostCommonExercisesBlock} from '../most-common-exercises-block';
 import {MostCommonWorkoutsBlock} from '../most-common-workouts-block';
 
+import {ALL_DAYS} from './constant/constant.ts';
 import {AchievementsForTheWeekProps} from './types/types.ts';
+import {columnWeekConfig} from './utils/column-week-config/column-week-config.ts';
 import {onFilteredWeekTraining} from './utils/filtered-week-training.ts';
-import {onDataTransform} from './utils/on-data-transform.ts';
-import {onGettingWeekTraining} from './utils/on-getting-a-week-training.ts';
+import {onDataTransform} from './utils/on-data-transform/on-data-transform.ts';
+import {onGettingWeekTraining} from './utils/on-getting-a-week-training/on-getting-a-week-training.ts';
 
 import './achievements-for-the-week.css';
-import {useIsMobile} from "@utils/use-is-mobile.ts";
-import {columnWeekConfig} from "./utils/column-week-config.ts";
-import {WeekDayLoad} from "./week-day-load.tsx";
-
 
 export const AchievementsForTheWeek = ({section}: AchievementsForTheWeekProps) => {
     const training = useAppSelector((state) => state.calendar.training);
-    const [segmentValue, setSegmentValue] = useState('Все');
+    const [segmentValue, setSegmentValue] = useState(ALL_DAYS);
     const isMobile = useIsMobile();
 
-    let segmentedFilteredTraining
-    let selectedTraining
-
     const filteredWeekTraining = onFilteredWeekTraining(training);
+    const segmentedFilteredTraining = segmentValue !== ALL_DAYS
+        ? onFilteredWeekTraining(training).filter((item) => item.name === segmentValue)
+        : onFilteredWeekTraining(training);
 
-    if (segmentValue !== 'Все') {
-        segmentedFilteredTraining = onFilteredWeekTraining(training).filter((item) => item.name === segmentValue);
-        const weekTraining = filteredWeekTraining.filter((item) => item.name === segmentValue);
-
-        selectedTraining = onGettingWeekTraining(weekTraining);
-
-    } else {
-        segmentedFilteredTraining = onFilteredWeekTraining(training);
-
-        selectedTraining = onGettingWeekTraining(filteredWeekTraining);
-    }
+    const selectedTraining = segmentValue !== ALL_DAYS
+    ? onGettingWeekTraining(filteredWeekTraining.filter((item) => item.name === segmentValue))
+        :onGettingWeekTraining(filteredWeekTraining);
 
     const trainingDays = onDataTransform(selectedTraining)
 
@@ -71,11 +63,12 @@ export const AchievementsForTheWeek = ({section}: AchievementsForTheWeekProps) =
                             <div className='column_training_info_wrapper'>
                                 <h6 className='column_info_title'>Средняя нагрузка по дням
                                     недели</h6>
-                                {trainingDays.map((item, index) => {
-                                    return (
-                                        <WeekDayLoad load={item.load} day={item.dayOfWeek} index={index} key={index}/>
-                                    )
-                                })}
+                                {trainingDays.map((item, index) => (
+                                        <DayLoadInformation load={item.load === 0 ? '' : `${item.load} кг`}
+                                                            name={item.dayOfWeek}
+                                                            index={index}
+                                                            key={index}/>
+                                    ))}
                             </div>
                         </div>
                         <BlockWithLoadCards filterTraining={segmentedFilteredTraining}

@@ -11,7 +11,6 @@ import './login-page.css';
 export const LoginPage = () => {
     const location = useLocation();
     const locationPath = location.pathname.split('/');
-
     const isActive = locationPath.length === 2;
 
     const loginButton = classNames({'login_button': true, 'active': isActive});

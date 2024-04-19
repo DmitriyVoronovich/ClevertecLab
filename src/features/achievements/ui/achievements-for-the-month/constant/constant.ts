@@ -1,0 +1,8 @@
+export const MOBILE_COLUMN_WITCH = 326;
+
+export const TABLET_COLUMN_WITCH = 520;
+
+export const DEFAULT_COLUMN_WITCH = 1136;
+
+export const MOBILE_COLUMN_HEIGHT = 236;
+export const DEFAULT_COLUMN_HEIGHT = 374;
