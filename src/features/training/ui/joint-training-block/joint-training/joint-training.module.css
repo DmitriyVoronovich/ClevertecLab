@@ -4,7 +4,7 @@
 
 .joint_training_front_wrapper {
     background-color: #F0F0F0;
-    padding: 32px 0 0 0;
+    padding: 32px 0 0;
     display: flex;
     flex-direction: column;
 }

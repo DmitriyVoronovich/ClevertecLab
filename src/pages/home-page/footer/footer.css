@@ -3,14 +3,14 @@
     display: flex;
     justify-content: space-between;
     align-items: end;
-    padding: 0 24px 42px 24px;
+    padding: 0 24px 42px;
     margin-top: 156px;
 }
 
 .footer_reviews_container {
     width: 171px;
     height: 21px;
-    padding: 9.5px 15px 9.5px 15px;
+    padding: 9.5px 15px;
 }
 
 .footer_reviews {
@@ -92,14 +92,14 @@
 
 @media screen and (max-width: 865px) {
     .footer_container {
-        padding: 0 24px 42px 24px;
+        padding: 0 24px 42px;
         margin-top: 237px;
     }
 
     .footer_reviews_container {
         width: 171px;
         height: 21px;
-        padding: 9.5px 15px 9.5px 15px;
+        padding: 9.5px 15px;
     }
 }
 
@@ -110,7 +110,7 @@
         align-items: center;
         flex-direction: column-reverse;
         gap: 24px;
-        padding: 0 15px 42px 15px;
+        padding: 0 15px 42px;
         margin-top: 0;
     }
 

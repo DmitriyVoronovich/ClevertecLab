@@ -63,7 +63,7 @@
 
 @media screen and (max-width: 361px) {
     .section_wrapper {
-        padding: 24px 0 42px 0;
+        padding: 24px 0 42px;
     }
 
     .header_container {

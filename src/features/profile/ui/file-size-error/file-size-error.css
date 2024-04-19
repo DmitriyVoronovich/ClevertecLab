@@ -4,7 +4,7 @@
 
 .file_size_error_modal_container .ant-modal-content {
     border-radius: 4px;
-    padding: 32px 32px 24px 32px;
+    padding: 32px 32px 24px;
     width: 416px;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .file_size_error_text {
-    padding: 5px 0 0 0;
+    padding: 5px 0 0;
     margin: 0;
     font-family: var(--basic-font-family);
     font-weight: 400;
@@ -70,7 +70,7 @@
 
     .file_size_error_modal_container .ant-modal-content {
         border-radius: 4px;
-        padding: 12px 12px 12px 12px;
+        padding: 12px;
         width: 344px;
         display: flex;
     }

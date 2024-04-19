@@ -1,5 +1,5 @@
 .training_section_container {
-    padding: 24px 24px 42px 24px;
+    padding: 24px 24px 42px;
     max-width: 1333px;
     min-height: 862px;
     background-color: var(--basic-white-color);
@@ -14,7 +14,7 @@
 }
 
 .training_section_title {
-    margin: 12px 0 0 0;
+    margin: 12px 0 0;
     font-family: var(--basic-font-family);
     color: var(--basic-title-color);
     font-size: 24px;

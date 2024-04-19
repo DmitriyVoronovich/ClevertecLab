@@ -1,14 +1,12 @@
+import {logoCleverClass, logoContainerClass} from '@components/logo/class-names.ts';
 import {LogoProps} from '@components/logo/types/types.ts';
 import clever from '@image/image/clever.svg';
 import fit from '@image/image/fit.svg';
 
 import './logo.css';
-import {logoCleverClass, logoContainerClass} from '@components/logo/class-names.ts';
 
 export const Logo = ({open}: LogoProps) => {
-
     const logoContainer = logoContainerClass(open);
-
     const logoClever = logoCleverClass(open);
 
     return (

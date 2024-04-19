@@ -1,3 +1,4 @@
+import {useMemo} from 'react';
 import {
     sidebarContentContainerClass,
     sidebarFooterClass,
@@ -6,7 +7,9 @@ import {
     sidebarLogContainerClass,
     sidebarMenuWrapperClass
 } from '@components/sidebar/class-names.ts';
-import {NavigationMenuDataProps, SidebarProps} from '@components/sidebar/types/types.ts';
+import {SidebarProps} from '@components/sidebar/types/types.ts';
+import {badgeCount} from '@components/sidebar/utils/badge-count.ts';
+import {clearTokenInfo} from '@components/sidebar/utils/clear-token-info.ts';
 import {NavigationMenuData} from '@data/data.ts';
 import {useAppDispatch, useAppSelector} from '@hooks/typed-react-redux-hooks.ts';
 import exit from '@image/image/exit.svg';
@@ -21,24 +24,16 @@ import './sidebar.css';
 export const Sidebar = ({handleOpen, open}: SidebarProps) => {
     const dispatch = useAppDispatch();
     const inviteList = useAppSelector((state) => state.invite.inviteList);
-    const badgeCount = (item: NavigationMenuDataProps) => item.title === 'Тренировки' ? inviteList.length : 0
 
-    const sidebarContentContainer = sidebarContentContainerClass(open);
-
-    const sidebarMenuWrapper = sidebarMenuWrapperClass(open);
-
-    const sidebarFooter = sidebarFooterClass(open);
-
-    const sidebarFooterText = sidebarFooterTextClass(open);
-
-    const sidebarLogContainer = sidebarLogContainerClass(open);
-
-    const sidebarItemTitle = sidebarItemTitleClass(open);
+    const sidebarContentContainer = useMemo(() => sidebarContentContainerClass(open), [open]);
+    const sidebarMenuWrapper = useMemo(() => sidebarMenuWrapperClass(open), [open]);
+    const sidebarFooter = useMemo(() => sidebarFooterClass(open), [open]);
+    const sidebarFooterText = useMemo(() => sidebarFooterTextClass(open), [open]);
+    const sidebarLogContainer = useMemo(() => sidebarLogContainerClass(open), [open]);
+    const sidebarItemTitle = useMemo(() => sidebarItemTitleClass(open), [open]);
 
     const logOut = () => {
-        localStorage.removeItem('jwtToken');
-        sessionStorage.removeItem('jwtToken');
-        sessionStorage.removeItem('isLoggedIn');
+        clearTokenInfo();
         dispatch(pushWithFlow('/auth'));
     };
 
@@ -46,7 +41,7 @@ export const Sidebar = ({handleOpen, open}: SidebarProps) => {
         const onClickHandler = () => dispatch(item.callback());
 
         return (
-            <Badge count={badgeCount(item.title)} data-test-id={item.dataNotId} key={item.id}>
+            <Badge count={badgeCount(item, inviteList)} data-test-id={item.dataNotId} key={item.id}>
                 <div className="sidebar_menu_item"
                      role='button'
                      tabIndex={0}

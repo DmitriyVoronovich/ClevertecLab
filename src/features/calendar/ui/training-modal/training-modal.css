@@ -1,5 +1,5 @@
 .training_modal .ant-modal-content {
-    padding: 16px 0 0 0;
+    padding: 16px 0 0;
     z-index: 9900;
 }
 
@@ -121,7 +121,7 @@
 
 @media screen and (max-width: 361px) {
     .training_modal .ant-modal-content {
-        padding: 16px 0 0 0;
+        padding: 16px 0 0;
         z-index: 9900;
     }
 

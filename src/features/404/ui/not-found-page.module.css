@@ -9,7 +9,7 @@
 .not_found_page_wrapper {
     max-width: 1333px;
     height: 90vh;
-    padding: 24px 24px 42px 24px;
+    padding: 24px 24px 42px;
 }
 
 .not_found_page_content {
@@ -33,7 +33,7 @@ display: flex;
 }
 
 .not_found_page_title {
-    margin: 24px 0 0 0;
+    margin: 24px 0 0;
     font-family: var(--basic-font-family);
     font-weight: 500;
     font-size: 24px;

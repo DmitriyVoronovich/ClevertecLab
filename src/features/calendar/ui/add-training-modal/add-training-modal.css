@@ -1,5 +1,5 @@
 .add_training_modal .ant-modal-content {
-    padding: 12.5px 0 0 0;
+    padding: 12.5px 0 0;
 }
 
 .add_training_modal {
@@ -7,7 +7,7 @@
 }
 
 .add_training_header_wrapper {
-    padding: 0 12px 12.5px 12px;
+    padding: 0 12px 12.5px;
     display: flex;
     gap: 5px;
     border-bottom: 1px solid #e0e0e0;
@@ -43,7 +43,7 @@
 
 .add_training_modal_list_wrapper {
     min-height: 128px;
-    padding: 0 12px 0;
+    padding: 0 12px;
 }
 
 .add_training_modal_list {

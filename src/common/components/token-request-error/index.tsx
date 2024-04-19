@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {TokenRequestErrorProps} from '@components/token-request-error/types/types.ts';
+import {useAppDispatch} from '@hooks/typed-react-redux-hooks.ts';
 import error from '@image/login-page/svg-icon/error_check.svg';
+import {pushWithFlow} from '@utils/push-with-flow.ts';
 import { Button, Modal } from 'antd';
 
 import './tokenRequestError.css';
 
 export const TokenRequestError = ({ callback, status }: TokenRequestErrorProps) => {
-    const navigation = useNavigate();
+    const dispatch = useAppDispatch();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
@@ -19,7 +20,7 @@ export const TokenRequestError = ({ callback, status }: TokenRequestErrorProps) 
     const onCancelModalForm = () => {
         setIsModalOpen(false);
         callback();
-        navigation('/main');
+        dispatch(pushWithFlow('/main'))
     };
 
     return (

@@ -4,7 +4,7 @@
 
 .add_error_modal_container .ant-modal-content {
     border-radius: 4px;
-    padding: 32px 32px 24px 32px;
+    padding: 32px 32px 24px;
     width: 384px;
     display: flex;
 }
@@ -70,7 +70,7 @@
 
     .add_error_modal_container .ant-modal-content {
         border-radius: 4px;
-        padding: 12px 12px 12px 12px;
+        padding: 12px;
         width: 344px;
         display: flex;
     }

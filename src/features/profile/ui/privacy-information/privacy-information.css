@@ -6,7 +6,7 @@
 }
 
 .profile_privacy_title {
-    margin: 0 0 16px 0;
+    margin: 0 0 16px;
     font-weight: 500;
     font-size: 16px;
     line-height: 130%;
@@ -24,7 +24,7 @@
     }
 
     .profile_privacy_title {
-        margin: 0 0 16px 0;
+        margin: 0 0 16px;
         font-weight: 500;
         font-size: 16px;
         line-height: 130%;

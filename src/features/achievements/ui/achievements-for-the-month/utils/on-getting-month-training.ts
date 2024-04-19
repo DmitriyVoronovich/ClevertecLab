@@ -1,5 +1,5 @@
 import {TrainingParams} from '../../../../calendar/model/types/types.ts';
-import {LoadByDate, LoadByDateItem} from "../types/types.ts";
+import {LoadByDate, LoadByDateItem} from '../types/types.ts';
 
 export const onGettingMonthTraining = (training: TrainingParams[], startDate: string, endDate: string) => {
     const loadByDate = training.reduce((accum: LoadByDate, item) => {

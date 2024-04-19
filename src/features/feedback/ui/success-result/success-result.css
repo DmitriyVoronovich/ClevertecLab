@@ -2,7 +2,7 @@
     margin: 0 auto;
     width: 539px;
     height: 327px;
-    padding: 64px 85px 64px;
+    padding: 64px 85px;
     background-color: var(--basic-white-color);
     z-index: 5;
 }
@@ -28,7 +28,7 @@
     line-height: 130%;
     text-align: center;
     color: var(--basic-title-color);
-    margin: 24px 0 0 0;
+    margin: 24px 0 0;
 }
 
 .success_result_button {

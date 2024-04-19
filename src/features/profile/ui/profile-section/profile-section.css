@@ -1,7 +1,7 @@
 .profile_section_container {
     max-width: 1333px;
     height: 886px;
-    padding: 24px 24px 42px 24px;
+    padding: 24px 24px 42px;
 }
 
 .ant-notification .ant-notification-notice-wrapper .ant-notification-notice {
@@ -28,7 +28,7 @@
     height: 42px;
     color: var(--basic-white-color);
     border-radius: 2px;
-    margin: 54px 0 0 0;
+    margin: 54px 0 0;
     background-color: var(--primary-color);
 }
 
@@ -52,7 +52,7 @@
     .profile_section_container {
         max-width: 360px;
         height: 693px;
-        padding: 24px 0 42px 0;
+        padding: 24px 0 42px;
     }
 
     .ant-notification .ant-notification-notice-wrapper .ant-notification-notice {
@@ -61,7 +61,7 @@
     }
 
     .profile_section_content {
-        padding: 16px 24px 0 24px;
+        padding: 16px 24px 0;
     }
 
     .profile_personal_information {
@@ -75,7 +75,7 @@
         width: 312px;
         height: 40px;
         border-radius: 2px;
-        margin: 50px 0 0 0;
+        margin: 50px 0 0;
     }
 
     .ant-notification-notice-close {

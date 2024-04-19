@@ -126,7 +126,7 @@
     font-size: 14px;
     line-height: 130%;
     color: var(--basic-title-color);
-    margin: 0 0 24px 0;
+    margin: 0 0 24px;
 }
 
 .select_tariff_container {
@@ -266,7 +266,7 @@
         font-size: 14px;
         line-height: 130%;
         color: var(--basic-title-color);
-        margin: 0 0 12px 0;
+        margin: 0 0 12px;
     }
 
     .select_tariff_container {

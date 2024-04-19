@@ -1,7 +1,7 @@
 .training_drawer_container .ant-drawer-header {
     flex-direction: row-reverse;
     gap: 10px;
-    padding: 24px 32px 16px 32px;
+    padding: 24px 32px 16px;
     border-bottom: none;
     border-radius: 8px 0 0 8px;
 }
@@ -90,7 +90,7 @@
 }
 @media screen and (max-width: 361px) {
     .training_drawer_container .ant-drawer-header {
-        padding: 24px 16px 16px 16px;
+        padding: 24px 16px 16px;
     }
 
     .ant-drawer-content-wrapper {
@@ -112,7 +112,7 @@
     .training_drawer_container .ant-drawer-header {
         flex-direction: row-reverse;
         gap: 10px;
-        padding: 24px 16px 16px 16px;
+        padding: 24px 16px 16px;
         border-bottom: none;
         border-radius: 8px 0 0 8px;
     }
